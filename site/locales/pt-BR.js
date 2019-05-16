@@ -17,7 +17,7 @@ module.exports = {
     'development': 'Development',
     'components': 'Components',
     'feedback': 'Feedback',
-    'contribution': 'Contribution'
+    'contribution': 'Contribuicao'
   },
   markdown: {
     'show': 'Show',

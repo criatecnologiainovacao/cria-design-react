@@ -23,16 +23,22 @@ body {
 
   .header {
     height: 80px;
-    background-color: #20a0ff;
-    color: #fff;
+    background-color: #fff;
+    color: black;
     top: 0;
     left: 0;
     width: 100%;
     line-height: 80px;
     position: relative;
+    box-shadow: black 0 1px 5px;
+
+    .container{
+      height: 100%;
+    }
 
     h1 {
       position: relative;
+      height: 100%;
       margin: 0;
       float: left;
       font-size: 32px;
@@ -49,7 +55,7 @@ body {
       }
 
       a {
-        color: #fff;
+        color: black;
         text-decoration: none;
         display: block;
       }
@@ -57,6 +63,7 @@ body {
       img {
         vertical-align: sub;
         pointer-events: none;
+        height: 100%;
       }
     }
 
@@ -96,7 +103,7 @@ body {
 
       a {
         text-decoration: none;
-        color: #fff;
+        color: black;
         display: block;
         padding: 0 20px;
         opacity: .8;
@@ -127,8 +134,8 @@ body {
 
   .footer {
     height: 120px;
-    background-color: #324057;
-    color: #a4aebd;
+    background-color: #E17055;
+    color: #ffffff;
     width: 100%;
 
     .footer-main {
@@ -147,7 +154,7 @@ body {
         margin: 12px 18px 0 0;
         line-height: 1;
         font-size: 12px;
-        color: #768193;
+        color: #ffffff;
         text-decoration: none;
       }
     }
@@ -258,7 +265,7 @@ body {
       position: relative;
       transition: all .3s;
       &.active {
-        color: #20a0ff;
+        color: #C16049;
       }
     }
     .nav-item {
@@ -269,7 +276,7 @@ body {
         font-size: 13px;
         padding-left: 24px;
         &:hover {
-          color: #20a0ff;
+          color: #C16049;
         }
       }
     }
@@ -371,7 +378,7 @@ body {
     }
 
     &:hover {
-      color: #20a0ff;
+      color: #C16049;
       background-color: #f9fafc;
     }
   }

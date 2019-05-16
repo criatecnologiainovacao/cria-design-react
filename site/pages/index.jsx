@@ -6,7 +6,6 @@ export default {
   },
   components: {
     'Others': {
-      'dialog': require('./dialog'),
       'cachorro': require('./cachorro')
     }
   }

@@ -18,19 +18,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElemeFE/element-react.git"
+    "url": "git+https://github.com/guhcostan/cria-design-system.git"
   },
   "keywords": [
-    "Element",
+    "Cria",
     "UI",
     "React"
   ],
-  "author": "ELEME Inc",
+  "author": "Cria Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElemeFE/element-react/issues"
+    "url": "https://github.com/guhcostan/cria-design-system/issues"
   },
-  "homepage": "https://github.com/ElemeFE/element-react",
+  "homepage": "https://github.com/guhcostan/cria-design-system",
   "devDependencies": {
     "@types/react": "^16.8.1",
     "babel-cli": "^6.26.0",
@@ -83,6 +83,7 @@
   "dependencies": {
     "async-validator": "^1.10.1",
     "classnames": "^2.2.6",
+    "element-react": "^1.4.34",
     "popper.js": "^1.14.7",
     "prop-types": "^15.6.2",
     "raf": "^3.4.1",

@@ -1,6 +1,5 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
-import classnames from 'classnames';
 
 import { i18n } from '../src';
 
@@ -105,7 +104,7 @@ export default class App extends React.Component {
         <header className="header">
           <div className="container">
             <h1>
-              <img src={require('./assets/logo.svg')} />
+              <img className="logo" src={require('./assets/logo.png')} />
             </h1>
             <ul className="nav">
               <li className="nav-item">
@@ -174,7 +173,7 @@ export default class App extends React.Component {
         <footer className="footer">
           <div className="container">
             <div className="footer-main">
-              <p className="footer-main-title">Element-React</p>
+              <p className="footer-main-title">Cria Design System</p>
               <a href="https://github.com/eleme/element-react/issues" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.feedback')}</a>
               <a href="https://github.com/eleme/element-react/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.contribution')}</a>
               <a href={`http://element.eleme.io/#/${this.state.locale}/component/${this.state.page}`} target="_blank" rel="noopener noreferrer" className="footer-main-link">Element</a>
