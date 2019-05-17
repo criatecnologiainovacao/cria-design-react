@@ -1,12 +1,12 @@
 export default {
   documents: {
-    'quick-start': require('./quick-start'),
-    'i18n': require('./i18n'),
+    'quick-start': require('../../src/quick-start'),
+    'i18n': require('../../src/i18n'),
     // 'custom-theme': require('./custom-theme')
   },
   components: {
     'Others': {
-      'cachorro': require('./cachorro')
+      'cachorro': require('../../src/cachorro/docs/index')
     }
   }
 }
