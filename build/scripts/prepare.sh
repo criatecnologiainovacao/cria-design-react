@@ -14,8 +14,6 @@ if [ $? = 0 ]; then
 
   export BABEL_ENV=production
 
-  cp src/styles.scss styles.scss
-
   babel src --out-dir dist/npm/es6/src --copy-files
   babel libs --out-dir dist/npm/es6/libs --copy-files
 
