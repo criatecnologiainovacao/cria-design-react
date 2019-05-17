@@ -1,10 +1,6 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
-
-import { i18n } from '../src';
-
-import en from '../src/locale/lang/en';
-import zh from '../src/locale/lang/zh-CN';
+import classnames from 'classnames';
 
 import locales from './locales';
 import pages from './pages';
@@ -27,20 +23,9 @@ export default class App extends React.Component {
   componentDidMount() {
     this.setPage(() => {
       if (!this.state.locale) {
-        this.setLocale(localStorage.getItem('ELEMENT_LANGUAGE') || 'zh-CN');
+        this.setLocale(localStorage.getItem('ELEMENT_LANGUAGE') || 'pt-BR');
       }
     });
-  }
-
-  componentDidUpdate(props, state) {
-    if (state.locale != this.state.locale) {
-      switch(this.state.locale) {
-        case 'en-US':
-          i18n.use(en); break;
-        default:
-          i18n.use(zh); break;
-      }
-    }
   }
 
   getLocale(key) {
@@ -104,7 +89,7 @@ export default class App extends React.Component {
         <header className="header">
           <div className="container">
             <h1>
-              <img className="logo" src={require('./assets/logo.png')} />
+              <img src={require('./assets/logo.png')} />
             </h1>
             <ul className="nav">
               <li className="nav-item">
@@ -173,7 +158,7 @@ export default class App extends React.Component {
         <footer className="footer">
           <div className="container">
             <div className="footer-main">
-              <p className="footer-main-title">Cria Design System</p>
+              <p className="footer-main-title">Element-React</p>
               <a href="https://github.com/eleme/element-react/issues" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.feedback')}</a>
               <a href="https://github.com/eleme/element-react/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.contribution')}</a>
               <a href={`http://element.eleme.io/#/${this.state.locale}/component/${this.state.page}`} target="_blank" rel="noopener noreferrer" className="footer-main-link">Element</a>

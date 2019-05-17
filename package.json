@@ -1,7 +1,7 @@
 {
-  "name": "cria-design-system",
-  "version": "1.0.0",
-  "description": "Element UI for React",
+  "name": "cria-design-react",
+  "version": "1.0.14",
+  "description": "Cria UI for React",
   "private": false,
   "main": "dist/npm/es5/index.js",
   "jsnext:main": "next.js",

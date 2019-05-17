@@ -1,9 +1,9 @@
-import Markdown from '../../libs/markdown';
+import Markdown from '../../../libs/markdown';
 
 import './style.scss';
 
 export default class Cachorro extends Markdown {
-  document(locale) {
+  document() {
     return require(`./cachorro.md`);
   }
 }
