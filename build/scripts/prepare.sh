@@ -14,7 +14,7 @@ if [ $? = 0 ]; then
 
   export BABEL_ENV=production
 
-  cp src/cria-desing-style.sass cria-desing-style.sass
+  cp src/cria-desing-style.scss cria-desing-style.scss
 
   babel src --out-dir dist/npm/es6/src --copy-files
   babel libs --out-dir dist/npm/es6/libs --copy-files
