@@ -1,6 +1,6 @@
 {
   "name": "cria-design-react",
-  "version": "1.0.21",
+  "version": "1.0.25",
   "description": "Cria UI for React",
   "private": false,
   "main": "dist/npm/es6/index.js",
@@ -83,7 +83,7 @@
   "dependencies": {
     "async-validator": "^1.10.1",
     "classnames": "^2.2.6",
-    "element-react": "^1.4.34",
+    "cria-design-react": "*",
     "popper.js": "^1.14.7",
     "prop-types": "^15.6.2",
     "raf": "^3.4.1",

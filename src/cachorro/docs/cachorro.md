@@ -20,7 +20,7 @@ constructor(props) {
 render() {
   return (
     <div>
-      <input></input>
+      <Cachorro/>
     </div>
   )
 }
