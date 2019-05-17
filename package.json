@@ -1,10 +1,10 @@
 {
   "name": "cria-design-react",
-  "version": "1.0.14",
+  "version": "1.0.18",
   "description": "Cria UI for React",
   "private": false,
-  "main": "dist/npm/es5/index.js",
-  "jsnext:main": "next.js",
+  "main": "dist/npm/es6/index.js",
+  "jsnext:main": "index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "start": "cd site && node run.js",

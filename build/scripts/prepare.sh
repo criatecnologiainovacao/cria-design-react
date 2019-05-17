@@ -14,6 +14,7 @@ if [ $? = 0 ]; then
 
   babel src --out-dir dist/npm/es6/src --copy-files
   babel libs --out-dir dist/npm/es6/libs --copy-files
+  babel build/npm/index.js --out-file dist/npm/es6/index.js
 
   # keep es6 for next.js
   cp build/npm/index.js index.js
