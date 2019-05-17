@@ -14,11 +14,14 @@ if [ $? = 0 ]; then
 
   export BABEL_ENV=production
 
+  cp src/cria-desing-style.sass cria-desing-style.sass
+
   babel src --out-dir dist/npm/es6/src --copy-files
   babel libs --out-dir dist/npm/es6/libs --copy-files
 
   # keep es6 for next.js
   cp build/npm/index.js index.js
+
 else
   echo 'Code cant be verify, plz check ~'
 fi

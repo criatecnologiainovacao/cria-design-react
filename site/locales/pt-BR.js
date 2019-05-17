@@ -3,7 +3,7 @@ module.exports = {
     'quick-start': 'Quick Start',
     'i18n': 'Internationalization',
     'dialog': 'Dialog',
-    'cachorro': 'Cachorro',
+    'cardQuantitativo': 'Card Quantitativo',
     'tooltip': 'Tooltip',
     'popover': 'Popover',
     'card': 'Card',

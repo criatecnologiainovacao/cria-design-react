@@ -1,1 +1,3 @@
-export { default as Cachorro } from './cachorro';
+import './styles.sass';
+
+export { default as CardQuantitativo } from './cardQuantitativo';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
-import classnames from 'classnames';
+
 
 import locales from './locales';
 import pages from './pages';
@@ -93,13 +93,13 @@ export default class App extends React.Component {
             </h1>
             <ul className="nav">
               <li className="nav-item">
-                <a href={`http://element.eleme.io/#/${this.state.locale}/guide/design`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.guide')}</a>
+                <a href={`https://www.criainovacao.com.br`} target="_blank" rel="noopener noreferrer">Site</a>
               </li>
               <li className="nav-item">
-                <a className="active">{this.getLocale('misc.component')}</a>
+                <a className="active">Componentes</a>
               </li>
               <li className="nav-item">
-                <a href={`http://element.eleme.io/#/${this.state.locale}/resource`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.resource')}</a>
+                <a href={`http://criadesign.ti.lemaf.ufla.br`} target="_blank" rel="noopener noreferrer">Guia Completo</a>
               </li>
             </ul>
           </div>
