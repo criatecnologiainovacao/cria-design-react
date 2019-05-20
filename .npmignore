@@ -6,4 +6,4 @@ site
 themes/src
 themes/.*
 deploy.sh
-*/docs
+src/components/*/docs
