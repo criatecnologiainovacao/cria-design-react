@@ -3,7 +3,7 @@
   "version": "1.0.36",
   "description": "Cria UI for React",
   "private": false,
-  "main": "dist/npm/es6/index.js",
+  "main": "dist/npm/index.js",
   "jsnext:main": "index.js",
   "typings": "typings/index.d.ts",
   "scripts": {

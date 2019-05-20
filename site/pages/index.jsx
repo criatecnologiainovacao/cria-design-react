@@ -4,7 +4,7 @@ export default {
   },
   components: {
     'Principais': {
-      'cardQuantitativo': require('../../src/cardQuantitativo/docs/index')
+      'cardQuantitativo': require('../../src/components/cardQuantitativo/docs/index')
     }
   }
 }

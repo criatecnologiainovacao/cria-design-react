@@ -1,3 +1,3 @@
-import './styles.css';
+import './themes/styles.css';
 
-export { default as CardQuantitativo } from './cardQuantitativo';
+export { default as CardQuantitativo } from './components/cardQuantitativo';
