@@ -1,1 +1,1 @@
-export * from './dist/npm/src';
+export * from './src';
