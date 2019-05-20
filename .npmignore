@@ -4,6 +4,6 @@ dist
 site
 .*
 themes/src
-themes/.*
 deploy.sh
 src/components/*/docs
+src/favicon.png
