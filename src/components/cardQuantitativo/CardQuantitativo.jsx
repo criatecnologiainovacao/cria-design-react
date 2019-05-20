@@ -1,8 +1,8 @@
 /* @flow */
 
 import React from 'react';
-import { Layout } from 'element-react/next'
-import { Component } from '../../libs';
+import { Layout } from 'element-react'
+import { Component } from '../../../libs';
 
 export default class CardQuantitativo extends Component {
 
