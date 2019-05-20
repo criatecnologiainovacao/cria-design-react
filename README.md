@@ -1,4 +1,10 @@
-# Cria Design React
+<h1 align="center">Cria Design React</h1>
+<h4 align="center" style="color: #64dcfc">React</h4>
+
+
+<p align="center">
+  <img src="https://github.com/criatecnologiainovacao/cria-design-system/blob/master/site/assets/logo.png?raw=true">
+</p>
 
 ## Getting Started
 

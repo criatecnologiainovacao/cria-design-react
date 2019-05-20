@@ -1,13 +1,14 @@
-## Quick start
+## Começo rápido
 
-### Installation
-Installing with npm is recommended and it works seamlessly with `webpack`.
+### Instalação
+
+A instalação com o npm é recomendada e funciona perfeitamente com o `webpack`.
 
 ```shell
 npm i cria-design-react --save
 ```
 
-### Usage
+### Uso
 
 ```js
 import React from 'react';
