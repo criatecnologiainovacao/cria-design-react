@@ -94,11 +94,13 @@ export default class Canvas extends React.Component {
           {
             this.state.showBlock ? (
               <span>
-                <i className="cdl-icon-caret-top" />{this.props.locale.hide}
+                <i className="cd-icon-caret-top"/>
+                <span>{this.props.locale.hide}</span>
               </span>
             ) : (
               <span>
-                <i className="cd-icon-caret-bottom" />{this.props.locale.show}
+                <i className="cd-icon-caret-bottom"/>
+                <span>{this.props.locale.show}</span>
               </span>
             )
           }

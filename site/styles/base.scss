@@ -1,3 +1,7 @@
+$--font-path: "../../themes/src/fonts";
+
+@import "../../themes/src/base";
+
 * {
   margin: 0;
   padding: 0;
@@ -363,12 +367,14 @@ body {
     position: relative;
 
     i {
-      font-size: 12px;
+      font-size: 18px;
       line-height: 36px;
       margin-right: 5px;
+      transform: translateX(40px);
+      transition: .3s;
     }
 
-    span {
+    span > span {
       display: inline-block;
       transform: translateX(40px);
       font-size: 14px;
@@ -384,8 +390,12 @@ body {
   }
 
   .demo-block-control:hover {
-    span {
+    span > span {
       opacity: 1;
+      transform: translateX(0);
+    }
+
+    i {
       transform: translateX(0);
     }
   }

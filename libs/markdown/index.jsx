@@ -39,7 +39,6 @@ export default class Markdown extends React.Component {
   render() {
     const document = this.document('pt-BR');
 
-    console.log(document);
     if (document && typeof document.default === 'string') {
       this.components.clear();
 
