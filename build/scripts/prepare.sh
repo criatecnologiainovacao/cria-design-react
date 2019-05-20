@@ -7,6 +7,8 @@ cd themes
 
 gulp build
 
+cd ..
+
 if [ $? = 0 ]; then
   # purge dist
   rm -fr dist
