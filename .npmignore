@@ -4,7 +4,7 @@ dist
 site
 themes/src/.*
 themes/README.md
-/themes/src
+themes/src
 deploy.sh
 src/components/*/docs
 src/favicon.png
