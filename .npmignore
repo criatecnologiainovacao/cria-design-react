@@ -2,8 +2,9 @@ build
 tests
 dist
 site
-.*
+themes/src/.*
 themes/src
 deploy.sh
 src/components/*/docs
 src/favicon.png
+.*
