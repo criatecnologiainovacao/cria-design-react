@@ -149,7 +149,7 @@ export default class App extends React.Component {
             { this.getComponent(this.state.page) }
             <ScrollToTop showUnder={210}>
               <div className="page-component-up">
-                <i className="el-icon-caret-top"></i>
+                <i className="cd-icon-caret-top"></i>
               </div>
             </ScrollToTop>
           </div>
@@ -157,7 +157,7 @@ export default class App extends React.Component {
         <footer className="footer">
           <div className="container">
             <div className="footer-main">
-              <p className="footer-main-title">Element-React</p>
+              <p className="footer-main-title">CriaDesignSystem-react</p>
               <a href="https://github.com/criatecnologiainovacao/cria-design-system/issues" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.feedback')}</a>
               <a href="https://github.com/criatecnologiainovacao/cria-design-system/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.contribution')}</a>
             </div>
