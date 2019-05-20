@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guhcostan/cria-design-system.git"
+    "url": "git+https://github.com/criatecnologiainovacao/cria-design-system.git"
   },
   "keywords": [
     "Cria",
@@ -28,9 +28,9 @@
   "author": "Cria Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/guhcostan/cria-design-system/issues"
+    "url": "https://github.com/criatecnologiainovacao/cria-design-system/issues"
   },
-  "homepage": "https://github.com/guhcostan/cria-design-system",
+  "homepage": "https://github.com/criatecnologiainovacao/cria-design-system",
   "devDependencies": {
     "@types/react": "^16.8.1",
     "babel-cli": "^6.26.0",
