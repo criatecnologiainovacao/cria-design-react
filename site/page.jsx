@@ -149,7 +149,7 @@ export default class App extends React.Component {
             { this.getComponent(this.state.page) }
             <ScrollToTop showUnder={210}>
               <div className="page-component-up">
-                <i className="el-icon-caret-top"/>
+                <i className="cd-icon-caret-top"/>
               </div>
             </ScrollToTop>
           </div>
