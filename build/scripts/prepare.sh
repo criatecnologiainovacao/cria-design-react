@@ -1,13 +1,10 @@
 #!/bin/bash
 
 # testing before publish
-npm run lint && npm run build
 
-cd themes
+npm install && npm run lint && npm run build
 
-gulp build
-
-cd ..
+cd themes && npm install && gulp build && cd ..
 
 if [ $? = 0 ]; then
   # purge dist
