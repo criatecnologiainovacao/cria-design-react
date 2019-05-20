@@ -39,11 +39,11 @@ export default class Markdown extends React.Component {
   render() {
     const document = this.document('pt-BR');
 
-    console.log(document.default);
-    if (typeof document.default === 'string') {
+    console.log(document);
+    if (document && typeof document.default === 'string') {
       this.components.clear();
 
-      const html = marked(document.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
+      const html = marked(document.default.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
         const id = offset.toString(36);
 
         this.components.set(id, React.createElement(Canvas, Object.assign({
