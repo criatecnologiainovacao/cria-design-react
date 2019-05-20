@@ -6,4 +6,4 @@ site
 themes/src
 themes/.*
 deploy.sh
-CONTRIBUTING.md
+*/docs
