@@ -1,4 +1,9 @@
 build
 tests
+dist
 site
 .*
+themes/src
+themes/.*
+deploy.sh
+CONTRIBUTING.md
