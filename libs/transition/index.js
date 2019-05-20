@@ -1,55 +1,66 @@
+import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
+import _createClass from 'babel-runtime/helpers/createClass';
+import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
+import _inherits from 'babel-runtime/helpers/inherits';
 /* eslint-disable */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import requestAnimationFrame from 'raf';
 
-/**
- * @deprecated
- */
-export default class Transition extends Component {
-  constructor(props) {
-    super(props);
+var Transition = function (_Component) {
+  _inherits(Transition, _Component);
 
-    const { children } = props;
+  function Transition(props) {
+    _classCallCheck(this, Transition);
 
-    this.state = {
-      children: children && this.enhanceChildren(children)
-    }
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
-    this.didEnter = this.didEnter.bind(this);
-    this.didLeave = this.didLeave.bind(this);
+    var children = props.children;
+
+
+    _this.state = {
+      children: children && _this.enhanceChildren(children)
+    };
+
+    _this.didEnter = _this.didEnter.bind(_this);
+    _this.didLeave = _this.didLeave.bind(_this);
+    return _this;
   }
 
-  componentWillReceiveProps(nextProps) {
-    const children = React.isValidElement(this.props.children) && React.Children.only(this.props.children);
-    const nextChildren = React.isValidElement(nextProps.children) && React.Children.only(nextProps.children);
+  Transition.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    var children = React.isValidElement(this.props.children) &&
+                   React.Children.only(this.props.children);
+    var nextChildren = React.isValidElement(nextProps.children) &&
+                       React.Children.only(nextProps.children);
 
     if (!nextProps.name) {
       this.setState({
-        children: nextChildren
-      });
+                      children: nextChildren
+                    });
       return;
     }
 
     if (this.isViewComponent(nextChildren)) {
       this.setState({
-        children: this.enhanceChildren(nextChildren, { show: children ? children.props.show : true })
-      })
+                      children: this.enhanceChildren(nextChildren, { show: children ? children.props.show : true })
+                    });
     } else {
       if (nextChildren) {
         this.setState({
-          children: this.enhanceChildren(nextChildren)
-        })
+                        children: this.enhanceChildren(nextChildren)
+                      });
       }
     }
-  }
+  };
 
-  componentDidUpdate(preProps) {
+  Transition.prototype.componentDidUpdate = function componentDidUpdate(preProps) {
     if (!this.props.name) return;
 
-    const children = React.isValidElement(this.props.children) && React.Children.only(this.props.children);
-    const preChildren = React.isValidElement(preProps.children) && React.Children.only(preProps.children);
+    var children = React.isValidElement(this.props.children) &&
+                   React.Children.only(this.props.children);
+    var preChildren = React.isValidElement(preProps.children) &&
+                      React.Children.only(preProps.children);
 
     if (this.isViewComponent(children)) {
       if ((!preChildren || !preChildren.props.show) && children.props.show) {
@@ -64,61 +75,58 @@ export default class Transition extends Component {
         this.toggleHidden();
       }
     }
+  };
 
-  }
+  Transition.prototype.enhanceChildren = function enhanceChildren(children, props) {
+    var _this2 = this;
 
-  enhanceChildren(children, props) {
-    return React.cloneElement(children, Object.assign({ ref: (el) => { this.el = el } }, props))
-  }
+    return React.cloneElement(children, Object.assign({
+                                                        ref: function ref(el) {
+                                                          _this2.el = el;
+                                                        }
+                                                      }, props));
+  };
 
-  get transitionClass() {
-    const { name } = this.props;
-
-    return {
-      enter: `${name}-enter`,
-      enterActive: `${name}-enter-active`,
-      enterTo: `${name}-enter-to`,
-      leave: `${name}-leave`,
-      leaveActive: `${name}-leave-active`,
-      leaveTo: `${name}-leave-to`,
-    }
-  }
-
-  isViewComponent(element) {
+  Transition.prototype.isViewComponent = function isViewComponent(element) {
     return element && element.type._typeName === 'View';
-  }
+  };
 
   /* css animation fix when animation applyied to .{action} instanceof .{action}-active */
 
-  animateElement(element, action, active, fn) {
+  Transition.prototype.animateElement = function animateElement(element, action, active, fn) {
     element.classList.add(active);
 
-    const styles = getComputedStyle(element);
-    const duration = parseFloat(styles['animationDuration']) || parseFloat(styles['transitionDuration']);
+    var styles = getComputedStyle(element);
+    var duration = parseFloat(styles['animationDuration']) ||
+                   parseFloat(styles['transitionDuration']);
 
     element.classList.add(action);
 
     if (duration === 0) {
-      const styles = getComputedStyle(element);
-      const duration = parseFloat(styles['animationDuration']) || parseFloat(styles['transitionDuration']);
+      var _styles = getComputedStyle(element);
+      var _duration = parseFloat(_styles['animationDuration']) ||
+                      parseFloat(_styles['transitionDuration']);
 
       clearTimeout(this.timeout);
 
-      this.timeout = setTimeout(() => {
+      this.timeout = setTimeout(function () {
         fn();
-      }, duration * 1000)
+      }, _duration * 1000);
     }
 
     element.classList.remove(action, active);
-  }
+  };
 
-  didEnter(e) {
-    const childDOM = ReactDOM.findDOMNode(this.el);
+  Transition.prototype.didEnter = function didEnter(e) {
+    var childDOM = ReactDOM.findDOMNode(this.el);
 
     if (!e || e.target !== childDOM) return;
 
-    const { onAfterEnter } = this.props;
-    const { enterActive, enterTo } = this.transitionClass;
+    var onAfterEnter = this.props.onAfterEnter;
+    var _transitionClass = this.transitionClass,
+      enterActive = _transitionClass.enterActive,
+      enterTo = _transitionClass.enterTo;
+
 
     childDOM.classList.remove(enterActive, enterTo);
 
@@ -126,51 +134,66 @@ export default class Transition extends Component {
     childDOM.removeEventListener('animationend', this.didEnter);
 
     onAfterEnter && onAfterEnter();
-  }
+  };
 
-  didLeave(e) {
-    const childDOM = ReactDOM.findDOMNode(this.el);
+  Transition.prototype.didLeave = function didLeave(e) {
+    var _this3 = this;
+
+    var childDOM = ReactDOM.findDOMNode(this.el);
     if (!e || e.target !== childDOM) return;
 
-    const { onAfterLeave, children } = this.props;
-    const { leaveActive, leaveTo } = this.transitionClass;
+    var _props = this.props,
+      onAfterLeave = _props.onAfterLeave,
+      children = _props.children;
+    var _transitionClass2 = this.transitionClass,
+      leaveActive = _transitionClass2.leaveActive,
+      leaveTo = _transitionClass2.leaveTo;
 
-    new Promise((resolve) => {
-      if (this.isViewComponent(children)) {
-        childDOM.removeEventListener('transitionend', this.didLeave);
-        childDOM.removeEventListener('animationend', this.didLeave);
 
-        requestAnimationFrame(() => {
+    new Promise(function (resolve) {
+      if (_this3.isViewComponent(children)) {
+        childDOM.removeEventListener('transitionend', _this3.didLeave);
+        childDOM.removeEventListener('animationend', _this3.didLeave);
+
+        requestAnimationFrame(function () {
           childDOM.style.display = 'none';
           childDOM.classList.remove(leaveActive, leaveTo);
 
           requestAnimationFrame(resolve);
-        })
+        });
       } else {
-        this.setState({ children: null }, resolve);
+        _this3.setState({ children: null }, resolve);
       }
-    }).then(() => {
-      onAfterLeave && onAfterLeave()
-    })
-  }
+    }).then(function () {
+      onAfterLeave && onAfterLeave();
+    });
+  };
 
-  toggleVisible() {
-    const { onEnter } = this.props;
-    const { enter, enterActive, enterTo, leaveActive, leaveTo } = this.transitionClass;
-    const childDOM = ReactDOM.findDOMNode(this.el);
+  Transition.prototype.toggleVisible = function toggleVisible() {
+    var _this4 = this;
+
+    var onEnter = this.props.onEnter;
+    var _transitionClass3 = this.transitionClass,
+      enter = _transitionClass3.enter,
+      enterActive = _transitionClass3.enterActive,
+      enterTo = _transitionClass3.enterTo,
+      leaveActive = _transitionClass3.leaveActive,
+      leaveTo = _transitionClass3.leaveTo;
+
+    var childDOM = ReactDOM.findDOMNode(this.el);
 
     childDOM.addEventListener('transitionend', this.didEnter);
     childDOM.addEventListener('animationend', this.didEnter);
 
     // this.animateElement(childDOM, enter, enterActive, this.didEnter);
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function () {
       // when hidden transition not end
       if (childDOM.classList.contains(leaveActive)) {
         childDOM.classList.remove(leaveActive, leaveTo);
 
-        childDOM.removeEventListener('transitionend', this.didLeave);
-        childDOM.removeEventListener('animationend', this.didLeave);
+        childDOM.removeEventListener('transitionend', _this4.didLeave);
+        childDOM.removeEventListener('animationend', _this4.didLeave);
       }
 
       childDOM.style.display = '';
@@ -178,47 +201,79 @@ export default class Transition extends Component {
 
       onEnter && onEnter();
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame(function () {
         childDOM.classList.remove(enter);
         childDOM.classList.add(enterTo);
-      })
-    })
-  }
+      });
+    });
+  };
 
-  toggleHidden() {
-    const { onLeave } = this.props;
-    const { leave, leaveActive, leaveTo, enterActive, enterTo } = this.transitionClass;
-    const childDOM = ReactDOM.findDOMNode(this.el);
+  Transition.prototype.toggleHidden = function toggleHidden() {
+    var _this5 = this;
+
+    var onLeave = this.props.onLeave;
+    var _transitionClass4 = this.transitionClass,
+      leave = _transitionClass4.leave,
+      leaveActive = _transitionClass4.leaveActive,
+      leaveTo = _transitionClass4.leaveTo,
+      enterActive = _transitionClass4.enterActive,
+      enterTo = _transitionClass4.enterTo;
+
+    var childDOM = ReactDOM.findDOMNode(this.el);
 
     childDOM.addEventListener('transitionend', this.didLeave);
     childDOM.addEventListener('animationend', this.didLeave);
 
     // this.animateElement(childDOM, leave, leaveActive, this.didLeave);
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function () {
       // when enter transition not end
       if (childDOM.classList.contains(enterActive)) {
         childDOM.classList.remove(enterActive, enterTo);
 
-        childDOM.removeEventListener('transitionend', this.didEnter);
-        childDOM.removeEventListener('animationend', this.didEnter);
+        childDOM.removeEventListener('transitionend', _this5.didEnter);
+        childDOM.removeEventListener('animationend', _this5.didEnter);
       }
 
       childDOM.classList.add(leave, leaveActive);
 
       onLeave && onLeave();
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame(function () {
         childDOM.classList.remove(leave);
         childDOM.classList.add(leaveTo);
-      })
-    })
-  }
+      });
+    });
+  };
 
-  render() {
-   return this.state.children || null;
-  }
-}
+  Transition.prototype.render = function render() {
+    return this.state.children || null;
+  };
+
+  _createClass(Transition, [
+    {
+      key: 'transitionClass',
+      get: function get() {
+        var name = this.props.name;
+
+
+        return {
+          enter: name + '-enter',
+          enterActive: name + '-enter-active',
+          enterTo: name + '-enter-to',
+          leave: name + '-leave',
+          leaveActive: name + '-leave-active',
+          leaveTo: name + '-leave-to'
+        };
+      }
+    }
+  ]);
+
+  return Transition;
+}(Component);
+
+export default Transition;
+
 
 Transition.propTypes = {
   name: PropTypes.string,

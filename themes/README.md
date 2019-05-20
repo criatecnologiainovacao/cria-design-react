@@ -1,33 +1,27 @@
 # element-theme-chalk
 > element component chalk theme.
 
-
-## Installation
-```shell
-npm i element-theme-chalk -S
-```
-
 ## Usage
 
 Use Sass import
-```css
-@import 'element-theme-chalk';
+```javascript
+import 'cria-design-react/theme/src/index.scss';
 ```
 
-Or Use webpack
+Or Css import
 ```javascript
-import 'element-theme-chalk';
+import 'cria-design-react/theme/lib/index.css';
 ```
 
 Or
 ```html
-<link rel="stylesheet" href="path/to/node_modules/element-theme-chalk/lib/index.css">
+<link rel="stylesheet" href="path/to/node_modules/cria-design-react/lib/index.css">
 ```
 
 ##  Import on demand
 ```javascript
-import 'element-theme-chalk/lib/input.css';
-import 'element-theme-chalk/lib/select.css';
+import 'cria-design-react/theme/src/input.scss';
+import 'cria-design-react/theme/src/select.scss';
 
 // ...
 ```

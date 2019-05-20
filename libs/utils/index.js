@@ -1,48 +1,45 @@
-import {require_condition} from './assert'
-import * as ReactUtils from './react'
-import * as Errors from './errors'
+import { require_condition } from './assert';
+import * as ReactUtils from './react';
+import * as Errors from './errors';
 
-export {require_condition, ReactUtils, Errors}
+export { require_condition, ReactUtils, Errors };
 
 export function watchPropertyChange(target, property, cb) {
-  require_condition(
-    target != null &&
-    typeof property === 'string' &&
-    typeof cb === 'function', 'invalid arguments')
+  require_condition(target != null && typeof property === 'string' && typeof cb ===
+                    'function', 'invalid arguments');
 
-  let cache = null
-  if (!target.__watch_cache){
-    target.__watch_cache = {}
+  var cache = null;
+  if (!target.__watch_cache) {
+    target.__watch_cache = {};
   }
-  cache = target.__watch_cache
+  cache = target.__watch_cache;
 
-  require_condition(cache[property] == null, `duplicated watch on ${target} 's ${property}`)
-  cache[property] = cb
+  require_condition(cache[property] == null, 'duplicated watch on ' + target + ' \'s ' + property);
+  cache[property] = cb;
 
-  let origin = target[property]
+  var origin = target[property];
 
   Object.defineProperty(target, property, {
     configurable: true,
 
-    get() {
-      return origin
+    get: function get() {
+      return origin;
     },
-
-    set(value) {
-      origin = value
-      if (cache[property]){
-        cache[property](origin)
+    set: function set(value) {
+      origin = value;
+      if (cache[property]) {
+        cache[property](origin);
       }
     }
-  })
+  });
 
-  return ()=>{
-    if (target.__watch_cache && target.__watch_cache[property]){
-      delete target.__watch_cache[property]
-      delete target[property]
-      target[property] = origin
+  return function () {
+    if (target.__watch_cache && target.__watch_cache[property]) {
+      delete target.__watch_cache[property];
+      delete target[property];
+      target[property] = origin;
     }
-  }
+  };
 }
 
 export function createPropType(validate) {
@@ -51,10 +48,8 @@ export function createPropType(validate) {
     componentName = componentName || '<<anonymous>>';
     if (props[propName] == null) {
       if (isRequired) {
-        return new Error(
-          ("Required `" + propName + "` was not specified in ") +
-          ("`" + componentName + "`.")
-        );
+        return new Error('Required `' + propName + '` was not specified in ' +
+                         ('`' + componentName + '`.'));
       }
       return null;
     } else {
@@ -62,7 +57,7 @@ export function createPropType(validate) {
     }
   }
 
-  let chainedCheckType = checkType.bind(null, false);
+  var chainedCheckType = checkType.bind(null, false);
   chainedCheckType.isRequired = checkType.bind(null, true);
 
   return chainedCheckType;
@@ -70,22 +65,24 @@ export function createPropType(validate) {
 
 // take from :  http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
 export function hashCode(str) {
-  if (str == null||str.length === 0) return 0
-	let hash = 0;
-	for (let i = 0; i < str.length; i++) {
-		let char = str.charCodeAt(i);
-		hash = ((hash<<5)-hash)+char;
-		hash = hash & hash; // Convert to 32bit integer
-	}
-	return hash;
+  if (str == null || str.length === 0) return 0;
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    var char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
 }
 
 export function pick(obj, keys) {
-  require_condition(obj != null && Array.isArray(keys))
+  require_condition(obj != null && Array.isArray(keys));
 
-  const r = {}
-  keys.forEach(e=> r[e]= obj[e])
-  return r
+  var r = {};
+  keys.forEach(function (e) {
+    return r[e] = obj[e];
+  });
+  return r;
 }
 
 export function range(start, stop, step) {
@@ -107,6 +104,6 @@ export function range(start, stop, step) {
   return range;
 }
 
-export {default as DateUtils} from './date'
-export * from './popper-mixins'
-export {IDGenerator} from './IDGenerator'
+export { default as DateUtils } from './date';
+export * from './popper-mixins';
+export { IDGenerator } from './IDGenerator';

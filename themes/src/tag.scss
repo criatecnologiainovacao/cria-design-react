@@ -36,6 +36,10 @@
       background-color: $--tag-default-hover-background-color;
       color: $--color-white;
     }
+
+    @include when(hit) {
+      border-color: $--tag-primary-color;
+    }
   }
 
   @include m(info) {
@@ -142,5 +146,9 @@
       margin-left: -3px;
       transform: scale(.7);
     }
+  }
+
+  @include when(round) {
+    border-radius: 15px;
   }
 }

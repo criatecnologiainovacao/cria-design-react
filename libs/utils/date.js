@@ -6,13 +6,14 @@
  * Parse or format dates
  * @class fecha
  */
+
 var fecha = {};
 var token = /d{1,4}|M{1,4}|yy(?:yy)?|S{1,3}|Do|ZZ|([HhMsDm])\1?|[aA]|"[^"]*"|'[^']*'/g;
 var twoDigits = /\d\d?/;
 var threeDigits = /\d{3}/;
 var fourDigits = /\d{4}/;
 var word = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
-var noop = function () {
+var noop = function noop() {
 };
 
 function shorten(arr, sLen) {
@@ -57,85 +58,85 @@ fecha.i18n = {
 };
 
 var formatFlags = {
-  D: function (dateObj) {
+  D: function D(dateObj) {
     return dateObj.getDay();
   },
-  DD: function (dateObj) {
+  DD: function DD(dateObj) {
     return pad(dateObj.getDay());
   },
-  Do: function (dateObj, i18n) {
+  Do: function Do(dateObj, i18n) {
     return i18n.DoFn(dateObj.getDate());
   },
-  d: function (dateObj) {
+  d: function d(dateObj) {
     return dateObj.getDate();
   },
-  dd: function (dateObj) {
+  dd: function dd(dateObj) {
     return pad(dateObj.getDate());
   },
-  ddd: function (dateObj, i18n) {
+  ddd: function ddd(dateObj, i18n) {
     return i18n.dayNamesShort[dateObj.getDay()];
   },
-  dddd: function (dateObj, i18n) {
+  dddd: function dddd(dateObj, i18n) {
     return i18n.dayNames[dateObj.getDay()];
   },
-  M: function (dateObj) {
+  M: function M(dateObj) {
     return dateObj.getMonth() + 1;
   },
-  MM: function (dateObj) {
+  MM: function MM(dateObj) {
     return pad(dateObj.getMonth() + 1);
   },
-  MMM: function (dateObj, i18n) {
+  MMM: function MMM(dateObj, i18n) {
     return i18n.monthNamesShort[dateObj.getMonth()];
   },
-  MMMM: function (dateObj, i18n) {
+  MMMM: function MMMM(dateObj, i18n) {
     return i18n.monthNames[dateObj.getMonth()];
   },
-  yy: function (dateObj) {
+  yy: function yy(dateObj) {
     return String(dateObj.getFullYear()).substr(2);
   },
-  yyyy: function (dateObj) {
+  yyyy: function yyyy(dateObj) {
     return dateObj.getFullYear();
   },
-  h: function (dateObj) {
+  h: function h(dateObj) {
     return dateObj.getHours() % 12 || 12;
   },
-  hh: function (dateObj) {
+  hh: function hh(dateObj) {
     return pad(dateObj.getHours() % 12 || 12);
   },
-  H: function (dateObj) {
+  H: function H(dateObj) {
     return dateObj.getHours();
   },
-  HH: function (dateObj) {
+  HH: function HH(dateObj) {
     return pad(dateObj.getHours());
   },
-  m: function (dateObj) {
+  m: function m(dateObj) {
     return dateObj.getMinutes();
   },
-  mm: function (dateObj) {
+  mm: function mm(dateObj) {
     return pad(dateObj.getMinutes());
   },
-  s: function (dateObj) {
+  s: function s(dateObj) {
     return dateObj.getSeconds();
   },
-  ss: function (dateObj) {
+  ss: function ss(dateObj) {
     return pad(dateObj.getSeconds());
   },
-  S: function (dateObj) {
+  S: function S(dateObj) {
     return Math.round(dateObj.getMilliseconds() / 100);
   },
-  SS: function (dateObj) {
+  SS: function SS(dateObj) {
     return pad(Math.round(dateObj.getMilliseconds() / 10), 2);
   },
-  SSS: function (dateObj) {
+  SSS: function SSS(dateObj) {
     return pad(dateObj.getMilliseconds(), 3);
   },
-  a: function (dateObj, i18n) {
+  a: function a(dateObj, i18n) {
     return dateObj.getHours() < 12 ? i18n.amPm[0] : i18n.amPm[1];
   },
-  A: function (dateObj, i18n) {
+  A: function A(dateObj, i18n) {
     return dateObj.getHours() < 12 ? i18n.amPm[0].toUpperCase() : i18n.amPm[1].toUpperCase();
   },
-  ZZ: function (dateObj) {
+  ZZ: function ZZ(dateObj) {
     var o = dateObj.getTimezoneOffset();
     return (o > 0 ? '-' : '+') + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4);
   }
@@ -149,7 +150,8 @@ var parseFlags = {
     d.month = v - 1;
   }],
   yy: [twoDigits, function (d, v) {
-    var da = new Date(), cent = +('' + da.getFullYear()).substr(0, 2);
+    var da = new Date(),
+      cent = +('' + da.getFullYear()).substr(0, 2);
     d.year = '' + (v > 68 ? cent - 1 : cent) + v;
   }],
   h: [twoDigits, function (d, v) {
@@ -186,7 +188,8 @@ var parseFlags = {
     }
   }],
   ZZ: [/[\+\-]\d\d:?\d\d/, function (d, v) {
-    var parts = (v + '').match(/([\+\-]|\d\d)/gi), minutes;
+    var parts = (v + '').match(/([\+\-]|\d\d)/gi),
+      minutes;
 
     if (parts) {
       minutes = +(parts[1] * 60) + parseInt(parts[2], 10);
@@ -202,7 +205,6 @@ parseFlags.hh = parseFlags.H = parseFlags.HH = parseFlags.h;
 parseFlags.MM = parseFlags.M;
 parseFlags.ss = parseFlags.s;
 parseFlags.A = parseFlags.a;
-
 
 // Some common format strings
 fecha.masks = {
@@ -296,13 +298,22 @@ fecha.parse = function (dateStr, format, i18nSettings) {
   var date;
   if (dateInfo.timezoneOffset != null) {
     dateInfo.minute = +(dateInfo.minute || 0) - +dateInfo.timezoneOffset;
-    date = new Date(Date.UTC(dateInfo.year || today.getFullYear(), dateInfo.month || 0, dateInfo.day || 1,
-      dateInfo.hour || 0, dateInfo.minute || 0, dateInfo.second || 0, dateInfo.millisecond || 0));
+    date = new Date(Date.UTC(dateInfo.year || today.getFullYear(), dateInfo.month ||
+                                                                   0, dateInfo.day ||
+                                                                      1, dateInfo.hour ||
+                                                                         0, dateInfo.minute ||
+                                                                            0, dateInfo.second ||
+                                                                               0, dateInfo.millisecond ||
+                                                                                  0));
   } else {
-    date = new Date(dateInfo.year || today.getFullYear(), dateInfo.month || 0, dateInfo.day || 1,
-      dateInfo.hour || 0, dateInfo.minute || 0, dateInfo.second || 0, dateInfo.millisecond || 0);
+    date = new Date(dateInfo.year || today.getFullYear(), dateInfo.month || 0, dateInfo.day ||
+                                                                               1, dateInfo.hour ||
+                                                                                  0, dateInfo.minute ||
+                                                                                     0, dateInfo.second ||
+                                                                                        0, dateInfo.millisecond ||
+                                                                                           0);
   }
   return date;
 };
 
-export default fecha
+export default fecha;

@@ -13,7 +13,10 @@ module.exports = {
   ],
   module: {
     rules: [
-      // add your custom rules.
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?.+)?$/,
+        loader: 'file-loader'
+      }
     ]
   }
 };

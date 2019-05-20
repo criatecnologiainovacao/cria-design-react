@@ -1,1 +1,2 @@
-export { default as CardQuantitativo } from './components/cardQuantitativo';
+export { default as Tag } from './components/tag';
+export { default as Button } from './components/button';

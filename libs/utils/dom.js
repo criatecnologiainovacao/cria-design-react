@@ -1,6 +1,8 @@
-export const loadStyleString = (css, id = '') => {
+export var loadStyleString = function loadStyleString(css) {
+  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
   if (document.getElementById(id)) return;
-  let style = document.createElement('style');
+  var style = document.createElement('style');
   style.type = 'text/css';
   style.id = id;
   try {
@@ -8,45 +10,44 @@ export const loadStyleString = (css, id = '') => {
   } catch (ex) {
     style.styleSheet.cssText = css;
   }
-  const head = document.getElementsByTagName('head')[0];
+  var head = document.getElementsByTagName('head')[0];
   head.appendChild(style);
-}
+};
 
-
-let isServer = false;
+var isServer = false;
 /* istanbul ignore next */
-export const on = (function() {
+export var on = function () {
   if (!isServer && document.addEventListener) {
-    return function(element, event, handler) {
+    return function (element, event, handler) {
       if (element && event && handler) {
         element.addEventListener(event, handler, false);
       }
     };
   } else {
-    return function(element, event, handler) {
+    return function (element, event, handler) {
       if (element && event && handler) {
         element.attachEvent('on' + event, handler);
       }
     };
   }
-})();
+}();
 
 /* istanbul ignore next */
-export const off = (function() {
+export var off = function () {
   if (!isServer && document.removeEventListener) {
-    return function(element, event, handler) {
+    return function (element, event, handler) {
       if (element && event) {
         element.removeEventListener(event, handler, false);
       }
     };
   } else {
-    return function(element, event, handler) {
+    return function (element, event, handler) {
       if (element && event) {
         element.detachEvent('on' + event, handler);
       }
     };
   }
-})();
+}();
 
 export function scrollIntoView(container, selected) {
   if (isServer) return;
@@ -56,10 +57,10 @@ export function scrollIntoView(container, selected) {
     return;
   }
 
-  const top = selected.offsetTop;
-  const bottom = selected.offsetTop + selected.offsetHeight;
-  const viewRectTop = container.scrollTop;
-  const viewRectBottom = viewRectTop + container.clientHeight;
+  var top = selected.offsetTop;
+  var bottom = selected.offsetTop + selected.offsetHeight;
+  var viewRectTop = container.scrollTop;
+  var viewRectBottom = viewRectTop + container.clientHeight;
 
   if (top < viewRectTop) {
     container.scrollTop = top;

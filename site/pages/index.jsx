@@ -1,10 +1,13 @@
 export default {
   documents: {
-    'quick-start': require('./quick-start')
+    'quick-start': require('./quick-start/index.jsx')
   },
   components: {
-    'Principais': {
-      'cardQuantitativo': require('../../src/components/cardQuantitativo/docs/index')
+    'Básicos': {
+      'button': require('../../src/components/button/docs')
+    },
+    'Dados': {
+      'tag': require('../../src/components/tag/docs')
     }
   }
 }
