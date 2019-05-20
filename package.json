@@ -5,6 +5,11 @@
   "private": false,
   "main": "index.js",
   "jsnext:main": "index.js",
+  "files": [
+    "libs",
+    "themes",
+    "src"
+  ],
   "typings": "typings/index.d.ts",
   "scripts": {
     "start": "cd site && node run.js",
