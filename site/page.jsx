@@ -1,7 +1,6 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
 
-
 import locales from './locales';
 import pages from './pages';
 
@@ -159,12 +158,11 @@ export default class App extends React.Component {
           <div className="container">
             <div className="footer-main">
               <p className="footer-main-title">Element-React</p>
-              <a href="https://github.com/eleme/element-react/issues" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.feedback')}</a>
-              <a href="https://github.com/eleme/element-react/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.contribution')}</a>
-              <a href={`http://element.eleme.io/#/${this.state.locale}/component/${this.state.page}`} target="_blank" rel="noopener noreferrer" className="footer-main-link">Element</a>
+              <a href="https://github.com/criatecnologiainovacao/cria-design-system/issues" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.feedback')}</a>
+              <a href="https://github.com/criatecnologiainovacao/cria-design-system/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="footer-main-link">{this.getLocale('misc.contribution')}</a>
             </div>
             <div className="footer-social">
-              <a href="//github.com/eleme/element-react" target="_blank" rel="noopener noreferrer">
+              <a href="//github.com/criatecnologiainovacao/cria-design-system" target="_blank" rel="noopener noreferrer">
                 <img src={require('./assets/github.png')} />
               </a>
             </div>
