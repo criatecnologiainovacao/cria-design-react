@@ -1,6 +1,6 @@
 {
   "name": "cria-design-react",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "Cria UI for React",
   "private": false,
   "main": "dist/npm/index.js",
