@@ -1,6 +1,6 @@
 {
   "name": "cria-design-react",
-  "version": "1.0.54",
+  "version": "1.0.57",
   "description": "Cria UI for React",
   "private": false,
   "main": "index.js",
@@ -16,7 +16,7 @@
     "test": "react-scripts test",
     "lint": "eslint src libs site --quiet",
     "build": "cd build/site && webpack --progress",
-    "prepublish": "./build/scripts/prepare.sh",
+    "prepubl¡sh": "./build/scripts/prepare.sh",
     "postpublish": "./build/scripts/release.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -89,6 +89,8 @@
   "dependencies": {
     "@babel/runtime": "^7.4.4",
     "async-validator": "^1.11.2",
+    "babel-loader": "^8.0.6",
+    "browserslist": "^4.6.0",
     "classnames": "^2.2.6",
     "flow-bin": "^0.98.1",
     "prop-types": "^15.7.2",
