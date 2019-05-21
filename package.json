@@ -19,7 +19,8 @@
         "postpublish": "./build/scripts/release.sh",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "chromatic": "./node_modules/.bin/chromatic test --app-code=\"oau101zwpfe\""
+        "chromatic": "./node_modules/.bin/chromatic test --app-code=\"oau101zwpfe\"",
+        "sonar": "node_modules/sonar-scanner/bin/sonar-scanner"
     },
     "repository": {
         "type": "git",
@@ -82,6 +83,7 @@
         "regenerator-runtime": "^0.13.2",
         "sass-loader": "^7.1.0",
         "sinon": "^7.3.2",
+        "sonar-scanner": "^3.1.0",
         "storybook-chromatic": "^1.3.3",
         "style-loader": "^0.23.1",
         "typescript": "^3.4.5",

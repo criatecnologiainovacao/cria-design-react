@@ -1,19 +1,20 @@
 language: node_js
 node_js:
-  - "10"
+    - "10"
 
 env:
-  - TRAVIS_CI=1
+    - TRAVIS_CI=1
 
 cache:
     npm: true
-  directories:
-    - node_modules
+    directories:
+        - node_modules
 
 install:
-  npm i
+    npm i
 
 script:
-  - npm run lint
-  - npm run build
-  - npm test
+    - npm run lint
+    - npm run build
+    - npm test
+    - npm rum sonar sonar-scanner -Dsonar.projectKey=criatecnologiainovacao_cria-design-react  -Dsonar.organization=criatecnologiainovacao  -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
