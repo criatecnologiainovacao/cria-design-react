@@ -56,7 +56,7 @@ export default class Tag extends Component {
                   )
               }
           >
-            {icon && <i className={`cd-icon ${icon}`}/>}
+              {icon && <i className={`cd-icon ${icon}`}/>}
               {children && <span>{children}</span>}
               {appendIcon && !closable && <i className={`cd-append-icon ${appendIcon}`}/>}
               {
