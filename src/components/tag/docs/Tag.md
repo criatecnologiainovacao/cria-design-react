@@ -134,11 +134,11 @@ render() {
 ```
 :::
 
-### Attributes
+### Atributos
 
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
+| Atributo      | Descrição          | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type     | O tipo da Tag. Determina seu estilo de cores. | string    | success/info/warning/danger | Primary color |
+| type     | O tipo da Tag. Determina seu estilo de cores. | string    | success/info/warning/danger | — |
 | size      | Tamanho da Tag. | string    | medium/small/mini | — |
 | closable  | Se a Tag pode ser removível ou não | boolean  | — | false |
 | disableTransitions | Se, ao remover a Tag, a animação será desativada. Só funciona com `closable` ativo. | boolean   | — | false |
@@ -147,8 +147,8 @@ render() {
 | icon      | Ícone da Tag. | string    | — | — |
 | appendIcon | Ícone que aparecerá depois do texto da Tag. Só funciona se `closable` estiver desativo | string  | — | — |
 
-### Events
-| Event Name | Description | Parameters |
+### Eventos
+| Nome do evento | Descrição | Parâmetros |
 |---------- |-------- |---------- |
 | onClick | Ativa quando a Tag é clicada. | — |
 | onClose | Ativa quando a Tag é fechada. | — |
