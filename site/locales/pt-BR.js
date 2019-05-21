@@ -1,26 +1,20 @@
 module.exports = {
   page: {
     'quick-start': 'Quick Start',
-    'i18n': 'Internationalization',
-    'dialog': 'Dialog',
-    'cardQuantitativo': 'Card Quantitativo',
-    'tooltip': 'Tooltip',
-    'popover': 'Popover',
-    'card': 'Card',
-    'carousel': 'Carousel',
-    'collapse': 'Collapse'
+    'button': 'Botões',
+    'tag': 'Tag'
   },
   misc: {
-    'guide': 'Guide',
-    'component': 'Component',
-    'resource': 'Resource',
+    'guide': 'Guia',
+    'component': 'Componentes',
+    'resource': 'Recursos',
     'development': 'Development',
-    'components': 'Components',
+    'components': 'Componentes',
     'feedback': 'Feedback',
-    'contribution': 'Contribuicao'
+    'contribution': 'Contribuição'
   },
   markdown: {
-    'show': 'Show',
-    'hide': 'Hide'
+    'show': 'Mostrar',
+    'hide': 'Esconder'
   }
-}
+};

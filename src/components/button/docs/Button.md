@@ -20,7 +20,6 @@ constructor(props) {
 render() {
   return (
     <div>
-      <CardQuantitativo className="card" quantidade="5" texto="milho" icone="cd-icon-edit"/>
     </div>
   )
 }

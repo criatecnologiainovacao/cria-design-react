@@ -11,8 +11,24 @@
   color: $--tag-font-color;
   border-radius: $--tag-border-radius;
   box-sizing: border-box;
-  border: 1px solid $--tag-border;
+  border: 1px solid transparent;
   white-space: nowrap;
+
+  & [class*="cd-icon"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  & span {
+    & + [class*="cd-append-icon"] {
+      margin-left: 5px;
+    }
+  }
+
+  @include when(hit) {
+    border-color: $--tag-primary-border;
+  }
 
   .cd-icon-close {
     border-radius: 50%;
@@ -40,11 +56,10 @@
 
   @include m(info) {
     background-color: $--tag-info-fill;
-    border-color: $--tag-info-border;
     color: $--tag-info-color;
 
     @include when(hit) {
-      border-color: $--tag-info-color;
+      border-color: $--tag-info-border;
     }
 
     .cd-tag__close {
@@ -59,11 +74,10 @@
 
   @include m(success) {
     background-color: $--tag-success-fill;
-    border-color: $--tag-success-border;
     color: $--tag-success-color;
 
     @include when(hit) {
-      border-color: $--tag-success-color;
+      border-color: $--tag-success-border;
     }
 
     .cd-tag__close {
@@ -78,11 +92,10 @@
 
   @include m(warning) {
     background-color: $--tag-warning-fill;
-    border-color: $--tag-warning-border;
     color: $--tag-warning-color;
 
     @include when(hit) {
-      border-color: $--tag-warning-color;
+      border-color: $--tag-warning-border;
     }
 
     .cd-tag__close {
@@ -97,11 +110,10 @@
 
   @include m(danger) {
     background-color: $--tag-danger-fill;
-    border-color: $--tag-danger-border;
     color: $--tag-danger-color;
 
     @include when(hit) {
-      border-color: $--tag-danger-color;
+      border-color: $--tag-danger-border;
     }
 
     .cd-tag__close {
@@ -142,5 +154,9 @@
       margin-left: -3px;
       transform: scale(.7);
     }
+  }
+
+  @include when(round) {
+    border-radius: 15px;
   }
 }

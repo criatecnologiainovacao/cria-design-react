@@ -40,7 +40,20 @@ module.exports = {
         path.join(basePath, 'site'),
         path.join(basePath, 'src'),
         path.join(basePath, 'libs')
-      ]
+      ],
+      query: {
+        presets: [
+          ['@babel/preset-env', { 'modules': 'commonjs' }],
+          '@babel/preset-react',
+          '@babel/preset-flow'
+        ],
+        plugins: [
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-proposal-object-rest-spread',
+          '@babel/plugin-syntax-dynamic-import',
+          '@babel/plugin-transform-runtime'
+        ]
+      }
     }, {
       test: /\.css$/,
       use: [MiniCssExtractPlugin.loader, "css-loader"]

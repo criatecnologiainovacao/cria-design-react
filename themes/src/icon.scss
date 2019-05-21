@@ -1,16 +1,16 @@
 @import "common/var";
 
 @font-face {
-  font-family: 'element-icons';
-  src: url('#{$--font-path}/element-icons.woff') format('woff'), /* chrome, firefox */
-       url('#{$--font-path}/element-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  font-family: 'cria-icons';
+  src: url('#{$--font-path}/cria-icons.woff') format('woff'), /* chrome, firefox */
+  url('#{$--font-path}/cria-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
   font-weight: normal;
   font-style: normal
 }
 
 [class^="cd-icon-"], [class*=" cd-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'element-icons' !important;
+  font-family: 'cria-icons' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1152,6 +1152,7 @@
 .cd-icon--right {
   margin-left: 5px;
 }
+
 .cd-icon--left {
   margin-right: 5px;
 }

@@ -7,6 +7,7 @@ const WebpackDevServer = require('webpack-dev-server');
 new WebpackDevServer(webpack({
   devtool: 'eval',
   entry: [
+    '@babel/polyfill',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
@@ -20,7 +21,10 @@ new WebpackDevServer(webpack({
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   module: {
     rules: [
@@ -31,7 +35,21 @@ new WebpackDevServer(webpack({
           path.join(__dirname, '../site'),
           path.join(__dirname, '../src'),
           path.join(__dirname, '../libs')
-        ]
+        ],
+        query: {
+          presets: [
+            ['@babel/preset-env', { 'modules': 'commonjs' }],
+            '@babel/preset-react',
+            '@babel/preset-flow'
+          ],
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-object-rest-spread',
+            '@babel/plugin-syntax-dynamic-import',
+            '@babel/plugin-transform-runtime',
+            'react-hot-loader/babel'
+          ]
+        }
       },
       {
         test: /\.css$/,

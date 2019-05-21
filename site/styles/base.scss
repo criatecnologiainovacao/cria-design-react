@@ -1,3 +1,7 @@
+$--font-path: "../../themes/src/fonts";
+
+@import "../../themes/src/index";
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +34,7 @@ body {
     width: 100%;
     line-height: 80px;
     position: relative;
-    box-shadow: black 0 1px 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 
     .container{
       height: 100%;
@@ -77,12 +81,11 @@ body {
     }
 
     .nav-item {
-      margin: 0;
       float: left;
       list-style: none;
       position: relative;
       cursor: pointer;
-      margin-left: 20px;
+      margin: 0 0 0 20px;
 
       &:last-child {
         cursor: default;
@@ -122,7 +125,7 @@ body {
         left: 0;
         width: 100%;
         height: 4px;
-        background: #99d2fc;
+        background: $--color-primary;
       }
     }
   }
@@ -134,7 +137,7 @@ body {
 
   .footer {
     height: 120px;
-    background-color: #E17055;
+    background-color: $--color-primary;
     color: #ffffff;
     width: 100%;
 
@@ -186,7 +189,7 @@ body {
 
   h2 {
     font-size: 28px;
-    color: #1f2d3d;
+    color: $--color-text-primary;
     margin: 0;
   }
 
@@ -197,7 +200,7 @@ body {
 
   h2, h3, h4, h5 {
     font-weight: normal;
-    color: #1f2f3d;
+    color: $--color-text-primary;
   }
 
   pre {
@@ -211,7 +214,7 @@ body {
     border-collapse: collapse;
     width: 100%;
     background-color: #fff;
-    color: #5e6d82;
+    color: $--color-text-regular;
     font-size: 14px;
     margin-bottom: 45px;
     line-height: 1.5em;
@@ -223,7 +226,7 @@ body {
     th {
       text-align: left;
       border-top: 1px solid #eaeefb;
-      background-color: #EFF2F7;
+      background-color: $--background-color-base;
       white-space: nowrap;
     }
 
@@ -255,7 +258,7 @@ body {
   .nav-item {
     a {
       font-size: 16px;
-      color: #5e6d82;
+      color: $--color-text-regular;
       line-height: 40px;
       height: 40px;
       margin: 0;
@@ -265,7 +268,7 @@ body {
       position: relative;
       transition: all .3s;
       &.active {
-        color: #C16049;
+        color: $--color-primary-light-2;
       }
     }
     .nav-item {
@@ -276,14 +279,14 @@ body {
         font-size: 13px;
         padding-left: 24px;
         &:hover {
-          color: #C16049;
+          color: $--color-primary;
         }
       }
     }
   }
   .nav-group__title {
     font-size: 12px;
-    color: #99a9bf;
+    color: $--color-text-placeholder;
     padding-left: 8px;
     line-height: 26px;
     margin-top: 10px;
@@ -326,7 +329,7 @@ body {
     width: 270px;
     font-size: 14px;
     line-height: 1.8;
-    color: #5e6d82;
+    color: $--color-text-secondary;
     margin-left: -1px;
     word-break: break-word;
     box-sizing: border-box;
@@ -338,7 +341,7 @@ body {
 
     code {
       color: #5e6d82;
-      background-color: #e6effb;
+      background-color: $--color-primary-light-9;
       margin: 0 4px;
       transform: translateY(-2px);
       display: inline-block;
@@ -363,12 +366,14 @@ body {
     position: relative;
 
     i {
-      font-size: 12px;
+      font-size: 18px;
       line-height: 36px;
       margin-right: 5px;
+      transform: translateX(40px);
+      transition: .3s;
     }
 
-    span {
+    span > span {
       display: inline-block;
       transform: translateX(40px);
       font-size: 14px;
@@ -378,14 +383,18 @@ body {
     }
 
     &:hover {
-      color: #C16049;
+      color: $--color-primary-light-2;
       background-color: #f9fafc;
     }
   }
 
   .demo-block-control:hover {
-    span {
+    span > span {
       opacity: 1;
+      transform: translateX(0);
+    }
+
+    i {
       transform: translateX(0);
     }
   }
@@ -394,11 +403,11 @@ body {
 .content p {
   margin: 1em 0;
   font-size: 14px;
-  color: #5e6d82;
+  color: $--color-text-secondary;
 }
 
 .page-component-up {
-  background-color: #C16049;
+  background-color: $--color-primary-light-2;
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -417,4 +426,8 @@ body {
 
 .page-component-up:hover {
   opacity: 1;
+}
+
+.cd-tag + .cd-tag {
+  margin-left: 10px;
 }

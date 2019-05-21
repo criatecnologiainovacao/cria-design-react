@@ -1,23 +1,23 @@
-# Element React Contributing Guide
+# Cria Design React Guia de Contribuição
 
 We are very graceful that you are interested in contributing to `element-react`. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
 
-## Issue Guidelines
+## Issues
 
-- Before submitting an issue, please check if similar problems have already been issued.
+- Antes de enviar uma issue, certifique-se se não já não existe uma issue similar.
 
-- The title of the issue should be written as `[Component Name]: Issue caption.` (e.g. `Button: Fix xxx bug`)
+- O título da issue deve ser escrita como `[Nome do Componente]: Descrição da Issue` (ex.: `Button: xxx bug`)
 
-- Please specify which version of `element-react` and `element-theme-default` you are using, and other related information.
+- Por favor especifique qual versão do `cria-design-react` você está usando, e outras informações relacionadas.
 
-## Pull Request Guidelines
+## Pull Request
 
-- Fork this repository to your own account. Do not create branches here.
+- Fork este repositório. Não crie branches aqui.
 
-- Make sure pull request will be merged into `master`.
+- Certifique-se que seu pull request será mergeada na `master`.
 
-- Commit info should be formatted as `[Component Name]: Info about commit.` (e.g. `Button: Fix xxx bug`)
+- A mensagem do Commit deve ser formatada como `[Nome do Componente]: Info sobre o commit` (ex.: `Button: Fix xxx bug`)
 
-- Make sure that your changes pass `npm test`, `npm run lint` and `npm run build`.
+- Certifique-se que as mudanças passem no `npm test`, `npm run lint` e `npm run build`.
 
-- **Rebase** your commits to make your pull request meaningful.
+- Dê **Rebase** em seus commits.

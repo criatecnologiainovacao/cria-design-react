@@ -1,29 +1,30 @@
 {
-  "name": "element-theme-chalk",
-  "version": "2.8.2",
-  "description": "Element component chalk theme.",
-  "main": "lib/index.css",
-  "style": "lib/index.css",
+    "name": "cria-design-theme",
+  "version": "1.0.0",
+  "description": "Cria component theme.",
+    "main": "src/index.scss",
+    "style": "src/index.scss",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
-    "build": "gulp build"
+    "build:theme": "gulp build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElementUI/theme-chalk.git"
+    "url": "https://github.com/criatecnologiainovacao/cria-design-system.git"
   },
   "keywords": [
     "element",
     "theme"
   ],
-  "author": "yi.shyang@ele.me",
+    "author": "CRIA Tecnologia e Inovação",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElementUI/theme-chalk/issues"
+    "url": "https://github.com/criatecnologiainovacao/cria-design-system/issues"
   },
-  "homepage": "https://github.com/ElementUI/theme-chalk#readme",
+  "homepage": "https://github.com/criatecnologiainovacao/cria-design-system#readme",
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",
