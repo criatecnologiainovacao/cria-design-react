@@ -2,6 +2,7 @@ module.exports = {
   page: {
     'quick-start': 'Quick Start',
     'button': 'Botões',
+    'layout': 'Layout',
     'tag': 'Tag'
   },
   misc: {
