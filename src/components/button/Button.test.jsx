@@ -98,4 +98,14 @@ describe('Button test', function () {
     w.simulate('click');
     expect(fn.callCount).toBe(1);
   });
+    it('loading implies disabled', function () {
+        var fn = sinon.spy();
+        var w = shallow(React.createElement(
+            Button,
+            { loading: true, onClick: fn },
+            'TEST'
+        ));
+        w.simulate('click');
+        expect(fn.callCount).toBe(0);
+    })
 });

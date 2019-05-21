@@ -1,114 +1,209 @@
-## Dialog
+## Botão
 
-Informs users while preserving the current page state.
+Componente de botão.
 
-### Basic usage
+### Uso básico
 
 Dialog pops up a dialog box, and it's quite customizable.
 
-:::demo Set the `visible` attribute with a `Boolean`, and Dialog shows when it is `true`. The Dialog has two parts: `Dialog.Body` and `Dialog.Footer`. The optional `title` attribute (empty by default) is for defining a title.
+:::demo Use os atributos `type`, `plain`, `round` e `circle` para definir o estilo do Botão.
 
 ```js
-constructor(props) {
-  super(props);
-
-  this.state = {
-    dialogVisible: false
-  };
-}
-
 render() {
   return (
     <div>
+        <Button>Default</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="success">Success</Button>
+        <Button type="info">Info</Button>
+        <Button type="warning">Warning</Button>
+        <Button type="danger">Danger</Button>
+        <br/>
+        <br/>
+        <Button plain>Default</Button>
+        <Button plain type="primary">Primary</Button>
+        <Button plain type="success">Success</Button>
+        <Button plain type="info">Info</Button>
+        <Button plain type="warning">Warning</Button>
+        <Button plain type="danger">Danger</Button>
+        <br/>
+        <br/>
+        <Button round>Default</Button>
+        <Button round type="primary">Primary</Button>
+        <Button round type="success">Success</Button>
+        <Button round type="info">Info</Button>
+        <Button round type="warning">Warning</Button>
+        <Button round type="danger">Danger</Button>
+        <br/>
+        <br/>
+        <Button circle icon="cd-icon-search"/>
+        <Button circle icon="cd-icon-edit" type="primary"/>
+        <Button circle icon="cd-icon-check" type="success"/>
+        <Button circle icon="cd-icon-message" type="info"/>
+        <Button circle icon="cd-icon-star-off" type="warning"/>
+        <Button circle icon="cd-icon-delete" type="danger"/>
     </div>
   )
 }
 ```
 :::
 
-### Customizations
+### Botões desativados
 
-The content of Dialog can be anything, even a table or a form. This example shows how to use Element Table and Form with Dialog。
+O atributo `disabled` determina se um atributo está desativado.
 
-:::demo
+:::demo Use o atributo `disabled` para determinar se um botão estará desativado, esse aceita um valor `Boolean`.
 
 ```js
-constructor(props) {
-  super(props);
-
-  this.state = {
-    dialogVisible2: false,
-    dialogVisible3: false,
-    form: {
-      name: '',
-      region: ''
-    }
-  };
-
-  this.table = {
-    columns: [
-      {
-        label: "Date",
-        prop: "date",
-        width: 150
-      },
-      {
-        label: "Name",
-        prop: "name",
-        width: 100
-      },
-      {
-        label: "Address",
-        prop: "address"
-      }
-    ],
-    data: [{
-      date: '2016-05-02',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-04',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-01',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-03',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }]
-  };
-}
-
 render() {
   return (
     <div>
-     
+        <Button disabled>Default</Button>
+        <Button disabled type="primary">Primary</Button>
+        <Button disabled type="success">Success</Button>
+        <Button disabled type="info">Info</Button>
+        <Button disabled type="warning">Warning</Button>
+        <Button disabled type="danger">Danger</Button>
+        <br/>
+        <br/>
+        <Button disabled plain>Default</Button>
+        <Button disabled plain type="primary">Primary</Button>
+        <Button disabled plain type="success">Success</Button>
+        <Button disabled plain type="info">Info</Button>
+        <Button disabled plain type="warning">Warning</Button>
+        <Button disabled plain type="danger">Danger</Button>
     </div>
   )
 }
 ```
 :::
 
-### Attributes
+### Botão texto
 
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
+Botões sem bordas ou background.
+
+:::demo Passe o valor `text` para o atributo `type`.
+
+```js
+render() {
+  return (
+    <div>
+        <Button type="text">Default</Button>
+        <Button disabled type="text">Primary</Button>
+    </div>
+  )
+}
+```
+:::
+
+### Ícones
+
+Botões podem ter ícones sozinhos ou acompanhado das labels do botão.
+
+:::demo Para que o ícone apareça anterior ao label do botão, use o atributo `icon`. O mesmo aceita um valor em `String`. _(Pode ser usado os ícones disponíveis nessa biblioteca, ou de terceiros como o material design: *mdi mdi-close*)_. Para que o ícone apareça à direita da label do botão, use o atributo `appendIcon`, que aceita os mesmos valores de `icon`. Ambos atributos, quando passados sem um label de botão, aparecerão sozinhos.
+
+```js
+render() {
+  return (
+    <div>
+        <Button type="text" icon="cd-icon-share">Compartilhar</Button>
+        <Button icon="cd-icon-delete"/>
+        <Button icon="cd-icon-search">Pesquisar</Button>
+        <Button appendIcon="cd-icon-upload">Upload</Button>
+    </div>
+  )
+}
+```
+:::
+
+### Loading
+
+Click no botão para que ele execulte algum evento, e apresente o estado de carregamento.
+
+:::demo Passe o atributo `loading` para `true`. O atributo de `loading` sobrepõe o atributo `appendIcon`.
+
+```js
+render() {
+  return (
+    <div>
+        <Button loading>Carregando...</Button>
+        <Button type="text" loading>Carregando...</Button>
+        <Button type="info" loading/>
+    </div>
+  )
+}
+```
+:::
+
+### Button Group
+
+Botões com operações similares podem ser agrupados.
+
+:::demo Use o componente `Button.Group` para agrupar os Botões.
+
+```js
+render() {
+  return (
+    <div>
+        <Button.Group>
+            <Button type="primary" icon="cd-icon-arrow-left">Página anterior</Button>
+            <Button type="primary" appendIcon="cd-icon-arrow-right">Página posterior</Button>
+        </Button.Group>
+        <br/>
+        <br/>
+        <Button.Group>
+            <Button type="primary" icon="cd-icon-edit"/>
+            <Button type="primary" appendIcon="cd-icon-share"/>
+            <Button type="primary" appendIcon="cd-icon-delete"/>
+        </Button.Group>
+    </div>
+  )
+}
+```
+:::
+
+### Tamanhos
+
+Além do tamanho padrão, o componente de `Button` disponibiliza mais três tamanhos diferentes.
+
+:::demo Use o atributo `size` com os valores `medium`, `small` ou `mini`.
+
+```js
+render() {
+  return (
+    <div>
+        <Button>Default</Button>
+        <Button size="medium">Medium</Button>
+        <Button size="small">Small</Button>
+        <Button size="mini">Mini</Button>
+        <br/>
+        <br/>
+        <Button round>Default</Button>
+        <Button round size="medium">Medium</Button>
+        <Button round size="small">Small</Button>
+        <Button round size="mini">Mini</Button>
+    </div>
+  )
+}
+```
+:::
+
+### Atributos
+
+| Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| title     | title of Dialog. Can also be passed with a named slot (see the following table) | string    | — | — |
-| size      | size of Dialog | string    | tiny/small/large/full | small |
-| top      | value for `top` of Dialog CSS, works when `size` is not `full` | string    | — | 15% |
-| modal     | whether a mask is displayed | boolean   | — | true |
-| modalAppendToBody     | whether to append modal to body element. If false, the modal will be appended to Dialog's parent element | boolean   | — | true |
-| lockScroll     | whether scroll of body is disabled while Dialog is displayed | boolean   | — | true |
-| customClass      | custom class names for Dialog | string    | — | — |
-| closeOnClickModal | whether the Dialog can be closed by clicking the mask | boolean    | — | true |
-| closeOnPressEscape | whether the Dialog can be closed by pressing ESC | boolean    | — | true |
-| showClose | whether to show a close button | boolean    | — | true |
+| size     | O tamanho do botão | string    | medium / small / mini | — |
+| type      | O tipo do botão | string    | primary / success / warning / danger / info / text | — |
+| plain      | Determina se o botão terá o estilo simples | boolean | — | false |
+| round     | Determina se o botão terá bordas arredondadas. | boolean   | — | false |
+| circle | Determina se será um botão circular. | boolean   | — | false |
+| loading | Determina se o botão estará no estado de carregamento. | boolean | — | false |
+| disabled | Desativa o botão | boolean | — | false |
+| icon | Nome da classe do ícone. Aparecerá antes do label do botão | string | — | — |
+| appendIcon | Nome da classe do ícone. Aparecerá depois do label do botão | string | — | — |
+| nativeType | O mesmo que o `type` nativo do botão. | string | button / submit / reset | — |
 
-### Events
-| Event Name | Description | Parameters |
+### Eventos
+| Nome do evento | Descrição | Parameters |
 |---------- |-------- |---------- |
-| onOpen | triggers when the Dialog opens | — |
-| onClose | triggers when the Dialog closes | — |
+| onClick | Acionado quando o botão é clicado. | — |

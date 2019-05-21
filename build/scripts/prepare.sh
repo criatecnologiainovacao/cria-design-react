@@ -2,7 +2,7 @@
 
 # testing before publish
 
-npm install && npm run lint && npm run build
+npm install && npm run lint && npm run test && npm run build
 
 cd themes && npm install && gulp build && cd ..
 

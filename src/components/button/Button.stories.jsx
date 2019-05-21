@@ -143,4 +143,16 @@ storiesOf('Button', module)
                 </Button.Group>
             </div>
         )
+    })
+    .add('autofocus', () => {
+        return (
+            <div>
+                <Button style={mr10} {...actions} icon="cd-icon-search"/>
+                <Button style={mr10} {...actions} icon="cd-icon-delete"/>
+                <Button style={mr10} {...actions} autofocus>Autofocus</Button>
+                <Button style={mr10} {...actions} icon="cd-icon-circle-close"/>
+                <Button style={mr10} {...actions} icon="cd-icon-mic"/>
+                <Button style={mr10} {...actions} icon="cd-icon-back"/>
+            </div>
+        )
     });
