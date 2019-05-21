@@ -1,6 +1,6 @@
 {
-    "name": "cria-design-react",
-    "version": "1.0.57",
+    "name": "cria-ui-react",
+    "version": "1.0.0",
     "description": "A UI Component Toolkit for React",
     "private": false,
     "main": "src/index.js",
