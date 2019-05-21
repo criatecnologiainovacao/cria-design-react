@@ -16,7 +16,7 @@
     "test": "react-scripts test",
     "lint": "eslint src libs site --quiet",
     "build": "cd build/site && webpack --progress",
-    "prexpublish": "./build/scripts/prepare.sh",
+    "prepublish": "./build/scripts/prepare.sh",
     "postpublish": "./build/scripts/release.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
