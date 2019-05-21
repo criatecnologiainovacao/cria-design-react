@@ -1,8 +1,6 @@
-export var loadStyleString = function loadStyleString(css) {
-  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
+export const loadStyleString = (css, id = '') => {
   if (document.getElementById(id)) return;
-  var style = document.createElement('style');
+  let style = document.createElement('style');
   style.type = 'text/css';
   style.id = id;
   try {
@@ -10,13 +8,14 @@ export var loadStyleString = function loadStyleString(css) {
   } catch (ex) {
     style.styleSheet.cssText = css;
   }
-  var head = document.getElementsByTagName('head')[0];
+  const head = document.getElementsByTagName('head')[0];
   head.appendChild(style);
-};
+}
 
-var isServer = false;
+
+let isServer = false;
 /* istanbul ignore next */
-export var on = function () {
+export const on = (function () {
   if (!isServer && document.addEventListener) {
     return function (element, event, handler) {
       if (element && event && handler) {
@@ -30,10 +29,10 @@ export var on = function () {
       }
     };
   }
-}();
+})();
 
 /* istanbul ignore next */
-export var off = function () {
+export const off = (function () {
   if (!isServer && document.removeEventListener) {
     return function (element, event, handler) {
       if (element && event) {
@@ -47,7 +46,7 @@ export var off = function () {
       }
     };
   }
-}();
+})();
 
 export function scrollIntoView(container, selected) {
   if (isServer) return;
@@ -57,10 +56,10 @@ export function scrollIntoView(container, selected) {
     return;
   }
 
-  var top = selected.offsetTop;
-  var bottom = selected.offsetTop + selected.offsetHeight;
-  var viewRectTop = container.scrollTop;
-  var viewRectBottom = viewRectTop + container.clientHeight;
+  const top = selected.offsetTop;
+  const bottom = selected.offsetTop + selected.offsetHeight;
+  const viewRectTop = container.scrollTop;
+  const viewRectBottom = viewRectTop + container.clientHeight;
 
   if (top < viewRectTop) {
     container.scrollTop = top;
