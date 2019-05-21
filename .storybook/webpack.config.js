@@ -8,15 +8,20 @@
 // to "React Create App". This only has babel loader to load JavaScript.
 
 module.exports = {
-  plugins: [
-    // your custom plugins
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)(\?.+)?$/,
-        loader: 'file-loader'
-      }
-    ]
-  }
+    plugins: [
+        // your custom plugins
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?.+)?$/,
+                loader: 'file-loader'
+            },
+            {
+                test: /\.stories\.jsx?$/,
+                loaders: [require.resolve('@storybook/addon-storysource/loader')],
+                enforce: 'pre'
+            }
+        ]
+    }
 };

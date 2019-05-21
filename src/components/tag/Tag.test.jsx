@@ -23,6 +23,26 @@ describe('Tag test', function () {
     expect(w.find('.cd-tag--primary')).toHaveLength(1);
   });
 
+    it('icon', function () {
+        var w = shallow(React.createElement(
+            Tag,
+            { icon: 'cd-icon-search' },
+            'TEST'
+        ));
+        expect(w.childAt(0).hasClass('cd-icon')).toBeTruthy();
+        expect(w.childAt(0).hasClass('cd-icon-search')).toBeTruthy();
+    });
+
+    it('appendIcon', function () {
+        var w = shallow(React.createElement(
+            Tag,
+            { icon: 'cd-icon-search' },
+            'TEST'
+        ));
+        expect(w.childAt(0).hasClass('cd-icon-search')).toBeTruthy();
+        expect(w.childAt(0).hasClass('cd-append-icon')).toBeTruthy();
+    });
+
   it('closable', function () {
     var w = shallow(React.createElement(
       Tag,
@@ -41,11 +61,20 @@ describe('Tag test', function () {
     expect(w.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
   });
 
-  it('rounded', function () {
+    it('solid', function () {
+        var w = mount(React.createElement(
+            Tag,
+            { solid: true },
+            'TEST'
+        ));
+        expect(w.find('.cd-tag').first().hasClass('is-solid')).toBeTruthy();
+    });
+
+    it('round', function () {
     var w = mount(React.createElement(
-      Tag,
-      { rounded: true },
-      'TEST'
+        Tag,
+        { round: true },
+        'TEST'
     ));
     expect(w.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
   });

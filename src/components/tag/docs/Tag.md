@@ -134,6 +134,25 @@ render() {
 ```
 :::
 
+### Cor sólida
+
+:::demo Use o atributo `solid` para que o estilo de cores da Tag seja as primárias.
+
+```js
+render() {
+  return (
+    <div>
+      <Tag solid>Default</Tag>
+      <Tag solid type="success">Success</Tag>
+      <Tag solid type="info">Info</Tag>
+      <Tag solid type="warning">Warning</Tag>
+      <Tag solid type="danger">Danger</Tag>
+    </div>
+  )
+}
+```
+:::
+
 ### Atributos
 
 | Atributo      | Descrição          | Tipo      | Valores aceitos       | Padrão  |
@@ -144,6 +163,7 @@ render() {
 | disableTransitions | Se, ao remover a Tag, a animação será desativada. Só funciona com `closable` ativo. | boolean   | — | false |
 | round     | Se a Tag terá as bordas arredondadas. | boolean   | — | false |
 | hit     | Se a Tag terá bordas | boolean   | — | false |
+| solid     | Se a Tag terá cores sólidas | boolean   | — | false |
 | icon      | Ícone da Tag. | string    | — | — |
 | appendIcon | Ícone que aparecerá depois do texto da Tag. Só funciona se `closable` estiver desativo | string  | — | — |
 
