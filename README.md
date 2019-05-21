@@ -19,10 +19,8 @@ import { Button } from 'cria-design-react';
 ### Configurações
 
 
-## Contribuindo
+### Contribuindo
 
-## Agradecimentos
 
-## Licença
-
+### Licença
 MIT

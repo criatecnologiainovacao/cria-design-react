@@ -1,9 +1,9 @@
 {
-  "name": "cria-theme",
+    "name": "cria-design-theme",
   "version": "1.0.0",
   "description": "Cria component theme.",
-  "main": "lib/index.css",
-  "style": "lib/index.css",
+    "main": "src/index.scss",
+    "style": "src/index.scss",
   "files": [
     "lib",
     "src"
@@ -19,7 +19,7 @@
     "element",
     "theme"
   ],
-  "author": "yi.shyang@ele.me",
+    "author": "CRIA Tecnologia e Inovação",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/criatecnologiainovacao/cria-design-system/issues"
