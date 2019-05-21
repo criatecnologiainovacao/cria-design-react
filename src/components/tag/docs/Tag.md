@@ -4,8 +4,6 @@ Usado para marcação e seleção.
 
 ### Uso básico
 
-Use the type attribute to define Tag's type. In addition, the color attribute can be used to set the background color of the Tag.
-
 :::demo Use o atributo `type` para definir o tipo da Tag.
 
 ```js
@@ -83,10 +81,7 @@ render() {
 
 ### Arredondado
 
-Além do tamanho padrão, o componente **Tag** possui mais três tamanhos adicionais, para ser usado em diferentes cenários.
-
-
-:::demo Use o atributo `size` para alterar os tamanhos entre `medium`, `small` ou `mini`.
+:::demo O atributo `round` é usado para arredondar as bordas da Tag.
 
 ```js
 render() {
@@ -103,23 +98,57 @@ render() {
 ```
 :::
 
+### Ícones
+
+:::demo É possível adicionar ícones à Tag. Com o atributo `icon`, passando o nome do ícone, o ícone será apresentado antes do texto da Tag. Já com o atributo `appendIcon` o ícone será apresentado depois do texto. Ambos podem ser usados sem texto algum ficando apenas uma Tag com ícone. O `appendIcon` não aparecerá caso a Tag for `closable`.
+
+```js
+render() {
+  return (
+    <div>
+      <Tag icon="cd-icon-delete"/>
+      <Tag icon="cd-icon-search" type="success">Success</Tag>
+      <Tag round appendIcon="cd-icon-info" type="warning">Warning</Tag>
+    </div>
+  )
+}
+```
+:::
+
+### Bordas
+
+:::demo Use o atributo `hit` para criar bordas para a Tag.
+
+```js
+render() {
+  return (
+    <div>
+      <Tag hit icon="cd-icon-delete"/>
+      <Tag hit icon="cd-icon-search" type="success">Success</Tag>
+      <Tag hit round appendIcon="cd-icon-info" type="warning">Warning</Tag>
+      <Tag hit round type="info">Info</Tag>
+      <Tag hit type="danger">Danger</Tag>
+    </div>
+  )
+}
+```
+:::
+
 ### Attributes
 
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| title     | title of Dialog. Can also be passed with a named slot (see the following table) | string    | — | — |
-| size      | size of Dialog | string    | tiny/small/large/full | small |
-| top      | value for `top` of Dialog CSS, works when `size` is not `full` | string    | — | 15% |
-| modal     | whether a mask is displayed | boolean   | — | true |
-| modalAppendToBody     | whether to append modal to body element. If false, the modal will be appended to Dialog's parent element | boolean   | — | true |
-| lockScroll     | whether scroll of body is disabled while Dialog is displayed | boolean   | — | true |
-| customClass      | custom class names for Dialog | string    | — | — |
-| closeOnClickModal | whether the Dialog can be closed by clicking the mask | boolean    | — | true |
-| closeOnPressEscape | whether the Dialog can be closed by pressing ESC | boolean    | — | true |
-| showClose | whether to show a close button | boolean    | — | true |
+| type     | O tipo da Tag. Determina seu estilo de cores. | string    | success/info/warning/danger | Primary color |
+| size      | Tamanho da Tag. | string    | medium/small/mini | — |
+| closable  | Se a Tag pode ser removível ou não | boolean  | — | false |
+| disableTransitions | Se, ao remover a Tag, a animação será desativada. Só funciona com `closable` ativo. | boolean   | — | false |
+| round     | Se a Tag terá as bordas arredondadas. | boolean   | — | false |
+| hit     | Se a Tag terá bordas | boolean   | — | false |
+| icon      | Ícone da Tag. | string    | — | — |
+| appendIcon | Ícone que aparecerá depois do texto da Tag. Só funciona se `closable` estiver desativo | string  | — | — |
 
 ### Events
 | Event Name | Description | Parameters |
 |---------- |-------- |---------- |
-| onOpen | triggers when the Dialog opens | — |
-| onClose | triggers when the Dialog closes | — |
+| onClick | Ativa quando a Tag é clicada. | — |
+| onClose | Ativa quando a Tag é fechada. | — |

@@ -26,10 +26,11 @@ export default class Tag extends Component {
   render() {
     const {
       type,
+      icon,
+      appendIcon,
       hit,
       closable,
       round,
-      plain,
       disableTransitions,
       size,
       children
@@ -48,13 +49,14 @@ export default class Tag extends Component {
                 size && `cd-tag--${size}`,
                 {
                   'is-hit': hit,
-                  'is-round': round,
-                  'is-plain': plain
+                  'is-round': round
                 }
               )
             }
           >
-            {children}
+            {icon && <i className={`cd-icon ${icon}`}/>}
+            {children && <span>{children}</span>}
+            {appendIcon && !closable && <i className={`cd-append-icon ${appendIcon}`}/>}
             {
               closable &&
               <i className="cd-tag__close cd-icon-close" onClick={this.handleClose.bind(this)}/>
@@ -69,10 +71,11 @@ export default class Tag extends Component {
 
 Tag.propTypes = {
   type: PropTypes.string,
+  icon: PropTypes.string,
+  appendIcon: PropTypes.string,
   hit: PropTypes.bool,
   closable: PropTypes.bool,
   round: PropTypes.bool,
-  plain: PropTypes.bool,
   disableTransitions: PropTypes.bool,
   size: PropTypes.string,
   onClose: PropTypes.func,

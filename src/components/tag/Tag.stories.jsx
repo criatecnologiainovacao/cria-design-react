@@ -31,6 +31,17 @@ storiesOf('Tag', module)
       </div>
     )
   })
+  .add('icon', () => {
+    return (
+      <div>
+        <Tag style={mr10} icon="cd-icon-edit">Primary</Tag>
+        <Tag style={mr10} appendIcon="cd-icon-edit" type="success">Success</Tag>
+        <Tag style={mr10} icon="cd-icon-star-on" type="info"/>
+        <Tag style={mr10} icon="cd-icon-edit" type="warning">Warning</Tag>
+        <Tag style={mr10} icon="cd-icon-edit" type="danger">Danger</Tag>
+      </div>
+    )
+  })
   .add('closable', () => {
     return (
       <div>
@@ -56,11 +67,11 @@ storiesOf('Tag', module)
   .add('rounded', () => {
     return (
       <div>
-        <Tag style={mr10} rounded>Rounded</Tag>
-        <Tag style={mr10} rounded hit>Rounded Hit</Tag>
-        <Tag style={mr10} rounded type="success">Rounded Success</Tag>
-        <Tag style={mr10} rounded hit type="success">Rounded Success Hit</Tag>
-        <Tag style={mr10} rounded closable {...actions}>Rounded Closable</Tag>
+        <Tag style={mr10} round>Rounded</Tag>
+        <Tag style={mr10} round hit>Rounded Hit</Tag>
+        <Tag style={mr10} round appendIcon="cd-icon-star-on" type="success">Rounded Success</Tag>
+        <Tag style={mr10} round hit type="success">Rounded Success Hit</Tag>
+        <Tag style={mr10} round closable {...actions}>Rounded Closable</Tag>
       </div>
     )
   })
@@ -73,10 +84,10 @@ storiesOf('Tag', module)
         <Tag style={mr10} size="mini">Mini</Tag>
         <br/>
         <br/>
-        <Tag style={mr10} rounded>Default</Tag>
-        <Tag style={mr10} rounded size="medium">Medium</Tag>
-        <Tag style={mr10} rounded size="small">Small</Tag>
-        <Tag style={mr10} rounded size="mini">Mini</Tag>
+        <Tag style={mr10} round>Default</Tag>
+        <Tag style={mr10} round size="medium">Medium</Tag>
+        <Tag style={mr10} round size="small">Small</Tag>
+        <Tag style={mr10} round size="mini">Mini</Tag>
         <br/>
         <br/>
         <Tag style={mr10} closable {...actions}>Default</Tag>
@@ -85,10 +96,10 @@ storiesOf('Tag', module)
         <Tag style={mr10} closable {...actions} size="mini">Mini</Tag>
         <br/>
         <br/>
-        <Tag style={mr10} closable {...actions} rounded>Default</Tag>
-        <Tag style={mr10} closable {...actions} rounded size="medium">Medium</Tag>
-        <Tag style={mr10} closable {...actions} rounded size="small">Small</Tag>
-        <Tag style={mr10} closable {...actions} rounded size="mini">Mini</Tag>
+        <Tag style={mr10} closable {...actions} round>Default</Tag>
+        <Tag style={mr10} closable {...actions} round size="medium">Medium</Tag>
+        <Tag style={mr10} closable {...actions} round size="small">Small</Tag>
+        <Tag style={mr10} closable {...actions} round size="mini">Mini</Tag>
       </div>
     )
   });
