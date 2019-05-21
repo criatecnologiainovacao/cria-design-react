@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
+
 import Tag from './Tag';
 
 export const actions = {
@@ -27,7 +28,7 @@ storiesOf('Tag', module)
         return (
             <div>
                 <Tag style={mr10}>Primary</Tag>
-                <Tag style={mr10} type={text('Type button 2', 'danger')}>Success</Tag>
+                <Tag style={mr10} type={text('Type button 2', 'success')}>Success</Tag>
                 <Tag style={mr10} type="info">Info</Tag>
                 <Tag style={mr10} type="warning">Warning</Tag>
                 <Tag style={mr10} type="danger">Danger</Tag>
