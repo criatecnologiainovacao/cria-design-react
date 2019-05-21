@@ -28,7 +28,7 @@ export default class Tag extends Component {
       type,
       hit,
       closable,
-      rounded,
+      round,
       plain,
       disableTransitions,
       size,
@@ -48,7 +48,7 @@ export default class Tag extends Component {
                 size && `cd-tag--${size}`,
                 {
                   'is-hit': hit,
-                  'is-round': rounded,
+                  'is-round': round,
                   'is-plain': plain
                 }
               )
@@ -71,7 +71,7 @@ Tag.propTypes = {
   type: PropTypes.string,
   hit: PropTypes.bool,
   closable: PropTypes.bool,
-  rounded: PropTypes.bool,
+  round: PropTypes.bool,
   plain: PropTypes.bool,
   disableTransitions: PropTypes.bool,
   size: PropTypes.string,

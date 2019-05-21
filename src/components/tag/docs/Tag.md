@@ -1,91 +1,102 @@
-## Dialog
+## Tag
 
-Informs users while preserving the current page state.
+Usado para marcação e seleção.
 
-### Basic usage
+### Uso básico
 
-Dialog pops up a dialog box, and it's quite customizable.
+Use the type attribute to define Tag's type. In addition, the color attribute can be used to set the background color of the Tag.
 
-:::demo Set the `visible` attribute with a `Boolean`, and Dialog shows when it is `true`. The Dialog has two parts: `Dialog.Body` and `Dialog.Footer`. The optional `title` attribute (empty by default) is for defining a title.
+:::demo Use o atributo `type` para definir o tipo da Tag.
 
 ```js
-constructor(props) {
-  super(props);
-
-  this.state = {
-    dialogVisible: false
-  };
-}
-
 render() {
   return (
     <div>
+      <Tag>Default</Tag>
+      <Tag type="success">Success</Tag>
+      <Tag type="info">Info</Tag>
+      <Tag type="warning">Warning</Tag>
+      <Tag type="danger">Danger</Tag>
     </div>
   )
 }
 ```
 :::
 
-### Customizations
+### Tag removível
 
-The content of Dialog can be anything, even a table or a form. This example shows how to use Element Table and Form with Dialog。
-
-:::demo
+:::demo O atributo `closable` pode ser usado para definir uma tag removível. Este atributo aceita um `Boolean`. Por padrão a tag removível possui uma animação. Se não deseja usá-la, você pode passar o atributo `disableTransitions`, que aceita um valor `Boolean`, para `true`. O evento `onClose` ativa quando a Tag é removida.
 
 ```js
 constructor(props) {
   super(props);
 
-  this.state = {
-    dialogVisible2: false,
-    dialogVisible3: false,
-    form: {
-      name: '',
-      region: ''
-    }
-  };
+  this.tags = [
+    { id: 1, name: "Tag 1" },
+    { id: 2, name: "Tag 2" },
+    { id: 3, name: "Tag 3" },
+    { id: 4, name: "Tag 4" },
+    { id: 5, name: "Tag 5" }
+  ];
+  
+}
 
-  this.table = {
-    columns: [
-      {
-        label: "Date",
-        prop: "date",
-        width: 150
-      },
-      {
-        label: "Name",
-        prop: "name",
-        width: 100
-      },
-      {
-        label: "Address",
-        prop: "address"
-      }
-    ],
-    data: [{
-      date: '2016-05-02',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-04',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-01',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }, {
-      date: '2016-05-03',
-      name: 'John Smith',
-      address: 'No.1518,  Jinshajiang Road, Putuo District'
-    }]
-  };
+handleClose(tag) {
+  this.tags.splice(this.tags.indexOf(tag), 1)
 }
 
 render() {
   return (
     <div>
-     
+     {
+       this.tags.map(tag => (
+          <Tag key={tag.id} closable onClick={this.handleClose.bind(this, tag.id)}>{tag.name}</Tag>
+        )
+      )
+     }
+    </div>
+  )
+}
+```
+:::
+
+### Tamanhos
+
+Além do tamanho padrão, o componente Tag possui mais três tamanhos adicionais, para ser usado em diferentes cenários.
+
+
+:::demo Use o atributo `size` para alterar os tamanhos entre `medium`, `small` ou `mini`.
+
+```js
+render() {
+  return (
+    <div>
+      <Tag>Default</Tag>
+      <Tag size="medium">Medium</Tag>
+      <Tag size="small">Small</Tag>
+      <Tag size="mini">Mini</Tag>
+    </div>
+  )
+}
+```
+:::
+
+### Arredondado
+
+Além do tamanho padrão, o componente **Tag** possui mais três tamanhos adicionais, para ser usado em diferentes cenários.
+
+
+:::demo Use o atributo `size` para alterar os tamanhos entre `medium`, `small` ou `mini`.
+
+```js
+render() {
+  return (
+    <div>
+      <Tag round closable>Default</Tag>
+      <Tag round type="success">Success</Tag>
+      <Tag round type="info">Info</Tag>
+      <Tag round type="warning">Warning</Tag>
+      <Tag round type="danger">Danger</Tag>
     </div>
   )
 }
