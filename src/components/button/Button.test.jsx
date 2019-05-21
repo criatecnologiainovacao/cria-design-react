@@ -22,6 +22,15 @@ describe('Button test', function () {
     ));
     expect(w.childAt(0).hasClass('cd-icon-search')).toBeTruthy();
   });
+    it('appendIcon', function () {
+        var w = shallow(React.createElement(
+            Button,
+            { appendIcon: 'cd-icon-search' },
+            'TEST'
+        ));
+        expect(w.childAt(1).hasClass('cd-icon-search')).toBeTruthy();
+        expect(w.childAt(1).hasClass('cd-icon')).toBeTruthy();
+    });
   it('nativeType', function () {
     var w = shallow(React.createElement(
       Button,

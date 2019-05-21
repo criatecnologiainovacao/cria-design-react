@@ -29,18 +29,18 @@ describe('Tag test', function () {
             { icon: 'cd-icon-search' },
             'TEST'
         ));
-        expect(w.childAt(0).hasClass('cd-icon')).toBeTruthy();
-        expect(w.childAt(0).hasClass('cd-icon-search')).toBeTruthy();
+        expect(w.find('i.cd-icon').exists()).toBe(true);
+        expect(w.find('i.cd-icon-search').exists()).toBe(true);
     });
 
     it('appendIcon', function () {
         var w = shallow(React.createElement(
             Tag,
-            { icon: 'cd-icon-search' },
+            { appendIcon: 'cd-icon-search' },
             'TEST'
         ));
-        expect(w.childAt(0).hasClass('cd-icon-search')).toBeTruthy();
-        expect(w.childAt(0).hasClass('cd-append-icon')).toBeTruthy();
+        expect(w.find('i.cd-icon-search').exists()).toBe(true);
+        expect(w.find('i.cd-append-icon').exists()).toBe(true);
     });
 
   it('closable', function () {
@@ -77,15 +77,6 @@ describe('Tag test', function () {
         'TEST'
     ));
     expect(w.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
-  });
-
-  it('plain', function () {
-    var w = mount(React.createElement(
-      Tag,
-      { plain: true },
-      'TEST'
-    ));
-    expect(w.find('.cd-tag').first().hasClass('is-plain')).toBeTruthy();
   });
 
   it('onClose', function () {
