@@ -24,4 +24,4 @@ script:
     - npm run build
     - npm test
     - eslint -f json -o report.json src
-    - sonar-scanner -X
+    - sonar-scanner
