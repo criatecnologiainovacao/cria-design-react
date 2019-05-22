@@ -19,10 +19,6 @@ export default class Tag extends Component {
         });
     }
 
-    handleClick() {
-        if (this.props.onClick) this.props.onClick();
-    }
-
     render() {
         const {
             type,
@@ -42,7 +38,6 @@ export default class Tag extends Component {
                 <View key={this.state.visible} show={this.state.visible}>
           <span
               style={this.style()}
-              onClick={this.handleClick.bind(this)}
               className={
                   this.className(
                       'cd-tag',
@@ -81,6 +76,5 @@ Tag.propTypes = {
     round: PropTypes.bool,
     disableTransitions: PropTypes.bool,
     size: PropTypes.string,
-    onClose: PropTypes.func,
-    onClick: PropTypes.func
+    onClose: PropTypes.func
 };

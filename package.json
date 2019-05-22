@@ -12,7 +12,7 @@
     ],
     "scripts": {
         "start": "cd site && node run.js",
-        "test": "react-scripts test --watchAll=false --coverage",
+        "test": "CI=true react-scripts test --watchAll=false --coverage",
         "lint": "eslint src libs site --quiet",
         "build": "cd build/site && webpack --progress",
         "prepublishOnly": "./build/scripts/prepare.sh",
@@ -95,6 +95,7 @@
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.13.1",
         "flow-bin": "^0.98.1",
+        "jest-enzyme": "^7.0.2",
         "prop-types": "^15.7.2",
         "raf": "^3.4.1",
         "react": "^16.8.6",
