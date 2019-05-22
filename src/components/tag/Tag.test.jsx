@@ -5,23 +5,23 @@ import sinon from 'sinon';
 import Tag from './Tag';
 
 describe('Tag test', function () {
-  it('tag', function () {
-    var w = mount(React.createElement(
-      Tag,
-      null,
-      'TEST'
-    ));
-    expect(w.find('.cd-tag').text()).toBe('TEST');
-  });
+    it('tag', function () {
+        var w = mount(React.createElement(
+            Tag,
+            null,
+            'TEST'
+        ));
+        expect(w.find('.cd-tag').text()).toBe('TEST');
+    });
 
-  it('type', function () {
-    var w = mount(React.createElement(
-      Tag,
-      { type: 'primary' },
-      'TEST'
-    ));
-    expect(w.find('.cd-tag--primary')).toHaveLength(1);
-  });
+    it('type', function () {
+        var w = mount(React.createElement(
+            Tag,
+            { type: 'primary' },
+            'TEST'
+        ));
+        expect(w.find('.cd-tag--primary')).toHaveLength(1);
+    });
 
     it('icon', function () {
         var w = shallow(React.createElement(
@@ -43,23 +43,23 @@ describe('Tag test', function () {
         expect(w.find('i.cd-append-icon').exists()).toBe(true);
     });
 
-  it('closable', function () {
-    var w = shallow(React.createElement(
-      Tag,
-      { type: 'primary', closable: true },
-      'TEST'
-    ));
-    expect(w.find('i.cd-tag__close').exists()).toBe(true);
-  });
+    it('closable', function () {
+        var w = shallow(React.createElement(
+            Tag,
+            { type: 'primary', closable: true },
+            'TEST'
+        ));
+        expect(w.find('i.cd-tag__close').exists()).toBe(true);
+    });
 
-  it('hit', function () {
-    var w = mount(React.createElement(
-      Tag,
-      { hit: true },
-      'TEST'
-    ));
-    expect(w.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
-  });
+    it('hit', function () {
+        var w = mount(React.createElement(
+            Tag,
+            { hit: true },
+            'TEST'
+        ));
+        expect(w.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
+    });
 
     it('solid', function () {
         var w = mount(React.createElement(
@@ -71,24 +71,24 @@ describe('Tag test', function () {
     });
 
     it('round', function () {
-    var w = mount(React.createElement(
-        Tag,
-        { round: true },
-        'TEST'
-    ));
-    expect(w.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
-  });
+        var w = mount(React.createElement(
+            Tag,
+            { round: true },
+            'TEST'
+        ));
+        expect(w.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
+    });
 
-  it('onClose', function () {
-    var onClose = sinon.spy();
-    var w = shallow(React.createElement(
-      Tag,
-      { type: 'primary', closable: true, onClose: onClose },
-      'TEST'
-    ));
+    it('onClose', function () {
+        var onClose = sinon.spy();
+        var w = shallow(React.createElement(
+            Tag,
+            { type: 'primary', closable: true, onClose: onClose },
+            'TEST'
+        ));
 
-    w.find('i.cd-tag__close').simulate('click');
+        w.find('i.cd-tag__close').simulate('click');
 
-    expect(onClose.calledOnce).toBe(true);
-  });
+        expect(onClose.calledOnce).toBe(true);
+    });
 });

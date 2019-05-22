@@ -15,10 +15,8 @@ export default class View extends Component {
   }
 }
 
-/* eslint-disable */
 View.propTypes = {
   show: PropTypes.any,
 };
-/* eslint-enable */
 
 View._typeName = 'View';

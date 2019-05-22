@@ -7,13 +7,13 @@ import 'core-js';
 import './styles/base.scss';
 import './styles/prism.css';
 
-import App from './page';
+import App from './App';
 
 render(<AppContainer><App /></AppContainer>, document.getElementById('app'));
 
 if (module.hot) {
-  module.hot.accept('./page', () => {
-    const App = require('./page').default;
+    module.hot.accept('./App', () => {
+        const App = require('./App').default;
 
     render(<AppContainer><App /></AppContainer>, document.getElementById('app'));
   });

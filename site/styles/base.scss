@@ -391,17 +391,15 @@ body {
         &:hover {
             color: $--color-primary-light-2;
             background-color: #f9fafc;
-        }
-    }
 
-    .demo-block-control:hover {
-        span > span {
-            opacity: 1;
-            transform: translateX(0);
-        }
+            span > span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-        i {
-            transform: translateX(0);
+            i {
+                transform: translateX(0);
+            }
         }
     }
 }

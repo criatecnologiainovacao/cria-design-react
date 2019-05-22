@@ -13,11 +13,13 @@
     opacity: 0;
   }
   100% {
+      opacity: 1;
   }
 }
 
 @keyframes v-modal-out {
   0% {
+      opacity: 1;
   }
   100% {
     opacity: 0;

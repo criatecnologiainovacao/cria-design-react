@@ -12,7 +12,7 @@
     ],
     "scripts": {
         "start": "cd site && node run.js",
-        "test": "react-scripts test",
+        "test": "react-scripts test --watchAll=false --coverage",
         "lint": "eslint src libs site --quiet",
         "build": "cd build/site && webpack --progress",
         "prepublishOnly": "./build/scripts/prepare.sh",
@@ -61,8 +61,6 @@
         "codemirror": "^5.46.0",
         "core-js": "^2.5.7",
         "css-loader": "^2.1.1",
-        "enzyme": "^3.9.0",
-        "enzyme-adapter-react-16": "^1.13.1",
         "eslint": "^5.16.0",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-plugin-flowtype": "^3.9.0",
@@ -92,6 +90,8 @@
         "@babel/runtime": "^7.4.4",
         "async-validator": "^1.11.2",
         "classnames": "^2.2.6",
+        "enzyme": "^3.9.0",
+        "enzyme-adapter-react-16": "^1.13.1",
         "flow-bin": "^0.98.1",
         "prop-types": "^15.7.2",
         "raf": "^3.4.1",
@@ -101,5 +101,16 @@
         "react-scripts": "3.0.1",
         "react-transition-group": "^4.0.1",
         "throttle-debounce": "^2.1.0"
+    },
+    "jest": {
+        "coverageReporters": [
+            "lcov"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.jsx",
+            "!src/**/*.stories.jsx",
+            "!**/docs/**",
+            "!node_modules/"
+        ]
     }
 }
