@@ -46,13 +46,13 @@ describe('Layout test', () => {
         <Layout.Col span="0"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w1.find('.el-row .el-col-24 .grid-content').exists()).toBeTruthy();
-    expect(w1.find('.el-row .el-col-24').length).toBe(1);
-    expect(w2.find('.el-row .el-col-12').length).toBe(2);
-    expect(w3.find('.el-row .el-col-8').length).toBe(3);
-    expect(w4.find('.el-row .el-col-6').length).toBe(4);
-    expect(w5.find('.el-row .el-col-4').length).toBe(6);
-    expect(w6.find('.el-row .el-col-0').length).toBe(1);
+    expect(w1.find('.cd-row .cd-col-24 .grid-content').exists()).toBeTruthy();
+    expect(w1.find('.cd-row .cd-col-24').length).toBe(1);
+    expect(w2.find('.cd-row .cd-col-12').length).toBe(2);
+    expect(w3.find('.cd-row .cd-col-8').length).toBe(3);
+    expect(w4.find('.cd-row .cd-col-6').length).toBe(4);
+    expect(w5.find('.cd-row .cd-col-4').length).toBe(6);
+    expect(w6.find('.cd-row .cd-col-0').length).toBe(1);
   });
 
   it('Column spacing', () => {
@@ -64,9 +64,9 @@ describe('Layout test', () => {
         <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w.find('.el-row .el-col-6').length).toBe(4);
-    expect(w.find('.el-row .el-col-6').at(0).prop('style').paddingLeft).toBe('10px');
-    expect(w.find('.el-row .el-col-6').at(0).prop('style').paddingRight).toBe('10px');
+    expect(w.find('.cd-row .cd-col-6').length).toBe(4);
+    expect(w.find('.cd-row .cd-col-6').at(0).prop('style').paddingLeft).toBe('10px');
+    expect(w.find('.cd-row .cd-col-6').at(0).prop('style').paddingRight).toBe('10px');
   })
 
   it('Hybrid layout', () => {
@@ -91,14 +91,14 @@ describe('Layout test', () => {
         <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w1.find('.el-row .el-col-16').length).toBe(1);
-    expect(w1.find('.el-row .el-col-8').length).toBe(1);
+    expect(w1.find('.cd-row .cd-col-16').length).toBe(1);
+    expect(w1.find('.cd-row .cd-col-8').length).toBe(1);
 
-    expect(w2.find('.el-row .el-col-8').length).toBe(2);
-    expect(w2.find('.el-row .el-col-4').length).toBe(2);
+    expect(w2.find('.cd-row .cd-col-8').length).toBe(2);
+    expect(w2.find('.cd-row .cd-col-4').length).toBe(2);
 
-    expect(w3.find('.el-row .el-col-16').length).toBe(1);
-    expect(w3.find('.el-row .el-col-4').length).toBe(2);
+    expect(w3.find('.cd-row .cd-col-16').length).toBe(1);
+    expect(w3.find('.cd-row .cd-col-4').length).toBe(2);
   })
 
   it('Column offset', () => {
@@ -119,10 +119,10 @@ describe('Layout test', () => {
         <Layout.Col span="12" offset="6"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w1.find('.el-row .el-col-6').length).toBe(2);
-    expect(w1.find('.el-row .el-col-6.el-col-offset-6').length).toBe(1);
-    expect(w2.find('.el-row .el-col-6.el-col-offset-6').length).toBe(2);
-    expect(w3.find('.el-row .el-col-12.el-col-offset-6').length).toBe(1);
+    expect(w1.find('.cd-row .cd-col-6').length).toBe(2);
+    expect(w1.find('.cd-row .cd-col-6.cd-col-offset-6').length).toBe(1);
+    expect(w2.find('.cd-row .cd-col-6.cd-col-offset-6').length).toBe(2);
+    expect(w3.find('.cd-row .cd-col-12.cd-col-offset-6').length).toBe(1);
   });
 
   it('Alignment', () => {
@@ -161,7 +161,7 @@ describe('Layout test', () => {
         <Layout.Col span={6}><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w1.hasClass('el-row--flex')).toBeTruthy();
+    expect(w1.hasClass('cd-row--flex')).toBeTruthy();
     expect(w2.hasClass('is-justify-center')).toBeTruthy();
     expect(w3.hasClass('is-justify-end')).toBeTruthy();
     expect(w4.hasClass('is-justify-space-between')).toBeTruthy();
@@ -182,9 +182,9 @@ describe('Layout test', () => {
         <Layout.Col xs="0" sm="6" md="4" lg="3"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w.find('.el-col-24.el-col-xs-8.el-col-sm-6.el-col-md-4.el-col-lg-3').length).toBe(2);
-    expect(w.find('.el-col-24.el-col-xs-4.el-col-sm-6.el-col-md-8.el-col-lg-9').length).toBe(2);
-    expect(w1.find('.el-col-24.el-col-xs-0.el-col-sm-6.el-col-md-4.el-col-lg-3').length).toBe(1);
+    expect(w.find('.cd-col-24.cd-col-xs-8.cd-col-sm-6.cd-col-md-4.cd-col-lg-3').length).toBe(2);
+    expect(w.find('.cd-col-24.cd-col-xs-4.cd-col-sm-6.cd-col-md-8.cd-col-lg-9').length).toBe(2);
+    expect(w1.find('.cd-col-24.cd-col-xs-0.cd-col-sm-6.cd-col-md-4.cd-col-lg-3').length).toBe(1);
   });
 
   it('Row custom tag', () => {
@@ -202,7 +202,7 @@ describe('Layout test', () => {
         <Layout.Col tag="section" span="24"><div className="grid-content bg-purple-dark"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w.find('.el-row section.el-col-24').length).toBe(1);
+    expect(w.find('.cd-row section.cd-col-24').length).toBe(1);
   });
 
   it('Row with align', () => {
@@ -230,7 +230,7 @@ describe('Layout test', () => {
         <Layout.Col span="12" push="12"><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w.find('.el-col-12').hasClass('el-col-push-12')).toBeTruthy();
+    expect(w.find('.cd-col-12').hasClass('cd-col-push-12')).toBeTruthy();
   });
 
   it('Column with pull', () => {
@@ -239,6 +239,6 @@ describe('Layout test', () => {
         <Layout.Col span="12" pull={12}><div className="grid-content bg-purple"></div></Layout.Col>
       </Layout.Row>
     );
-    expect(w.find('.el-col-12').hasClass('el-col-pull-12')).toBeTruthy();
+    expect(w.find('.cd-col-12').hasClass('cd-col-pull-12')).toBeTruthy();
   });
 });
