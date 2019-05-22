@@ -5,6 +5,7 @@ Thumbs.db
 npm-debug.log
 node_modules
 
+/coverage
 /dist
 /next.js
 

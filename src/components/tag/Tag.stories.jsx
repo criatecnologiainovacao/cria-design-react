@@ -3,8 +3,11 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
+import initStoryshots from '@storybook/addon-storyshots';
 
 import Tag from './Tag';
+
+initStoryshots();
 
 export const actions = {
     onClose: action('Closed'),

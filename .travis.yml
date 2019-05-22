@@ -25,3 +25,5 @@ script:
     - npm test
     - eslint -f json -o report.json src
     - sonar-scanner
+    - npm run chromatic
+    - npm run deploy:doc
