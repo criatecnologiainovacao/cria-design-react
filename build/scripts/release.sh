@@ -21,5 +21,5 @@ npm run build
 
 # commit and push to gh-pages
  git add . -A
- git commit -m "$VERSION"
+ git commit -m "(deploy) $VERSION"
  git push
