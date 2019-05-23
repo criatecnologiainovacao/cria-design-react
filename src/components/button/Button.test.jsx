@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import Button from './Button';
+import Button from '../button';
 
-describe('Button test', function () {
+describe('Button test', () => {
 
     it('create', () => {
         const button = shallow(React.createElement(
@@ -121,5 +121,16 @@ describe('Button test', function () {
         ));
         button.simulate('click');
         expect(fn.callCount).toBe(0);
-    })
+    });
+
+    it('should Button.Group be created', function () {
+        const buttonGroup = shallow(
+            <Button.Group>
+                <Button>TEST</Button>
+                <Button>TEST2</Button>
+            </Button.Group>
+        );
+
+        expect(buttonGroup.hasClass('cd-button-group')).toBeTruthy();
+    });
 });
