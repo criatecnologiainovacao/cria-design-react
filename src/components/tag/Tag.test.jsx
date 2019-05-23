@@ -1,94 +1,90 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import Tag from './Tag';
 
-describe('Tag test', function () {
-  it('tag', function () {
-    var w = mount(React.createElement(
-      Tag,
-      null,
-      'TEST'
-    ));
-    expect(w.find('.cd-tag').text()).toBe('TEST');
-  });
+describe('Tag tests', () => {
 
-  it('type', function () {
-    var w = mount(React.createElement(
-      Tag,
-      { type: 'primary' },
-      'TEST'
-    ));
-    expect(w.find('.cd-tag--primary')).toHaveLength(1);
-  });
+    it('should create default tag', () => {
 
-    it('icon', function () {
-        var w = shallow(React.createElement(
-            Tag,
-            { icon: 'cd-icon-search' },
-            'TEST'
-        ));
-        expect(w.find('i.cd-icon').exists()).toBe(true);
-        expect(w.find('i.cd-icon-search').exists()).toBe(true);
+        const tag = shallow(<Tag>TEST</Tag>);
+
+        expect(tag.find('.cd-tag').text()).toEqual('TEST');
     });
 
-    it('appendIcon', function () {
-        var w = shallow(React.createElement(
-            Tag,
-            { appendIcon: 'cd-icon-search' },
-            'TEST'
-        ));
-        expect(w.find('i.cd-icon-search').exists()).toBe(true);
-        expect(w.find('i.cd-append-icon').exists()).toBe(true);
+    it('should typed tags have correctly classes', () => {
+
+        const successTag = shallow(<Tag type="success">TEST</Tag>);
+        const infoTag = shallow(<Tag type="info">TEST</Tag>);
+        const warningTag = shallow(<Tag type="warning">TEST</Tag>);
+        const dangerTag = shallow(<Tag type="danger">TEST</Tag>);
+
+        expect(successTag.find('.cd-tag')).toHaveClassName('cd-tag--success');
+        expect(infoTag.find('.cd-tag')).toHaveClassName('cd-tag--info');
+        expect(warningTag.find('.cd-tag')).toHaveClassName('cd-tag--warning');
+        expect(dangerTag.find('.cd-tag')).toHaveClassName('cd-tag--danger');
     });
 
-  it('closable', function () {
-    var w = shallow(React.createElement(
-      Tag,
-      { type: 'primary', closable: true },
-      'TEST'
-    ));
-    expect(w.find('i.cd-tag__close').exists()).toBe(true);
-  });
+    it('should tag with icon be properly created', () => {
 
-  it('hit', function () {
-    var w = mount(React.createElement(
-      Tag,
-      { hit: true },
-      'TEST'
-    ));
-    expect(w.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
-  });
+        const tag = shallow(<Tag icon="cd-icon-search">TESTE</Tag>);
 
-    it('solid', function () {
-        var w = mount(React.createElement(
-            Tag,
-            { solid: true },
-            'TEST'
-        ));
-        expect(w.find('.cd-tag').first().hasClass('is-solid')).toBeTruthy();
+        expect(tag.find('i.cd-icon').exists()).toBe(true);
+        expect(tag.find('i.cd-icon-search').exists()).toBe(true);
     });
 
-    it('round', function () {
-    var w = mount(React.createElement(
-        Tag,
-        { round: true },
-        'TEST'
-    ));
-    expect(w.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
-  });
+    it('should tag with appendIcon be properly created', () => {
 
-  it('onClose', function () {
-    var onClose = sinon.spy();
-    var w = shallow(React.createElement(
-      Tag,
-      { type: 'primary', closable: true, onClose: onClose },
-      'TEST'
-    ));
+        const tag = shallow(<Tag appendIcon="cd-icon-search">TESTE</Tag>);
 
-    w.find('i.cd-tag__close').simulate('click');
+        expect(tag.find('i.cd-append-icon').exists()).toBe(true);
+        expect(tag.find('i.cd-icon-search').exists()).toBe(true);
+    });
 
-    expect(onClose.calledOnce).toBe(true);
-  });
+    it('should closable tag have close icon', () => {
+        const tag = shallow(<Tag closable>TEST</Tag>);
+
+        expect(tag.find('i.cd-tag__close').exists()).toBe(true);
+    });
+
+    it('should have hit class', () => {
+        const tag = shallow(<Tag hit>TEST</Tag>);
+
+        expect(tag.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
+    });
+
+    it('should heve solid class', () => {
+        const tag = shallow(<Tag solid>TEST</Tag>);
+
+        expect(tag.find('.cd-tag').first().hasClass('is-solid')).toBeTruthy();
+    });
+
+    it('should round tag have properly class', () => {
+        const tag = shallow(<Tag round>TEST</Tag>);
+
+        expect(tag.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
+    });
+
+    it('should simulate close click when onClose is present', () => {
+        const onClose = sinon.spy();
+        const tag = shallow(React.createElement(
+            Tag,
+            { closable: true, onClose: onClose },
+            'TEST'
+        ));
+
+        tag.find('i.cd-tag__close').simulate('click');
+
+        expect(onClose.calledOnce).toBe(true);
+        expect(tag).toHaveState('visible', false);
+    });
+
+    it('should not simulate close click when onClose is not present', () => {
+        const tag = shallow(<Tag closable>TEST</Tag>);
+
+        tag.find('i.cd-tag__close').simulate('click');
+
+        expect(tag).toHaveState('visible', false);
+    });
 });

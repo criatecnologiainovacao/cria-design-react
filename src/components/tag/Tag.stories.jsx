@@ -7,8 +7,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import Tag from './Tag';
 
 export const actions = {
-    onClose: action('Closed'),
-    onClick: action('Clicked')
+    onClose: action('Closed')
 };
 
 const mr10 = {
@@ -19,11 +18,6 @@ storiesOf('Tag', module)
     .addDecorator(withKnobs)
     .addDecorator(withA11y)
     .add('default', () => <Tag>Tag Default</Tag>)
-    .add('on click', () => {
-        return (
-            <Tag style={{ cursor: 'pointer' }} onClick={actions.onClick}>Tag Clickable</Tag>
-        )
-    })
     .add('types', () => {
         return (
             <div>

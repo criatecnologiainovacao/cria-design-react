@@ -107,7 +107,6 @@ storiesOf('Button', module)
                 <Button style={mr10} {...actions} icon="cd-icon-edit" round/>
                 <Button style={mr10} {...actions} icon="cd-icon-mic" type="primary"
                         round>Sound</Button>
-                <Button style={mr10} {...actions} loading round>Loading...</Button>
                 <Button style={mr10} {...actions} round type="success">Done</Button>
             </div>
         )
@@ -121,7 +120,6 @@ storiesOf('Button', module)
                 <Button style={mr10} {...actions} circle icon="cd-icon-circle-close" type="info"/>
                 <Button style={mr10} {...actions} circle icon="cd-icon-mic" type="warning"/>
                 <Button style={mr10} {...actions} circle icon="cd-icon-back" type="danger"/>
-                <Button style={mr10} {...actions} circle loading plain type="danger"/>
             </div>
         )
     })

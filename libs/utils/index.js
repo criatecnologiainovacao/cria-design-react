@@ -1,4 +1,4 @@
-import {require_condition} from './assert'
+import { require_condition } from './assert'
 import * as ReactUtils from './react'
 import * as Errors from './errors'
 
@@ -11,7 +11,7 @@ export function watchPropertyChange(target, property, cb) {
     typeof cb === 'function', 'invalid arguments')
 
   let cache = null
-  if (!target.__watch_cache){
+    if (target && !target.__watch_cache) {
     target.__watch_cache = {}
   }
   cache = target.__watch_cache

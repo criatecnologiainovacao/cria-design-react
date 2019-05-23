@@ -30,10 +30,6 @@
         background-color: $--slider-disable-color;
       }
 
-      .cd-slider__button {
-        border-color: $--slider-disable-color;
-      }
-
       .cd-slider__button-wrapper {
         &:hover,
         &.hover {
@@ -46,6 +42,8 @@
       }
 
       .cd-slider__button {
+          border-color: $--slider-disable-color;
+
         &:hover,
         &.hover,
         &.dragging {

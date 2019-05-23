@@ -5,6 +5,7 @@ Thumbs.db
 npm-debug.log
 node_modules
 
+/coverage
 /dist
 /next.js
 
@@ -16,3 +17,4 @@ package-lock.json
 themes/lib
 themes/package-lock.json
 themes/node_modules.json
+/storybook-static

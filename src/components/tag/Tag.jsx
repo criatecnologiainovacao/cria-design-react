@@ -19,10 +19,6 @@ export default class Tag extends Component {
         });
     }
 
-    handleClick() {
-        if (this.props.onClick) this.props.onClick();
-    }
-
     render() {
         const {
             type,
@@ -40,30 +36,30 @@ export default class Tag extends Component {
         return (
             <Transition name={disableTransitions ? '' : 'cd-zoom-in-center'}>
                 <View key={this.state.visible} show={this.state.visible}>
-          <span
-              style={this.style()}
-              onClick={this.handleClick.bind(this)}
-              className={
-                  this.className(
-                      'cd-tag',
-                      type && `cd-tag--${type}`,
-                      size && `cd-tag--${size}`,
-                      {
-                          'is-hit': hit,
-                          'is-round': round,
-                          'is-solid': solid
-                      }
-                  )
-              }
-          >
-              {icon && <i className={`cd-icon ${icon}`}/>}
-              {children && <span>{children}</span>}
-              {appendIcon && !closable && <i className={`cd-append-icon ${appendIcon}`}/>}
-              {
-                  closable &&
-                  <i className="cd-tag__close cd-icon-close" onClick={this.handleClose.bind(this)}/>
-              }
-          </span>
+                    <span
+                        style={this.style()}
+                        className={
+                            this.className(
+                                'cd-tag',
+                                type && `cd-tag--${type}`,
+                                size && `cd-tag--${size}`,
+                                {
+                                    'is-hit': hit,
+                                    'is-round': round,
+                                    'is-solid': solid
+                                }
+                            )
+                        }
+                    >
+                        {icon && <i className={`cd-icon ${icon}`}/>}
+                        {children && <span>{children}</span>}
+                        {appendIcon && !closable && <i className={`cd-append-icon ${appendIcon}`}/>}
+                        {
+                            closable &&
+                            <i className="cd-tag__close cd-icon-close"
+                               onClick={this.handleClose.bind(this)}/>
+                        }
+                    </span>
                 </View>
             </Transition>
         )
@@ -81,6 +77,5 @@ Tag.propTypes = {
     round: PropTypes.bool,
     disableTransitions: PropTypes.bool,
     size: PropTypes.string,
-    onClose: PropTypes.func,
-    onClick: PropTypes.func
+    onClose: PropTypes.func
 };
