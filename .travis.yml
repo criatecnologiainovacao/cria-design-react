@@ -22,6 +22,7 @@ install:
 script:
     - npm run lint
     - npm run build
+    - build-storybook
     - npm test
     - eslint -f json -o report.json src
     - sonar-scanner
