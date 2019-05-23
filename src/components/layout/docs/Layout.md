@@ -1,12 +1,12 @@
 ## Layout
 
-Cria e organiza o grid atraves de 24 colunas.
+Cria e organiza o grid através de 24 colunas.
 
 ### Uso básico
 
-Criando um Layout basico usando colunas.
+Criando um Layout básico usando colunas.
 
-::: demo Com os componentes `Layout.Row` e `Layout.Col`, podemos manipular o layout atraves da propriedade `span`.
+::: demo Com os componentes `Layout.Row` e `Layout.Col`, podemos manipular o layout através da propriedade `span`.
 ```js
 render() {
   return (
@@ -47,7 +47,7 @@ render() {
 
 Determinando espaçamento entre todas colunas de uma linha.
 
-::: demo As linhas suportam a propriedade `gutter` para indicar quanto espaçamento deve existir entre as colunas, sendo o valor padrao 0.
+::: demo As linhas suportam a propriedade `gutter` para indicar quanto espaçamento deve existir entre as colunas, sendo o valor padrão 0.
 ```js
 render() {
   return (
@@ -66,7 +66,7 @@ render() {
 
 Determinando o espaçamento a esquerda de uma coluna.
 
-::: demo As colunas podem ser "empurradas" atraves da propriedade `offset`, que determina quantas colunas de espaçamento.
+::: demo As colunas podem ser "empurradas" através da propriedade `offset`, que determina quantas colunas de espaçamento.
 
 ```js
 render() {
@@ -91,9 +91,9 @@ render() {
 
 ### Alinhamento
 
-É possivel determinar o `type` flex e determinar qual o tipo de `justify`(alinhamento) das colunas.
+É possível determinar o `type` flex e determinar qual o tipo de `justify`(alinhamento) das colunas.
 
-::: demo Voce pode habilitar o `type="flex"` e definir a propriedade `justify` como start, center, end, space-between or space-around.
+::: demo Você pode habilitar o `type="flex"` e definir a propriedade `justify` como start, center, end, space-between or space-around.
 ```js
 render() {
   return (
@@ -152,9 +152,9 @@ render() {
 | Atributo      | Descrição          | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | gutter | espaçamento do grid | number | — | 0 |
-| type | modo de organizacao das colunas | string | — | — |
-| justify | alinhamento horizontal das colunas | string | start/end/center/space-around/space-between | start |
-| align | organizacao vertical no display flex | string | top/middle/bottom | top |
+| type | modo de organização das colunas | string | — | — |
+| justify | alinhamento horizontal das colunas. Deve possuir o `type` igual a `flex` | string | start/end/center/space-around/space-between | start |
+| align | organização vertical no display flex. Deve possuir o `type` igual a `flex` | string | top/middle/bottom | top |
 | tag | tag customizada para o elemento | string | * | div |
 
 ### Atributos do Col 
@@ -164,8 +164,8 @@ render() {
 | offset | numero de colunas de espaçamento a esquerda | number | — | 0 |
 | push |  numero de colunas que a coluna deve empurrar a esquerda | number | — | 0 |
 | pull |  numero de colunas que a coluna deve andar a esquerda | number | — | 0 |
-| xs | Numero de colunas na resolução `<768px`| number/object (i.e： {span: 4, offset: 4}) | — | — |
-| sm | Numero de colunas na resolução `≥768px`| number/object (i.e： {span: 4, offset: 4}) | — | — |
-| md | Numero de colunas na resolução `≥992`| number/object (i.e： {span: 4, offset: 4}) | — | — |
-| lg | Numero de colunas na resolução `≥1200`| number/object (i.e： {span: 4, offset: 4}) | — | — |
+| xs | Numero de colunas na resolução `<768px`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| sm | Numero de colunas na resolução `≥768px`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| md | Numero de colunas na resolução `≥992`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| lg | Numero de colunas na resolução `≥1200`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
 | tag | tag customizada para o elemento | string | * | div |

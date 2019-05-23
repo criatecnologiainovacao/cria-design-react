@@ -118,7 +118,7 @@ render() {
 
 ### Loading
 
-Click no botão para que ele execulte algum evento, e apresente o estado de carregamento.
+Click no botão para que ele execute algum evento, e apresente o estado de carregamento.
 
 :::demo Passe o atributo `loading` para `true`. O atributo de `loading` sobrepõe o atributo `appendIcon`.
 
