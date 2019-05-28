@@ -97,11 +97,11 @@ render() {
 
 | Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| steps     | O tamanho do botão | array    | - | — |
-| activeStep      | O tipo do botão | number    | primary / success / warning / danger / info / text | — |
-| clickable      | Determina se o botão terá o estilo simples | boolean | — | false |
+| steps     | Os nomes dos passos | array    | — | — |
+| activeStep      | Qual passo esta ativo | number    | — | 0 |
+| clickable      | Determina se os passos serao clicaveis | boolean | — | false |
 
 ### Eventos
 | Nome do evento | Descrição | Parameters |
 |---------- |-------- |---------- |
-| onClick | Acionado quando o botão é clicado. | — |
+| onClick | Acionado quando o passo é clicado. | — |
