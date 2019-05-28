@@ -9,6 +9,9 @@ export default {
     },
     'Dados': {
       'tag': require('../../src/components/tag/docs')
-    }
+    },
+      'Especificos': {
+        'step-bar': require('../../src/components/step-bar/docs')
+      }
   }
 }
