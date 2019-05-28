@@ -3,7 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Component } from '../../../libs';
+import {Component} from '../../../libs';
 import Footer from "../footer";
 import Header from "../header";
 
@@ -15,9 +15,15 @@ export default class Container extends Component {
         } else if (this.props.direction === 'horizontal') {
             return false;
         }
+        let childrenFooterOrHeader = false;
+        this.props.children.forEach(function (children) {
+            if (children.type.displayName === 'Footer' || children.type.displayName === 'Header') {
+                childrenFooterOrHeader = true;
+            }
+        })
         return this.props.children
-            ? (Array.isArray(this.props.children) ? this.props.children[0] === Footer || this.props.children[0].type === Header :
-                this.props.children === Footer || this.props.children.type === Header)
+            ? Array.isArray(this.props.children) ? childrenFooterOrHeader
+                : (this.props.children[0].type.displayName === 'Header' || this.props.children[0].type.displayName === 'Footer')
             : false;
     }
 
@@ -29,8 +35,8 @@ export default class Container extends Component {
 
         return (
             <section className={this.className("cd-container", {
-                'is-vertical': this.isVertical()
-            }
+                    'is-vertical': this.isVertical()
+                }
             )}>
                 {children}
             </section>
