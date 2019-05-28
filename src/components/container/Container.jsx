@@ -18,15 +18,15 @@ export default class Container extends Component {
         let childrenFooterOrHeader = false;
         if (Array.isArray(this.props.children)) {
             this.props.children.forEach(function (children) {
-                if (children.type.name === 'Footer' || children.type.name === 'Header') {
+                if (children.type === <Footer />.type || children.type === <Header />.type) {
                     childrenFooterOrHeader = true;
                 }
             })
         }
         return this.props.children
             ? Array.isArray(this.props.children) ? childrenFooterOrHeader
-                : (this.props.children.type.name === 'Header' ||
-                    this.props.children.type.name === 'Footer')
+                : (this.props.children.type === <Header />.type ||
+                    this.props.children.type === <Footer />.type)
             : false;
     }
 
