@@ -80,6 +80,19 @@ describe('Tag tests', () => {
         expect(tag).toHaveState('visible', false);
     });
 
+    it('should simulate click when onClick is present', () => {
+        const onClick = sinon.spy();
+        const tag = shallow(React.createElement(
+            Tag,
+            { onClick: onClick },
+            'TEST'
+        ));
+
+        tag.simulate('click');
+        expect(tag.find('.cd-tag').first().hasClass('cd-tag--clickable')).toBeTruthy();
+
+    });
+
     it('should not simulate close click when onClose is not present', () => {
         const tag = shallow(<Tag closable>TEST</Tag>);
 
