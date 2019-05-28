@@ -475,21 +475,21 @@ body {
 }
 
 .cd-header, .cd-footer {
-    background-color: #B3C0D1;
+    background-color: $--color-primary;
     color: #333;
     text-align: center;
     line-height: 60px;
 }
 
 .cd-aside {
-    background-color: #D3DCE6;
+    background-color: $--color-primary-light-4;
     color: #333;
     text-align: center;
     line-height: 200px;
 }
 
 .cd-main {
-    background-color: #E9EEF3;
+    background-color: $--color-primary-light-8;
     color: #333;
     text-align: center;
 }
