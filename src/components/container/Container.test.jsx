@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 
 import Container from ".";
 import Header from "../header";
+import Footer from "../footer";
 
 describe('Container test', () => {
 
@@ -10,7 +11,7 @@ describe('Container test', () => {
         const container = shallow(React.createElement(
             Container,
             {},
-          <p>TEST</p>
+            <p>TEST</p>
         ));
         expect(container.hasClass('cd-container')).toBeTruthy();
         expect(container.childAt(0).text()).toBe('TEST');
@@ -18,12 +19,23 @@ describe('Container test', () => {
         const containerVerticalAuto = shallow(React.createElement(
             Container,
             {},
-           <Header> Header </Header>
+            <Header> Header </Header>
         ));
 
         expect(containerVerticalAuto.hasClass('cd-container')).toBeTruthy();
         expect(containerVerticalAuto.childAt(0).text()).toBe('<Header />');
         expect(containerVerticalAuto.hasClass('is-vertical')).toBeTruthy();
+
+        const containerVerticalAutoMult = shallow(React.createElement(
+            Container,
+            {},
+            <Header> Header </Header>,
+            <Footer> Footer </Footer>
+        ));
+
+        expect(containerVerticalAutoMult.hasClass('cd-container')).toBeTruthy();
+        expect(containerVerticalAutoMult.childAt(0).text()).toBe('<Header />');
+        expect(containerVerticalAutoMult.hasClass('is-vertical')).toBeTruthy();
     });
 
     it('direction', () => {
@@ -32,7 +44,7 @@ describe('Container test', () => {
             {
                 direction: 'vertical'
             },
-          <p>TEST</p>
+            <p>TEST</p>
         ));
         expect(containerVertical.hasClass('cd-container')).toBeTruthy();
         expect(containerVertical.hasClass('is-vertical')).toBeTruthy();
@@ -43,7 +55,7 @@ describe('Container test', () => {
             {
                 direction: 'horizontal'
             },
-          <p>TEST</p>
+            <p>TEST</p>
         ));
         expect(containerHorizontal.hasClass('cd-container')).toBeTruthy();
         expect(containerHorizontal.hasClass('is-vertical')).toBeFalsy();
