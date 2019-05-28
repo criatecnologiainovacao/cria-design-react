@@ -16,14 +16,17 @@ export default class Container extends Component {
             return false;
         }
         let childrenFooterOrHeader = false;
-        this.props.children.forEach(function (children) {
-            if (children.type.displayName === 'Footer' || children.type.displayName === 'Header') {
-                childrenFooterOrHeader = true;
-            }
-        })
+        if (Array.isArray(this.props.children)) {
+            this.props.children.forEach(function (children) {
+                if (children.type.name === 'Footer' || children.type.name === 'Header') {
+                    childrenFooterOrHeader = true;
+                }
+            })
+        }
         return this.props.children
             ? Array.isArray(this.props.children) ? childrenFooterOrHeader
-                : (this.props.children[0].type.displayName === 'Header' || this.props.children[0].type.displayName === 'Footer')
+                : (this.props.children.type.name === 'Header' ||
+                    this.props.children.type.name === 'Footer')
             : false;
     }
 

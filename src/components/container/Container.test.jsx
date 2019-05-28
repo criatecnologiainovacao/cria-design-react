@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import Container from ".";
+import Header from "../header";
 
 describe('Container test', () => {
 
@@ -9,10 +10,20 @@ describe('Container test', () => {
         const container = shallow(React.createElement(
             Container,
             {},
-            'TEST'
+          <p>TEST</p>
         ));
         expect(container.hasClass('cd-container')).toBeTruthy();
         expect(container.childAt(0).text()).toBe('TEST');
+
+        const containerVerticalAuto = shallow(React.createElement(
+            Container,
+            {},
+           <Header> Header </Header>
+        ));
+
+        expect(containerVerticalAuto.hasClass('cd-container')).toBeTruthy();
+        expect(containerVerticalAuto.childAt(0).text()).toBe('<Header />');
+        expect(containerVerticalAuto.hasClass('is-vertical')).toBeTruthy();
     });
 
     it('direction', () => {
@@ -21,7 +32,7 @@ describe('Container test', () => {
             {
                 direction: 'vertical'
             },
-            'TEST'
+          <p>TEST</p>
         ));
         expect(containerVertical.hasClass('cd-container')).toBeTruthy();
         expect(containerVertical.hasClass('is-vertical')).toBeTruthy();
@@ -32,7 +43,7 @@ describe('Container test', () => {
             {
                 direction: 'horizontal'
             },
-            'TEST'
+          <p>TEST</p>
         ));
         expect(containerHorizontal.hasClass('cd-container')).toBeTruthy();
         expect(containerHorizontal.hasClass('is-vertical')).toBeFalsy();

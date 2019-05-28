@@ -11,10 +11,6 @@ Componentes de organização principais das telas
 
 `<Footer>`: container do rodape
 
-:::tip
-These components use flex for layout, so please make sure your browser supports it. Besides, `<Container>`'s direct child elements have to be one or more of the latter four components. And father element of the latter four components must be a `<Container>`.
-:::
-
 ### Common layouts
 
 :::demo
@@ -24,7 +20,6 @@ render() {
     <div>
         <Container>
           <Header>Header</Header>
-          <Main>Main</Main>
         </Container>
         
         <Container>
@@ -74,32 +69,6 @@ render() {
           </Container>
         </Container>
 
-    </div>
-    )
-}
-```
-:::
-
-### Example
-
-:::demo
-```js
-render() {
-  return (
-    <div>
-        <Container style="height: 500px; border: 1px solid #eee">
-          <Aside width="200px" style="background-color: rgb(238, 241, 246)">
-          </Aside>
-          
-          <Container>
-            <Header style="text-align: right; font-size: 12px">
-              <span>Tom</span>
-            </Header>
-            
-            <Main>
-            </Main>
-          </Container>
-        </Container>
     </div>
     )
 }
