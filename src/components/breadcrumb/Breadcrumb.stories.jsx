@@ -3,9 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import Breadcrumb from '../breadcrumb';
 
-
-
-
 storiesOf('Breadcrumb', module)
     .add('default', () => {
         return (

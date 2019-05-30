@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Breadcrumb from '../';
+import Breadcrumb from '../breadcrumb';
 
 describe('Breadcrumb test', () => {
   it('basic usage', () => {
