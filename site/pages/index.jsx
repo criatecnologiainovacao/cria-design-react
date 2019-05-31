@@ -5,7 +5,8 @@ export default {
   components: {
     'Básicos': {
       'layout': require('../../src/components/layout/docs'),
-      'button': require('../../src/components/button/docs')
+      'button': require('../../src/components/button/docs'),
+      'nav-menu': require('../../src/components/menu/docs')
     },
     'Dados': {
       'tag': require('../../src/components/tag/docs')

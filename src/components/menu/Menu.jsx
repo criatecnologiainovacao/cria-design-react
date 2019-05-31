@@ -171,7 +171,7 @@ export default class Menu extends Component {
                     'cd-menu--collapse': this.state.collapse && this.props.mode === 'vertical'
                 })}
             >
-                {this.props.title && this.props.titleDisabled && this.props.mode === 'vertical' && (
+                {this.props.title && !this.props.titleDisabled && this.props.mode === 'vertical' && (
                     <div className="cd-menu-title">
                         <div className={"cd-menu-icon"}>
                             <button onClick={() => this.changeCollapse()}
@@ -182,7 +182,7 @@ export default class Menu extends Component {
                                 </div>
                             </button>
                         </div>
-                        {!this.state.collapse && <span>{this.props.title.texto}</span>}
+                        {!this.state.collapse && <span>{this.props.title}</span>}
                     </div>
                 )}
                 {this.props.children}
@@ -210,13 +210,9 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
-    title: {
-        icon: "cd-icon-menu",
-        texto: "Menu"
-    },
-    titleDisabled: true,
+    title: "Menu",
+    titleDisabled: false,
     collapsed: false,
     mode: 'vertical',
-    theme: 'light',
     menuTrigger: 'hover'
 }
