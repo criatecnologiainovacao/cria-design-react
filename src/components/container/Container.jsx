@@ -3,9 +3,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Component} from '../../../libs';
-import Footer from "../footer";
-import Header from "../header";
+import { Component } from '../../../libs';
+import Footer from '../footer';
+import Header from '../header';
 
 export default class Container extends Component {
 
@@ -32,7 +32,6 @@ export default class Container extends Component {
 
     render(): React.DOM {
         const {
-            direction,
             children
         } = this.props;
 
