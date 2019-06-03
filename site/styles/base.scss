@@ -485,3 +485,37 @@ body {
 .cd-input + .cd-input {
     margin-left: 10px;
 }
+
+.cd-header, .cd-footer {
+    background-color: $--color-primary;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+
+.cd-aside {
+    background-color: $--color-primary-light-4;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+}
+
+.cd-main {
+    background-color: $--color-primary-light-8;
+    color: #333;
+    text-align: center;
+}
+
+body > .cd-container {
+    margin-bottom: 40px;
+}
+
+.cd-container:nth-child(5) .cd-aside,
+.cd-container:nth-child(6) .cd-aside {
+    line-height: 260px;
+}
+
+.cd-container:nth-child(7) .cd-aside {
+    line-height: 320px;
+}
+
