@@ -485,23 +485,60 @@ render() {
 ### Eventos
 | Nome do evento | Descrição | Parameters |
 |---------- |-------- |---------- |
-| onSelect | triggers when user clicks the checkbox in a row. | selection, row |
-| onSelectAll | triggers when user clicks the checkbox in table header. | selection |
-| onSelectChange | triggers when selection changes	 | selection |
-| onCellMouseEnter | triggers when hovering into a cell.	 | row, column, cell, event |
-| onCellMouseLeave | triggers when hovering out of a cell.	 | row, column, cell, event |
-| onCellClick | triggers when clicking a cell.	 | row, column, cell, event |
-| onCellDblClick | triggers when double clicking a cell.	 | row, column, cell, event |
-| onRowClick | triggers when clicking a row. | row, event, column |
-| onRowContextMenu | triggers when user right clicks on a row. | row, event |
-| onRowDblClick | triggers when double clicking a row. | row, event |
-| onHeaderClick | triggers when clicking a column header. | column, event |
-| onSortChange | triggers when Table's sorting changes. | { column, prop, order } |
-| onFilterChange | column's key. If you need to use the filterChange event, this attribute is mandatory to identify which column is being filtered	. | filters |
-| onCurrenteChange | triggers when current row changes. | currentRow, oldCurrentRow |
-| onHeaderDragend | triggers when finish dragging header. | newWidth, oldWidth, column, event |
-| onExpand | triggers when user expands or collapses a row. | row, expanded |
+| onSelect | Dispara quando o usuário clica na caixa de seleção em uma linha. | selection, row |
+| onSelectAll | Dispara quando o usuário clica na caixa de seleção no cabeçalho da tabela. | selection |
+| onSelectChange | Ativa quando a seleção muda.	 | selection |
+| onCellMouseEnter | Desencadeia quando pairar em uma célula.	 | row / column / cell /event |
+| onCellMouseLeave | Desencadeia quando pairando fora de uma célula.	 | row / column / cell /event|
+| onCellClick | Ativa ao clicar em uma célula.	 | row / column / cell /event |
+| onCellDblClick | Ativa ao clicar duas vezes em uma célula. | row / column / cell /event |
+| onRowClick | Ativa ao clicar em uma linha. | row / event / column |
+| onRowContextMenu | Dispara quando o usuário clica com o botão direito em uma linha. | row / event |
+| onRowDblClick | Dispara ao clicar duas vezes em uma linha. | row / event |
+| onHeaderClick | Aciona ao clicar em um cabeçalho de coluna. | column / event |
+| onSortChange | Dispara quando existem alterações de ordenação da tabela. | { column, prop, order } |
+| onFilterChange | Chave da coluna. Se você precisar usar o evento filterChange, esse atributo será obrigatório para identificar qual coluna está sendo filtrada. | filters |
+| onCurrenteChange | Dispara quando a linha atual é alterada. | currentRow / oldCurrentRow |
+| onHeaderDragend | Aciona quando terminar arrastando o cabeçalho. | newWidth / oldWidth / column  event |
+| onExpand | Dispara quando o usuário expande ou recolhe uma linha. | row / expanded |
+
+### Métodos
+| Nome do evento | Descrição | Atributos |
+|---------- |-------- |---------- |
+| clearSelection | Usado em seleção múltipla Tabela, limpar seleção, pode ser útil quando reserveSelection está ativado. | selection |
+| toggleRowSelection	 | Usado na tabela de seleção múltipla, alterna se uma determinada linha é selecionada. Com o segundo parâmetro, você pode definir diretamente se esta linha está selecionada. | row / selected |
+| setCurrentRow | Usado na tabela de seleção única, defina uma determinada linha selecionada. Se chamado sem nenhum parâmetro, irá limpar a seleção.	 | row |
+
+### Atributos das colunas
+| Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| type     | Tipo da coluna. Se definido como seleção, a coluna exibirá a caixa de seleção. Se definido como index, a coluna exibirá o índice da linha (visualizando a partir de 1). Se definido para expandir, a coluna exibirá o ícone de expansão. | string  | selection / index / expand	 | — |
+| label      | Rótulo da coluna.  | string  | —   | — |
+| columnKey     | Chave da coluna. Se você precisar usar o evento onFilterChange, precisará deste atributo para identificar qual coluna está sendo filtrada. | string   | string | — |
+| prop      | Nome do campo. Você também pode usar seu alias: property.  | string | —   | — |
+| width     | Largura da coluna. | string | — | — |
+| minWidth      | Largura mínima da coluna. Colunas com largura tem uma largura fixa, enquanto colunas com minWidth tem uma largura que é distribuída em proporção.  | string | —   | — |
+| fixed     | Se a coluna é fixada à esquerda / direita. Será fixado à esquerda se for verdade. | string/boolean | true / left / right	 | — |
+| render      | Função de renderização personalizada.  |Function(row, column, index) | —   | — |
+| renderHeader      | Função de renderização para o cabeçalho da tabela desta coluna.  | Function(column) | —   | — |
+| sortable     | Se a coluna pode ser classificada. A classificação remota pode ser feita configurando esse atributo como 'custom' e ouvindo o evento sortChange da Table. | boolean / string	 | true / false / custom	 | false |
+| sortMethod      | Método de classificação, funciona quando a classificação é verdadeira. Deve devolver um booleano.  | Function(a, b)	 | —   | — |
+| resizable      | Se a largura da coluna pode ser redimensionada, funciona quando a borda de elTable é verdadeira.  | boolean | —   | false |
+| align     | Alinhamento. | string  | left / center / right	 | left |
+| headerAlign      | Alinhamento do cabeçalho da tabela. Se omitido, o valor do atributo de alinhamento acima será aplicado.  | String | left / center/right	  | — |
+| className      | Nome da classe de células na coluna.  | string | —   | — |
+| labelClassName     | Nome da classe do rótulo dessa coluna. | string | — | — |
+| selectable      | Função que determina se uma determinada linha pode ser selecionada, funciona quando o tipo é 'seleção'.  | Function(row, index)	 | —   | — |
+| reserveSelection      | Se reservar seleção após atualização de dados, funciona quando o tipo é 'seleção'.  |  boolean | —   | false|
+| filters      | Uma matriz de opções de filtragem de dados. Para cada elemento dessa matriz, o texto e o valor são obrigatórios.  | string / number | —   | — |
+| filterPlacement      | Posicionamento para o menu suspenso de filtros.  | String	 | —   | — |
+| filterMultiple      | Se a filtragem de dados suporta várias opções.  | Boolean	 | —   | true |
+| filterMethod      | Método de filtragem de dados. Se filterMultiple estiver ativado, esse método será chamado várias vezes para cada linha, e uma linha será exibida se uma das chamadas retornar true.  | Function(value, row)	 | —   | — |
+| filteredValue      | Valor de filtro para dados selecionados, pode ser útil quando o cabeçalho da tabela é renderizado com renderHeader.  | Array | —   | — |
 
 
-<!-- Missing Table Methods e Table-column Attributes,  -->
+
+
+
+
 
