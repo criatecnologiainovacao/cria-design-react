@@ -3,4 +3,11 @@ export { default as Layout } from './components/layout';
 export { default as Button } from './components/button';
 export { default as Checkbox} from './components/checkbox';
 export { default as Table} from './components/table';
-
+export { default as StepBar } from './components/step-bar';
+export { default as Breadcrumb } from './components/breadcrumb';
+export { default as Input } from './components/input';
+export { default as Container } from './components/container';
+export { default as Aside } from './components/aside';
+export { default as Main } from './components/main';
+export { default as Header } from './components/header';
+export { default as Footer } from './components/footer';

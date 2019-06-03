@@ -47,7 +47,7 @@ const gray = [
     }
 ];
 
-storiesOf('Layout', module)
+storiesOf('Básicos|Layout', module)
     .add('default', () => {
             return (
               <div>

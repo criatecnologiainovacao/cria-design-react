@@ -18,7 +18,7 @@ const mr10 = {
     marginRight: '10px'
 };
 
-storiesOf('Tag', module)
+storiesOf('Dados|Tag', module)
     .addDecorator(withKnobs)
     .addDecorator(withA11y)
     .add('default', () => <Tag>Tag Default</Tag>)
@@ -26,7 +26,9 @@ storiesOf('Tag', module)
         return (
             <div>
                 <Tag style={mr10}>Primary</Tag>
-                <Tag style={mr10} type={text('Type button 2', 'success')}>Success</Tag>
+                <Tag style={mr10} type={text('Type button 2', 'success')}>
+                    Success
+                </Tag>
                 <Tag style={mr10} type="info">Info</Tag>
                 <Tag style={mr10} type="warning">Warning</Tag>
                 <Tag style={mr10} type="danger">Danger</Tag>

@@ -2,10 +2,14 @@ module.exports = {
   page: {
     'quick-start': 'Quick Start',
     'button': 'Botões',
+      'container': 'Container',
     'layout': 'Layout',
     'tag': 'Tag',
     'table': 'Tabelas',
-    'checkbox': 'Checkbox'
+      'checkbox': 'Checkbox',
+      'step-bar': 'Step Bar',
+      'breadcrumb': 'Breadcrumb',
+      'input': 'Input'
   },
   misc: {
     'guide': 'Guia',
