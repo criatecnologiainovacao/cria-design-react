@@ -11,39 +11,39 @@ export const actions = {
 const rowHeight = {
     height: '100px',
     border: 'solid black 1px',
-    'background-color' : '#595757'
+    backgroundColor: '#595757'
 };
 
 const divInside = {
     height: '10px',
     width: '10px',
-    'background-color': 'black'
+    backgroundColor: 'black'
 };
 
 const gray = [
     {
-        'background-color' : '#595757',
-        'height': '40px',
-        'margin-bottom' : '20px',
-        'border-radius': '5px',
-        'color': 'white',
-        'text-align': 'center'
+        backgroundColor: '#595757',
+        height: '40px',
+        marginBottom: '20px',
+        borderRadius: '5px',
+        color: 'white',
+        textAlign: 'center'
     },
     {
-        'background-color' : '#757474',
-        'height': '40px',
-        'margin-bottom' : '20px',
-        'border-radius': '5px',
-        'color': 'white',
-        'text-align': 'center'
+        backgroundColor: '#757474',
+        height: '40px',
+        marginBottom: '20px',
+        borderRadius: '5px',
+        color: 'white',
+        textAlign: 'center'
     },
     {
-        'background-color' : '#9b9b9b',
-        'height': '40px',
-        'margin-bottom' : '20px',
-        'border-radius': '5px',
-        'color': 'white',
-        'text-align': 'center'
+        backgroundColor: '#9b9b9b',
+        height: '40px',
+        marginBottom: '20px',
+        borderRadius: '5px',
+        color: 'white',
+        textAlign: 'center'
     }
 ];
 
