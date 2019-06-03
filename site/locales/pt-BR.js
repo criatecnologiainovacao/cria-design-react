@@ -4,7 +4,8 @@ module.exports = {
     'button': 'Botões',
     'container': 'Container',
     'layout': 'Layout',
-    'tag': 'Tag'
+      'tag': 'Tag',
+      'input': 'Input'
   },
   misc: {
     'guide': 'Guia',

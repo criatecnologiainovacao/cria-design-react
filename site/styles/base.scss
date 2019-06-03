@@ -474,6 +474,18 @@ body {
     background-color: #f9fafc;
 }
 
+.cd-input {
+    width: 300px;
+}
+
+.cd-textarea {
+    width: 300px;
+}
+
+.cd-input + .cd-input {
+    margin-left: 10px;
+}
+
 .cd-header, .cd-footer {
     background-color: $--color-primary;
     color: #333;
@@ -506,3 +518,4 @@ body > .cd-container {
 .cd-container:nth-child(7) .cd-aside {
     line-height: 320px;
 }
+
