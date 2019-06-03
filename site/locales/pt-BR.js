@@ -3,7 +3,8 @@ module.exports = {
     'quick-start': 'Quick Start',
     'button': 'Botões',
     'layout': 'Layout',
-    'tag': 'Tag'
+      'tag': 'Tag',
+      'input': 'Input'
   },
   misc: {
     'guide': 'Guia',

@@ -473,3 +473,15 @@ body {
     padding: 10px 0;
     background-color: #f9fafc;
 }
+
+.cd-input {
+    width: 300px;
+}
+
+.cd-textarea {
+    width: 300px;
+}
+
+.cd-input + .cd-input {
+    margin-left: 10px;
+}
