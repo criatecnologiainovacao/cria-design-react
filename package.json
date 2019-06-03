@@ -90,8 +90,7 @@
         "style-loader": "^0.23.1",
         "typescript": "^3.4.5",
         "url-loader": "^1.1.2",
-        "webpack-cli": "^3.3.2",
-        "acorn": "^6.0.5"
+        "webpack-cli": "^3.3.2"
     },
     "dependencies": {
         "@babel/runtime": "^7.4.4",
