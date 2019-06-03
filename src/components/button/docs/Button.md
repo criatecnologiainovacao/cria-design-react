@@ -4,8 +4,6 @@ Componente de botão.
 
 ### Uso básico
 
-Dialog pops up a dialog box, and it's quite customizable.
-
 :::demo Use os atributos `type`, `plain`, `round` e `circle` para definir o estilo do Botão.
 
 ```js

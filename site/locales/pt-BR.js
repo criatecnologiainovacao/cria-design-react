@@ -5,7 +5,9 @@ module.exports = {
     'container': 'Container',
     'layout': 'Layout',
     'tag': 'Tag',
-      'step-bar': 'StepBar'
+    'step-bar': 'StepBar'
+    'breadcrumb': 'Breadcrumb'
+    'input': 'Input'
   },
   misc: {
     'guide': 'Guia',
