@@ -31,7 +31,6 @@ describe('Input test', () => {
     });
 
     it('suffixIcon', () => {
-        const cb = sinon.spy();
         const w = shallow(
             <Input
                 suffixIcon="cd-icon-time"

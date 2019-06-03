@@ -1,8 +1,8 @@
 /* @flow */
 
 import React from 'react';
-import PropTypes from "prop-types";
-import {Component} from '../../../libs';
+import PropTypes from 'prop-types';
+import { Component } from '../../../libs';
 
 export default class StepBar extends Component {
 
@@ -22,7 +22,6 @@ export default class StepBar extends Component {
             steps,
             clickable,
             onClick,
-            activeStep
         } = this.props;
 
         return (
