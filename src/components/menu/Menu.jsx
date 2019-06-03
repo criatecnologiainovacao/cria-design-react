@@ -40,22 +40,6 @@ export default class Menu extends Component {
         })
     }
 
-    componentWillReceiveProps(props: Object) {
-        if (props.defaultActive != this.props.defaultActive || props.defaultActive != this.state.activeIndex) {
-            this.defaultActiveChanged(props.defaultActive);
-        }
-
-        if (props.collapsed != this.props.collapsed || props.collapsed != this.state.collapse) {
-            this.setState({
-                collapse: props.collapsed
-            })
-        }
-
-        if (props.defaultOpeneds != this.props.defaultOpeneds) {
-            this.defaultOpenedsChanged(props.defaultOpeneds);
-        }
-    }
-
     openMenu(index: number, indexPath: Array<number>): void {
         let {openedMenus} = this.state;
 
@@ -108,9 +92,7 @@ export default class Menu extends Component {
         }
 
         if (this.props.mode === 'horizontal') {
-            for (const key in submenus) {
-                submenus[key].onItemSelect(index, indexPath);
-            }
+
 
             openedMenus = [];
         }
@@ -141,25 +123,6 @@ export default class Menu extends Component {
         this.setState({
             collapse: !this.state.collapse
         })
-    }
-
-    defaultActiveChanged(value: number): void {
-        const {menuItems} = this.state;
-
-        this.setState({activeIndex: value}, () => {
-            if (!menuItems[value]) return;
-
-            let menuItem = menuItems[value];
-            let indexPath = menuItem.indexPath();
-
-            this.handleSelect(value, indexPath, menuItem);
-        });
-    }
-
-    defaultOpenedsChanged(value: mixed): void {
-        this.setState({
-            openedMenus: value
-        });
     }
 
     render(): React.DOM {
