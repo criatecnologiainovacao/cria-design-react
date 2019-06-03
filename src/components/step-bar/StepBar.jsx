@@ -22,7 +22,6 @@ export default class StepBar extends Component {
             steps,
             clickable,
             onClick,
-            activeStep
         } = this.props;
 
         return (

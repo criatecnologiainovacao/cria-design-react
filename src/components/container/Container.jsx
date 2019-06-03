@@ -33,7 +33,6 @@ export default class Container extends Component {
 
     render(): React.DOM {
         const {
-            direction,
             children
         } = this.props;
 
