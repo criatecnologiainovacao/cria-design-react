@@ -12,14 +12,14 @@
     ],
     "scripts": {
         "start": "cd site && node run.js",
-        "test": "CI=true react-scripts test --watchAll=false --coverage",
+        "test": "build-storybook && CI=true react-scripts test --watchAll=false --coverage",
+        "test:only": "CI=true react-scripts test --watchAll=false --coverage",
         "lint": "eslint src libs site --quiet",
         "build": "cd build/site && webpack --progress",
         "prepublishOnly": "./build/scripts/prepare.sh",
         "deploy:doc": "./build/scripts/release.sh",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook",
-        "chromatic": "./node_modules/.bin/chromatic test --app-code=\"oau101zwpfe\""
+        "build-storybook": "build-storybook"
     },
     "repository": {
         "type": "git",
@@ -90,7 +90,8 @@
         "style-loader": "^0.23.1",
         "typescript": "^3.4.5",
         "url-loader": "^1.1.2",
-        "webpack-cli": "^3.3.2"
+        "webpack-cli": "^3.3.2",
+        "acorn": "^6.0.5"
     },
     "dependencies": {
         "@babel/runtime": "^7.4.4",
