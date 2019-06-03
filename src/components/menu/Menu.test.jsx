@@ -1,103 +1,113 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import sinon from 'sinon';
+import {shallow} from 'enzyme';
 
-import Tag from './Tag';
+import Menu from './Menu';
+import MenuItem from "./MenuItem";
+import MenuItemGroup from "./MenuItemGroup";
 
-describe('Tag tests', () => {
+describe('Menu tests', () => {
 
-    it('should create default tag', () => {
+    it('should create default menu', () => {
 
-        const tag = shallow(<Tag>TEST</Tag>);
+        const menu = shallow(<Menu></Menu>);
 
-        expect(tag.find('.cd-tag').text()).toEqual('TEST');
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
     });
 
-    it('should typed tags have correctly classes', () => {
+    it('should create default menu collapsed', () => {
 
-        const successTag = shallow(<Tag type="success">TEST</Tag>);
-        const infoTag = shallow(<Tag type="info">TEST</Tag>);
-        const warningTag = shallow(<Tag type="warning">TEST</Tag>);
-        const dangerTag = shallow(<Tag type="danger">TEST</Tag>);
+        const menu = shallow(<Menu collapsed></Menu>);
 
-        expect(successTag.find('.cd-tag')).toHaveClassName('cd-tag--success');
-        expect(infoTag.find('.cd-tag')).toHaveClassName('cd-tag--info');
-        expect(warningTag.find('.cd-tag')).toHaveClassName('cd-tag--warning');
-        expect(dangerTag.find('.cd-tag')).toHaveClassName('cd-tag--danger');
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.hasClass('cd-menu--collapse')).toBeTruthy();
     });
 
-    it('should tag with icon be properly created', () => {
+    it('should create default menu without title', () => {
 
-        const tag = shallow(<Tag icon="cd-icon-search">TESTE</Tag>);
+        const menu = shallow(<Menu titleDisabled></Menu>);
 
-        expect(tag.find('i.cd-icon').exists()).toBe(true);
-        expect(tag.find('i.cd-icon-search').exists()).toBe(true);
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.children()).toHaveLength(0);
     });
 
-    it('should tag with appendIcon be properly created', () => {
+    it('should create default menu with multiple childrens', () => {
 
-        const tag = shallow(<Tag appendIcon="cd-icon-search">TESTE</Tag>);
+        const menu = shallow(<Menu titleDisabled defaultActive="0">
+            <MenuItem index="0"></MenuItem>
+            <MenuItem index="1"></MenuItem>
+            <MenuItem index="2"></MenuItem>
+            <MenuItem index="3"></MenuItem>
+            <MenuItem index="4"></MenuItem>
+            <MenuItem index="5"></MenuItem>
+            <MenuItem index="6"></MenuItem>
+        </Menu>);
 
-        expect(tag.find('i.cd-append-icon').exists()).toBe(true);
-        expect(tag.find('i.cd-icon-search').exists()).toBe(true);
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.childAt(0).type()).toEqual(MenuItem)
+        expect(menu.childAt(0).dive().hasClass('is-active')).toBeTruthy()
+        expect(menu.childAt(1).dive().hasClass('is-active')).toBeFalsy()
+        expect(menu.children()).toHaveLength(7);
     });
 
-    it('should closable tag have close icon', () => {
-        const tag = shallow(<Tag closable>TEST</Tag>);
+    it('should create horizontal menu', () => {
 
-        expect(tag.find('i.cd-tag__close').exists()).toBe(true);
+        const menu = shallow(<Menu mode="horizontal"></Menu>);
+
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.hasClass('cd-menu--horizontal')).toBeTruthy();
     });
 
-    it('should have hit class', () => {
-        const tag = shallow(<Tag hit>TEST</Tag>);
 
-        expect(tag.find('.cd-tag').first().hasClass('is-hit')).toBeTruthy();
+    it('should create custom menu', () => {
+
+        const menu = shallow(<Menu title="customMenu"></Menu>);
+
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.find('.cd-menu').text()).toEqual("customMenu");
     });
 
-    it('should heve solid class', () => {
-        const tag = shallow(<Tag solid>TEST</Tag>);
 
-        expect(tag.find('.cd-tag').first().hasClass('is-solid')).toBeTruthy();
+    it('should create default menu with childrens', () => {
+
+        const menu = shallow(
+        <Menu>
+            <MenuItem index="0"> MenuItem </MenuItem>
+        </Menu>);
+
+        expect(menu.hasClass('cd-menu')).toBeTruthy();
+        expect(menu.childAt(1).type()).toEqual(MenuItem)
+        expect(menu.childAt(1).find('.cd-menu-item')).toBeTruthy()
     });
 
-    it('should round tag have properly class', () => {
-        const tag = shallow(<Tag round>TEST</Tag>);
+    it('should create default menu with childrens', () => {
 
-        expect(tag.find('.cd-tag').first().hasClass('is-round')).toBeTruthy();
+        const menu = shallow(
+            <Menu>
+                <MenuItemGroup title="ItemGroup">
+                    <MenuItem index="0">MenuItem</MenuItem>
+                </MenuItemGroup>
+            </Menu>);
+
+        expect(menu.hasClass('cd-menu')).toBeTruthy();
+        expect(menu.childAt(1).type()).toEqual(MenuItemGroup)
+        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy()
+        expect(menu.childAt(1).childAt(0).find('.cd-menu-item')).toBeTruthy()
     });
 
-    it('should simulate close click when onClose is present', () => {
-        const onClose = sinon.spy();
-        const tag = shallow(React.createElement(
-            Tag,
-            { closable: true, onClose: onClose },
-            'TEST'
-        ));
+    it('should create default menu collapsed with childrens', () => {
 
-        tag.find('i.cd-tag__close').simulate('click');
+        const menu = shallow(
+            <Menu collapsed>
+                <MenuItemGroup title="ItemGroup">
+                    <MenuItem index="0">MenuItem</MenuItem>
+                </MenuItemGroup>
+            </Menu>);
 
-        expect(onClose.calledOnce).toBe(true);
-        expect(tag).toHaveState('visible', false);
+        expect(menu.hasClass('cd-menu')).toBeTruthy();
+        expect(menu.hasClass('cd-menu--collapse')).toBeTruthy();
+        expect(menu.childAt(1).type()).toEqual(MenuItemGroup)
+        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy()
+        expect(menu.childAt(1).childAt(0).find('.cd-menu-item')).toBeTruthy()
     });
 
-    it('should simulate click when onClick is present', () => {
-        const onClick = sinon.spy();
-        const tag = shallow(React.createElement(
-            Tag,
-            { onClick: onClick },
-            'TEST'
-        ));
-
-        tag.simulate('click');
-        expect(tag.find('.cd-tag').first().hasClass('cd-tag--clickable')).toBeTruthy();
-
-    });
-
-    it('should not simulate close click when onClose is not present', () => {
-        const tag = shallow(<Tag closable>TEST</Tag>);
-
-        tag.find('i.cd-tag__close').simulate('click');
-
-        expect(tag).toHaveState('visible', false);
-    });
 });

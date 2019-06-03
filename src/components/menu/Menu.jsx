@@ -197,7 +197,7 @@ Menu.childContextTypes = {
 
 Menu.propTypes = {
     titleDisabled: PropTypes.bool,
-    title: PropTypes.object,
+    title: PropTypes.string,
     mode: PropTypes.string,
     defaultActive: PropTypes.string,
     collapsed: PropTypes.bool,
