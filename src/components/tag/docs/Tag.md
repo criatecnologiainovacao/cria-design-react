@@ -159,11 +159,11 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | type     | O tipo da Tag. Determina seu estilo de cores. | string    | success/info/warning/danger | — |
 | size      | Tamanho da Tag. | string    | medium/small/mini | — |
-| closable  | Se a Tag pode ser removível ou não | boolean  | — | false |
+| closable  | Se a Tag pode ser removível ou não. | boolean  | — | false |
 | disableTransitions | Se, ao remover a Tag, a animação será desativada. Só funciona com `closable` ativo. | boolean   | — | false |
 | round     | Se a Tag terá as bordas arredondadas. | boolean   | — | false |
 | hit     | Se a Tag terá bordas | boolean   | — | false |
-| solid     | Se a Tag terá cores sólidas | boolean   | — | false |
+| solid     | Se a Tag terá cores sólidas. | boolean   | — | false |
 | icon      | Ícone da Tag. | string    | — | — |
 | appendIcon | Ícone que aparecerá depois do texto da Tag. Só funciona se `closable` estiver desativo | string  | — | — |
 

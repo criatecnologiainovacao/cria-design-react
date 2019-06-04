@@ -98,8 +98,8 @@ render() {
 | Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | steps     | Os nomes dos passos | array    | — | — |
-| activeStep      | Qual passo esta ativo | number    | — | 0 |
-| clickable      | Determina se os passos serao clicaveis | boolean | — | false |
+| activeStep      | Qual passo está ativo | number    | — | 0 |
+| clickable      | Determina se os passos serão clicaveis | boolean | — | false |
 
 ### Eventos
 | Nome do evento | Descrição | Parameters |
