@@ -74,9 +74,7 @@ export default class FormItem extends Component {
             return;
         }
 
-        setTimeout(() => {
-            this.validate('change');
-        });
+        this.validate('change');
     }
 
     validate(trigger: string, cb?: Function): boolean | void {

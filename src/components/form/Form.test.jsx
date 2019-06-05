@@ -154,6 +154,23 @@ describe('Form tests', () => {
         expect(cb.calledOnce).toBe(true);
     });
 
+    it('method validate - no model', () => {
+        const cb = sinon.spy();
+
+        const form = mount(
+            <Form>
+                <Form.Item label="Activity name">
+                    <Input value={data.name} onChange={cb}/>
+                </Form.Item>
+            </Form>
+        );
+        const field = form.find('.cd-form').children().first();
+
+        field.instance().resetField();
+
+        expect(cb.calledOnce).toBe(false);
+    });
+
     it('blur validate - pass', () => {
         const cb = sinon.spy();
         const prop = { onSubmit: cb, model: data };
