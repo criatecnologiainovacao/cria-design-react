@@ -1,9 +1,9 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Container from "./Container";
-import Footer from "../footer";
-import Header from "../header";
-import Main from "../main";
+import { storiesOf } from '@storybook/react';
+import Container from './Container';
+import Footer from '../footer';
+import Header from '../header';
+import Main from '../main';
 
 const containerStyle = {
     height: '50px',
@@ -12,7 +12,7 @@ const containerStyle = {
     textAlign: 'center'
 };
 
-storiesOf('Container', module)
+storiesOf('Básicos|Container', module)
     .add('default', () => <div>
         <Container>
             <Header>Header</Header>

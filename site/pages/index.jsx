@@ -16,7 +16,8 @@ export default {
             'step-bar': require('../../src/components/step-bar/docs')
         },
         'Formulários': {
-            'input': require('../../src/components/input/docs')
+            'input': require('../../src/components/input/docs'),
+            'form': require('../../src/components/form/docs')
         },
         'Outros': {
             'card': require('../../src/components/card/docs')

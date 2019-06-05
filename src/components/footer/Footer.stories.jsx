@@ -1,8 +1,8 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import Footer from "./Footer";
+import { storiesOf } from '@storybook/react';
+import Footer from './Footer';
 
-storiesOf('Footer', module)
+storiesOf('Básicos|Footer', module)
     .add('default', () => <Footer>Footer</Footer>)
     .add('height', () => {
         return (

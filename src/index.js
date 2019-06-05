@@ -9,4 +9,5 @@ export { default as Aside } from './components/aside';
 export { default as Main } from './components/main';
 export { default as Header } from './components/header';
 export { default as Footer } from './components/footer';
+export { default as Form } from './components/form';
 export { default as Card } from './components/card';

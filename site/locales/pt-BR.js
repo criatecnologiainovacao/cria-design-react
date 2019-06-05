@@ -8,6 +8,7 @@ module.exports = {
         'step-bar': 'StepBar',
         'breadcrumb': 'Breadcrumb',
         'input': 'Input',
+        'form': 'Form',
         'card': 'Card'
     },
     misc: {
