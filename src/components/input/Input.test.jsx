@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import Input from './Input';
@@ -63,21 +63,25 @@ describe('Input test', () => {
         expect(w.find('.cd-textarea__inner').first().prop('style').resize).toBe('both');
     });
 
+    it('autosize', () => {
+        const input = mount(
+            <Input type="textarea" autoSize={{ minRows: 2, maxRows: 3 }}/>
+        );
+
+        expect(input).toHaveState({ textareaStyle: { resize: undefined, height: '-12px' } });
+
+    });
+
     it('input events', () => {
         const onChange = sinon.spy();
         const onFocus = sinon.spy();
         const onBlur = sinon.spy();
-        const onClear = sinon.spy();
-        const onInput = sinon.spy();
 
         const input = shallow(
             <Input
                 onBlur={onBlur}
                 onChange={onChange}
-                onClear={onClear}
-                onInput={onInput}
                 onFocus={onFocus}
-                clearable
                 value="Teste"
             />
         );
@@ -93,30 +97,116 @@ describe('Input test', () => {
     });
 
     it('hovering', () => {
-        const input = shallow(
+        const input = mount(
             <Input value="Teste"/>
         );
 
-        input.instance().handleHoveringStart();
+        input.simulate('mouseenter');
         expect(input.state('hovering')).toBe(true);
 
-        input.instance().handleHoveringEnd();
+        input.simulate('mouseleave');
         expect(input.state('hovering')).toBe(false);
     });
 
     it('clear', () => {
         const onClear = sinon.spy();
-        const onInput = sinon.spy();
+        const onChange = sinon.spy();
+        let state = 'teste';
 
-        const input = shallow(
+        const input = mount(
             <Input
                 onClear={onClear}
-                onInput={onInput}
-                value="Teste"
+                value={state}
+                onChange={onChange}
+                clearable
             />
         );
 
-        input.instance().clear();
+        input.find('.cd-input__inner').simulate('focus');
+
+        const closeIcon = input.find('.cd-input__clear');
+        closeIcon.simulate('click');
+
+        expect(onClear.calledOnce).toBe(true);
+        expect(onChange.calledOnce).toBe(true);
+    });
+
+    it('password', () => {
+        const onChange = sinon.spy();
+        let state = 'teste';
+
+        const input = mount(
+            <Input
+                value={state}
+                onChange={onChange}
+                showPassword
+            />
+        );
+
+        input.find('.cd-input__inner').simulate('focus');
+
+        const closeIcon = input.find('.cd-input__clear');
+
+        expect(input).toHaveState({ passwordVisible: false });
+
+        closeIcon.simulate('click');
+
+        expect(input).toHaveState({ passwordVisible: true });
+    });
+
+    it('word limit', () => {
+        const onChange = sinon.spy();
+        let state = 'teste';
+
+        const input = mount(
+            <Input
+                value={state}
+                onChange={onChange}
+                showWordLimit
+            />
+        );
+
+        const textarea = mount(
+            <Input
+                type="textarea"
+                value={state}
+                onChange={onChange}
+                showWordLimit
+            />
+        );
+
+        expect(input.find('.cd-input__count')).toBeTruthy();
+        expect(textarea.find('.cd-input__count')).toBeTruthy();
+    });
+
+    it('prepend', () => {
+        const input = mount(
+            <Input
+                prepend="TESTE"
+            />
+        );
+
+        expect(input.find('.cd-input-group__prepend')).toBeTruthy();
+    });
+
+    it('append', () => {
+        const input = mount(
+            <Input
+                append="TESTE"
+            />
+        );
+
+        expect(input.find('.cd-input-group__append')).toBeTruthy();
+    });
+
+    it('suffix', () => {
+        const input = mount(
+            <Input
+                suffix="TESTE"
+            />
+        );
+
+        expect(input.find('.cd-input__suffix-inner')).toBeTruthy();
     });
 
 });
