@@ -74,6 +74,7 @@ export default class FormItem extends Component {
             return;
         }
 
+        // Talvez tenha que colocar um setTimeout envolta dessa chamada no futuro
         this.validate('change');
     }
 
