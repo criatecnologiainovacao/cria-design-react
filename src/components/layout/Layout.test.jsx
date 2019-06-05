@@ -7,43 +7,77 @@ describe('Layout test', () => {
   it('Basic layout', () => {
     const w1 = mount(
       <Layout.Row>
-        <Layout.Col span="24"><div className="grid-content bg-purple-dark"></div></Layout.Col>
+          <Layout.Col span="24">
+              <div className="grid-content bg-purple-dark"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w2 = mount(
       <Layout.Row>
-        <Layout.Col span="12"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="12"><div className="grid-content bg-purple-light"></div></Layout.Col>
+          <Layout.Col span="12">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="12">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w3 = mount(
       <Layout.Row>
-        <Layout.Col span="8"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="8"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="8"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w4 = mount(
       <Layout.Row>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w5 = mount(
       <Layout.Row>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple-light"></div></Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w6 = mount(
       <Layout.Row>
-        <Layout.Col span="0"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="0">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w1.find('.cd-row .cd-col-24 .grid-content').exists()).toBeTruthy();
@@ -58,10 +92,18 @@ describe('Layout test', () => {
   it('Column spacing', () => {
     const w = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('.cd-row .cd-col-6').length).toBe(4);
@@ -72,23 +114,41 @@ describe('Layout test', () => {
   it('Hybrid layout', () => {
     const w1 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="16"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="8"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="16">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w2 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="8"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="8"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="8">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w3 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="16"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="4"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="16">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="4">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w1.find('.cd-row .cd-col-16').length).toBe(1);
@@ -104,19 +164,29 @@ describe('Layout test', () => {
   it('Column offset', () => {
     const w1 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6" offset="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6" offset="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w2 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="6" offset="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6" offset="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6" offset="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6" offset="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w3 = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="12" offset="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="12" offset="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w1.find('.cd-row .cd-col-6').length).toBe(2);
@@ -128,37 +198,67 @@ describe('Layout test', () => {
   it('Alignment', () => {
     const w1 = render(
       <Layout.Row type="flex" className="row-bg">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w2 = render(
       <Layout.Row type="flex" className="row-bg" justify="center">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w3 = render(
       <Layout.Row type="flex" className="row-bg" justify="end">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w4 = render(
       <Layout.Row type="flex" className="row-bg" justify="space-between">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w5 = render(
       <Layout.Row type="flex" className="row-bg" justify="space-around">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span={6}><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span={6}>
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w1.hasClass('cd-row--flex')).toBeTruthy();
@@ -171,15 +271,25 @@ describe('Layout test', () => {
   it('Responsive Layout', () => {
     const w = mount(
       <Layout.Row gutter="10">
-        <Layout.Col xs="8" sm="6" md="4" lg="3"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col xs="4" sm="6" md="8" lg="9"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col xs="4" sm="6" md="8" lg="9"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col xs="8" sm="6" md="4" lg="3"><div className="grid-content bg-purple-light"></div></Layout.Col>
+          <Layout.Col xs="8" sm="6" md="4" lg="3">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col xs={{ span: 4, offset: 4 }} sm="6" md="8" lg="9">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col xs="4" sm="6" md="8" lg="9">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col xs="8" sm="6" md="4" lg="3">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w1 = mount(
       <Layout.Row gutter="10">
-        <Layout.Col xs="0" sm="6" md="4" lg="3"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col xs="0" sm="6" md="4" lg="3">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('.cd-col-24.cd-col-xs-8.cd-col-sm-6.cd-col-md-4.cd-col-lg-3').length).toBe(2);
@@ -190,7 +300,9 @@ describe('Layout test', () => {
   it('Row custom tag', () => {
     const w = mount(
       <Layout.Row tag="section">
-        <Layout.Col span="24"><div className="grid-content bg-purple-dark"></div></Layout.Col>
+          <Layout.Col span="24">
+              <div className="grid-content bg-purple-dark"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('section').length).toBe(1);
@@ -199,7 +311,9 @@ describe('Layout test', () => {
   it('Column custom tag', () => {
     const w = mount(
       <Layout.Row>
-        <Layout.Col tag="section" span="24"><div className="grid-content bg-purple-dark"></div></Layout.Col>
+          <Layout.Col tag="section" span="24">
+              <div className="grid-content bg-purple-dark"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('.cd-row section.cd-col-24').length).toBe(1);
@@ -208,16 +322,28 @@ describe('Layout test', () => {
   it('Row with align', () => {
     const w1 = render(
       <Layout.Row type="flex" align="middle" className="row-bg">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     const w2 = render(
       <Layout.Row type="flex" align="bottom" className="row-bg">
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple-light"></div></Layout.Col>
-        <Layout.Col span="6"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple-light"/>
+          </Layout.Col>
+          <Layout.Col span="6">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w1.hasClass('is-align-middle')).toBeTruthy();
@@ -227,7 +353,9 @@ describe('Layout test', () => {
   it('Column with push', () => {
     const w = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="12" push="12"><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="12" push="12">
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('.cd-col-12').hasClass('cd-col-push-12')).toBeTruthy();
@@ -236,7 +364,9 @@ describe('Layout test', () => {
   it('Column with pull', () => {
     const w = mount(
       <Layout.Row gutter="20">
-        <Layout.Col span="12" pull={12}><div className="grid-content bg-purple"></div></Layout.Col>
+          <Layout.Col span="12" pull={12}>
+              <div className="grid-content bg-purple"/>
+          </Layout.Col>
       </Layout.Row>
     );
     expect(w.find('.cd-col-12').hasClass('cd-col-pull-12')).toBeTruthy();
