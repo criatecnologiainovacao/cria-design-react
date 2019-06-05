@@ -44,7 +44,7 @@ export default class Menu extends Component {
         let {openedMenus} = this.state;
 
         if (openedMenus.indexOf(index) !== -1) return;
-        // 将不在该菜单路径下的其余菜单收起
+
         if (this.props.uniqueOpened) {
             openedMenus = openedMenus.filter(index => {
                 return indexPath.indexOf(index) !== -1;
@@ -108,7 +108,7 @@ export default class Menu extends Component {
         if (!menuItems[activeIndex]) return;
         if (activeIndex && this.props.mode === 'vertical') {
             let indexPath = menuItems[activeIndex].indexPath();
-            // 展开该菜单项的路径上所有子菜单
+
             indexPath.forEach(index => {
                 const submenu = submenus[index];
 
@@ -176,4 +176,4 @@ Menu.defaultProps = {
     collapsed: false,
     mode: 'vertical',
     menuTrigger: 'hover'
-}
+};
