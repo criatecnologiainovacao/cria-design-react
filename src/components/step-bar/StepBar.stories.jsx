@@ -1,8 +1,8 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 
-import StepBar from "./StepBar";
-import {action} from "@storybook/addon-actions";
+import StepBar from './StepBar';
+import { action } from '@storybook/addon-actions';
 
 export const steps = ['Test1','Test2','Test3','Test4','Test5','Test6'];
 
@@ -12,7 +12,7 @@ export const actionsClick = {
 
 let activeStep = 0;
 
-storiesOf('StepBar', module)
+storiesOf('Navegação|Steps', module)
     .add('default', () =>
       <StepBar steps={steps} />
     )

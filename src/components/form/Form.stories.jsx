@@ -32,7 +32,7 @@ export const actionsForm = {
         e.preventDefault();
         this.refs.form.validate((valid) => {
             if (valid) {
-                alert('submit!');
+                console.log('submit!');
             } else {
                 console.log('error submit!!');
                 return false;
@@ -69,69 +69,42 @@ storiesOf('Formulário|Form', module)
         );
     })
     .add('align', () => {
+        const form = position => (
+            <Form
+                style={{ width: '500px' }}
+                labelPosition={position}
+                model={form}
+                onSubmit={actionsForm.onSubmit.bind(this)}
+            >
+                <Form.Item label="Activity name">
+                    <Input value={form.name}
+                           onChange={actionsForm.onChange.bind(this, 'name')}/>
+                </Form.Item>
+                <Form.Item required label="Activity form">
+                    <Input type="textarea" value={form.desc}
+                           onChange={actionsForm.onChange.bind(this, 'desc')}/>
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" nativeType="submit">Create</Button>
+                    <Button>Cancel</Button>
+                </Form.Item>
+            </Form>
+        );
         return (
             <div>
-                <Form
-                    style={{ width: '500px' }}
-                    labelPosition="top"
-                    model={form}
-                    onSubmit={actionsForm.onSubmit.bind(this)}
-                >
-                    <Form.Item label="Activity name">
-                        <Input value={form.name}
-                               onChange={actionsForm.onChange.bind(this, 'name')}/>
-                    </Form.Item>
-                    <Form.Item required label="Activity form">
-                        <Input type="textarea" value={form.desc}
-                               onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" nativeType="submit">Create</Button>
-                        <Button>Cancel</Button>
-                    </Form.Item>
-                </Form>
+                {
+                    form('top')
+                }
                 <br/>
                 <br/>
-                <Form
-                    style={{ width: '500px' }}
-                    labelPosition="left"
-                    model={form}
-                    onSubmit={actionsForm.onSubmit.bind(this)}
-                >
-                    <Form.Item label="Activity name">
-                        <Input value={form.name}
-                               onChange={actionsForm.onChange.bind(this, 'name')}/>
-                    </Form.Item>
-                    <Form.Item required label="Activity form">
-                        <Input type="textarea" value={form.desc}
-                               onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" nativeType="submit">Create</Button>
-                        <Button>Cancel</Button>
-                    </Form.Item>
-                </Form>
+                {
+                    form('left')
+                }
                 <br/>
                 <br/>
-                <Form
-                    style={{ width: '500px' }}
-                    labelPosition="rigth"
-                    model={form}
-                    onSubmit={actionsForm.onSubmit.bind(this)}
-                >
-                    <Form.Item label="Activity name">
-                        <Input value={form.name}
-                               onChange={actionsForm.onChange.bind(this, 'name')}/>
-                    </Form.Item>
-                    <Form.Item required label="Activity form">
-                        <Input type="textarea" value={form.desc}
-                               onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" nativeType="submit">Create</Button>
-                        <Button>Cancel</Button>
-                    </Form.Item>
-                </Form>
+                {
+                    form('right')
+                }
             </div>
         );
     })

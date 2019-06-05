@@ -119,12 +119,7 @@ export default class FormItem extends Component {
     }
 
     resetField(): void {
-        let { valid, error } = this.state;
-
-        valid = true;
-        error = '';
-
-        this.setState({ valid, error });
+        this.setState({ valid: true, error: '' });
 
         let value = this.fieldValue();
 
