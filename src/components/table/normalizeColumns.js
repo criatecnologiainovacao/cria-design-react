@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { getValueByPath } from "./utils";
+import { getValueByPath } from './utils';
 
-import {
-  Column,
-  _Column,
-} from "./Types";
+import { _Column, Column } from './Types';
 
 function defaultRender(row: Object, column: _Column) {
   return getValueByPath(row, column.property);
