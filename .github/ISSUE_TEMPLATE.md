@@ -1,21 +1,21 @@
-### Description
+### Descrição
 
-Explain the issue you met, and describe what you expected to be. If you can write in English, we will be very grateful.
+Explique a issue, e descreva o que esperava que fosse o comportamento correto.
 
-### Reproduce Steps
+### Passos de reprodução
 
-1. [First Step]
-2. [Second Step]
-3. [and so on...]
+1. [Primeiro passo]
+2. [Segundo passo]
+3. [assim por diante...]
 
-### Error Trace (if possible)
+### Error Trace (se possível)
 
-It's better to post up the error stack for us to trace this issue.
+Facilita encontrar o problema se o mesmo estiver com seu stack. Formate-o com o formatador de códigos (```).
 
-### Solution
+### Solução (se possível)
 
-What needs to be done to address this issue? Ideally, provide a pull request with a fix.
+O que é necessário para corrigir esse problema? De forma ideal, abra um PR com a correção.
 
-### Additional Information
+### Informações Adicionais
 
-Any additional information, configuration or data that might be necessary to reproduce the issue.
+Qualquer informação adicional, configuração ou dados necessários para reproduzir a issue.
