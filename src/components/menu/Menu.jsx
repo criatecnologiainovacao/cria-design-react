@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import {Component, PropTypes} from '../../../libs';
+import { Component, PropTypes } from '../../../libs';
 
 type State = {
     activeIndex: number,
@@ -83,9 +83,7 @@ export default class Menu extends Component {
     }
 
     handleSelect(index: number, indexPath: Array<number>, instance: Component): void {
-        let {activeIndex, openedMenus, submenus} = this.state;
-
-        activeIndex = index;
+        let { openedMenus } = this.state;
 
         if (this.props.onSelect) {
             this.props.onSelect(index, indexPath, instance);
@@ -97,7 +95,7 @@ export default class Menu extends Component {
             openedMenus = [];
         }
 
-        this.setState({activeIndex, openedMenus}, () => {
+        this.setState({ activeIndex: index, openedMenus }, () => {
             if (this.props.mode === 'vertical') {
                 this.openActiveItemMenus();
             }

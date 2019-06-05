@@ -1,10 +1,10 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import Menu from './Menu';
-import MenuItem from "./MenuItem";
-import MenuItemGroup from "./MenuItemGroup";
-import SubMenu from "./SubMenu";
+import MenuItem from './MenuItem';
+import MenuItemGroup from './MenuItemGroup';
+import SubMenu from './SubMenu';
 
 jest.useFakeTimers();
 
@@ -12,24 +12,24 @@ describe('Menu tests', () => {
 
     it('should create default menu', () => {
 
-        const menu = shallow(<Menu></Menu>);
+        const menu = shallow(<Menu/>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
     });
 
     it('should create default menu collapsed', () => {
 
-        const menu = shallow(<Menu collapsed></Menu>);
+        const menu = shallow(<Menu collapsed/>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.hasClass('cd-menu--collapse')).toBeTruthy();
-        menu.find('.menu-icon').simulate('click')
+        menu.find('.menu-icon').simulate('click');
         expect(menu.hasClass('cd-menu--collapse')).toBeFalsy();
     });
 
     it('should create default menu without title', () => {
 
-        const menu = shallow(<Menu titleDisabled></Menu>);
+        const menu = shallow(<Menu titleDisabled/>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.children()).toHaveLength(0);
@@ -37,28 +37,30 @@ describe('Menu tests', () => {
 
     it('should create default menu with multiple childrens', () => {
 
-        const menu = shallow(<Menu titleDisabled defaultActive="0">
-          <MenuItem index="0"></MenuItem>
-          <MenuItem index="1"></MenuItem>
-          <MenuItem index="2"></MenuItem>
-          <MenuItem index="3"></MenuItem>
-          <MenuItem index="4"></MenuItem>
-          <MenuItem index="5"></MenuItem>
-          <MenuItem index="6"></MenuItem>
-        </Menu>);
+        const menu = shallow(
+            <Menu titleDisabled defaultActive="0">
+                <MenuItem index="0"/>
+                <MenuItem index="1"/>
+                <MenuItem index="2"/>
+                <MenuItem index="3"/>
+                <MenuItem index="4"/>
+                <MenuItem index="5"/>
+                <MenuItem index="6"/>
+            </Menu>
+        );
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
-        expect(menu.childAt(0).type()).toEqual(MenuItem)
-        expect(menu.childAt(0).dive().hasClass('is-active')).toBeTruthy()
-        expect(menu.childAt(1).dive().hasClass('is-active')).toBeFalsy()
+        expect(menu.childAt(0).type()).toEqual(MenuItem);
+        expect(menu.childAt(0).dive().hasClass('is-active')).toBeTruthy();
+        expect(menu.childAt(1).dive().hasClass('is-active')).toBeFalsy();
         menu.childAt(1).dive().simulate('click');
-        expect(menu.childAt(1).dive().hasClass('is-active')).toBeTruthy()
+        expect(menu.childAt(1).dive().hasClass('is-active')).toBeTruthy();
         expect(menu.children()).toHaveLength(7);
     });
 
     it('should create horizontal menu', () => {
 
-        const menu = shallow(<Menu mode="horizontal"></Menu>);
+        const menu = shallow(<Menu mode="horizontal"/>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.hasClass('cd-menu--horizontal')).toBeTruthy();
@@ -69,81 +71,58 @@ describe('Menu tests', () => {
         const menu = shallow(<Menu onSelect={function () {
 
         }} mode="horizontal" defaultActive="0">
-          <MenuItem index="0"></MenuItem>
-          <MenuItem index="1"></MenuItem>
-          <MenuItem index="2"></MenuItem>
-          <SubMenu index="3">
-            <MenuItem index="1"></MenuItem>
-          </SubMenu>
-          <MenuItem index="4"></MenuItem>
-          <MenuItem index="5"></MenuItem>
-          <MenuItem index="6"></MenuItem>
+            <MenuItem index="0"/>
+            <MenuItem index="1"/>
+            <MenuItem index="2"/>
+            <SubMenu index="3">
+                <MenuItem index="1"/>
+            </SubMenu>
+            <MenuItem index="4"/>
+            <MenuItem index="5"/>
+            <MenuItem index="6"/>
         </Menu>);
 
-        expect(menu.childAt(1).type()).toEqual(MenuItem)
+        expect(menu.childAt(1).type()).toEqual(MenuItem);
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.hasClass('cd-menu--horizontal')).toBeTruthy();
-        expect(menu.childAt(2).dive().hasClass('is-active')).toBeFalsy()
+        expect(menu.childAt(2).dive().hasClass('is-active')).toBeFalsy();
         menu.childAt(2).dive().simulate('click');
-        expect(menu.childAt(2).dive().hasClass('is-active')).toBeTruthy()
+        expect(menu.childAt(2).dive().hasClass('is-active')).toBeTruthy();
         expect(menu.childAt(3).type()).toEqual(SubMenu);
     });
 
-    describe('should create menu with child and submenu active', () => {
-
+    it('should create menu with child and submenu active', () => {
         const menu = mount(
-          <Menu defaultActive="0">
-            <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
-              <MenuItem index="0"></MenuItem>
-            </SubMenu>
-          </Menu>);
+            <Menu defaultActive="0">
+                <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
+                    <MenuItem index="0"/>
+                </SubMenu>
+            </Menu>
+        );
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.childAt(0).childAt(1).type()).toEqual(SubMenu);
-        expect(menu.childAt(0).find('.cd-submenu').hasClass('is-opened')).toBeTruthy()
-        menu.instance().handleSubmenuClick(1)
-        menu.instance().handleSubmenuClick(1)
+        expect(menu.childAt(0).find('.cd-submenu').hasClass('is-opened')).toBeTruthy();
+        menu.instance().handleSubmenuClick(1);
+        menu.instance().handleSubmenuClick(1);
         menu.instance().closeMenu(1)
 
     });
 
-    it('should create menu with child and submenu custom onClose', () => {
+    it('should create menu horizontal with child and submenu', () => {
 
         const menu = mount(
-          <Menu onClose={() => {
-
-            }}
-            onOpen={() => {
-
-                  }} defaultActive="0">
-            <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
-              <MenuItem index="0"></MenuItem>
-            </SubMenu>
-          </Menu>);
-
-        expect(menu.find('.cd-menu').exists()).toBeTruthy();
-        expect(menu.childAt(0).childAt(1).type()).toEqual(SubMenu);
-        expect(menu.childAt(0).find('.cd-submenu').hasClass('is-opened')).toBeTruthy()
-        menu.instance().handleSubmenuClick(1)
-        menu.instance().handleSubmenuClick(1)
-        menu.instance().closeMenu(1)
-
-    });
-
-    describe('should create menu horizontal with child and submenu', () => {
-
-        const menu = mount(
-          <Menu mode="horizontal" defaultActive="0">
-            <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
-              <MenuItem index="0"></MenuItem>
-            </SubMenu>
-          </Menu>);
+            <Menu mode="horizontal" defaultActive="0">
+                <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
+                    <MenuItem index="0"/>
+                </SubMenu>
+            </Menu>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.childAt(0).childAt(0).type()).toEqual(SubMenu);
-        menu.find('SubMenu').instance().handleClick()
-        menu.find('SubMenu').instance().handleMouseenter()
-        menu.find('SubMenu').instance().handleMouseleave()
+        menu.find('SubMenu').instance().handleClick();
+        menu.find('SubMenu').instance().handleMouseenter();
+        menu.find('SubMenu').instance().handleMouseleave();
         menu.find('SubMenu').instance().onItemSelect(0, [1])
 
     });
@@ -151,15 +130,15 @@ describe('Menu tests', () => {
     it('should create menu with child and submenu and menuItem', () => {
 
         const menu = mount(
-          <Menu defaultActive="0">
+            <Menu defaultActive="0">
 
-            <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
-              <MenuItemGroup title="Teste">
-                <MenuItem index="0"></MenuItem>
-              </MenuItemGroup>
-            </SubMenu>
+                <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
+                    <MenuItemGroup title="Teste">
+                        <MenuItem index="0"/>
+                    </MenuItemGroup>
+                </SubMenu>
 
-          </Menu>);
+            </Menu>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.childAt(0).childAt(1).type()).toEqual(SubMenu);
@@ -167,56 +146,56 @@ describe('Menu tests', () => {
 
     it('should create custom menu', () => {
 
-        const menu = shallow(<Menu title="customMenu"></Menu>);
+        const menu = shallow(<Menu title="customMenu"/>);
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
-        expect(menu.find('.cd-menu').text()).toEqual("customMenu");
+        expect(menu.find('.cd-menu').text()).toEqual('customMenu');
     });
 
 
     it('should create default menu with childrens', () => {
 
         const menu = shallow(
-          <Menu>
-            <MenuItem index="0"> MenuItem </MenuItem>
-          </Menu>);
+            <Menu>
+                <MenuItem index="0"> MenuItem </MenuItem>
+            </Menu>);
 
         expect(menu.hasClass('cd-menu')).toBeTruthy();
-        expect(menu.childAt(1).type()).toEqual(MenuItem)
-        expect(menu.childAt(1).find('.cd-menu-item')).toBeTruthy()
+        expect(menu.childAt(1).type()).toEqual(MenuItem);
+        expect(menu.childAt(1).find('.cd-menu-item')).toBeTruthy();
         menu.childAt(1).simulate('click')
     });
 
     it('should create default menu with childrens', () => {
 
         const menu = shallow(
-          <Menu>
-            <MenuItemGroup title="ItemGroup">
-              <MenuItem index="0">MenuItem</MenuItem>
-            </MenuItemGroup>
-          </Menu>);
+            <Menu>
+                <MenuItemGroup title="ItemGroup">
+                    <MenuItem index="0">MenuItem</MenuItem>
+                </MenuItemGroup>
+            </Menu>);
 
         expect(menu.hasClass('cd-menu')).toBeTruthy();
-        expect(menu.childAt(1).type()).toEqual(MenuItemGroup)
-        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy()
-        expect(menu.childAt(1).childAt(0).find('.cd-menu-item')).toBeTruthy()
-        menu.childAt(1).simulate('click')
+        expect(menu.childAt(1).type()).toEqual(MenuItemGroup);
+        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy();
+        expect(menu.childAt(1).childAt(0).find('.cd-menu-item')).toBeTruthy();
+        menu.childAt(1).simulate('click');
         menu.childAt(1).simulate('click')
     });
 
     it('should create default menu collapsed with childrens', () => {
 
         const menu = shallow(
-          <Menu collapsed>
-            <MenuItemGroup title="ItemGroup">
-              <MenuItem index="0">MenuItem</MenuItem>
-            </MenuItemGroup>
-          </Menu>);
+            <Menu collapsed>
+                <MenuItemGroup title="ItemGroup">
+                    <MenuItem index="0">MenuItem</MenuItem>
+                </MenuItemGroup>
+            </Menu>);
 
         expect(menu.hasClass('cd-menu')).toBeTruthy();
         expect(menu.hasClass('cd-menu--collapse')).toBeTruthy();
-        expect(menu.childAt(1).type()).toEqual(MenuItemGroup)
-        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy()
+        expect(menu.childAt(1).type()).toEqual(MenuItemGroup);
+        expect(menu.childAt(1).find('.cd-menu-item-group')).toBeTruthy();
         menu.childAt(1).dive().simulate('click');
         menu.childAt(1).dive().simulate('click');
         expect(menu.childAt(1).childAt(0).find('.cd-menu-item')).toBeTruthy()
