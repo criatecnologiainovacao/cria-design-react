@@ -6,47 +6,47 @@ import { PropTypes } from '../../../libs';
 import MixinComponent from './MixinComponent';
 
 export default class MenuItem extends MixinComponent {
-  instanceType: string;
+    instanceType: string;
 
-  constructor(props: Object) {
-    super(props);
+    constructor(props: Object) {
+        super(props);
 
-    this.instanceType = 'MenuItem';
-  }
+        this.instanceType = 'MenuItem';
+    }
 
-  componentDidMount() {
-    this.rootMenu().state.menuItems[this.props.index] = this;
-  }
+    componentDidMount() {
+        this.rootMenu().state.menuItems[this.props.index] = this;
+    }
 
-  handleClick(): void {
-    this.rootMenu().handleSelect(
-      this.props.index,
-      this.indexPath(),
-      this
-    );
-  }
+    handleClick(): void {
+        this.rootMenu().handleSelect(
+            this.props.index,
+            this.indexPath(),
+            this
+        );
+    }
 
-  active(): boolean {
-    return this.props.index === this.rootMenu().state.activeIndex;
-  }
+    active(): boolean {
+        return this.props.index === this.rootMenu().state.activeIndex;
+    }
 
-  render(): React.DOM {
-    return (
-      <li
-        style={this.style()}
-        className={this.className("cd-menu-item", {
-          'is-active': this.active(),
-          'is-disabled': this.props.disabled
-        })}
-        onClick={this.handleClick.bind(this)}
-      >
-        {this.props.children}
-      </li>
-    )
-  }
+    render(): React.DOM {
+        return (
+            <li
+                style={this.style()}
+                className={this.className('cd-menu-item', {
+                    'is-active': this.active(),
+                    'is-disabled': this.props.disabled
+                })}
+                onClick={this.handleClick.bind(this)}
+            >
+                {this.props.children}
+            </li>
+        )
+    }
 }
 
 MenuItem.propTypes = {
-  index: PropTypes.string.isRequired,
-  disabled: PropTypes.bool
+    index: PropTypes.string.isRequired,
+    disabled: PropTypes.bool
 };

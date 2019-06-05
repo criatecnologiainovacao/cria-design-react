@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import sinon from 'sinon';
 
 import Menu from './Menu';
 import MenuItem from './MenuItem';
@@ -56,6 +57,34 @@ describe('Menu tests', () => {
         menu.childAt(1).dive().simulate('click');
         expect(menu.childAt(1).dive().hasClass('is-active')).toBeTruthy();
         expect(menu.children()).toHaveLength(7);
+    });
+
+    it('menu events', () => {
+
+        const onClose = sinon.spy();
+        const onOpen = sinon.spy();
+        const menu = mount(
+            <Menu
+                collapsed
+                title="Menu"
+                defaultActive="0"
+                onClose={onClose}
+                onOpen={onOpen}
+            >
+                <MenuItem index="0"/>
+                <SubMenu index="3">
+                    <MenuItem index="1"/>
+                </SubMenu>
+            </Menu>
+        );
+
+        expect(menu).toHaveState({ collapse: true });
+
+        const collapseButton = menu.find('.cd-menu-icon button');
+        collapseButton.simulate('click');
+
+        expect(menu).toHaveState({ collapse: false });
+
     });
 
     it('should create horizontal menu', () => {
@@ -166,7 +195,7 @@ describe('Menu tests', () => {
         menu.childAt(1).simulate('click')
     });
 
-    it('should create default menu with childrens', () => {
+    it('should create default menu with children', () => {
 
         const menu = shallow(
             <Menu>

@@ -215,7 +215,6 @@ export default class Input extends Component {
             prepend,
             readOnly,
             showPassword,
-            size,
             suffix,
             suffixIcon,
             tabindex,

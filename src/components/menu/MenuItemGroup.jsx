@@ -6,58 +6,59 @@ import { PropTypes } from '../../../libs';
 import MixinComponent from './MixinComponent';
 
 type State = {
-  paddingLeft: number
+    paddingLeft: number
 };
 
 export default class MenuItemGroup extends MixinComponent {
-  state: State;
-  instanceType: string;
+    instanceType: string;
 
-  constructor(props: Object) {
-    super(props);
+    constructor(props: Object) {
+        super(props);
 
-    this.instanceType = 'MenuItemGroup';
+        this.instanceType = 'MenuItemGroup';
 
-    this.state = {
-      paddingLeft: 20
-    }
-  }
-
-  componentDidMount() {
-    this.initPadding();
-  }
-
-  initPadding(): void {
-    let level = 0, parent = this.parent(), component = parent.instanceType;
-
-    while (component !== 'Menu') {
-      if (component === 'SubMenu') {
-        level++;
-      }
-
-      parent = parent.parent();
-      component = parent.instanceType;
+        this.state = {
+            paddingLeft: 20
+        }
     }
 
-    this.setState({
-      paddingLeft: this.state.paddingLeft + level * 10
-    });
-  }
+    componentDidMount() {
+        this.initPadding();
+    }
 
-  render(): React.DOM {
-    return (
-      <li style={this.style()} className={this.className('cd-menu-item-group')}>
-        <div className="cd-menu-item-group__title" style={{
-            paddingLeft: this.state.paddingLeft
-        }}>{this.props.title}</div>
-        <ul>
-          {this.props.children}
-        </ul>
-      </li>
-    )
-  }
+    initPadding(): void {
+        let level = 0, parent = this.parent(), component = parent.instanceType;
+
+        while (component !== 'Menu') {
+            if (component === 'SubMenu') {
+                level++;
+            }
+
+            parent = parent.parent();
+            component = parent.instanceType;
+        }
+
+        this.setState({
+                          paddingLeft: this.state.paddingLeft + level * 10
+                      });
+    }
+
+    render(): React.DOM {
+        return (
+            <li style={this.style()} className={this.className('cd-menu-item-group')}>
+                <div className="cd-menu-item-group__title" style={{
+                    paddingLeft: this.state.paddingLeft
+                }}>{this.props.title}</div>
+                <ul>
+                    {this.props.children}
+                </ul>
+            </li>
+        )
+    }
+
+    state: State;
 }
 
 MenuItemGroup.propTypes = {
-  title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
 };

@@ -36,12 +36,12 @@ export default class Menu extends Component {
     componentDidMount() {
         this.openActiveItemMenus();
         this.setState({
-            collapse: this.props.collapsed
-        })
+                          collapse: this.props.collapsed
+                      })
     }
 
     openMenu(index: number, indexPath: Array<number>): void {
-        let {openedMenus} = this.state;
+        let { openedMenus } = this.state;
 
         if (openedMenus.indexOf(index) !== -1) return;
 
@@ -53,15 +53,15 @@ export default class Menu extends Component {
 
         openedMenus.push(index);
 
-        this.setState({openedMenus});
+        this.setState({ openedMenus });
     }
 
     closeMenu(index: number): void {
-        let {openedMenus} = this.state;
+        let { openedMenus } = this.state;
 
         openedMenus.splice(openedMenus.indexOf(index), 1);
 
-        this.setState({openedMenus});
+        this.setState({ openedMenus });
     }
 
     handleSubmenuClick(index: number, indexPath: Array<number>): void {
@@ -103,7 +103,7 @@ export default class Menu extends Component {
     }
 
     openActiveItemMenus(): void {
-        let {activeIndex, menuItems, submenus} = this.state;
+        let { activeIndex, menuItems, submenus } = this.state;
 
         if (!menuItems[activeIndex]) return;
         if (activeIndex && this.props.mode === 'vertical') {
@@ -119,33 +119,34 @@ export default class Menu extends Component {
 
     changeCollapse() {
         this.setState({
-            collapse: !this.state.collapse
-        })
+                          collapse: !this.state.collapse
+                      })
     }
 
     render(): React.DOM {
         return (
             <ul
                 style={this.style()}
-                className={this.className("cd-menu", {
+                className={this.className('cd-menu', {
                     'cd-menu--horizontal': this.props.mode === 'horizontal',
                     'cd-menu--collapse': this.state.collapse && this.props.mode === 'vertical'
                 })}
             >
-                {this.props.title && !this.props.titleDisabled && this.props.mode === 'vertical' && (
-                    <div className="cd-menu-title">
-                        <div className={"cd-menu-icon"}>
-                            <button onClick={() => this.changeCollapse()}
-                                    className={this.className("menu-icon menu-icon--arrow", {"is-active": !this.state.collapse})}>
-                                <div className={"menu-icon-box"}>
-                                    <div className={"menu-icon-inner"}>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        {!this.state.collapse && <span>{this.props.title}</span>}
-                    </div>
-                )}
+                {this.props.title && !this.props.titleDisabled && this.props.mode === 'vertical' &&
+                 (
+                     <div className="cd-menu-title">
+                         <div className={'cd-menu-icon'}>
+                             <button onClick={() => this.changeCollapse()}
+                                     className={this.className('menu-icon menu-icon--arrow', { 'is-active': !this.state.collapse })}>
+                                 <div className={'menu-icon-box'}>
+                                     <div className={'menu-icon-inner'}>
+                                     </div>
+                                 </div>
+                             </button>
+                         </div>
+                         {!this.state.collapse && <span>{this.props.title}</span>}
+                     </div>
+                 )}
                 {this.props.children}
             </ul>
         )
@@ -171,7 +172,7 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
-    title: "Menu",
+    title: 'Menu',
     titleDisabled: false,
     collapsed: false,
     mode: 'vertical',
