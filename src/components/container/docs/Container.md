@@ -1,15 +1,15 @@
 ## Container
 Componentes de organização principais das telas
 
-`<Container>`: Container de componentes. Quando usado com um `<Header>` ou `<Footer>`, todos os componentes filhos vao ser organizados verticalmente, caso contrario, horizontalmente.
+`<Container>`: Container de componentes. Quando usado com um `<Header>` ou `<Footer>`, todos os componentes filhos vão ser organizados verticalmente, caso contrário, horizontalmente.
 
-`Header>`: container de cabeçalho.
+`Header>`: Container de cabeçalho.
 
-`<Aside>`: container lateral, geralmente usado para menus laterais.
+`<Aside>`: Container lateral, geralmente usado para menus laterais.
 
-`<Main>`: container com os elementos centrais.
+`<Main>`: Container com os elementos centrais.
 
-`<Footer>`: container do rodape
+`<Footer>`: Container do rodapé.
 
 ### Common layouts
 
@@ -78,19 +78,19 @@ render() {
 ### Container Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| direction | orientação da organização dos elementos | string | horizontal / vertical | vertical when nested with `Header` or `Footer`; horizontal otherwise |
+| direction | Orientação da organização dos elementos. | string | horizontal / vertical | vertical when nested with `Header` or `Footer`; horizontal otherwise |
 
 ### Header Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| height | altura do cabeçalho | string | — | 60px |
+| height | Altura do cabeçalho. | string | — | 60px |
 
 ### Aside Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| width | largura do menu lateral | string | — | 300px |
+| width | Largura do menu lateral. | string | — | 300px |
 
 ### Footer Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| height | altura do rodape | string | — | 60px |
+| height | Altura do rodapé. | string | — | 60px |
