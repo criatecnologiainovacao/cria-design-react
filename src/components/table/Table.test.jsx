@@ -99,4 +99,16 @@ describe('Table tests', () => {
 
         expect(table.find('.cd-table')).toHaveStyle({ maxHeight: 200 });
     });
+
+    it('show header', () => {
+        const table = mockTable(
+            {
+                data: mockData,
+                columns: mockColumn,
+                showHeader: false
+            }
+        );
+
+        expect(table.find('.cd-table__header-wrapper').exists()).toBe(false);
+    });
 });

@@ -7,8 +7,6 @@ import TableFooter from './TableFooter';
 
 import { TableProps, TableState } from './Types';
 
-// let tableIdSeed = 1;
-
 export default class Table extends Component<TableProps, TableState> {
     static contextTypes = {
         tableStore: PropTypes.any,
@@ -22,9 +20,6 @@ export default class Table extends Component<TableProps, TableState> {
     constructor(props: TableProps) {
         super(props);
         this.state = {};
-
-        // this.tableId = `cd-table_${tableIdSeed++}_`;
-        // this.tableId = tableIdSeed++;
 
         ['syncScroll'].forEach((fn) => {
             this[fn] = this[fn].bind(this);
