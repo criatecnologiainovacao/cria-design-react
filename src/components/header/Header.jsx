@@ -13,7 +13,7 @@ export default class Header extends Component {
         } = this.props;
 
         return (
-            <header className="cd-header" style={{height: height}}>
+            <header className="cd-header" style={{ height: height }}>
                 {children}
             </header>
         )

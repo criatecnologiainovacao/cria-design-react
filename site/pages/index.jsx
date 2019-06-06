@@ -12,7 +12,8 @@ export default {
         'Dados': {
             'tag': require('../../src/components/tag/docs')
         },
-        'Especificos': {
+        'Navegação': {
+            'nav-menu': require('../../src/components/menu/docs'),
             'step-bar': require('../../src/components/step-bar/docs')
         },
         'Formulários': {

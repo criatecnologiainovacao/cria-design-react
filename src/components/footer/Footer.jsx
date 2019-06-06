@@ -13,7 +13,7 @@ export default class Footer extends Component {
         } = this.props;
 
         return (
-            <header className="cd-footer" style={{height: height}}>
+            <header className="cd-footer" style={{ height: height }}>
                 {children}
             </header>
         )

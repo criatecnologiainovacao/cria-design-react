@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import StepBar from "./StepBar";
+import StepBar from './StepBar';
 
 export const steps = ['Test1'];
 
@@ -22,7 +22,8 @@ describe('StepBar test', () => {
     it('onClick', () => {
         const onClick = sinon.spy();
         let activeStep = 0;
-        const stepBar = shallow(<StepBar steps={steps} activeStep={activeStep} onClick={onClick} clickable/>);
+        const stepBar = shallow(<StepBar steps={steps} activeStep={activeStep} onClick={onClick}
+                                         clickable/>);
 
         stepBar.find('.cd-step-bar').find('.is-clickable').simulate('click');
 

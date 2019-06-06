@@ -6,10 +6,6 @@ import { Component } from '../../../libs';
 
 export default class StepBar extends Component {
 
-    changeStep(index) {
-        this.setState({activeStep: index})
-    }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -17,33 +13,37 @@ export default class StepBar extends Component {
         }
     }
 
+    changeStep(index) {
+        this.setState({ activeStep: index })
+    }
+
     render(): React.DOM {
         const {
             steps,
             clickable,
-            onClick,
+            onClick
         } = this.props;
 
         return (
-          <ul className={this.className("cd-step-bar")}>
-            {steps.map((value, index) => {
-                            return (
-                              <li key={index} className={this.className(
-                                    this.state.activeStep === index && "is-active",
-                                    clickable && "is-clickable")} onClick={ clickable ?
-                                    () => {
-                                        this.changeStep(index);
-                                        onClick();
-                                    } : {}
-                                }
-                                >
-                                <p>{value}</p>
-                              </li>
-                            )
-                        }
-                    )
-                    }
-          </ul>
+            <ul className={this.className('cd-step-bar')}>
+                {steps.map((value, index) => {
+                               return (
+                                   <li key={index} className={this.className(
+                                       this.state.activeStep === index && 'is-active',
+                                       clickable && 'is-clickable')} onClick={clickable ?
+                                                                              () => {
+                                                                                  this.changeStep(index);
+                                                                                  onClick();
+                                                                              } : {}
+                                   }
+                                   >
+                                       <p>{value}</p>
+                                   </li>
+                               )
+                           }
+                )
+                }
+            </ul>
         )
     }
 }

@@ -18,12 +18,12 @@ describe('Header test', () => {
     it('create', () => {
         const header = shallow(React.createElement(
             Header,
-            { height: '100px'},
+            { height: '100px' },
             'TEST'
         ));
         expect(header.hasClass('cd-header')).toBeTruthy();
         expect(header.childAt(0).text()).toBe('TEST');
-        expect(header.find('.cd-header')).toHaveStyle({height: '100px'});
+        expect(header.find('.cd-header')).toHaveStyle({ height: '100px' });
     });
 
 });

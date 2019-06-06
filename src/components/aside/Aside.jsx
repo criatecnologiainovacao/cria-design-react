@@ -1,8 +1,8 @@
 /* @flow */
 
 import React from 'react';
-import {Component} from '../../../libs';
-import PropTypes from "prop-types";
+import { Component } from '../../../libs';
+import PropTypes from 'prop-types';
 
 export default class Aside extends Component {
 
@@ -13,7 +13,7 @@ export default class Aside extends Component {
         } = this.props;
 
         return (
-            <section className="cd-aside" style={{width: width}}>
+            <section className="cd-aside" style={{ width: width }}>
                 {children}
             </section>
         )
