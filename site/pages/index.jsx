@@ -7,7 +7,8 @@ export default {
             'layout': require('../../src/components/layout/docs'),
             'container': require('../../src/components/container/docs'),
             'button': require('../../src/components/button/docs'),
-            'breadcrumb': require('../../src/components/breadcrumb/docs')
+            'breadcrumb': require('../../src/components/breadcrumb/docs'),
+            'select': require('../../src/components/select/docs'),
         },
         'Dados': {
             'tag': require('../../src/components/tag/docs')

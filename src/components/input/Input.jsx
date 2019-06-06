@@ -67,6 +67,14 @@ export default class Input extends Component {
         this.setState({ isComposing: true });
     }
 
+    handleIconClick(): void {
+        this.props.onIconClick();
+    }
+
+    handleKeyUp(): void {
+        this.props.onKeyUp();
+    }
+
     handleCompositionEnd(e: SyntheticEvent<any>): void {
         this.setState({ isComposing: false });
         this.handleInput(e);
@@ -87,6 +95,18 @@ export default class Input extends Component {
         if (e.target.value === this.nativeInputValue()) return;
         if (onInput) onInput(e.target.value);
         this.nativeInputValue();
+    }
+
+    focus(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).focus();
+        });
+    }
+
+    blur(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).blur();
+        });
     }
 
     setNativeInputValue() {
@@ -322,9 +342,11 @@ export default class Input extends Component {
                         readOnly={readOnly}
                         autoComplete={autoComplete}
                         onInput={this.handleInput.bind(this)}
+                        onKeyUp={this.handleKeyUp.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
+                        onClick={this.handleIconClick.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
                         placeholder={placeholder}
@@ -341,7 +363,8 @@ export default class Input extends Component {
                     }
                     {
                         this.getSuffixVisible() &&
-                        <span className="cd-input__suffix">
+                        <span className="cd-input__suffix"
+                           >
                             <span className="cd-input__suffix-inner">
                                 {
                                     !this.showClear() || !this.showPwdVisible() ||
@@ -414,6 +437,7 @@ Input.propTypes = {
     onChange: PropTypes.func,
     onClear: PropTypes.func,
     onInput: PropTypes.func,
+    onIconClick: PropTypes.func,
 
     // autoComplete
     autoComplete: PropTypes.string,

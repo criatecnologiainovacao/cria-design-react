@@ -33,7 +33,7 @@
   }
 
   .cd-input {
-    & .cd-select__caret {
+    & .cd-icon-caret-top {
       color: $--select-input-color;
       font-size: $--select-input-font-size;
       transition: transform .3s;

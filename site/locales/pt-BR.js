@@ -9,7 +9,8 @@ module.exports = {
         'breadcrumb': 'Breadcrumb',
         'input': 'Input',
         'form': 'Form',
-        'card': 'Card'
+        'card': 'Card',
+        'select': 'Select'
     },
     misc: {
         'guide': 'Guia',
