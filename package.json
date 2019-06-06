@@ -3,12 +3,13 @@
     "version": "1.0.0-rc1",
     "description": "A UI Component Toolkit for React",
     "private": false,
-    "main": "src/index.js",
-    "jsnext:main": "src/index.js",
+    "main": "dist/npm/es5/index.js",
+    "jsnext:main": "next.js",
     "files": [
         "libs",
         "themes",
-        "src"
+        "src",
+        "dist"
     ],
     "scripts": {
         "start": "cd site && node run.js",
@@ -34,6 +35,24 @@
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/criatecnologiainovacao/cria-design-system/issues"
+    },
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "modules": "commonjs"
+                }
+            ],
+            "@babel/preset-react",
+            "@babel/preset-flow"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-proposal-object-rest-spread",
+            "@babel/plugin-syntax-dynamic-import",
+            "@babel/plugin-transform-runtime"
+        ]
     },
     "homepage": "https://criatecnologiainovacao.github.io/cria-design-react",
     "devDependencies": {

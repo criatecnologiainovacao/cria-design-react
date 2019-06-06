@@ -15,6 +15,5 @@ yarn.lock
 package-lock.json
 
 themes/lib
-themes/package-lock.json
 themes/node_modules.json
 /storybook-static
