@@ -29,15 +29,11 @@ const layoutMockFourCols = (
     </Layout.Row>
 );
 
-const layoutMockThreeCols = (
-    renderType = mount,
-    rowProps = {},
-    colsProps = [
-        { span: '6' },
-        { span: '6' },
-        { span: '6' }
-    ]
-) => renderType(
+const layoutMockThreeCols = (renderType = mount, rowProps = {}, colsProps = [
+    { span: '6' },
+    { span: '6' },
+    { span: '6' }
+]) => renderType(
     <Layout.Row {...rowProps}>
         <Layout.Col {...colsProps[0]}>
             <div/>
