@@ -5,9 +5,7 @@ import sinon from 'sinon';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
 import MenuItemGroup from './MenuItemGroup';
-import SubMenu from './SubMenu';
-
-jest.useFakeTimers();
+import SubMenu from './SubMenu'
 
 describe('Menu tests', () => {
 
@@ -70,6 +68,7 @@ describe('Menu tests', () => {
                 defaultActive="0"
                 onClose={onClose}
                 onOpen={onOpen}
+                uniqueOpened
             >
                 <MenuItem index="0"/>
                 <SubMenu index="3">
@@ -84,6 +83,8 @@ describe('Menu tests', () => {
         collapseButton.simulate('click');
 
         expect(menu).toHaveState({ collapse: false });
+
+        menu.instance().handleSubmenuClick(3);
 
     });
 
@@ -122,7 +123,9 @@ describe('Menu tests', () => {
 
     it('should create menu with child and submenu active', () => {
         const menu = mount(
-            <Menu defaultActive="0">
+            <Menu onClose={() => {
+
+            }} uniqueOpened defaultActive="0">
                 <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
                     <MenuItem index="0"/>
                 </SubMenu>
@@ -132,7 +135,7 @@ describe('Menu tests', () => {
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.childAt(0).childAt(1).type()).toEqual(SubMenu);
         expect(menu.childAt(0).find('.cd-submenu').hasClass('is-opened')).toBeTruthy();
-        menu.instance().handleSubmenuClick(1);
+        menu.instance().handleSubmenuClick(1, [0, 1, 2]);
         menu.instance().handleSubmenuClick(1);
         menu.instance().closeMenu(1)
 
@@ -149,9 +152,19 @@ describe('Menu tests', () => {
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.childAt(0).childAt(0).type()).toEqual(SubMenu);
+
+        jest.useFakeTimers();
         menu.find('SubMenu').instance().handleClick();
+        jest.runAllTimers();
+
+        jest.useFakeTimers();
         menu.find('SubMenu').instance().handleMouseenter();
+        jest.runAllTimers();
+
+        jest.useFakeTimers();
         menu.find('SubMenu').instance().handleMouseleave();
+        jest.runAllTimers();
+
         menu.find('SubMenu').instance().onItemSelect(0, [1])
 
     });
