@@ -59,7 +59,7 @@ describe('Menu tests', () => {
         expect(menu.children()).toHaveLength(7);
     });
 
-    it('menu events', () => {
+    it('open menu', () => {
 
         const onClose = sinon.spy();
         const onOpen = sinon.spy();
@@ -153,6 +153,52 @@ describe('Menu tests', () => {
         menu.find('SubMenu').instance().handleMouseenter();
         menu.find('SubMenu').instance().handleMouseleave();
         menu.find('SubMenu').instance().onItemSelect(0, [1])
+
+    });
+
+    it('should create menu horizontal with child and submenu - events', () => {
+
+        const onOpen = sinon.spy();
+        const onClose = sinon.spy();
+
+        const menu = mount(
+            <Menu mode="horizontal" defaultActive="0" onOpen={onOpen} onClose={onClose}>
+                <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
+                    <MenuItem index="0"/>
+                </SubMenu>
+            </Menu>);
+
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        expect(menu.childAt(0).childAt(0).type()).toEqual(SubMenu);
+        menu.find('SubMenu').instance().handleClick();
+        menu.find('SubMenu').instance().handleClick();
+        menu.find('SubMenu').instance().handleMouseenter();
+        menu.find('SubMenu').instance().handleMouseleave();
+        menu.find('SubMenu').instance().onItemSelect(0, [1]);
+        expect(onOpen.calledOnce).toBe(true);
+        expect(onClose.calledOnce).toBe(true);
+
+    });
+
+    it('should create menu horizontal with child and submenu - unique open', () => {
+
+        const onOpen = sinon.spy();
+        const onClose = sinon.spy();
+
+        const menu = mount(
+            <Menu mode="horizontal" defaultActive="0" onOpen={onOpen} onClose={onClose}
+                  uniqueOpened>
+                <SubMenu icon="cd-icon-message" title="Navigator Two" index="0">
+                    <MenuItem index="0"/>
+                </SubMenu>
+                <SubMenu icon="cd-icon-message" title="Navigator Three" index="1">
+                    <MenuItem index="1"/>
+                </SubMenu>
+            </Menu>);
+
+        expect(menu.find('.cd-menu').exists()).toBeTruthy();
+        menu.find('SubMenu').first().instance().handleClick();
+        menu.find('SubMenu').last().instance().handleClick();
 
     });
 
