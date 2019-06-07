@@ -18,13 +18,13 @@ let tableIDSeed = 1;
 function filterData(data, columns) {
   return columns.reduce((preData, column) => {
     const { filterable, filterMultiple, filteredValue, filterMethod } = column;
-    if (filterable) {
-      if (filterMultiple && Array.isArray(filteredValue) && filteredValue.length) {
-        return preData.filter(_data => filteredValue.some(value => filterMethod(value, _data)))
-      } else if (filteredValue) {
-        return preData.filter(_data => filterMethod(filteredValue, _data));
-      }
-    }
+    // if (filterable) {
+    //   if (filterMultiple && Array.isArray(filteredValue) && filteredValue.length) {
+    //     return preData.filter(_data => filteredValue.some(value => filterMethod(value, _data)))
+    //   } else if (filteredValue) {
+    //     return preData.filter(_data => filterMethod(filteredValue, _data));
+    //   }
+    // }
     return preData;
   }, data);
 }
@@ -219,9 +219,9 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     if ((!this._isMounted || data !== this.props.data) && defaultSort) {
       const { prop, order = 'ascending' } = defaultSort;
       const sortColumn = columns.find(column => column.property === prop);
-      this.changeSortCondition(sortColumn, order, false);
+      // this.changeSortCondition(sortColumn, order, false);
     } else {
-      this.changeSortCondition(null, null, false);
+      // this.changeSortCondition(null, null, false);
     }
   }
 
@@ -372,69 +372,69 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     return selectedRows.includes(row);
   }
 
-  changeSortCondition(column: ?_Column, order: ?string, shouldDispatchEvent?: boolean = true) { if (!column) ({ sortColumn: column, sortOrder: order } = this.state)
+  // changeSortCondition(column: ?_Column, order: ?string, shouldDispatchEvent?: boolean = true) { if (!column) ({ sortColumn: column, sortOrder: order } = this.state)
 
-    const data = this.state.filteredData.slice();
-    if (!column) {
-      this.setState({
-        data
-      });
-      return;
-    }
+  //   const data = this.state.filteredData.slice();
+  //   if (!column) {
+  //     this.setState({
+  //       data
+  //     });
+  //     return;
+  //   }
 
-    const { sortMethod, property, sortable } = column;
-    let sortedData;
-    if (!order || sortable === 'custom') {
-      sortedData = data;
-    } else if (sortable && sortable !== 'custom') {
-      const flag = order === 'ascending' ? 1 : -1;
-      if (sortMethod) {
-        sortedData = data.sort((a, b) => sortMethod(a, b) ? flag : -flag);
-      } else {
-        sortedData = data.sort((a, b) => {
-          const aVal = getValueByPath(a, property);
-          const bVal = getValueByPath(b, property);
-          return aVal === bVal ? 0 : aVal > bVal ? flag : -flag;
-        });
-      }
-    }
-    let sortSet = () => {
-      shouldDispatchEvent && this.dispatchEvent('onSortChange',
-          column && order ?
-          { column, prop: column.property, order } :
-          { column: null, prop: null, order: null }
-        )
-    }
-    if (sortable && sortable !== 'custom') {
-      this.setState({
-        sortColumn: column,
-        sortOrder: order,
-        data: sortedData,
-      },sortSet());
-    } else if (sortable && sortable === 'custom') {
-      this.setState({
-        sortColumn: column,
-        sortOrder: order,
-      },sortSet())
-    }
+  //   const { sortMethod, property, sortable } = column;
+  //   let sortedData;
+  //   if (!order || sortable === 'custom') {
+  //     sortedData = data;
+  //   } else if (sortable && sortable !== 'custom') {
+  //     const flag = order === 'ascending' ? 1 : -1;
+  //     if (sortMethod) {
+  //       sortedData = data.sort((a, b) => sortMethod(a, b) ? flag : -flag);
+  //     } else {
+  //       sortedData = data.sort((a, b) => {
+  //         const aVal = getValueByPath(a, property);
+  //         const bVal = getValueByPath(b, property);
+  //         return aVal === bVal ? 0 : aVal > bVal ? flag : -flag;
+  //       });
+  //     }
+  //   }
+  //   let sortSet = () => {
+  //     shouldDispatchEvent && this.dispatchEvent('onSortChange',
+  //         column && order ?
+  //         { column, prop: column.property, order } :
+  //         { column: null, prop: null, order: null }
+  //       )
+  //   }
+  //   if (sortable && sortable !== 'custom') {
+  //     this.setState({
+  //       sortColumn: column,
+  //       sortOrder: order,
+  //       data: sortedData,
+  //     },sortSet());
+  //   } else if (sortable && sortable === 'custom') {
+  //     this.setState({
+  //       sortColumn: column,
+  //       sortOrder: order,
+  //     },sortSet())
+  //   }
 
-  }
+  // }
 
-  toggleFilterOpened(column: _Column) {
-    column.filterOpened = !column.filterOpened;
-    this.forceUpdate();
-  }
+  // toggleFilterOpened(column: _Column) {
+  //   column.filterOpened = !column.filterOpened;
+  //   this.forceUpdate();
+  // }
 
-  changeFilteredValue(column: _Column, value: string | number) {
-    column.filteredValue = value;
-    const filteredData = filterData(this.props.data.slice(), this.state.columns);
-    this.setState(Object.assign(this.state, {
-      filteredData
-    }), () => {
-      this.dispatchEvent('onFilterChange', { [column.columnKey]: value })
-    });
-    this.changeSortCondition(null, null, false);
-  }
+  // changeFilteredValue(column: _Column, value: string | number) {
+  //   column.filteredValue = value;
+  //   const filteredData = filterData(this.props.data.slice(), this.state.columns);
+  //   this.setState(Object.assign(this.state, {
+  //     filteredData
+  //   }), () => {
+  //     this.dispatchEvent('onFilterChange', { [column.columnKey]: value })
+  //   });
+  //   this.changeSortCondition(null, null, false);
+  // }
 
   dispatchEvent(name: string, ...args: Array<any>) {
     const fn = this.props[name];
