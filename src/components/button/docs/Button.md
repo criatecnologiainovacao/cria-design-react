@@ -190,15 +190,15 @@ render() {
 
 | Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| size     | O tamanho do botão | string    | medium / small / mini | — |
-| type      | O tipo do botão | string    | primary / success / warning / danger / info / text | — |
-| plain      | Determina se o botão terá o estilo simples | boolean | — | false |
+| size     | O tamanho do botão. | string    | medium / small / mini | — |
+| type      | O tipo do botão. | string    | primary / success / warning / danger / info / text | — |
+| plain      | Determina se o botão terá o estilo simples. | boolean | — | false |
 | round     | Determina se o botão terá bordas arredondadas. | boolean   | — | false |
 | circle | Determina se será um botão circular. | boolean   | — | false |
 | loading | Determina se o botão estará no estado de carregamento. | boolean | — | false |
 | disabled | Desativa o botão | boolean | — | false |
-| icon | Nome da classe do ícone. Aparecerá antes do label do botão | string | — | — |
-| appendIcon | Nome da classe do ícone. Aparecerá depois do label do botão | string | — | — |
+| icon | Nome da classe do ícone. Aparecerá antes do label do botão. | string | — | — |
+| appendIcon | Nome da classe do ícone. Aparecerá depois do label do botão. | string | — | — |
 | nativeType | O mesmo que o `type` nativo do botão. | string | button / submit / reset | — |
 
 ### Eventos

@@ -12,7 +12,7 @@ export const actionsClick = {
 
 let activeStep = 0;
 
-storiesOf('StepBar', module)
+storiesOf('Navegação|Steps', module)
     .add('default', () =>
         <StepBar steps={steps}/>
     )

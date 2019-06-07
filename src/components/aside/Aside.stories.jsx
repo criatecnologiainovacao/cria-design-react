@@ -4,7 +4,7 @@ import Aside from './Aside';
 import Container from '../container';
 import Main from '../main';
 
-storiesOf('Aside', module)
+storiesOf('Básicos|Aside', module)
     .add('default', () => <div>
         <Container>
             <Aside>Aside</Aside>

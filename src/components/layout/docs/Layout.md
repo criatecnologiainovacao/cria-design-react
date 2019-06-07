@@ -151,21 +151,21 @@ render() {
 ### Atributos do Row
 | Atributo      | Descrição          | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| gutter | espaçamento do grid | number | — | 0 |
-| type | modo de organização das colunas | string | — | — |
-| justify | alinhamento horizontal das colunas. Deve possuir o `type` igual a `flex` | string | start/end/center/space-around/space-between | start |
-| align | organização vertical no display flex. Deve possuir o `type` igual a `flex` | string | top/middle/bottom | top |
-| tag | tag customizada para o elemento | string | * | div |
+| gutter | espaçamento do grid. | number | — | 0 |
+| type | modo de organização das colunas. | string | — | — |
+| justify | alinhamento horizontal das colunas. Deve possuir o `type` igual a `flex`. | string | start/end/center/space-around/space-between | start |
+| align | organização vertical no display flex. Deve possuir o `type` igual a `flex`. | string | top/middle/bottom | top |
+| tag | tag customizada para o elemento. | string | * | div |
 
 ### Atributos do Col 
 | Atributo      | Descrição          | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| span | numero de colunas do espaçamento | number | — | — |
-| offset | numero de colunas de espaçamento a esquerda | number | — | 0 |
-| push |  numero de colunas que a coluna deve empurrar a esquerda | number | — | 0 |
-| pull |  numero de colunas que a coluna deve andar a esquerda | number | — | 0 |
-| xs | Numero de colunas na resolução `<768px`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
-| sm | Numero de colunas na resolução `≥768px`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
-| md | Numero de colunas na resolução `≥992`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
-| lg | Numero de colunas na resolução `≥1200`| number/object (ex.:： {span: 4, offset: 4}) | — | — |
-| tag | tag customizada para o elemento | string | * | div |
+| span | Número de colunas do espaçamento. | number | — | — |
+| offset | Número de colunas de espaçamento a esquerda. | number | — | 0 |
+| push |  Número de colunas que a coluna deve empurrar a esquerda. | number | — | 0 |
+| pull |  Número de colunas que a coluna deve andar a esquerda. | number | — | 0 |
+| xs | Número de colunas na resolução `<768px`.| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| sm | Número de colunas na resolução `≥768px`.| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| md | Número de colunas na resolução `≥992`.| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| lg | Número de colunas na resolução `≥1200`.| number/object (ex.:： {span: 4, offset: 4}) | — | — |
+| tag | tag customizada para o elemento. | string | * | div |

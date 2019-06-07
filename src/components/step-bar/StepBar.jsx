@@ -21,7 +21,7 @@ export default class StepBar extends Component {
         const {
             steps,
             clickable,
-            onClick,
+            onClick
         } = this.props;
 
         return (

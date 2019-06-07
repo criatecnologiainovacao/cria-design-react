@@ -5,7 +5,7 @@ import Header from '../header';
 import Footer from '../footer';
 import Container from '../container';
 
-storiesOf('Main', module)
+storiesOf('Básicos|Main', module)
     .add('default', () => <div>
         <Container>
             <Header>Header</Header>

@@ -66,4 +66,4 @@ render() {
 ### Breadcrumb Atributos
 | Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| separator     | O caracter de separação | string    |  — | / |
+| separator     | O carácter de separação. | string    |  — | / |

@@ -12,7 +12,7 @@ const containerStyle = {
     textAlign: 'center'
 };
 
-storiesOf('Container', module)
+storiesOf('Básicos|Container', module)
     .add('default', () => <div>
         <Container>
             <Header>Header</Header>
