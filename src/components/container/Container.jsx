@@ -18,25 +18,28 @@ export default class Container extends Component {
         let childrenFooterOrHeader = false;
         if (Array.isArray(this.props.children)) {
             this.props.children.forEach(function (children) {
-                if (children.type === <Footer />.type || children.type === <Header />.type) {
+                if (children.type === <Footer/>.type || children.type === <Header/>.type) {
                     childrenFooterOrHeader = true;
                 }
             })
         }
         return this.props.children
-            ? Array.isArray(this.props.children) ? childrenFooterOrHeader
-                : (this.props.children.type === <Header />.type ||
-                    this.props.children.type === <Footer />.type)
-            : false;
+               ? Array.isArray(this.props.children) ? childrenFooterOrHeader
+                                                    : (this.props.children.type ===
+                                                       <Header/>.type ||
+                                                       this.props.children.type === <Footer/>.type)
+               : false;
     }
 
     render(): React.DOM {
         const {
+            id,
             children
         } = this.props;
 
         return (
-            <section className={this.className("cd-container", {
+            <section id={id} className={this.className(
+                'cd-container', {
                     'is-vertical': this.isVertical()
                 }
             )}>
@@ -47,5 +50,6 @@ export default class Container extends Component {
 }
 
 Container.propTypes = {
-    direction: PropTypes.string
+    direction: PropTypes.string,
+    id: PropTypes.string
 };

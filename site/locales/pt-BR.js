@@ -10,6 +10,7 @@ module.exports = {
         'input': 'Input',
         'form': 'Form',
         'card': 'Card',
+        'nav-menu': 'NavMenu',
         'select': 'Select'
     },
     misc: {

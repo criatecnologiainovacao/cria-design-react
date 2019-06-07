@@ -1,9 +1,9 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import Container from ".";
-import Header from "../header";
-import Footer from "../footer";
+import Container from '.';
+import Header from '../header';
+import Footer from '../footer';
 
 describe('Container test', () => {
 

@@ -24,12 +24,12 @@ storiesOf('Básicos|Container', module)
         return (
             <div>
                 <Container>
-                    <div style={containerStyle}> <p>Horizontal</p></div>
-                    <div style={containerStyle}> <p>Horizontal</p></div>
+                    <div style={containerStyle}><p>Horizontal</p></div>
+                    <div style={containerStyle}><p>Horizontal</p></div>
                 </Container>
                 <Container direction="vertical">
-                    <div style={containerStyle}> <p>Vertical</p></div>
-                    <div style={containerStyle}> <p>Vertical</p></div>
+                    <div style={containerStyle}><p>Vertical</p></div>
+                    <div style={containerStyle}><p>Vertical</p></div>
                 </Container>
             </div>
         )

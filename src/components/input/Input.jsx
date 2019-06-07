@@ -8,7 +8,6 @@ type State = {
     textareaStyle: { resize: string, height?: string },
     hovering: boolean,
     focused: boolean,
-    isComposing: boolean,
     passwordVisible: boolean
 }
 
@@ -27,21 +26,18 @@ export default class Input extends Component {
             textareaStyle: { resize: props.resize },
             hovering: false,
             focused: false,
-            isComposing: false,
-            passwordVisible: false,
-            innerValue: ''
+            passwordVisible: false
         };
     }
 
     componentDidMount() {
         this.setNativeInputValue();
         this.resizeTextarea();
-        this.updateIconOffset();
     }
 
-    componentWillUpdate(nextProps, nextState): void {
-        this.updateNativeValue();
-    }
+    // componentWillUpdate(nextProps, nextState): void {
+    //     this.updateNativeValue();
+    // }
 
     handleChange(e: SyntheticInputEvent<any>): void {
         const { onChange } = this.props;
@@ -49,6 +45,7 @@ export default class Input extends Component {
             onChange(e.target.value);
         }
         this.resizeTextarea();
+        this.updateNativeValue();
     }
 
     handleFocus(e: SyntheticEvent<any>): void {
@@ -84,6 +81,7 @@ export default class Input extends Component {
             this.props.onKeyDown(e)
         }
     }
+
 
     handleCompositionEnd(e: SyntheticEvent<any>): void {
         this.setState({ isComposing: false });
@@ -137,12 +135,7 @@ export default class Input extends Component {
     }
 
     clear() {
-        const { onInput, onChange, onClear } = this.props;
-        const input = this.getInput();
-        if (!input) return;
-        if (input.value === this.nativeInputValue()) return;
-        input.value = '';
-        if (onInput) onInput('');
+        const { onChange, onClear } = this.props;
         if (onChange) onChange('');
         if (onClear) onClear();
     }
@@ -175,21 +168,12 @@ export default class Input extends Component {
         // return this.elForm ? this.elForm.statusIcon : false;
     }
 
-    updateIconOffset() {
-        this.calcIconOffset('prefix');
-        this.calcIconOffset('suffix');
-    }
-
-    calcIconOffset(place: string) {
-        // TODO
-    }
-
     validateIcon(): boolean {
-        return {
-            validating: 'el-icon-loading',
-            success: 'el-icon-circle-check',
-            error: 'el-icon-circle-close'
-        }[this.validateState];
+        // return {
+        //     validating: 'el-icon-loading',
+        //     success: 'el-icon-circle-check',
+        //     error: 'el-icon-circle-close'
+        // }[this.validateState];
     }
 
     getSuffixVisible(): boolean {
@@ -279,27 +263,27 @@ export default class Input extends Component {
             autoComplete,
             autoFocus,
             clearable,
+            id,
             label,
+            value,
             placeholder,
             prefix,
             prefixIcon,
             prepend,
-            value,
             readOnly,
             showPassword,
-            size,
             suffix,
             suffixIcon,
             tabindex,
             type,
-            validating,
             maxLength,
             minLength
         } = this.props;
 
         const classname = this.classNames(
             type === 'textarea' ? 'cd-textarea' : 'cd-input',
-            size && `cd-input--${this.inputSize()}`, {
+            `cd-input--${this.inputSize()}`,
+            {
                 'is-disabled': this.inputDisabled(),
                 'is-exceed': this.inputExceed(),
                 'cd-input-group': prepend || append,
@@ -318,16 +302,16 @@ export default class Input extends Component {
                     onMouseEnter={this.handleHoveringStart.bind(this)}
                     onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     <textarea
+                        id={id}
                         ref="textarea"
                         tabIndex={tabindex}
                         className="cd-textarea__inner"
-                        onCompositionStart={this.handleCompositionStart.bind(this)}
-                        onCompositionEnd={this.handleCompositionEnd.bind(this)}
                         style={this.state.textareaStyle}
                         disabled={this.inputDisabled.bind(this)}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
                         onInput={this.handleInput.bind(this)}
+                        onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
                         aria-label={label}
@@ -349,6 +333,7 @@ export default class Input extends Component {
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
                     <input
+                        id={id}
                         ref="input"
                         type={showPassword
                               ? (this.state.passwordVisible ? 'text' : 'password')
@@ -367,6 +352,7 @@ export default class Input extends Component {
                         onClick={this.handleIconClick.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
+                        name={label}
                         placeholder={placeholder}
                         autoFocus={autoFocus}
                         maxLength={maxLength}
@@ -403,14 +389,11 @@ export default class Input extends Component {
                                         </span>
                                     </span>
                                 }
-                                {this.validateState() &&
-                                 <i className="cd-input__icon cd-input__validateIcon"/>}
                             </span>
                         </span>
 
                     }
                     {append && <div className="cd-input-group__append">{append}</div>}
-                    {validating && <i className="cd-input__icon cd-icon-loading"/>}
                 </div>
             )
         }
@@ -421,6 +404,7 @@ export default class Input extends Component {
 
 Input.propTypes = {
     // base
+    id: PropTypes.string,
     type: PropTypes.string,
     disabled: PropTypes.bool,
     placeholder: PropTypes.string,
@@ -462,6 +446,5 @@ Input.propTypes = {
     inputSelect: PropTypes.func,
 
     // form related
-    form: PropTypes.string,
-    validating: PropTypes.bool
+    form: PropTypes.string
 };

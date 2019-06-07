@@ -71,6 +71,7 @@ export default class Form extends Component {
     render(): React.DOM {
         return (
             <form
+                id={this.props.id}
                 style={this.style()}
                 className={this.className(
                     'cd-form',
@@ -100,6 +101,7 @@ Form.propTypes = {
     labelPosition: PropTypes.oneOf(['right', 'left', 'top']),
     labelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     labelSuffix: PropTypes.string,
+    id: PropTypes.string,
     inline: PropTypes.bool,
     onSubmit: PropTypes.func
 };

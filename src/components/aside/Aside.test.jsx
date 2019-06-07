@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import Aside from ".";
+import Aside from '.';
 
 describe('Aside test', () => {
 
@@ -23,6 +23,6 @@ describe('Aside test', () => {
         ));
         expect(aside.hasClass('cd-aside')).toBeTruthy();
         expect(aside.childAt(0).text()).toBe('TEST');
-        expect(aside.find('.cd-aside')).toHaveStyle({width: '50px'});
+        expect(aside.find('.cd-aside')).toHaveStyle({ width: '50px' });
     });
 });

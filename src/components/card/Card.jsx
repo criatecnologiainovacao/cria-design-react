@@ -12,9 +12,9 @@ export default class Card extends Component {
     };
 
     render(): React.DOM {
-        const { header, bodyStyle, shadow, title, children } = this.props;
+        const { id, header, bodyStyle, shadow, title, children } = this.props;
         return (
-            <div style={this.style()} className={this.className(
+            <div id={id} style={this.style()} className={this.className(
                 'cd-card',
                 `is-${shadow}-shadow`
             )}>
@@ -36,5 +36,6 @@ Card.propTypes = {
     header: PropTypes.node,
     bodyStyle: PropTypes.object,
     shadow: PropTypes.string,
+    id: PropTypes.string,
     title: PropTypes.string
 };

@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 @import "common/var";
 @import "mixins/button";
@@ -8,12 +7,13 @@
 $white: #fff;
 $grey-light: #ededed;
 
-%remain-steps{
+%remain-steps {
     &:before {
         font-family: inherit;
         font-weight: 700;
     }
-    &:after{
+
+    &:after {
         background-color: $grey-light;
     }
 }
@@ -68,7 +68,7 @@ $grey-light: #ededed;
             }
         }
 
-        &.is-clickable{
+        &.is-clickable {
             pointer-events: none;
 
             &:before {
@@ -80,7 +80,7 @@ $grey-light: #ededed;
                 pointer-events: none;
             }
 
-            p{
+            p {
                 cursor: pointer;
                 pointer-events: auto;
             }
