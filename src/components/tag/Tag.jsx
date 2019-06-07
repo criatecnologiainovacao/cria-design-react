@@ -21,6 +21,7 @@ export default class Tag extends Component {
 
     render() {
         const {
+            id,
             type,
             icon,
             onClick,
@@ -38,6 +39,7 @@ export default class Tag extends Component {
             <Transition name={disableTransitions ? '' : 'cd-zoom-in-center'}>
                 <View key={this.state.visible} show={this.state.visible}>
                     <span
+                        id={id}
                         onClick={onClick}
                         style={this.style()}
                         className={
@@ -72,6 +74,7 @@ export default class Tag extends Component {
 }
 
 Tag.propTypes = {
+    id: PropTypes.string,
     type: PropTypes.string,
     icon: PropTypes.string,
     appendIcon: PropTypes.string,

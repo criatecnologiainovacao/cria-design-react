@@ -9,11 +9,13 @@ export default class Aside extends Component {
     render(): React.DOM {
         const {
             width,
+            id,
             children
         } = this.props;
 
         return (
-            <section className="cd-aside" style={{ width: width }}>
+            <section id={id} className={this.className('cd-aside')}
+                     style={this.style({ width: width })}>
                 {children}
             </section>
         )
@@ -21,7 +23,8 @@ export default class Aside extends Component {
 }
 
 Aside.propTypes = {
-    width: PropTypes.string
+    width: PropTypes.string,
+    id: PropTypes.string
 };
 
 Aside.defaultProps = {

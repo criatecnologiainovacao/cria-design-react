@@ -9,19 +9,22 @@ export default class Footer extends Component {
     render(): React.DOM {
         const {
             height,
-            children
+            children,
+            id
         } = this.props;
 
         return (
-            <header className="cd-footer" style={{ height: height }}>
+            <footer id={id} className={this.className('cd-footer')}
+                    style={this.style({ height: height })}>
                 {children}
-            </header>
+            </footer>
         )
     }
 }
 
 Footer.propTypes = {
-    height: PropTypes.string
+    height: PropTypes.string,
+    id: PropTypes.string
 };
 
 Footer.defaultProps = {

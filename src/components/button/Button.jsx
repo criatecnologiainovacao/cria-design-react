@@ -14,6 +14,7 @@ export default class Button extends Component {
 
     render(): React.DOM {
         const {
+            id,
             type,
             size,
             disabled,
@@ -30,6 +31,7 @@ export default class Button extends Component {
 
         return (
             <button
+                id={id}
                 autoFocus={autofocus}
                 style={this.style()}
                 className={this.className(
@@ -59,6 +61,7 @@ export default class Button extends Component {
 
 Button.propTypes = {
     onClick: PropTypes.func,
+    id: PropTypes.string,
     type: PropTypes.string,
     size: PropTypes.string,
     icon: PropTypes.string,

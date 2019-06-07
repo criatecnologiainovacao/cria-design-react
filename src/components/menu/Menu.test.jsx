@@ -22,7 +22,7 @@ describe('Menu tests', () => {
 
         expect(menu.find('.cd-menu').exists()).toBeTruthy();
         expect(menu.hasClass('cd-menu--collapse')).toBeTruthy();
-        menu.find('.menu-icon').simulate('click');
+        menu.find('.cd-menu-title').simulate('click');
         expect(menu.hasClass('cd-menu--collapse')).toBeFalsy();
     });
 

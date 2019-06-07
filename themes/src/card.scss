@@ -27,7 +27,7 @@
     }
 
     @include e(title) {
-        padding: #{$--card-padding - 2 $--card-padding};
+        padding: $--card-padding $--card-padding 0 $--card-padding;
         box-sizing: border-box;
         font-size: $--font-size-large;
         font-weight: bold;

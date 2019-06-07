@@ -33,13 +33,15 @@ export default class Container extends Component {
 
     render(): React.DOM {
         const {
+            id,
             children
         } = this.props;
 
         return (
-            <section className={this.className('cd-container', {
-                                                   'is-vertical': this.isVertical()
-                                               }
+            <section id={id} className={this.className(
+                'cd-container', {
+                    'is-vertical': this.isVertical()
+                }
             )}>
                 {children}
             </section>
@@ -48,5 +50,6 @@ export default class Container extends Component {
 }
 
 Container.propTypes = {
-    direction: PropTypes.string
+    direction: PropTypes.string,
+    id: PropTypes.string
 };

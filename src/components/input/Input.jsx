@@ -208,6 +208,7 @@ export default class Input extends Component {
             autoComplete,
             autoFocus,
             clearable,
+            id,
             label,
             placeholder,
             prefix,
@@ -245,6 +246,7 @@ export default class Input extends Component {
                     onMouseEnter={this.handleHoveringStart.bind(this)}
                     onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     <textarea
+                        id={id}
                         ref="textarea"
                         tabIndex={tabindex}
                         className="cd-textarea__inner"
@@ -274,6 +276,7 @@ export default class Input extends Component {
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
                     <input
+                        id={id}
                         ref="input"
                         type={showPassword
                               ? (this.state.passwordVisible ? 'text' : 'password')
@@ -287,6 +290,7 @@ export default class Input extends Component {
                         onBlur={this.handleBlur.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
+                        name={label}
                         placeholder={placeholder}
                         autoFocus={autoFocus}
                         maxLength={maxLength}
@@ -337,6 +341,7 @@ export default class Input extends Component {
 
 Input.propTypes = {
     // base
+    id: PropTypes.string,
     type: PropTypes.string,
     disabled: PropTypes.bool,
     placeholder: PropTypes.string,
