@@ -81,14 +81,12 @@ const onSearch = (query) => {
 
         setTimeout(() => {
                 loading = false
-                state.options = state.states.map(item => {
-                    return { value: item, label: item };
-                }).filter(item => {
-                    return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                state.cities = state.cities.filter(item => {
+                    return item.label.indexOf(query) > -1;
             });
         }, 200);
     } else {
-            state.options = []
+            state.cities = []
     }
 }
 
@@ -199,7 +197,7 @@ storiesOf('Select', module)
     .add('remote', () => (
       <Select value={state.value} multiple={true} filterable={true} remote={true} remoteMethod={onSearch.bind(this)} loading={loading}>
         {
-                state.options.map(el => {
+                state.cities.map(el => {
                     return <Option key={el.value} label={el.label} value={el.value} />
                 })
             }

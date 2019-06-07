@@ -67,12 +67,22 @@ export default class Input extends Component {
         this.setState({ isComposing: true });
     }
 
-    handleIconClick(): void {
-        this.props.onIconClick();
+    handleIconClick(e: SyntheticEvent<any>): void {
+        if (this.props.onIconClick) {
+            this.props.onIconClick(e)
+        }
     }
 
-    handleKeyUp(): void {
-        this.props.onKeyUp();
+    handleKeyUp(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyUp) {
+            this.props.onKeyUp();
+        }
+    }
+
+    handleDownKey(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyDown) {
+            this.props.onKeyDown(e)
+        }
     }
 
     handleCompositionEnd(e: SyntheticEvent<any>): void {
@@ -268,6 +278,7 @@ export default class Input extends Component {
             prefix,
             prefixIcon,
             prepend,
+            value,
             readOnly,
             showPassword,
             size,
@@ -311,7 +322,6 @@ export default class Input extends Component {
                         readOnly={readOnly}
                         autoComplete={autoComplete}
                         onInput={this.handleInput.bind(this)}
-                        onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
                         aria-label={label}
@@ -338,11 +348,13 @@ export default class Input extends Component {
                               ? (this.state.passwordVisible ? 'text' : 'password')
                               : type}
                         className="cd-input__inner"
+                        value={!Array.isArray(value) ? value : ''}
                         disabled={this.inputDisabled()}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
                         onInput={this.handleInput.bind(this)}
                         onKeyUp={this.handleKeyUp.bind(this)}
+                        onKeyDown={this.handleDownKey.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
@@ -363,7 +375,7 @@ export default class Input extends Component {
                     }
                     {
                         this.getSuffixVisible() &&
-                        <span className="cd-input__suffix"
+                        <span className="cd-input__suffix"  onClick={this.handleIconClick.bind(this)}
                            >
                             <span className="cd-input__suffix-inner">
                                 {
@@ -410,7 +422,7 @@ Input.propTypes = {
     autoFocus: PropTypes.bool,
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.any,
     clearable: PropTypes.bool,
     showWordLimit: PropTypes.bool,
     validateEvent: PropTypes.bool,

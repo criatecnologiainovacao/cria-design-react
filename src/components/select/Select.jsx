@@ -733,6 +733,7 @@ class Select extends Component {
     this.handleValueChange();
   }
 
+  //チムツテベトゾ
   onOptionDestroy(option: any) {
     this.state.optionsCount--;
     this.state.filteredOptionsCount--;
@@ -901,7 +902,7 @@ class Select extends Component {
           disabled={disabled}
           readOnly={!filterable || multiple}
           suffixIcon={this.iconClass() || undefined}
-          onChange={(value) => this.onChange(value)}
+          onChange={value => this.setState({ selectedLabel: value })}
           onIconClick={this.handleIconClick.bind(this)}
           onMouseDown={this.onMouseDown.bind(this)}
           onMouseEnter={this.onMouseEnter.bind(this)}
