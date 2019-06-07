@@ -812,7 +812,7 @@ class Select extends Component {
   }
 
   render() {
-    const { multiple, size, disabled, filterable, loading } = this.props;
+    const { multiple, size, disabled, filterable, prefixIcon, loading } = this.props;
     const { selected, inputWidth, inputLength, query, selectedLabel, visible, options, filteredOptionsCount, currentPlaceholder } = this.state;
 
     return (
@@ -895,6 +895,7 @@ class Select extends Component {
         <Input
           ref="reference"
           value={selectedLabel}
+          prefixIcon={prefixIcon}
           type="text"
           placeholder={currentPlaceholder}
           name="name"
@@ -980,7 +981,8 @@ Select.propTypes = {
   onChange: PropTypes.func,
   onVisibleChange: PropTypes.func,
   onRemoveTag: PropTypes.func,
-  onClear: PropTypes.func
+  onClear: PropTypes.func,
+  prefixIcon: PropTypes.string
 }
 
 export default ClickOutside(Select);

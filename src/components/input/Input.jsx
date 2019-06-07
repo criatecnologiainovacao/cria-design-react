@@ -91,10 +91,16 @@ export default class Input extends Component {
     }
 
     handleHoveringStart(): void {
+        if (this.props.onMouseEnter) {
+            this.props.onMouseEnter()
+        }
         this.setState({ hovering: true });
     }
 
     handleHoveringEnd(e: SyntheticEvent<any>): void {
+        if (this.props.onMouseLeave) {
+            this.props.onMouseLeave()
+        }
         this.setState({ hovering: false });
     }
 

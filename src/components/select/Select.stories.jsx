@@ -4,6 +4,7 @@ import {storiesOf} from '@storybook/react';
 import Select from "./Select";
 import Option from "./Option";
 import OptionGroup from "./OptionGroup";
+import {action} from "@storybook/addon-actions";
 
 const group = {
     options: [{
@@ -75,133 +76,131 @@ const state = {
 
 let loading = false;
 
-const onSearch = (query) => {
-    if (query !== '') {
-        loading = true
-
-        setTimeout(() => {
-                loading = false
-                state.cities = state.cities.filter(item => {
-                    return item.label.indexOf(query) > -1;
-            });
-        }, 200);
-    } else {
-            state.cities = []
-    }
-}
+export const actionRemote = {
+    remoteMethod: action('remoteMethod')
+};
 
 storiesOf('Select', module)
     .add('default', () => (
-      <Select value={state.value}>
-        {
+        <Select value={state.value}>
+            {
                 state.options.map(el => {
-                    return <Option key={el.value} label={el.label} value={el.value} />
+                    return <Option key={el.value} label={el.label} value={el.value}/>
                 })
             }
-      </Select>
+        </Select>
+    ))
+    .add('prefixIcon', () => (
+        <Select prefixIcon="cd-icon-time" value={state.value}>
+            {
+                state.options.map(el => {
+                    return <Option key={el.value} label={el.label} value={el.value}/>
+                })
+            }
+        </Select>
     ))
     .add('Disabled option', () => (
-      <Select value={state.value}>
-        {
+            <Select value={state.value}>
+                {
                     state.options.map(el => {
-                        return <Option key={el.value} label={el.label} value={el.value} disabled={el.disabled} />
+                        return <Option key={el.value} label={el.label} value={el.value} disabled={el.disabled}/>
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('Disabled select', () => (
-      <Select value={state.value} disabled={true}>
-        {
+            <Select value={state.value} disabled={true}>
+                {
                     state.options.map(el => {
-                        return <Option key={el.value} label={el.label} value={el.value} />
+                        return <Option key={el.value} label={el.label} value={el.value}/>
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('clearable', () => (
-      <Select value={state.value} clearable={true}>
-        {
+            <Select value={state.value} clearable={true}>
+                {
                     state.options.map(el => {
-                        return <Option key={el.value} label={el.label} value={el.value} />
+                        return <Option key={el.value} label={el.label} value={el.value}/>
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('multiple', () => (
-      <Select value={state.value} multiple={true}>
-        {
+            <Select value={state.value} multiple={true}>
+                {
                     state.options.map(el => {
-                        return <Option key={el.value} label={el.label} value={el.value} />
+                        return <Option key={el.value} label={el.label} value={el.value}/>
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('custom', () => (
-      <Select value={state.value}>
-        {
+            <Select value={state.value}>
+                {
                     state.cities.map(el => {
                         return (
-                          <Option key={el.value} label={el.label} value={el.value}>
-                            <span style={{float: 'left'}}>{el.label}</span>
-                            <span style={{float: 'right', color: '#8492a6', fontSize: 13}}>{el.value}</span>
-                          </Option>
+                            <Option key={el.value} label={el.label} value={el.value}>
+                                <span style={{float: 'left'}}>{el.label}</span>
+                                <span style={{float: 'right', color: '#8492a6', fontSize: 13}}>{el.value}</span>
+                            </Option>
                         )
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('grouping', () => (
-      <Select value={group.value}>
-        {
+            <Select value={group.value}>
+                {
                     group.options.map(group => {
                         return (
-                          <OptionGroup key={group.label} label={group.label}>
-                            {
+                            <OptionGroup key={group.label} label={group.label}>
+                                {
                                     group.options.map(el => {
                                         return (
-                                          <Option key={el.value} label={el.label} value={el.value}>
-                                            <span style={{float: 'left'}}>{el.label}</span>
-                                            <span style={{
+                                            <Option key={el.value} label={el.label} value={el.value}>
+                                                <span style={{float: 'left'}}>{el.label}</span>
+                                                <span style={{
                                                     float: 'right',
                                                     color: '#8492a6',
                                                     fontSize: 13
                                                 }}>
                                               {el.value}
                                             </span>
-                                          </Option>
+                                            </Option>
                                         )
                                     })
                                 }
-                          </OptionGroup>
+                            </OptionGroup>
                         )
                     })
                 }
-      </Select>
+            </Select>
         )
     )
     .add('filtering', () => (
-      <Select value={state.value} filterable={true}>
-        {
-                state.options.map(el => {
-                    return <Option key={el.value} label={el.label} value={el.value} />
-                })
-            }
-      </Select>
+            <Select value={state.value} filterable={true}>
+                {
+                    state.options.map(el => {
+                        return <Option key={el.value} label={el.label} value={el.value}/>
+                    })
+                }
+            </Select>
         )
     )
     .add('remote', () => (
-      <Select value={state.value} multiple={true} filterable={true} remote={true} remoteMethod={onSearch.bind(this)} loading={loading}>
-        {
-                state.cities.map(el => {
-                    return <Option key={el.value} label={el.label} value={el.value} />
-                })
-            }
-      </Select>
+            <Select value={state.value} multiple={true} filterable={true} {...actionRemote} remote={true} loading={loading}>
+                {
+                    state.cities.map(el => {
+                        return <Option key={el.value} label={el.label} value={el.value}/>
+                    })
+                }
+            </Select>
         )
     )
 
