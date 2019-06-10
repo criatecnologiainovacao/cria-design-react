@@ -108,5 +108,4 @@ export function range(start, stop, step) {
 }
 
 export {default as DateUtils} from './date'
-export * from './popper-mixins'
 export {IDGenerator} from './IDGenerator'
