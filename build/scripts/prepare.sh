@@ -2,9 +2,9 @@
 
 # testing before publish
 
-#npm install && npm run lint && npm test && npm run build
+npm install && npm run lint && npm test && npm run build
 
-#cd themes && npm install && gulp build && cd ..
+cd themes && npm install && gulp build && cd ..
 
 if [[ $? = 0 ]]; then
   # purge dist

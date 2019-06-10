@@ -126,6 +126,7 @@ export default class Menu extends Component {
     render(): React.DOM {
         return (
             <ul
+                id={this.props.id}
                 style={this.style()}
                 className={this.className('cd-menu', {
                     'cd-menu--horizontal': this.props.mode === 'horizontal',
@@ -134,9 +135,9 @@ export default class Menu extends Component {
             >
                 {this.props.title && !this.props.titleDisabled && this.props.mode === 'vertical' &&
                  (
-                     <div className="cd-menu-title">
+                     <div className="cd-menu-title" onClick={() => this.changeCollapse()}>
                          <div className={'cd-menu-icon'}>
-                             <button onClick={() => this.changeCollapse()}
+                             <button
                                      className={this.className('menu-icon menu-icon--arrow', { 'is-active': !this.state.collapse })}>
                                  <div className={'menu-icon-box'}>
                                      <div className={'menu-icon-inner'}>
@@ -158,6 +159,7 @@ Menu.childContextTypes = {
 };
 
 Menu.propTypes = {
+    id: PropTypes.string,
     titleDisabled: PropTypes.bool,
     title: PropTypes.string,
     mode: PropTypes.string,

@@ -1,14 +1,12 @@
 {
     "name": "cria-ui-react",
-    "version": "1.0.0-rc1",
+    "version": "1.0.0-rc2",
     "description": "A UI Component Toolkit for React",
     "private": false,
     "main": "dist/npm/es5/index.js",
     "jsnext:main": "next.js",
     "files": [
-        "libs",
         "themes",
-        "src",
         "dist"
     ],
     "scripts": {
@@ -118,6 +116,7 @@
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.13.1",
         "jest-enzyme": "^7.0.2",
+        "popper.js": "^1.15.0",
         "prop-types": "^15.7.2",
         "raf": "^3.4.1",
         "react": "^16.8.6",

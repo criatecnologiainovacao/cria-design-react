@@ -60,12 +60,67 @@ export default class Input extends Component {
         if (onBlur) onBlur(e);
     }
 
+    handleCompositionStart(): void {
+        this.setState({ isComposing: true });
+    }
+
+    handleIconClick(e: SyntheticEvent<any>): void {
+        if (this.props.onIconClick) {
+            this.props.onIconClick(e)
+        }
+    }
+
+    handleKeyUp(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyUp) {
+            this.props.onKeyUp();
+        }
+    }
+
+    handleDownKey(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyDown) {
+            this.props.onKeyDown(e)
+        }
+    }
+
+
+    handleCompositionEnd(e: SyntheticEvent<any>): void {
+        this.setState({ isComposing: false });
+        this.handleInput(e);
+    }
+
     handleHoveringStart(): void {
+        if (this.props.onMouseEnter) {
+            this.props.onMouseEnter()
+        }
         this.setState({ hovering: true });
     }
 
     handleHoveringEnd(e: SyntheticEvent<any>): void {
+        if (this.props.onMouseLeave) {
+            this.props.onMouseLeave()
+        }
         this.setState({ hovering: false });
+    }
+
+    handleInput(e: SyntheticInputEvent<any>): void {
+        const { isComposing } = this.state;
+        const { onInput } = this.props;
+        if (isComposing) return;
+        if (e.target.value === this.nativeInputValue()) return;
+        if (onInput) onInput(e.target.value);
+        this.nativeInputValue();
+    }
+
+    focus(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).focus();
+        });
+    }
+
+    blur(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).blur();
+        });
     }
 
     setNativeInputValue() {
@@ -208,7 +263,9 @@ export default class Input extends Component {
             autoComplete,
             autoFocus,
             clearable,
+            id,
             label,
+            value,
             placeholder,
             prefix,
             prefixIcon,
@@ -245,6 +302,7 @@ export default class Input extends Component {
                     onMouseEnter={this.handleHoveringStart.bind(this)}
                     onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     <textarea
+                        id={id}
                         ref="textarea"
                         tabIndex={tabindex}
                         className="cd-textarea__inner"
@@ -252,6 +310,7 @@ export default class Input extends Component {
                         disabled={this.inputDisabled.bind(this)}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
+                        onInput={this.handleInput.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
@@ -274,19 +333,26 @@ export default class Input extends Component {
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
                     <input
+                        id={id}
                         ref="input"
                         type={showPassword
                               ? (this.state.passwordVisible ? 'text' : 'password')
                               : type}
                         className="cd-input__inner"
+                        value={!Array.isArray(value) ? value : ''}
                         disabled={this.inputDisabled()}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
+                        onInput={this.handleInput.bind(this)}
+                        onKeyUp={this.handleKeyUp.bind(this)}
+                        onKeyDown={this.handleDownKey.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
+                        onClick={this.handleIconClick.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
+                        name={label}
                         placeholder={placeholder}
                         autoFocus={autoFocus}
                         maxLength={maxLength}
@@ -301,7 +367,8 @@ export default class Input extends Component {
                     }
                     {
                         this.getSuffixVisible() &&
-                        <span className="cd-input__suffix">
+                        <span className="cd-input__suffix"  onClick={this.handleIconClick.bind(this)}
+                           >
                             <span className="cd-input__suffix-inner">
                                 {
                                     !this.showClear() || !this.showPwdVisible() ||
@@ -337,6 +404,7 @@ export default class Input extends Component {
 
 Input.propTypes = {
     // base
+    id: PropTypes.string,
     type: PropTypes.string,
     disabled: PropTypes.bool,
     placeholder: PropTypes.string,
@@ -344,7 +412,7 @@ Input.propTypes = {
     autoFocus: PropTypes.bool,
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.any,
     clearable: PropTypes.bool,
     showWordLimit: PropTypes.bool,
     validateEvent: PropTypes.bool,
@@ -370,6 +438,8 @@ Input.propTypes = {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onClear: PropTypes.func,
+    onInput: PropTypes.func,
+    onIconClick: PropTypes.func,
 
     // autoComplete
     autoComplete: PropTypes.string,

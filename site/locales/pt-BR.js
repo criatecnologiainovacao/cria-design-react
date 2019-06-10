@@ -11,7 +11,8 @@ module.exports = {
         'form': 'Form',
         'card': 'Card',
         'nav-menu': 'NavMenu',
-        'table': 'Table'
+        'table': 'Table',
+        'select': 'Select'
     },
     misc: {
         'guide': 'Guia',

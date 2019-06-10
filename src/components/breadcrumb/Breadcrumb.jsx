@@ -17,7 +17,8 @@ export default class Breadcrumb extends Component {
 
     render() {
         return (
-            <div style={this.style()} className={this.className('cd-breadcrumb')}>
+            <div id={this.props.id} style={this.style()}
+                 className={this.className('cd-breadcrumb')}>
                 {this.props.children}
             </div>
         )
@@ -29,9 +30,10 @@ Breadcrumb.childContextTypes = {
 };
 
 Breadcrumb.propTypes = {
-    separator: PropTypes.string
-}
+    separator: PropTypes.string,
+    id: PropTypes.string
+};
 
 Breadcrumb.defaultProps = {
     separator: '/'
-}
+};

@@ -8,12 +8,13 @@ export default class Header extends Component {
 
     render(): React.DOM {
         const {
+            id,
             height,
             children
         } = this.props;
 
         return (
-            <header className="cd-header" style={{ height: height }}>
+            <header id={id} className="cd-header" style={{ height: height }}>
                 {children}
             </header>
         )
@@ -21,7 +22,8 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-    height: PropTypes.string
+    height: PropTypes.string,
+    id: PropTypes.string
 };
 
 Header.defaultProps = {

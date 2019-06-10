@@ -33,7 +33,7 @@
   }
 
   .cd-input {
-    & .cd-select__caret {
+    & .cd-icon-caret-top {
       color: $--select-input-color;
       font-size: $--select-input-font-size;
       transition: transform .3s;
@@ -127,7 +127,7 @@
     box-sizing: border-box;
     border-color: transparent;
     margin: 2px 0 2px 6px;
-    background-color: #f0f2f5;
+    display: unset !important;
 
     &__close.cd-icon-close {
       background-color: $--color-text-placeholder;

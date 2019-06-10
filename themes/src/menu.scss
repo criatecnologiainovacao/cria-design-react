@@ -22,7 +22,7 @@
     .menu-icon {
         outline: 0;
         display: inline-block;
-        padding: 0 5px 0 3px !important;
+        padding: 0 8px !important;
         cursor: pointer;
 
         transition-property: opacity, filter;
@@ -127,6 +127,7 @@
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
+    border-left: solid 3px transparent;
 
     * {
         transition: width .4s;
@@ -153,7 +154,7 @@
 @include b(menu) {
     transition: width .4s;
     width: 100%;
-    border-right: solid 1px #e6e6e6;
+    border-right: none;
     list-style: none;
     position: relative;
     margin: 0;
@@ -301,7 +302,7 @@
     }
 
     @include m(collapse) {
-        width: 64px !important;
+        width: 70px !important;
         overflow: hidden;
 
         .cd-menu-title {
@@ -385,9 +386,9 @@
 
     @include when(active) {
         border-left: solid 3px $--color-primary;
-        margin-left: -3px;
         font-weight: bold;
         color: $--color-text-primary;
+        margin-left: 0;
         background-color: darken($--menu-background-color, 3%);
         i {
             color: $--color-primary;
