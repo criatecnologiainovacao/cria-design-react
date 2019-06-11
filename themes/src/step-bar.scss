@@ -32,6 +32,7 @@ $grey-light: #ededed;
         display: table-cell;
         position: relative;
         color: $--color-primary;
+        transition: ease-in-out color .4s;
 
         &:before {
             content: "";
