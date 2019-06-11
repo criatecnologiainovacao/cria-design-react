@@ -1,13 +1,12 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-/* eslint-disable no-unused-expressions */
 import {action} from "@storybook/addon-actions";
 import Select from "./Select";
 import Option from "./Option";
 import OptionGroup from "./OptionGroup";
 
-const group = {
-    options: [{
+const cidades = {
+    opcoes: [{
         label: 'Cidades populares',
         options: [{
             value: 'Varginha',
@@ -18,7 +17,7 @@ const group = {
         }]
     }, {
         label: 'Nome da cidade',
-        options: [{
+        opcoes: [{
             value: 'Boa esperança',
             label: 'Boa esperança'
         }, {
@@ -35,7 +34,7 @@ const group = {
     value: ''
 };
 const state = {
-    options: [{
+    opcoes: [{
         value: 'Opção1',
         label: 'Opção1'
     }, {
@@ -53,7 +52,7 @@ const state = {
         label: 'Opção5'
     }],
     value: '',
-    cities: [{
+    cidades: [{
         value: 'Varginha',
         label: 'Varginha'
     }, {
@@ -84,7 +83,7 @@ storiesOf('Formulário|Select', module)
     .add('default', () => (
       <Select value={state.value}>
         {
-                state.options.map(el => {
+                state.opcoes.map(el => {
                     return <Option key={el.value} label={el.label} value={el.value} />
                 })
             }
@@ -93,7 +92,7 @@ storiesOf('Formulário|Select', module)
     .add('prefixIcon', () => (
       <Select prefixIcon="cd-icon-time" value={state.value}>
         {
-                state.options.map(el => {
+                state.opcoes.map(el => {
                     return <Option key={el.value} label={el.label} value={el.value} />
                 })
             }
@@ -102,7 +101,7 @@ storiesOf('Formulário|Select', module)
     .add('Disabled option', () => (
       <Select value={state.value}>
         {
-                    state.options.map(el => {
+                    state.opcoes.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} disabled={el.disabled} />
                     })
                 }
@@ -112,7 +111,7 @@ storiesOf('Formulário|Select', module)
     .add('Disabled select', () => (
       <Select value={state.value} disabled={true}>
         {
-                    state.options.map(el => {
+                    state.opcoes.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
                     })
                 }
@@ -122,7 +121,7 @@ storiesOf('Formulário|Select', module)
     .add('clearable', () => (
       <Select value={state.value} clearable={true}>
         {
-                    state.options.map(el => {
+                    state.opcoes.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
                     })
                 }
@@ -132,7 +131,7 @@ storiesOf('Formulário|Select', module)
     .add('multiple', () => (
       <Select value={state.value} multiple={true}>
         {
-                    state.options.map(el => {
+                    state.opcoes.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
                     })
                 }
@@ -142,7 +141,7 @@ storiesOf('Formulário|Select', module)
     .add('custom', () => (
       <Select value={state.value}>
         {
-                    state.cities.map(el => {
+                    state.cidades.map(el => {
                         return (
                           <Option key={el.value} label={el.label} value={el.value}>
                             <span style={{float: 'left'}}>{el.label}</span>
@@ -155,13 +154,13 @@ storiesOf('Formulário|Select', module)
         )
     )
     .add('grouping', () => (
-      <Select value={group.value}>
+      <Select value={cidades.value}>
         {
-                    group.options.map(group => {
+                    cidades.opcoes.map(group => {
                         return (
                           <OptionGroup key={group.label} label={group.label}>
                             {
-                                    group.options.map(el => {
+                                    group.opcoes.map(el => {
                                         return (
                                           <Option key={el.value} label={el.label} value={el.value}>
                                             <span style={{float: 'left'}}>{el.label}</span>
@@ -186,7 +185,7 @@ storiesOf('Formulário|Select', module)
     .add('filtering', () => (
       <Select value={state.value} filterable={true}>
         {
-                    state.options.map(el => {
+                    state.opcoes.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
                     })
                 }
@@ -196,7 +195,7 @@ storiesOf('Formulário|Select', module)
     .add('remote', () => (
       <Select value={state.value} multiple={true} filterable={true} {...actionRemote} remote={true} loading={loading}>
         {
-                    state.cities.map(el => {
+                    state.cidades.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
                     })
                 }
