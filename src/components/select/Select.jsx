@@ -126,11 +126,11 @@ class Select extends Component {
 
   componentWillUpdate(props: Object, state: Object) {
 
-    if (state.value != this.state.value) {
+    if (state.value !== this.state.value) {
       this.onValueChange(state.value);
     }
 
-    if (state.visible != this.state.visible) {
+    if (state.visible !== this.state.visible) {
       if (this.props.onVisibleChange) {
         this.props.onVisibleChange(state.visible);
       }
@@ -138,12 +138,12 @@ class Select extends Component {
       this.onVisibleChange(state.visible);
     }
 
-    if (state.query != this.state.query) {
+    if (state.query !== this.state.query) {
       this.onQueryChange(state.query);
     }
 
     if (Array.isArray(state.selected)) {
-      if (state.selected.length != this.state.selected.length) {
+      if (state.selected.length !== this.state.selected.length) {
         this.onSelectedChange(state.selected);
       }
     }
@@ -827,10 +827,11 @@ class Select extends Component {
                   return (
                     <Tag
                       type="primary"
+                      round
                       key={el.props.value}
-                      hit={el.hitState}
+                      size="small"
+                      hit
                       closable={!disabled}
-                      closeTransition={true}
                       onClose={this.deleteTag.bind(this, el)}
                     >
                       <span className="cd-select__tags-text">{el.currentLabel()}</span>

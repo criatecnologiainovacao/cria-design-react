@@ -282,6 +282,8 @@ describe('Select test', () => {
         select.find('.cd-input__inner').simulate('keydown', {keyCode: 38})
         select.find('.cd-input__inner').simulate('keypress', {keyCode: 40})
         select.find('.cd-input__inner').simulate('keydown', {keyCode: 40})
+        select.find('.cd-input__inner').simulate('keyup')
+        select.find('.cd-input__inner').simulate('mousedown')
     });
 
     it('remote', () => {
