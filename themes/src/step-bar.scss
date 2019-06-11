@@ -56,6 +56,7 @@ $grey-light: #ededed;
             height: 3px;
             width: 100%;
             background-color: $--color-primary;
+            transition: ease-in-out background-color .4s;
             position: absolute;
             top: 10px;
             left: 50%;
@@ -93,15 +94,18 @@ $grey-light: #ededed;
                 background-color: $white;
                 border-width: 7px;
                 border-color: $--color-primary;
+                transition: ease-in-out background-color .4s, border-color .4s;
             }
 
             ~ li {
                 color: #808080;
+                transition: ease-in-out color .4s;
                 @extend %remain-steps;
 
                 &:before {
                     background-color: $grey-light;
                     border-color: $grey-light;
+                    transition: ease-in-out border-color .4s, background-color .4s;
                 }
             }
         }
