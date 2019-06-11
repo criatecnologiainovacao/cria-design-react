@@ -12,6 +12,7 @@ export { default as Main } from './components/main';
 export { default as Menu } from './components/menu';
 export { default as StepBar } from './components/step-bar';
 export { default as Tag } from './components/tag';
+export { default as Popover } from './components/popover';
 export { Transition } from '../libs';
 export { CollapseTransition } from '../libs';
 export { View } from '../libs';
