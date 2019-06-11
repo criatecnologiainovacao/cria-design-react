@@ -59,7 +59,7 @@ export default class Radio extends Component {
 
   render(): React.DOM {
     const { checked, focus } = this.state;
-    const { disabled, value, children } = this.props;
+    const { disabled, value, children, id } = this.props;
 
     return (
       <label style={this.style()} className={this.className('cd-radio')}>
@@ -71,6 +71,7 @@ export default class Radio extends Component {
         })}>
           <span className="cd-radio__inner"></span>
           <input
+            id={id}
             type="radio"
             className="cd-radio__original"
             checked={checked}
@@ -92,5 +93,6 @@ Radio.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-  checked: PropTypes.bool
+  checked: PropTypes.bool,
+  id: PropTypes.string
 }

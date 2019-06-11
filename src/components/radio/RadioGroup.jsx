@@ -18,13 +18,9 @@ export default class RadioGroup extends Component {
 
   render() {
     return (
-      <div ref="RadioGroup" style={this.style()} className={this.className('el-radio-group')}>
+      <div ref="RadioGroup" style={this.style()} className={this.className('el-radio-group')} id={this.props.id}>
         {
           React.Children.map(this.props.children, element => {
-            if (!element) {
-              return null;
-            }
-
             const { elementType } = element.type;
             if (elementType !== 'Radio' && elementType !== 'RadioButton') {
               return null;
@@ -49,8 +45,6 @@ RadioGroup.childContextTypes = {
 RadioGroup.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
-  size: PropTypes.string,
-  textColor: PropTypes.string,
-  fill: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  id: PropTypes.string
 }

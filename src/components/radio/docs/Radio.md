@@ -40,8 +40,8 @@ Utilize o atributo `disabled` para desabilitar o Radio.
 render() {
   return (
     <div>
-      <Radio value="1" disabled={true}>Estou desabilitado</Radio>
-      <Radio value="2" disabled={false}>Estou habilitado!</Radio>
+      <Radio value="1" disabled={true} id="my-radio-disabled">Estou desabilitado</Radio>
+      <Radio value="2" disabled={false} id="my-radio-enabled">Estou habilitado!</Radio>
     </div>
   )
 }
@@ -79,7 +79,7 @@ render() {
 ```
 :::
 
-### Atributos do componente Radio
+### Atributos dos componentes Radio e Radio.Group
 
  Atributo      | Descrição          | Tipo      | Valores aceitos       | Default
 ---- | ---- | ---- | ---- | ----
@@ -87,16 +87,9 @@ checked | Determina se o Radio está marcado | boolean | — | false
 value | O valor interno do Radio | string/number/boolean | — | —
 disabled | Determina se o Radio está desabilitado | boolean | — | false
 name | Atributo nativo 'name' | string    |      —         |     —
+id | Atributo nativo 'id' do input | string    |      —         |     —
 
-### Atributos do componente Radio.Group
-
- Atributo      | Descrição          | Tipo      | Accepted Values       | Default
----- | ---- | ---- | ---- | ----
-size | Tamanho dos Radio buttons | string | large/small | —
-fill  | Atributos `border` e `background-color` quando o Radio button está ativo | string   | — | #20a0ff   |
-textColor | Atributo `color` (cor da fonte) quando o Radio button está ativo | string   | — | #ffffff   |
-
-### Eventos (Radio e Radio.Group)
+### Eventos dos componentes Radio e Radio.Group
 
 | Nome do evento | Descrição | Parâmetros |
 --- | --- | ---
