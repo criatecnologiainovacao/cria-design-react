@@ -202,6 +202,11 @@ export default class Input extends Component {
                (this.textLength() > this.upperLimit());
     }
 
+    showSuffix() {
+        return !this.showClear() || !this.showPwdVisible() ||
+               !this.isWordLimitVisible();
+    }
+
     render(): React.DOM {
         const {
             append,
@@ -251,7 +256,6 @@ export default class Input extends Component {
                         tabIndex={tabindex}
                         className="cd-textarea__inner"
                         style={this.state.textareaStyle}
-                        disabled={this.inputDisabled.bind(this)}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
                         onChange={this.handleChange.bind(this)}
@@ -308,8 +312,10 @@ export default class Input extends Component {
                         <span className="cd-input__suffix">
                             <span className="cd-input__suffix-inner">
                                 {
-                                    (!this.showClear() || !this.showPwdVisible() ||
-                                     !this.isWordLimitVisible()) && { suffix }
+                                    this.showSuffix() &&
+                                    <span className="cd-input__suffix-inner__suffix">
+                                        {suffix}
+                                    </span>
                                 }
                                 {suffixIcon && <i className={`cd-input__icon ${suffixIcon}`}/>}
                                 {this.showClear() &&
