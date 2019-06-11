@@ -8,69 +8,69 @@ import OptionGroup from "./OptionGroup";
 
 const group = {
     options: [{
-        label: 'Popular cities',
+        label: 'Cidades populares',
         options: [{
-            value: 'Shanghai',
-            label: 'Shanghai'
+            value: 'Varginha',
+            label: 'Varginha'
         }, {
-            value: 'Beijing',
-            label: 'Beijing'
+            value: 'Lavras',
+            label: 'Lavras'
         }]
     }, {
-        label: 'City name',
+        label: 'Nome da cidade',
         options: [{
-            value: 'Chengdu',
-            label: 'Chengdu'
+            value: 'Boa esperança',
+            label: 'Boa esperança'
         }, {
-            value: 'Shenzhen',
-            label: 'Shenzhen'
+            value: 'Tres coraçoes',
+            label: 'Tres coraçoes'
         }, {
-            value: 'Guangzhou',
-            label: 'Guangzhou'
+            value: 'Nepomuceno',
+            label: 'Nepomuceno'
         }, {
-            value: 'Dalian',
-            label: 'Dalian'
+            value: 'Tres pontas',
+            label: 'Tres pontas'
         }]
     }],
     value: ''
 };
 const state = {
     options: [{
-        value: 'Option1',
-        label: 'Option1'
+        value: 'Opção1',
+        label: 'Opção1'
     }, {
-        value: 'Option2',
-        label: 'Option2',
+        value: 'Opção2',
+        label: 'Opção2',
         disabled: true
     }, {
-        value: 'Option3',
-        label: 'Option3'
+        value: 'Opção3',
+        label: 'Opção3'
     }, {
-        value: 'Option4',
-        label: 'Option4'
+        value: 'Opção4',
+        label: 'Opção4'
     }, {
-        value: 'Option5',
-        label: 'Option5'
+        value: 'Opção5',
+        label: 'Opção5'
     }],
     value: '',
     cities: [{
-        value: 'Beijing',
-        label: 'Beijing'
+        value: 'Varginha',
+        label: 'Varginha'
     }, {
-        value: 'Shanghai',
-        label: 'Shanghai'
+        value: 'Lavras',
+        label: 'Lavras'
     }, {
-        value: 'Nanjing',
-        label: 'Nanjing'
+        value: 'Tres coraçoes',
+        label: 'Tres coraçoes'
     }, {
-        value: 'Chengdu',
-        label: 'Chengdu'
+        value: 'Boa esperança',
+        label: 'Boa esperança'
     }, {
-        value: 'Shenzhen',
-        label: 'Shenzhen'
+        value: 'Tres pontas',
+        label: 'Tres pontas'
     }, {
-        value: 'Guangzhou',
-        label: 'Guangzhou'
+        value: 'Nepomuceno',
+        label: 'Nepomuceno'
     }]
 };
 
