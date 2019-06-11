@@ -29,7 +29,7 @@ const menuMock = props => {
     );
 };
 
-storiesOf('Menu', module)
+storiesOf('Navegação|Menu', module)
     .addDecorator(withKnobs)
     .add('default', () => {
         return menuMock({ collapsed: boolean('Collapse'), style: style, defaultActive: '1' });
