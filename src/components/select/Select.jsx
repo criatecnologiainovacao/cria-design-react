@@ -125,6 +125,7 @@ class Select extends Component {
   }
 
   componentWillUpdate(props: Object, state: Object) {
+
     if (state.value != this.state.value) {
       this.onValueChange(state.value);
     }
@@ -392,12 +393,12 @@ class Select extends Component {
     } else if (typeof filterMethod === 'function') {
       filterMethod(query);
     } else {
+      let invisiblesOption = 0;
+      options.forEach(option => {
+        invisiblesOption += option.queryChange(query);
+      });
       this.setState({
-        filteredOptionsCount: optionsCount
-      }, () => {
-        options.forEach(option => {
-          option.queryChange(query);
-        });
+        filteredOptionsCount: optionsCount - invisiblesOption
       });
     }
 
@@ -733,7 +734,6 @@ class Select extends Component {
     this.handleValueChange();
   }
 
-  //チムツテベトゾ
   onOptionDestroy(option: any) {
     this.state.optionsCount--;
     this.state.filteredOptionsCount--;

@@ -82,6 +82,12 @@ export default class Input extends Component {
         }
     }
 
+    handleMouseDown(e: SyntheticEvent<any>): void {
+        if (this.props.onMouseDown) {
+            this.props.onMouseDown(e)
+        }
+    }
+
 
     handleCompositionEnd(e: SyntheticEvent<any>): void {
         this.setState({ isComposing: false });
@@ -300,6 +306,7 @@ export default class Input extends Component {
                     style={this.style()}
                     className={this.className(classname)}
                     onMouseEnter={this.handleHoveringStart.bind(this)}
+                    onMouseDown={this.handleMouseDown.bind(this)}
                     onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     <textarea
                         id={id}
@@ -330,6 +337,7 @@ export default class Input extends Component {
                 <div style={this.style()}
                      className={this.className(classname)}
                      onMouseEnter={this.handleHoveringStart.bind(this)}
+                     onMouseDown={this.handleMouseDown.bind(this)}
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
                     <input

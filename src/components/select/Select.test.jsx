@@ -4,7 +4,6 @@ import sinon from "sinon";
 import Select from "./Select";
 import Option from "./Option";
 import OptionGroup from "./OptionGroup";
-import {actionRemote} from "./Select.stories";
 
 const group = {
     options: [{
@@ -53,7 +52,7 @@ const options = [{
     label: 'Option5'
 }];
 
-let value = ''
+let value = '';
 
 
 describe('Select test', () => {
@@ -67,13 +66,14 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         expect(select.find('ul').children().length).toBe(5);
         select.find("Input").simulate("click");
         select.find('ul').childAt(1).find("li").simulate("click");
         expect(select.find("Select").state().selectedLabel).toBe('Option2')
+        select.find(".cd-input__inner").simulate('change', {target: {value: 'My new value'}});
 
     });
 
@@ -86,7 +86,7 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         expect(select.find('.cd-icon-time').exists()).toBe(true);
@@ -102,7 +102,7 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         expect(select.find('Input').childAt(0).hasClass("is-disabled")).toBe(true);
@@ -121,14 +121,24 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
+
+        let clickEvent = new MouseEvent('click');
 
         expect(select.find('.cd-select').exists()).toBe(true);
         expect(select.find('ul').childAt(1).find("li").hasClass("is-disabled")).toBe(true);
         select.find('ul').childAt(1).find("li").simulate("click");
-        expect(select.find("Select").state().selectedLabel).toBe('')
+        select.find(".cd-scrollbar__bar.is-vertical").simulate("mousedown");
+        select.find(".cd-scrollbar__wrap").simulate("scroll");
+        select.find("Scrollbar").instance()._update();
+        select.find("Bar").first().instance().mouseMoveDocumentHandler(clickEvent)
+        select.find("Bar").first().instance().mouseUpDocumentHandler(clickEvent)
+        select.find(".cd-scrollbar__bar.is-vertical").find(".cd-scrollbar__thumb").simulate("mousedown");
+        expect(select.find("Select").state().selectedLabel).toBe('');
         select.find('ul').childAt(2).find("li").simulate("click");
         expect(select.find("Select").state().selectedLabel).toBe('Option3')
+
+        select.unmount()
 
     });
 
@@ -142,12 +152,12 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         select.find("Input").simulate("click");
         select.find('ul').childAt(1).find("li").simulate("click");
-        expect(select.find("Select").state().selectedLabel).toBe('Option2')
+        expect(select.find("Select").state().selectedLabel).toBe('Option2');
         select.find("Input").simulate("mouseenter");
         select.find(".cd-icon-circle-close").simulate("click");
         expect(fn.callCount).toBe(1);
@@ -164,15 +174,16 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         select.find("Input").simulate("click");
         select.find('ul').childAt(1).find("li").simulate("click");
         select.find('ul').childAt(2).find("li").simulate("click");
-        expect(Array.isArray(select.find("Select").state().selectedLabel)).toBe(true)
-        expect(select.find("Select").state().selectedLabel[0]).toBe("Option2")
+        expect(Array.isArray(select.find("Select").state().selectedLabel)).toBe(true);
+        expect(select.find("Select").state().selectedLabel[0]).toBe("Option2");
         expect(select.find("Select").state().selectedLabel[1]).toBe("Option3")
+        select.find("Select").find('.cd-icon-close').first().simulate('click')
 
     });
 
@@ -190,42 +201,45 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
+        select.find('Input').simulate('mouseenter')
+        select.find('Input').simulate('mouseleave')
+        select.find('Input').simulate('mousedown')
         expect(select.find('ul').children().length).toBe(5);
 
     });
 
     it('grouping', () => {
         const select = mount(
-            <Select value={group.value}>
-                {
+          <Select value={group.value}>
+            {
                     group.options.map(group => {
                         return (
-                            <OptionGroup key={group.label} label={group.label}>
-                                {
+                          <OptionGroup key={group.label} label={group.label}>
+                            {
                                     group.options.map(el => {
                                         return (
-                                            <Option key={el.value} label={el.label} value={el.value}>
-                                                <span style={{float: 'left'}}>{el.label}</span>
-                                                <span style={{
+                                          <Option key={el.value} label={el.label} value={el.value}>
+                                            <span style={{float: 'left'}}>{el.label}</span>
+                                            <span style={{
                                                     float: 'right',
                                                     color: '#8492a6',
                                                     fontSize: 13
                                                 }}>
                                               {el.value}
                                             </span>
-                                            </Option>
+                                          </Option>
                                         )
                                     })
                                 }
-                            </OptionGroup>
+                          </OptionGroup>
                         )
                     })
                 }
-            </Select>
-        )
+          </Select>
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
         expect(select.find('ul').children().length).toBe(12);
@@ -241,19 +255,41 @@ describe('Select test', () => {
                     })
                 }
           </Select>
-        )
+        );
 
         expect(select.find('.cd-select').exists()).toBe(true);
+        select.find("Select").simulate("click");
+
         expect(select.find('ul').children().length).toBe(5);
 
+        select.find("Input").find("input").simulate('click');
+
+        select.find(".cd-input__inner").simulate('change', {target: {value: 'My new value'}});
+
+        select.find("Select").setState({
+            query: 'Option1'
+        });
+
+        expect(select.find("Select").state().filteredOptionsCount).toBe(1)
+
+        select.find('.cd-input__inner').simulate('keypress', {keyCode: 27})
+        select.find('.cd-input__inner').simulate('keydown', {keyCode: 27})
+        select.find('.cd-input__inner').simulate('keypress', {keyCode: 13})
+        select.find('.cd-input__inner').simulate('keydown', {keyCode: 13})
+        select.find('.cd-input__inner').simulate('keypress', {keyCode: 8})
+        select.find('.cd-input__inner').simulate('keydown', {keyCode: 8})
+        select.find('.cd-input__inner').simulate('keypress', {keyCode: 38})
+        select.find('.cd-input__inner').simulate('keydown', {keyCode: 38})
+        select.find('.cd-input__inner').simulate('keypress', {keyCode: 40})
+        select.find('.cd-input__inner').simulate('keydown', {keyCode: 40})
     });
 
-    /*it('remote', () => {
+    it('remote', () => {
 
         let loading = false;
 
         const select = mount(
-          <Select multiple filterable remote loading={loading}>
+          <Select value={value} multiple filterable remote loading={loading}>
             {
                     options.map(el => {
                         return <Option key={el.value} label={el.label} value={el.value} />
@@ -263,7 +299,80 @@ describe('Select test', () => {
         )
 
         expect(select.find('.cd-select').exists()).toBe(true);
-        expect(select.find('ul').children().length).toBe(5);
 
-    });*/
+        expect(select.find("Select").state().visible).toBe(false)
+
+        select.find("Input").find("input").simulate('click');
+
+        expect(select.find("Select").state().visible).toBe(true)
+
+        select.find(".cd-input__inner").simulate('change', {target: {value: 'My new value'}});
+
+        select.find('ul').childAt(1).find("li").simulate("mouseenter");
+
+        select.find("Input").find("input").simulate('click');
+
+        select.find('ul').childAt(1).find("li").simulate("mouseleave");
+
+        select.find("Select").setState({
+            query: 'Option1'
+        });
+
+        select.find('Input').simulate('mousedown')
+
+        expect(select.find("Select").state().filteredOptionsCount).toBe(1)
+
+        select.find("Select").instance().handleClickOutside()
+
+        expect(select.find("Select").state().visible).toBe(false)
+
+        select.find('.cd-select__input').simulate('keypress', {keyCode: 27})
+        select.find('.cd-select__input').simulate('keydown', {keyCode: 27})
+        select.find('.cd-select__input').simulate('keypress', {keyCode: 13})
+        select.find('.cd-select__input').simulate('keydown', {keyCode: 13})
+        select.find('.cd-select__input').simulate('keypress', {keyCode: 8})
+        select.find('.cd-select__input').simulate('keydown', {keyCode: 8})
+        select.find('.cd-select__input').simulate('keypress', {keyCode: 38})
+        select.find('.cd-select__input').simulate('keydown', {keyCode: 38})
+        select.find('.cd-select__input').simulate('keypress', {keyCode: 40})
+        select.find('.cd-select__input').simulate('keydown', {keyCode: 40})
+        jest.useFakeTimers();
+        select.find('.cd-select__input').simulate('change', {target: {value: 'My new value'}})
+        jest.runAllTimers();
+
+    });
+
+
+    it('remote with method', () => {
+
+        let loading = false;
+
+        const select = mount(
+          <Select value="Option1" remoteMethod={() => {
+            }} multiple filterable remote loading={loading}>
+            {
+                    options.map(el => {
+                        return <Option key={el.value} label={el.label} value={el.value} />
+                    })
+                }
+          </Select>
+        )
+        select.setProps({
+            placeholder: 'placeholder',
+            value: ["Option1", "Option2"],
+            onVisibleChange: () => {
+            }
+        });
+
+        select.find("Select").setState({
+            query: 'Option1',
+            visible: true
+        });
+
+        select.find("Input").find("input").simulate('click');
+
+        select.find("Select").instance().handleClickOutside()
+
+    });
+
 });
