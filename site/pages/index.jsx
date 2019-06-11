@@ -7,8 +7,7 @@ export default {
             'layout': require('../../src/components/layout/docs'),
             'container': require('../../src/components/container/docs'),
             'button': require('../../src/components/button/docs'),
-            'breadcrumb': require('../../src/components/breadcrumb/docs'),
-            'select': require('../../src/components/select/docs'),
+            'breadcrumb': require('../../src/components/breadcrumb/docs')
         },
         'Dados': {
             'tag': require('../../src/components/tag/docs')
@@ -18,8 +17,9 @@ export default {
             'step-bar': require('../../src/components/step-bar/docs')
         },
         'Formulários': {
+            'form': require('../../src/components/form/docs'),
             'input': require('../../src/components/input/docs'),
-            'form': require('../../src/components/form/docs')
+            'select': require('../../src/components/select/docs')
         },
         'Outros': {
             'card': require('../../src/components/card/docs')
