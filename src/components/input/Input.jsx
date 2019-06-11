@@ -297,7 +297,7 @@ export default class Input extends Component {
                         minLength={minLength}
                     />
                     {
-                        prefix || prefixIcon &&
+                        (prefix || prefixIcon) &&
                         <span className="cd-input__prefix">
                             {prefix}
                             {prefixIcon && <i className={`cd-input__icon ${prefixIcon}`}/>}
@@ -308,8 +308,8 @@ export default class Input extends Component {
                         <span className="cd-input__suffix">
                             <span className="cd-input__suffix-inner">
                                 {
-                                    !this.showClear() || !this.showPwdVisible() ||
-                                    !this.isWordLimitVisible() && { suffix }
+                                    (!this.showClear() || !this.showPwdVisible() ||
+                                     !this.isWordLimitVisible()) && { suffix }
                                 }
                                 {suffixIcon && <i className={`cd-input__icon ${suffixIcon}`}/>}
                                 {this.showClear() &&
