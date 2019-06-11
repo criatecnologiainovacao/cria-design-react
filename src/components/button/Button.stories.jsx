@@ -12,7 +12,7 @@ const mr10 = {
     marginRight: '10px'
 };
 
-storiesOf('Button', module)
+storiesOf('Básicos|Button', module)
     .add('default', () => <Button>Button</Button>)
     .add('type', () => {
         return (

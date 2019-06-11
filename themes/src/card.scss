@@ -2,31 +2,39 @@
 @import "common/var";
 
 @include b(card) {
-  border-radius: $--card-border-radius;
-  border: 1px solid $--card-border-color;
-  background-color: $--color-white;
-  overflow: hidden;
-  color: $--color-text-primary;
-  transition: 0.3s;
+    border-radius: $--card-border-radius;
+    border: 1px solid $--card-border-color;
+    background-color: $--color-white;
+    overflow: hidden;
+    color: $--color-text-primary;
+    transition: 0.3s;
 
-  @include when(always-shadow) {
-    box-shadow: $--box-shadow-light;
-  }
-
-  @include when(hover-shadow) {
-    &:hover,
-    &:focus {
-      box-shadow: $--box-shadow-light;
+    @include when(always-shadow) {
+        box-shadow: $--box-shadow-light;
     }
-  }
 
-  @include e(header) {
-    padding: #{$--card-padding - 2 $--card-padding};
-    border-bottom: 1px solid $--card-border-color;
-    box-sizing: border-box;
-  }
+    @include when(hover-shadow) {
+        &:hover,
+        &:focus {
+            box-shadow: $--box-shadow-light;
+        }
+    }
 
-  @include e(body) {
-    padding: $--card-padding;
-  }
+    @include e(header) {
+        padding: #{$--card-padding - 2 $--card-padding};
+        border-bottom: 1px solid $--card-border-color;
+        box-sizing: border-box;
+    }
+
+    @include e(title) {
+        padding: $--card-padding $--card-padding 0 $--card-padding;
+        box-sizing: border-box;
+        font-size: $--font-size-large;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    @include e(body) {
+        padding: $--card-padding;
+    }
 }

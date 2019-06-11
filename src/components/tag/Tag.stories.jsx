@@ -6,7 +6,11 @@ import { withA11y } from '@storybook/addon-a11y';
 
 import Tag from './Tag';
 
-export const actions = {
+export const actionsClick = {
+    onClick: action('Clicked')
+};
+
+export const actionClose = {
     onClose: action('Closed')
 };
 
@@ -14,7 +18,7 @@ const mr10 = {
     marginRight: '10px'
 };
 
-storiesOf('Tag', module)
+storiesOf('Dados|Tag', module)
     .addDecorator(withKnobs)
     .addDecorator(withA11y)
     .add('default', () => <Tag>Tag Default</Tag>)
@@ -22,7 +26,9 @@ storiesOf('Tag', module)
         return (
             <div>
                 <Tag style={mr10}>Primary</Tag>
-                <Tag style={mr10} type={text('Type button 2', 'success')}>Success</Tag>
+                <Tag style={mr10} type={text('Type button 2', 'success')}>
+                    Success
+                </Tag>
                 <Tag style={mr10} type="info">Info</Tag>
                 <Tag style={mr10} type="warning">Warning</Tag>
                 <Tag style={mr10} type="danger">Danger</Tag>
@@ -40,14 +46,25 @@ storiesOf('Tag', module)
             </div>
         )
     })
+    .add('clickable', () => {
+        return (
+            <div>
+                <Tag style={mr10} {...actionsClick}>Primary</Tag>
+                <Tag style={mr10} type="success" {...actionsClick}>Success</Tag>
+                <Tag style={mr10} type="info" {...actionsClick}>Info</Tag>
+                <Tag style={mr10} type="warning" {...actionsClick}>Warning</Tag>
+                <Tag style={mr10} type="danger" {...actionsClick}>Danger</Tag>
+            </div>
+        )
+    })
     .add('closable', () => {
         return (
             <div>
-                <Tag style={mr10} closable {...actions}>Primary</Tag>
-                <Tag style={mr10} closable type="success" {...actions}>Success</Tag>
-                <Tag style={mr10} closable type="info" {...actions}>Info</Tag>
-                <Tag style={mr10} closable type="warning" {...actions}>Warning</Tag>
-                <Tag style={mr10} closable type="danger" {...actions}>Danger</Tag>
+                <Tag style={mr10} closable {...actionClose}>Primary</Tag>
+                <Tag style={mr10} closable type="success" {...actionClose}>Success</Tag>
+                <Tag style={mr10} closable type="info" {...actionClose}>Info</Tag>
+                <Tag style={mr10} closable type="warning" {...actionClose}>Warning</Tag>
+                <Tag style={mr10} closable type="danger" {...actionClose}>Danger</Tag>
             </div>
         )
     })
@@ -83,7 +100,7 @@ storiesOf('Tag', module)
                 </Tag>
                 <Tag style={mr10} round appendIcon="cd-icon-star-on">VIP</Tag>
                 <Tag style={mr10} round hit type="success">Rounded Success Hit</Tag>
-                <Tag style={mr10} round closable {...actions}>Rounded Closable</Tag>
+                <Tag style={mr10} round closable {...actionClose}>Rounded Closable</Tag>
             </div>
         )
     })
@@ -102,16 +119,16 @@ storiesOf('Tag', module)
                 <Tag style={mr10} round size="mini">Mini</Tag>
                 <br/>
                 <br/>
-                <Tag style={mr10} closable {...actions}>Default</Tag>
-                <Tag style={mr10} closable {...actions} size="medium">Medium</Tag>
-                <Tag style={mr10} closable {...actions} size="small">Small</Tag>
-                <Tag style={mr10} closable {...actions} size="mini">Mini</Tag>
+                <Tag style={mr10} closable {...actionClose}>Default</Tag>
+                <Tag style={mr10} closable {...actionClose} size="medium">Medium</Tag>
+                <Tag style={mr10} closable {...actionClose} size="small">Small</Tag>
+                <Tag style={mr10} closable {...actionClose} size="mini">Mini</Tag>
                 <br/>
                 <br/>
-                <Tag style={mr10} closable {...actions} round>Default</Tag>
-                <Tag style={mr10} closable {...actions} round size="medium">Medium</Tag>
-                <Tag style={mr10} closable {...actions} round size="small">Small</Tag>
-                <Tag style={mr10} closable {...actions} round size="mini">Mini</Tag>
+                <Tag style={mr10} closable {...actionClose} round>Default</Tag>
+                <Tag style={mr10} closable {...actionClose} round size="medium">Medium</Tag>
+                <Tag style={mr10} closable {...actionClose} round size="small">Small</Tag>
+                <Tag style={mr10} closable {...actionClose} round size="mini">Mini</Tag>
             </div>
         )
     });

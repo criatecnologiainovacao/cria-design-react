@@ -59,6 +59,10 @@
         }
     }
 
+    @include m(clickable){
+        cursor: pointer;
+    }
+
     @include m(info) {
         background-color: $--tag-info-fill;
         color: $--tag-info-color;

@@ -28,10 +28,10 @@
         font-weight: bold;
         text-decoration: none;
         transition: $--color-transition-base;
-        color: $--color-text-primary;
-
-        &:hover {
           color: $--color-primary;
+
+          &:hover {
+              color: $--color-primary-light-4;
           cursor: pointer;
         }
       }
@@ -42,7 +42,7 @@
       .cd-breadcrumb__inner a {
         &, &:hover {
           font-weight: normal;
-          color: $--color-text-regular;
+            color: $--color-text-secondary;
           cursor: text;
         }
       }
