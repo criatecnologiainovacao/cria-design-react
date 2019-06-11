@@ -1,26 +1,29 @@
 ## Popover
 
-### Basic usage
+### Uso básico
 
-Similar to Tooltip, Popover is also built with `Popper.js`. So for some duplicated attributes, please refer to the documentation of Tooltip.
+Similar ao componente Tooltip, utiliza o `Popper.js` na implementação.
+O conteúdo do Popover deve ser passado no atributo `content`. O elemento que irá disparar o Popover deve ser incluído como filho do Popover.
 
-:::demo The attribute `trigger` is used to define how popover is triggered: `hover`, `click` or `focus`.
+:::demo O atributo `trigger` é usado para definir como o Popover é disparado: `hover`, `click`, `focus` ou `manual`.
+
+Neste exemplo, os elementos `Button` e `Input` dispararão os Popovers.
 
 ```js
 render() {
   return (
     <div>
-      <Popover placement="top-start" title="Title" width="200" trigger="hover" content="This is content, this is content, this is content">
-        <Button>Hover to activate</Button>
+      <Popover placement="top-start" title="Title" width="200" trigger="hover" content="Esse é o conteúdo do popover">
+        <Button>Ative no hover</Button>
       </Popover>
-      <Popover placement="bottom" title="Title" width="200" trigger="click" content="This is content, this is content, this is content">
-        <Button>Click to activate</Button>
+      <Popover placement="bottom" title="Title" width="200" trigger="click" content="Esse é o conteúdo do popover">
+        <Button>Ative no clique</Button>
       </Popover>
-      <Popover placement="right" title="Title" width="200" trigger="focus" content="This is content, this is content, this is content">
-        <Button>Focus to activate</Button>
+      <Popover placement="right" title="Title" width="200" trigger="focus" content="Esse é o conteúdo do popover">
+        <Button>Ative no foco</Button>
       </Popover>
-      <Popover placement="right" title="Title" width="200" trigger="focus" content="This is content, this is content, this is content">
-        <Input value="Focus to activate"/>
+      <Popover placement="right" title="Title" width="200" trigger="manual" visible={true} content="Meu popover já vem aberto">
+        <Input value="Popover ativado manualmente"/>
       </Popover>
     </div>
   )
@@ -28,34 +31,30 @@ render() {
 ```
 :::
 
-### Nested information
+### Componentes aninhados
 
-Other components can be nested in popover. Following is an example of nested table.
+No exemplo abaixo, veja como é possível inserir um componente qualquer como conteúdo do Popover.
 
-:::demo replace the `content` attribute with a default `slot`.
+:::demo
 
 ```js
-constructor(props){
-  super(props);
-}
-
 render() {
   return (
-    <Popover placement="right" title="Title" width="400" trigger="click" content={(
+    <Popover placement="right" title="Meu super componente" width="400" trigger="click" content={(
       <div>
         <h3>Sou um componente customizado</h3>
         <Button>Ok</Button>
       </div>)}>
-      <Button>Click to activate</Button>
+      <Button>Clique para ativar</Button>
     </Popover>
   )
 }
 ```
 :::
 
-### Nested operation
+### Componente aninhado com comportamento
 
-Of course, you can nest other operations. It's more light-weight than using a dialog.
+Use um componente com comportamento no Popover como alternativa mais leve a um Dialog ou Modal.
 
 :::demo
 ```js
@@ -73,34 +72,32 @@ onDismiss() {
 
 render() {
   return (
-    <Popover placement="top" width="160" trigger="click" visible={this.state.visible} content={(
+    <Popover placement="top" width="250" trigger="click" visible={this.state.visible} content={(
       <div>
-        <p>Are you sure to delete this？</p>
+        <p>Tem certeza que deseja remover?</p>
         <div style={{textAlign: 'right', margin: 0}}>
-          <Button size="mini" type="text" onClick={this.onDismiss.bind(this)}>Cancel</Button>
-          <Button type="primary" size="mini" onClick={this.onDismiss.bind(this)}>Confirm</Button>
+          <Button size="mini" type="text" onClick={this.onDismiss.bind(this)}>Cancelar</Button>
+          <Button type="primary" size="mini" onClick={this.onDismiss.bind(this)}>Confirmar</Button>
         </div>
       </div>
     )}>
-      <Button>Delete</Button>
+      <Button>Remover</Button>
     </Popover>
   )
 }
 ```
 :::
 
-### Attributes
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
+### Atributos
+
+| Atributo      | Descrição          | Tipo      | Valores aceitos       | Default  |
 |--------------------|----------------------------------------------------------|-------------------|-------------|--------|
-| trigger | how the popover is triggered | string  | click/focus/hover/manual |    click    |
-|  title              | popover title | string | — | — |
-|  content        |  popover content, can be replaced with a default `slot`    | string            | — | — |
-|  width        |  popover width  | string, number            | — | Min width 150px |
-|  placement        |  popover placement  | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end |  bottom |
-|  disabled       |  whether Popover is disabled  | boolean    | — |  false |
-|  value(v-model)        |  whether popover is visible  | Boolean           | — |  false |
-|  offset        |  popover offset  | number           | — |  0 |
-|  transition     |  popover transition animation      | string             | — | fade-in-linear |
-|  visibleArrow   |  whether a tooltip arrow is displayed or not. | boolean | — | true |
-|  options        | parameters for [popper.js](https://popper.js.org/documentation.html) | object            | please refer to [popper.js](https://popper.js.org/documentation.html) | `{ boundariesElement: 'body', gpuAcceleration: false }` |
-|  popperClass        |  custom class name for popover | string | — | — |
+|  trigger | Como o popover é disparado | string  | click/focus/hover/manual |    click    |
+|  title              | Título do popover | string | — | — |
+|  content        |  Conteúdo do popover, pode ser substituído com um `slot` padrão    | string            | — | — |
+|  width        |  Largura do popover  | string, number            | — | min-width: 150px |
+|  placement        |  Posição do popover  | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end |  bottom |
+|  visible        |  Se o popover é visível por padrão  | Boolean           | — |  false |
+|  transition     |  Animação de transição do popover      | string             | — | fade-in-linear |
+|  visibleArrow   |  Se a ponta (setinha) do popover é exibido ou não | boolean | — | true |
+|  popperClass        |  Classe personalizada do popover | string | — | — |
