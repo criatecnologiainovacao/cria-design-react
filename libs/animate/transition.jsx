@@ -63,6 +63,6 @@ Transition.defaultProps = {
   unmountOnExit: false,
   appear: true,
   duration: 0
-}
+};
 
 export default Transition;

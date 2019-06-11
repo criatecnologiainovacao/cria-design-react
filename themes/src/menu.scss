@@ -257,7 +257,7 @@
                 background-color: transparent;
                 z-index: 100;
                 min-width: 100%;
-                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12), 0px 0px 6px 0px rgba(0, 0, 0, 0.04);
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
             }
 
             & .cd-submenu__title {
@@ -327,7 +327,7 @@
                 text-align: center;
             }
 
-            span {
+            [class^="cd-icon-"] + * {
                 width: 0;
                 transition: opacity 1s, visibility 1s, width .4s;
                 opacity: 0 !important;
@@ -363,9 +363,12 @@
     @include menu-item;
 
     & [class^="cd-icon-"] {
-        margin-right: 5px;
         width: 24px;
         text-align: center;
+    }
+
+    & [class^="cd-icon-"] + * {
+        margin-left: 5px;
     }
 
     & * {
@@ -455,9 +458,12 @@
 
     [class^="cd-icon-"] {
         vertical-align: middle;
-        margin-right: 5px;
         width: 24px;
         text-align: center;
+    }
+
+    [class^="cd-icon-"] + * {
+        margin-left: 5px;
     }
 }
 

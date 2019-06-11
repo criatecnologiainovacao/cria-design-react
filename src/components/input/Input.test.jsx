@@ -205,7 +205,7 @@ describe('Input test', () => {
             />
         );
 
-        expect(input.find('.cd-input__suffix-inner')).toBeTruthy();
+        expect(input.find('.cd-input__suffix-inner__suffix')).toBeTruthy();
     });
 
 });
