@@ -5,7 +5,7 @@
 @import "mixins/utils";
 
 $white: #fff;
-$grey-light: #ededed;
+$grey-light: $--border-color-base;
 
 %remain-steps {
     &:before {
@@ -38,18 +38,19 @@ $grey-light: #ededed;
             content: "";
             display: block;
             margin: 0 auto 4px;
+            height: 10px;
             width: 10px;
             background-color: $--color-primary;
-            height: 10px;
             line-height: 20px;
             text-align: center;
             font-weight: bold;
             border: {
-                width: 7px;
+                width: 5px;
                 style: solid;
                 color: $--color-primary;
                 radius: 50%;
             }
+            transform: scale(0.9);
         }
 
         &:after {
@@ -92,21 +93,28 @@ $grey-light: #ededed;
             @extend %remain-steps;
 
             &:before {
+                height: 10px;
+                width: 10px;
                 background-color: $white;
-                border-width: 7px;
+                border-width: 5px;
                 border-color: $--color-primary;
-                transition: ease-in-out background-color .4s, border-color .4s;
+                transition: linear background-color .4s, border-color .4s, height .2s, width .2s, border-width .2s;
+                transform: scale(1.05);
             }
 
             ~ li {
-                color: #808080;
+                color: $--color-text-secondary;
                 transition: ease-in-out color .4s;
                 @extend %remain-steps;
 
                 &:before {
+                    height: 10px;
+                    width: 10px;
+                    border-width: 5px;
                     background-color: $grey-light;
                     border-color: $grey-light;
-                    transition: ease-in-out border-color .4s, background-color .4s;
+                    transition: ease-in-out border-color .4s, background-color .4s, scale .3s;
+                    transform: scale(0.9);
                 }
             }
         }
