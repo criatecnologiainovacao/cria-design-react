@@ -1,8 +1,39 @@
 $--font-path: "../themes/src/fonts";
 
+html {
+    height: 97%;
+}
+
 body {
+    height: 100%;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     font-weight: 400;
 }
 
+#root {
+    height: 100%;
+}
+
 @import "../themes/src/index";
+
+.cd-header, .cd-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+
+.cd-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+}
+
+.cd-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+}
+

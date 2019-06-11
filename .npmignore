@@ -1,0 +1,7 @@
+src/components/*/*.stories.jsx
+src/components/*/*.test.jsx
+build
+site
+storybook-static
+coverage
+.*

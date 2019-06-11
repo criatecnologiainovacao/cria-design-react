@@ -1,0 +1,139 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+$white: #fff;
+$grey-light: $--border-color-base;
+
+%remain-steps {
+    &:before {
+        font-family: inherit;
+        font-weight: 700;
+    }
+
+    .cd-step-bar--separator {
+        background-color: $grey-light;
+
+        .cd-step-bar--separator__inner {
+            transition: .15s ease-out;
+            width: 0;
+        }
+    }
+}
+
+@include b(step-bar) {
+
+    min-height: 50px;
+    min-width: 200px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+
+    > li {
+        counter-increment: stepNum;
+        text-align: center;
+        display: table-cell;
+        position: relative;
+        color: $--color-primary;
+        transition: ease-in-out color .4s;
+        z-index: 2;
+
+        &:before {
+            content: "";
+            display: block;
+            margin: 0 auto 4px;
+            height: 10px;
+            width: 10px;
+            background-color: $--color-primary;
+            line-height: 20px;
+            text-align: center;
+            font-weight: bold;
+            border: {
+                width: 5px;
+                style: solid;
+                color: $--color-primary;
+                radius: 50%;
+            }
+            transform: scale(0.9);
+        }
+
+        .cd-step-bar--separator {
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $grey-light;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            z-index: -1;
+
+            .cd-step-bar--separator__inner {
+                display: block;
+                border-width: 1px;
+                border-style: solid;
+                transition: .15s ease-out;
+                box-sizing: border-box;
+                transition-delay: 0ms;
+                border-color: $--color-primary;
+                width: 100%;
+            }
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+
+        &.is-clickable {
+            pointer-events: none;
+
+            &:before {
+                cursor: pointer;
+                pointer-events: auto;
+            }
+
+            &:after {
+                pointer-events: none;
+            }
+
+            p {
+                cursor: pointer;
+                pointer-events: auto;
+            }
+        }
+
+        &.is-active {
+            @extend %remain-steps;
+
+            &:before {
+                height: 10px;
+                width: 10px;
+                background-color: $white;
+                border-width: 5px;
+                border-color: $--color-primary;
+                transition: linear background-color .4s, border-color .4s, height .2s, width .2s, border-width .2s;
+                transform: scale(1.05);
+            }
+
+            ~ li {
+                color: $--color-text-secondary;
+                transition: ease-in-out color .4s;
+                @extend %remain-steps;
+
+                &:before {
+                    height: 10px;
+                    width: 10px;
+                    border-width: 5px;
+                    background-color: $grey-light;
+                    border-color: $grey-light;
+                    transition: ease-in-out border-color .4s, background-color .4s, scale .3s;
+                    transform: scale(0.9);
+                }
+            }
+        }
+    }
+
+}
