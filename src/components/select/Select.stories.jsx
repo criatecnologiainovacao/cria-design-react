@@ -8,7 +8,7 @@ import OptionGroup from "./OptionGroup";
 const cidades = {
     opcoes: [{
         label: 'Cidades populares',
-        options: [{
+        opcoes: [{
             value: 'Varginha',
             label: 'Varginha'
         }, {
