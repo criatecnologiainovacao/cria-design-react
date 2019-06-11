@@ -4,7 +4,7 @@ Seleção única entre múltiplas opções.
 
 ### Uso básico
 
-Radio buttons não devem ter muitas opções. Se este for o caso, prefira o componente Select.
+Radio buttons não devem ter muitas opções. Se este for o caso, prefira outros componentes, como Checkbox ou Select.
 
 :::demo Para criar um componente radio, basta realizar o _bind_ na variável `value`. Também é possível alterar o estado do Radio com o atributo `checked`.
 ```js
