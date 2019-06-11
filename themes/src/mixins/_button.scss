@@ -6,9 +6,9 @@
 
   &:hover,
   &:focus {
-    background: $color;
-    border-color: $color;
-    color: $--color-white;
+      background: mix($--color-white, $color, 80%);
+      border-color: mix($--color-white, $color, 50%);
+      color: $color;
   }
 
   &:active {
@@ -41,8 +41,8 @@
     border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
     color: $color;
   }
-  
-  &:active {
+
+    &:active {
     background: mix($--color-black, $background-color, $--button-active-shade-percent);
     border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
     color: $color;
