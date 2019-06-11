@@ -82,13 +82,6 @@ export default class Input extends Component {
         }
     }
 
-    handleMouseDown(e: SyntheticEvent<any>): void {
-        if (this.props.onMouseDown) {
-            this.props.onMouseDown(e)
-        }
-    }
-
-
     handleCompositionEnd(e: SyntheticEvent<any>): void {
         this.setState({ isComposing: false });
         this.handleInput(e);
@@ -311,7 +304,6 @@ export default class Input extends Component {
                     style={this.style()}
                     className={this.className(classname)}
                     onMouseEnter={this.handleHoveringStart.bind(this)}
-                    onMouseDown={this.handleMouseDown.bind(this)}
                     onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     <textarea
                         id={id}

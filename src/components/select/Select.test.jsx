@@ -262,8 +262,9 @@ describe('Select test', () => {
 
         expect(select.find('ul').children().length).toBe(5);
 
+        jest.useFakeTimers()
         select.find("Input").find("input").simulate('click');
-
+        jest.runAllTimers()
         select.find(".cd-input__inner").simulate('change', {target: {value: 'My new value'}});
 
         select.find("Select").setState({
@@ -338,6 +339,7 @@ describe('Select test', () => {
         select.find('.cd-select__input').simulate('keydown', {keyCode: 38})
         select.find('.cd-select__input').simulate('keypress', {keyCode: 40})
         select.find('.cd-select__input').simulate('keydown', {keyCode: 40})
+        select.find('.cd-select__input').simulate('keyup')
         jest.useFakeTimers();
         select.find('.cd-select__input').simulate('change', {target: {value: 'My new value'}})
         jest.runAllTimers();
