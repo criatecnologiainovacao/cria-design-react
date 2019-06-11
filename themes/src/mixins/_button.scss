@@ -12,9 +12,9 @@
   }
 
   &:active {
-    background: mix($--color-black, $color, $--button-active-shade-percent);
-    border-color: mix($--color-black, $color, $--button-active-shade-percent);
-    color: $--color-white;
+      background: mix($--color-white, $color, 70%);
+      border-color: mix($--color-white, $color, 40%);
+      color: $color;
     outline: none;
   }
 
