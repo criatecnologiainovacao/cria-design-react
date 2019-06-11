@@ -21,7 +21,8 @@ export default {
             'form': require('../../src/components/form/docs')
         },
         'Outros': {
-            'card': require('../../src/components/card/docs')
+            'card': require('../../src/components/card/docs'),
+            'modal': require('../../src/components/modal/docs')
         }
     }
 }
