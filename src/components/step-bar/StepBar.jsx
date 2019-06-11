@@ -43,6 +43,12 @@ export default class StepBar extends Component {
                                           clickable && 'is-clickable')}
                                           onClick={this.changeStep.bind(this, index)}>
                                           <p>{value}</p>
+                                          {
+                                              index < (steps.length - 1) &&
+                                              <span className="cd-step-bar--separator">
+                                                <i className="cd-step-bar--separator__inner"/>
+                                            </span>
+                                          }
                                       </li>
                                   )
                               }
