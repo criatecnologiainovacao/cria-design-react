@@ -8,9 +8,11 @@ storiesOf('Navegação|Breadcrumb', module)
         return (
             <div>
                 <Breadcrumb separator="/">
-                    <Breadcrumb.Item><a href="/">Homepage</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Previous Page</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Page Title</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Homepage</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Previous
+                        Page</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Page
+                        Title</a></Breadcrumb.Item>
                 </Breadcrumb>
             </div>
         )
@@ -19,10 +21,13 @@ storiesOf('Navegação|Breadcrumb', module)
         return (
             <div>
                 <Breadcrumb separator="/">
-                    <Breadcrumb.Item><a href="/"><span
-                        className="cd-icon-s-home"> </span></a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Previous Page</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Page Title</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">
+                        <span className="cd-icon-s-home"/>
+                    </a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Previous
+                        Page</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Page
+                        Title</a></Breadcrumb.Item>
                 </Breadcrumb>
             </div>
         )
@@ -31,13 +36,15 @@ storiesOf('Navegação|Breadcrumb', module)
         return (
             <div>
                 <Breadcrumb separator=">">
-                    <Breadcrumb.Item><a href="/">Homepage</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Previous Page</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a>Page Title</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Homepage</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Previous
+                        Page</a></Breadcrumb.Item>
+                    <Breadcrumb.Item><a href="http://localhost:6006/">Page
+                        Title</a></Breadcrumb.Item>
                 </Breadcrumb>
             </div>
         )
-    })
+    });
 
 
 
