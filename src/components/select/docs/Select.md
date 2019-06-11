@@ -181,7 +181,7 @@ render() {
 
 Seleção múltipla usa tags para exibir as opções selecionadas.
 
-:::demo Defina o atributo `multiple` para` Select` para ativar o modo múltiplo. Nesse caso, o valor de `value` será um array de opções selecionadas.
+:::demo Defina o atributo `multiple` para` Select` para ativar o modo múltiplo. Nesse caso, o valor de `selected` será um array de opções selecionadas.
 ```js
 constructor(props) {
   super(props);
@@ -438,7 +438,7 @@ render() {
 ```
 :::
 
-### Select Attributes
+### Atributos Select
 | Atributo | Descrição | Tipo | Valores aceitos | Padrão |
 | ---------- | -------------- | ---------- | ------------ -------------------- | -------- |
 | multiple | se a seleção múltipla está ativada | booleano | - | false |
@@ -458,6 +458,8 @@ render() {
 | noMatchText | texto exibido quando nenhum dado corresponde à consulta de filtragem | string | - | Não há dados correspondentes |
 | noDataText | texto exibido quando não há opções | string | - | Sem dados |
 | popperClass | nome de classe personalizado para o menu suspenso de Select | string | - | - |
+| selected | valor das opçoes selecionadas quando `multiple` é `true`. | String | - | - |
+| value | valor do select quando `multiple` é `false`. | String | - | - |
 
 ### Selecionar eventos
 | Nome do Evento | Descrição | Parâmetros |
