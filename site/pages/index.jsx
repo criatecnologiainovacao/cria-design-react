@@ -18,7 +18,8 @@ export default {
         },
         'Formulários': {
             'input': require('../../src/components/input/docs'),
-            'form': require('../../src/components/form/docs')
+            'form': require('../../src/components/form/docs'),
+            'radio': require('../../src/components/radio/docs')
         },
         'Outros': {
             'card': require('../../src/components/card/docs'),

@@ -23,3 +23,4 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Table`
 - Componente `Tag`
 - Componente `Popover`
+- Componente `Radio`
