@@ -34,27 +34,27 @@ export default class StepBar extends Component {
         } = this.props;
 
         return (
-            <ul id={id} className={this.className('cd-step-bar')} style={this.style()}>
-                {
+          <ul id={id} className={this.className('cd-step-bar')} style={this.style()}>
+            {
                     steps.map((value, index) => {
                                   return (
-                                      <li key={index} className={this.className(
+                                    <li key={index} className={this.className(
                                           this.state.activeStep === index && 'is-active',
                                           clickable && 'is-clickable')}
-                                          onClick={this.changeStep.bind(this, index)}>
-                                          <p>{value}</p>
-                                          {
-                                              index < (steps.length - 1) &&
+                                      onClick={this.changeStep.bind(this, index)}>
+                                      <p>{value}</p>
+                                      {
+                                              index < (steps.length - 1) && (
                                               <span className="cd-step-bar--separator">
-                                                <i className="cd-step-bar--separator__inner"/>
-                                            </span>
-                                          }
-                                      </li>
+                                                <i className="cd-step-bar--separator__inner" />
+                                              </span>
+)}
+                                    </li>
                                   )
                               }
                     )
                 }
-            </ul>
+          </ul>
         )
     }
 }

@@ -104,3 +104,18 @@ render() {
 }
 ```
 :::
+
+### Multiple input
+
+:::demo Definir a propriedade `autoSize` para um textarea faz com que a altura seja ajustada automaticamente com base no conteúdo. Um objeto pode ser fornecido para dimensionar automaticamente para um valor mínimo e máximo de linhas.
+
+```js
+render() {
+  return (
+    <div>
+        <Input multiple />
+    </div>
+  )
+}
+```
+:::
