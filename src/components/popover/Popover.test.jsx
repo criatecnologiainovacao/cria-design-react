@@ -1,15 +1,9 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 import Popover from '.';
 import Button from '../button';
-import Input from '../input';
-
-// const map = {};
-// document.addEventListener = jest.fn((event, cb) => {
-//   map[event] = cb;
-// });
 
 describe('Popover test', () => {
     it('Deve renderizar um popover simples', () => {
@@ -42,7 +36,6 @@ describe('Popover test', () => {
         expect(component.state().showPopper).toBeFalsy();
         expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
 
-        // component.find('#popover-trigger').first().simulate('click');
         component.find('button').first().instance().dispatchEvent(new Event('click'));
         setTimeout(() => {
             expect(component.state().showPopper).toBeTruthy();
@@ -173,13 +166,14 @@ describe('Popover test', () => {
 
         expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
 
+        // Um clique fora do popover (por exemplo, no documento) deve fechá-lo
         document.dispatchEvent(new Event('click'));
 
         expect(component).toHaveState({showPopper: true});
 
     });
 
-    it('Só deve alterar o estado no componentWillReceiveProps se o valor for diferente', () => {
+    it('Só deve alterar o estado no componentWillReceiveProps se o valor recebido for diferente do atual', () => {
         const component = mount(
             <Popover placement="top-start" title="My title"
                     visible={true} trigger="focus"
