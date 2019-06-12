@@ -11,6 +11,7 @@ module.exports = {
         'form': 'Form',
         'radio': 'Radio',
         'card': 'Card',
+        'popover': 'Popover',
         'nav-menu': 'NavMenu'
     },
     misc: {

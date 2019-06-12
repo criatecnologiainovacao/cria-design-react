@@ -22,7 +22,8 @@ export default {
             'radio': require('../../src/components/radio/docs')
         },
         'Outros': {
-            'card': require('../../src/components/card/docs')
+            'card': require('../../src/components/card/docs'),
+            'popover': require('../../src/components/popover/docs')
         }
     }
 }
