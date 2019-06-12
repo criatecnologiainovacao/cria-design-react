@@ -1,8 +1,8 @@
-## Formato
+## Formulário
 
 O formulário consiste em `input`, `radio`, `select`, `checkbox` e assim por diante. Com o formulário, você pode coletar, verificar e enviar dados.
 
-### Forma básica
+### Formulário básica
 
 Inclui todos os tipos de itens de entrada, como `input`, `select`, `radio` e `checkbox`.
 
