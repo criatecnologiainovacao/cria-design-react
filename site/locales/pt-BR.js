@@ -9,8 +9,10 @@ module.exports = {
         'breadcrumb': 'Breadcrumb',
         'input': 'Input',
         'form': 'Form',
+        'radio': 'Radio',
         'card': 'Card',
-        'nav-menu': 'NavMenu',
+        'popover': 'Popover',
+        'nav-menu': 'Menu',
         'table': 'Table',
         'select': 'Select'
     },

@@ -371,8 +371,8 @@ export default class Input extends Component {
                     }
                     {
                         this.getSuffixVisible() &&
-                        <span className="cd-input__suffix"  onClick={this.handleIconClick.bind(this)}
-                           >
+                        <span className="cd-input__suffix" onClick={this.handleIconClick.bind(this)}
+                        >
                             <span className="cd-input__suffix-inner">
                                 {
                                     this.showSuffix() &&

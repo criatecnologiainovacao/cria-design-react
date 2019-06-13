@@ -28,58 +28,60 @@ const mockData = [
 
 const summaryColumn = [
     {
-        label: "ID",
-        prop: "id",
+        label: 'ID',
+        prop: 'id'
     },
     {
-        label: "Name",
-        prop: "name",
+        label: 'Name',
+        prop: 'name'
     },
     {
-        label: "Amount 1",
-        prop: "amount1"
+        label: 'Amount 1',
+        prop: 'amount1'
     },
     {
-        label: "Amount 2",
-        prop: "amount2"
+        label: 'Amount 2',
+        prop: 'amount2'
     },
     {
-        label: "Amount 3",
-        prop: "amount3"
+        label: 'Amount 3',
+        prop: 'amount3'
     }
 ];
 
-const summaryData = [{
-    id: '12987122',
-    name: 'Tom',
-    amount1: '234',
-    amount2: '3.2',
-    amount3: 10
-}, {
-    id: '12987123',
-    name: 'Tom',
-    amount1: '165',
-    amount2: '4.43',
-    amount3: 12
-}, {
-    id: '12987124',
-    name: 'Tom',
-    amount1: '324',
-    amount2: '1.9',
-    amount3: 9
-}, {
-    id: '12987125',
-    name: 'Tom',
-    amount1: '621',
-    amount2: '2.2',
-    amount3: 17
-}, {
-    id: '12987126',
-    name: 'Tom',
-    amount1: '539',
-    amount2: '4.1',
-    amount3: 15
-}];
+const summaryData = [
+    {
+        id: '12987122',
+        name: 'Tom',
+        amount1: '234',
+        amount2: '3.2',
+        amount3: 10
+    }, {
+        id: '12987123',
+        name: 'Tom',
+        amount1: '165',
+        amount2: '4.43',
+        amount3: 12
+    }, {
+        id: '12987124',
+        name: 'Tom',
+        amount1: '324',
+        amount2: '1.9',
+        amount3: 9
+    }, {
+        id: '12987125',
+        name: 'Tom',
+        amount1: '621',
+        amount2: '2.2',
+        amount3: 17
+    }, {
+        id: '12987126',
+        name: 'Tom',
+        amount1: '539',
+        amount2: '4.1',
+        amount3: 15
+    }
+];
 
 let expandableState = {
     columns: [
@@ -271,7 +273,8 @@ describe('Table tests', () => {
             }
         );
         for (var i = 0; i < mockData.length; i++) {
-            expect(table.find('tbody').childAt(i)).toHaveStyle({ height: '60px', fontSize: '20px' });
+            expect(table.find('tbody').childAt(i))
+                .toHaveStyle({ height: '60px', fontSize: '20px' });
         }
     });
 
@@ -279,7 +282,7 @@ describe('Table tests', () => {
         const table = mockTable(
             {
                 columns: mockColumn,
-                emptyText: "No data was added"
+                emptyText: 'No data was added'
             }
         );
         expect(table).toContainExactlyOneMatchingElement('.cd-table__empty-text');
@@ -294,7 +297,8 @@ describe('Table tests', () => {
             }
         );
         for (var i = 0; i < expandableState.data.length; i++) {
-            expect(table.find('tbody').childAt(i).childAt(0)).toHaveClassName('cd-table__expand-column');
+            expect(table.find('tbody').childAt(i).childAt(0))
+                .toHaveClassName('cd-table__expand-column');
         }
     });
 
@@ -309,7 +313,8 @@ describe('Table tests', () => {
         let i = 0;
         do {
             expect(table.find('tbody').childAt(i)).toHaveClassName('.cd-table__row');
-            expect(table.find('tbody').childAt(i + 1).childAt(0)).toHaveClassName('.cd-table__expanded-cell');
+            expect(table.find('tbody').childAt(i + 1).childAt(0))
+                .toHaveClassName('.cd-table__expanded-cell');
             i += 2;
         } while (i < expandableState.data.length * 2);
     });
@@ -339,10 +344,12 @@ describe('Table tests', () => {
             }
         );
 
-        expect(table.find('thead').childAt(0).childAt(0)).toHaveClassName('cd-table-column--selection');
+        expect(table.find('thead').childAt(0).childAt(0))
+            .toHaveClassName('cd-table-column--selection');
         let i = 0;
         for (i = 0; i < mockData.length; i++) {
-            expect(table.find('tbody').childAt(i).childAt(0)).toHaveClassName('cd-table-column--selection');
+            expect(table.find('tbody').childAt(i).childAt(0))
+                .toHaveClassName('cd-table-column--selection');
         }
     });
 
@@ -508,9 +515,9 @@ describe('Table tests', () => {
                 highlightCurrentRow: true
             }
         )
-        
+
         table.find('tbody').childAt(0).simulate('click');
-        expect(table.find('tbody').childAt(0)).toHaveClassName('current-row');    
+        expect(table.find('tbody').childAt(0)).toHaveClassName('current-row');
     });
 
     it('handle header click', () => {
@@ -519,26 +526,26 @@ describe('Table tests', () => {
             {
                 data: mockData,
                 columns: mockColumn,
-                onHeaderClick : cb
+                onHeaderClick: cb
             }
         )
-        
+
         table.find('thead').childAt(0).childAt(0).simulate('click');
-        expect(cb.calledOnce).toBe(true);   
+        expect(cb.calledOnce).toBe(true);
     });
-    
+
     it('row click', () => {
         const cb = sinon.spy();
         const table = mockTable(
             {
                 data: mockData,
                 columns: mockColumn,
-                onRowClick : cb
+                onRowClick: cb
             }
         )
-        
-        table.find('tbody').childAt(0).childAt(0).simulate('click');  
-        expect(cb.calledOnce).toBe(true);   
+
+        table.find('tbody').childAt(0).childAt(0).simulate('click');
+        expect(cb.calledOnce).toBe(true);
     });
 
     it('mouse enter event', () => {
@@ -550,9 +557,9 @@ describe('Table tests', () => {
                 onCellMouseEnter: cb
             }
         )
-        
+
         table.find('tbody').childAt(0).childAt(0).simulate('mouseEnter');
-        expect(cb.calledOnce).toBe(true);   
+        expect(cb.calledOnce).toBe(true);
     });
 
     it('mouse leave event', () => {
@@ -564,12 +571,12 @@ describe('Table tests', () => {
                 onCellMouseLeave: cb
             }
         )
-        
+
         table.find('tbody').childAt(0).childAt(0).simulate('mouseLeave');
-        expect(cb.calledOnce).toBe(true);   
+        expect(cb.calledOnce).toBe(true);
     });
 
-    
+
     it('event expand row', () => {
         const cb = sinon.spy();
         const table = mockTable(
@@ -579,8 +586,8 @@ describe('Table tests', () => {
                 onExpand: cb
             }
         );
-            table.find('.cd-table__expand-icon').first().simulate('click');
-            expect(cb.calledOnce).toBe(true);   
+        table.find('.cd-table__expand-icon').first().simulate('click');
+        expect(cb.calledOnce).toBe(true);
     });
 
 });

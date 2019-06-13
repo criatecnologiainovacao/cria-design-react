@@ -3,12 +3,8 @@ import * as React from 'react';
 import { throttle } from 'throttle-debounce';
 import { Component, PropTypes } from '../../../libs';
 import Checkbox from '../checkbox';
-import FilterPannel from './FilterPannel';
 
-import {
-  TableHeaderProps,
-  _Column,
-} from './Types';
+import { _Column, TableHeaderProps } from './Types';
 
 const _document = (document: any);
 
@@ -138,55 +134,55 @@ export default class TableHeader extends Component<TableHeaderProps> {
     }
   }
 
-  // handleSortClick(column: _Column, givenOrder: ?string, event: SyntheticEvent<any>) {
-  //   event.stopPropagation();
-  //   event.nativeEvent.stopImmediatePropagation();
+    // handleSortClick(column: _Column, givenOrder: ?string, event: SyntheticEvent<any>) {
+    //   event.stopPropagation();
+    //   event.nativeEvent.stopImmediatePropagation();
 
-  //   let target: Object = event.target;
-  //   while (target && target.tagName !== 'TH') {
-  //     target = target.parentNode;
-  //   }
-  //   if (target.classList.contains('noclick')) return;
+    //   let target: Object = event.target;
+    //   while (target && target.tagName !== 'TH') {
+    //     target = target.parentNode;
+    //   }
+    //   if (target.classList.contains('noclick')) return;
 
-  //   let order;
-  //   if (givenOrder) {
-  //     order = givenOrder;
-  //   } else {
-  //     const { sortColumn, sortOrder } = this.props.tableStoreState;
-  //     if (column === sortColumn) {
-  //       if (!sortOrder) {
-  //         order = 'ascending';
-  //       } else {
-  //         order = sortOrder === 'ascending' ? 'descending' : null;
-  //       }
-  //     } else {
-  //       order = 'ascending';
-  //     }
-  //   }
-  //   this.context.tableStore.changeSortCondition(column, order);
+    //   let order;
+    //   if (givenOrder) {
+    //     order = givenOrder;
+    //   } else {
+    //     const { sortColumn, sortOrder } = this.props.tableStoreState;
+    //     if (column === sortColumn) {
+    //       if (!sortOrder) {
+    //         order = 'ascending';
+    //       } else {
+    //         order = sortOrder === 'ascending' ? 'descending' : null;
+    //       }
+    //     } else {
+    //       order = 'ascending';
+    //     }
+    //   }
+    //   this.context.tableStore.changeSortCondition(column, order);
 
-  //   this.dispatchEvent('onHeaderClick', column, event)
-  // }
+    //   this.dispatchEvent('onHeaderClick', column, event)
+    // }
 
-  // handleFilterClick(column: _Column, event?: SyntheticEvent<any>) {
-  //   if (event) {
-  //     event.stopPropagation();
-  //     event.nativeEvent.stopImmediatePropagation();
-  //   }
+    // handleFilterClick(column: _Column, event?: SyntheticEvent<any>) {
+    //   if (event) {
+    //     event.stopPropagation();
+    //     event.nativeEvent.stopImmediatePropagation();
+    //   }
 
-  //   this.context.tableStore.toggleFilterOpened(column);
+    //   this.context.tableStore.toggleFilterOpened(column);
 
-  //   event && this.dispatchEvent('onHeaderClick', column, event)
-  // }
+    //   event && this.dispatchEvent('onHeaderClick', column, event)
+    // }
 
   dispatchEvent(name: string, ...args: Array<any>) {
     const fn = this.props[name];
     fn && fn(...args);
   }
 
-  // changeFilteredValue(column: _Column, value: any) {
-  //   this.context.tableStore.changeFilteredValue(column, value);
-  // }
+    // changeFilteredValue(column: _Column, value: any) {
+    //   this.context.tableStore.changeFilteredValue(column, value);
+    // }
 
   isCellHidden(index: number, columns: Array<_Column>): boolean {
     const { fixed } = this.props;
@@ -288,7 +284,7 @@ export default class TableHeader extends Component<TableHeaderProps> {
                         />
                       </span>
                     )}
-                    {/* {column.filterable && (
+                      {/* {column.filterable && (
                       <FilterPannel
                         visible={column.filterOpened}
                         multiple={column.filterMultiple}

@@ -163,58 +163,60 @@ let expandableState = {
 
 const columnsSummary = [
     {
-      label: "ID",
-      prop: "id",
+        label: 'ID',
+        prop: 'id'
     },
     {
-      label: "Name",
-      prop: "name",
+        label: 'Name',
+        prop: 'name'
     },
     {
-      label: "Amount 1",
-      prop: "amount1"
+        label: 'Amount 1',
+        prop: 'amount1'
     },
     {
-      label: "Amount 2",
-      prop: "amount2"
+        label: 'Amount 2',
+        prop: 'amount2'
     },
     {
-      label: "Amount 3",
-      prop: "amount3"
+        label: 'Amount 3',
+        prop: 'amount3'
     }
-  ];
+];
 
-const dataSummary =  [{
-    id: '12987122',
-    name: 'Tom',
-    amount1: '234',
-    amount2: '3.2',
-    amount3: 10
-  }, {
-    id: '12987123',
-    name: 'Tom',
-    amount1: '165',
-    amount2: '4.43',
-    amount3: 12
-  }, {
-    id: '12987124',
-    name: 'Tom',
-    amount1: '324',
-    amount2: '1.9',
-    amount3: 9
-  }, {
-    id: '12987125',
-    name: 'Tom',
-    amount1: '621',
-    amount2: '2.2',
-    amount3: 17
-  }, {
-    id: '12987126',
-    name: 'Tom',
-    amount1: '539',
-    amount2: '4.1',
-    amount3: 15
-  }];
+const dataSummary = [
+    {
+        id: '12987122',
+        name: 'Tom',
+        amount1: '234',
+        amount2: '3.2',
+        amount3: 10
+    }, {
+        id: '12987123',
+        name: 'Tom',
+        amount1: '165',
+        amount2: '4.43',
+        amount3: 12
+    }, {
+        id: '12987124',
+        name: 'Tom',
+        amount1: '324',
+        amount2: '1.9',
+        amount3: 9
+    }, {
+        id: '12987125',
+        name: 'Tom',
+        amount1: '621',
+        amount2: '2.2',
+        amount3: 17
+    }, {
+        id: '12987126',
+        name: 'Tom',
+        amount1: '539',
+        amount2: '4.1',
+        amount3: 15
+    }
+];
 
 
 storiesOf('Dados | Table', module)
@@ -249,7 +251,7 @@ storiesOf('Dados | Table', module)
                     columns={columns}
                     data={data}
                     border={true}
-                    resizable = {false}
+                    resizable={false}
                 />
             </div>
         )
@@ -320,39 +322,39 @@ storiesOf('Dados | Table', module)
                     }}
                 />
             </div>
-        )        
+        )
     })
     .add('summary row', () => {
         return (
             <div>
                 <Table
-                    style={{width: '100%', marginTop: 20}}
+                    style={{ width: '100%', marginTop: 20 }}
                     showSummary={true}
                     columns={columnsSummary}
                     data={dataSummary}
                     sumText='Total price'
-                    summaryMethod={(columns, data)=>{
+                    summaryMethod={(columns, data) => {
                         const dataList = [];
-                        for(var i=0; i < columns.length; i++){
+                        for (var i = 0; i < columns.length; i++) {
                             let total = 0;
-                            for(let j=0; j < data.length; j++){
-                            let value = data[j][columns[i]['property']];
+                            for (let j = 0; j < data.length; j++) {
+                                let value = data[j][columns[i]['property']];
 
-                            if(isNaN(value)){
-                                total = 'N/A'
-                                break;
-                            }else{
-                                total += parseFloat(value);
-                            }
+                                if (isNaN(value)) {
+                                    total = 'N/A'
+                                    break;
+                                } else {
+                                    total += parseFloat(value);
+                                }
                             }
                             dataList[i] = isNaN(total) ? total : '$ ' + total;
                         }
                         return dataList;
-                        }}
+                    }}
                     border={true}
                 />
             </div>
-        )        
+        )
     })
     .add('resizable row', () => {
         return (
@@ -361,7 +363,7 @@ storiesOf('Dados | Table', module)
                     style={{ width: '100%' }}
                     columns={columnsResizable}
                     data={data}
-                    border = {true}
+                    border={true}
                 />
             </div>
         )

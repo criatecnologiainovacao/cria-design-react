@@ -77,10 +77,10 @@ export default function normalizeColumns(columns: Array<Column>, tableIDSeed: nu
       _column = Object.assign({
         id,
         sortable: false,
-        resizable: false,
+                                  resizable: false,
         showOverflowTooltip: false,
         align: 'left',
-        // filterMultiple: true
+                                  // filterMultiple: true
       }, column, {
         columnKey: column.columnKey || id,
         width,
@@ -90,10 +90,10 @@ export default function normalizeColumns(columns: Array<Column>, tableIDSeed: nu
         render: column.render || defaultRender,
         align: column.align ? 'is-' + column.align : null,
         headerAlign: column.headerAlign ? 'is-' + column.headerAlign : column.align ? 'is-' + column.align : null,
-        // filterable: column.filters && column.filterMethod,
-        // filterOpened: false,
-        // filteredValue: column.filteredValue || null,
-        // filterPlacement: column.filterPlacement || 'bottom',
+                                  // filterable: column.filters && column.filterMethod,
+                                  // filterOpened: false,
+                                  // filteredValue: column.filteredValue || null,
+                                  // filterPlacement: column.filterPlacement || 'bottom',
       }, defaults[column.type || 'default'], forced[column.type]);
     }
 
