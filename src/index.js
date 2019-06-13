@@ -16,6 +16,7 @@ export { default as Menu } from './components/menu';
 export { default as Modal } from './components/modal';
 export { default as Popover } from './components/popover';
 export { default as Radio } from './components/radio';
+export { default as Scrollbar } from './components/scrollbar';
 export { default as Select } from './components/select';
 export { default as StepBar } from './components/step-bar';
 export { default as Table } from './components/table';

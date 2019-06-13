@@ -8,7 +8,7 @@ import { addResizeListener, removeResizeListener } from '../../../libs/utils/res
 import { getScrollBarWidth } from './scrollbar-width';
 import { Bar } from './Bar'
 
-export class Scrollbar extends Component {
+export default class Scrollbar extends Component {
     constructor(props) {
         super(props);
 
@@ -28,7 +28,7 @@ export class Scrollbar extends Component {
 
     componentDidMount() {
         if (this.native) return;
-        let rafId = requestAnimationFrame(this.update)
+        let rafId = requestAnimationFrame(this.update);
         this.cleanRAF = () => {
             cancelAnimationFrame(rafId)
         }
@@ -40,10 +40,10 @@ export class Scrollbar extends Component {
     }
 
     componentDidUpdate() {
-        this.resizeDom = ReactDOM.findDOMNode(this.refs.resize)
+        this.resizeDom = ReactDOM.findDOMNode(this.refs.resize);
         if (!this.props.noresize) {
             this.cleanResize && this.cleanResize();
-            addResizeListener(this.resizeDom, this.update)
+            addResizeListener(this.resizeDom, this.update);
             this.cleanResize = () => {
                 removeResizeListener(this.resizeDom, this.update);
             }
@@ -120,12 +120,12 @@ export class Scrollbar extends Component {
                 >
                     {view}
                 </div>
-            )
+            );
             nodes = [
                 wrap,
-                <Bar key={1} move={moveX} size={sizeWidth} getParentWrap={() => this.wrap}></Bar>,
+                <Bar key={1} move={moveX} size={sizeWidth} getParentWrap={() => this.wrap}/>,
                 <Bar key={2} move={moveY} size={sizeHeight} getParentWrap={() => this.wrap}
-                     vertical={true}></Bar>
+                     vertical={true}/>
             ]
         } else {
             nodes = [
@@ -161,8 +161,8 @@ Scrollbar.propTypes = {
                                            PropTypes.string, PropTypes.element
                                        ]),
     noresize: PropTypes.bool
-}
+};
 
 Scrollbar.defaultProps = {
     viewComponent: 'div'
-}
+};
