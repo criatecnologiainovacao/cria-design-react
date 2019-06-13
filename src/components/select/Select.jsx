@@ -10,7 +10,7 @@ import StyleSheet from '../../../libs/utils/style';
 import { Component, PropTypes, Transition, View } from '../../../libs';
 import { addResizeListener, removeResizeListener } from '../../../libs/utils/resize-event';
 
-import { Scrollbar } from '../scrollbar';
+import Scrollbar from '../scrollbar';
 
 import Tag from '../tag';
 import Input from '../input';
