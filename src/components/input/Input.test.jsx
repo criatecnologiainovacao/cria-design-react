@@ -10,6 +10,11 @@ describe('Input test', () => {
             <Input placeholder="Input"/>
         );
         expect(w.hasClass('cd-input')).toBeTruthy();
+        w.find('input').simulate('input', {
+            target: {
+                value: "Teste"
+            }
+        })
     });
 
     it('disabled', () => {
@@ -88,8 +93,10 @@ describe('Input test', () => {
         input.find('input').simulate('focus');
         expect(onFocus.callCount).toBe(1);
 
+        jest.useFakeTimers()
         input.find('input').simulate('blur');
         expect(onBlur.callCount).toBe(1);
+        jest.runAllTimers()
 
         input.find('input').simulate('change', { target: { value: '10' } });
         expect(onChange.callCount).toBe(1);

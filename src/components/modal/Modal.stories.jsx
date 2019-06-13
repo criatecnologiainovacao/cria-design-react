@@ -10,19 +10,19 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 storiesOf('Outros|Modal', module)
     .addDecorator(withKnobs)
     .add('default', () =>
-    <div>
-        <Modal
-            title="Tips"
-            size="tiny"
-            visible={boolean("Visible", true)}
-            lockScroll={ false }
-        >
-            <ModalBody>
-                <span>This is a message</span>
-            </ModalBody>
-            <ModalFooter className="modal-footer">
-                <Button>Cancel</Button>
-                <Button type="primary">Confirm</Button>
-            </ModalFooter>
-        </Modal>
-    </div>);
+        <div>
+            <Modal
+                title="Tips"
+                size="tiny"
+                visible={boolean('Visible', true)}
+                lockScroll={false}
+            >
+                <ModalBody>
+                    <span>This is a message</span>
+                </ModalBody>
+                <ModalFooter className="modal-footer">
+                    <Button>Cancel</Button>
+                    <Button type="primary">Confirm</Button>
+                </ModalFooter>
+            </Modal>
+        </div>);

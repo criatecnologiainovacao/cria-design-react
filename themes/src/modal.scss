@@ -6,9 +6,9 @@
 @include b(modal) {
   position: relative;
   margin: 0 auto 50px;
-  background: $--modal-background-color;
+    background: $--modal-background-color;
   border-radius: $--border-radius-small;
-  box-shadow: $--modal-box-shadow;
+    box-shadow: $--modal-box-shadow;
   box-sizing: border-box;
   width: 50%;
 
@@ -31,14 +31,14 @@
   }
 
   @include e(header) {
-    padding: $--modal-padding-primary;
+      padding: $--modal-padding-primary;
     padding-bottom: 10px;
   }
 
   @include e(headerbtn) {
     position: absolute;
-    top: $--modal-padding-primary;
-    right: $--modal-padding-primary;
+      top: $--modal-padding-primary;
+      right: $--modal-padding-primary;
     padding: 0;
     background: transparent;
     border: none;
@@ -46,32 +46,32 @@
     cursor: pointer;
     font-size: $--message-close-size;
 
-    .cd-modal__close {
+      .cd-modal__close {
       color: $--color-info;
     }
 
     &:focus, &:hover {
-      .cd-modal__close {
+        .cd-modal__close {
         color: $--color-primary;
       }
     }
   }
 
   @include e(title) {
-    line-height: $--modal-font-line-height;
-    font-size: $--modal-title-font-size;
+      line-height: $--modal-font-line-height;
+      font-size: $--modal-title-font-size;
     color: $--color-text-primary;
   }
 
   @include e(body) {
     padding: 30px 20px;
     color: $--color-text-regular;
-    font-size: $--modal-content-font-size;
+      font-size: $--modal-content-font-size;
     word-break: break-all;
   }
 
   @include e(footer) {
-    padding: $--modal-padding-primary;
+      padding: $--modal-padding-primary;
     padding-top: 10px;
     text-align: right;
     box-sizing: border-box;
@@ -83,7 +83,7 @@
 
     @include e(body) {
       text-align: initial;
-      padding: 25px ($--modal-padding-primary + 5px) 30px;
+        padding: 25px ($--modal-padding-primary + 5px) 30px;
     }
 
     @include e(footer) {
@@ -93,11 +93,11 @@
 }
 
 .modal-fade-enter-active {
-  animation: modal-fade-in .3s;
+    animation: modal-fade-in .3s;
 }
 
 .modal-fade-leave-active {
-  animation: modal-fade-out .3s;
+    animation: modal-fade-out .3s;
 }
 
 @keyframes modal-fade-in {

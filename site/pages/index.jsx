@@ -17,8 +17,9 @@ export default {
             'step-bar': require('../../src/components/step-bar/docs')
         },
         'Formulários': {
-            'input': require('../../src/components/input/docs'),
             'form': require('../../src/components/form/docs'),
+            'input': require('../../src/components/input/docs'),
+            'select': require('../../src/components/select/docs'),
             'radio': require('../../src/components/radio/docs')
         },
         'Outros': {
