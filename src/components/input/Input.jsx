@@ -1,6 +1,7 @@
 /* @flow */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Component, PropTypes } from '../../../libs';
 import calcTextareaHeight from './calcTextareaHeight';
 import Tag from "../tag";
@@ -28,13 +29,27 @@ export default class Input extends Component {
             hovering: false,
             focused: false,
             passwordVisible: false,
-            multipleValue: []
+            multipleValue: [],
+            multiInputHeight: ''
         };
     }
 
     componentDidMount() {
+        if(this.refs.multiInput) {
+            this.multiInput = ReactDOM.findDOMNode(this.refs.multiInput);
+        }
         this.setNativeInputValue();
         this.resizeTextarea();
+    }
+
+    componentDidUpdate(): void {
+        this.updateMultiInput()
+    }
+
+    updateMultiInput(){
+        if(this.multiInput) {
+            this.state.multiInputHeight = this.multiInput.getBoundingClientRect().height;
+        }
     }
 
     // componentWillUpdate(nextProps, nextState): void {
@@ -50,11 +65,14 @@ export default class Input extends Component {
 
         this.resizeTextarea();
         this.updateNativeValue();
+        this.forceUpdate()
     }
 
     resizeText(){
         this.refs.multiple.style.width = ((this.refs.multiple.value.length + 1) * 8) + 'px'
+        this.forceUpdate()
     }
+
     handleKeyDownOnMultiple(e: SyntheticInputEvent<any>): void {
 
         switch (e.keyCode) {
@@ -63,7 +81,6 @@ export default class Input extends Component {
                 if(this.getInput().value === '') {
                     this.deleteLastMultiValue();
                 }
-                e.preventDefault();
                 break;
 
             case 13:
@@ -74,6 +91,7 @@ export default class Input extends Component {
                 break;
 
         }
+
     }
 
     deleteLastMultiValue(){
@@ -85,6 +103,8 @@ export default class Input extends Component {
         this.setState({
             multipleValue : multiplesVue
         })
+
+        this.forceUpdate()
     }
 
     addValueOnMultiple(){
@@ -102,6 +122,8 @@ export default class Input extends Component {
 
             this.setState({
                 multipleValue : multiplesVue
+            }, () => {
+                this.forceUpdate()
             })
 
         }
@@ -303,7 +325,8 @@ export default class Input extends Component {
         } = this.props;
 
         const {
-            multipleValue
+            multipleValue,
+            multiInputHeight
         } = this.state;
 
         const classname = this.classNames(
@@ -352,14 +375,16 @@ export default class Input extends Component {
             );
         } else {
             return (
-                <div style={this.style()}
+                <div style={this.style({
+                    height: multiInputHeight
+                })}
                      className={this.className(classname)}
                      onMouseEnter={this.handleHoveringStart.bind(this)}
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
                     {
                         multiple && (
-                            <div ref="tags" className="cd-input__tags"
+                            <div ref="multiInput" className="cd-input__tags"
                             onClick={() => {
                                 this.refs.multiple.focus()
                             }}>
@@ -383,6 +408,7 @@ export default class Input extends Component {
                                             type="text"
                                             onKeyPress={this.resizeText.bind(this)}
                                             onKeyDown={this.handleKeyDownOnMultiple.bind(this)}
+                                            onChange={this.handleChange.bind(this)}
                                             className={this.classNames('cd-select__input')}
                                 />
                             </div>

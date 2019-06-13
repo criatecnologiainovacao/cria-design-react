@@ -113,9 +113,12 @@ A propriedade `multiple` como verdadeira faz com que o Input aceite varios valor
 ```js
 render() {
   return (
-    <div>
+    <div style={{display: 'flex'}}>
         <Input ref="input" multiple />
-        <Button onClick={() => {alert(this.refs.input.state.multipleValue)}}>Click</Button>
+        <Button style={{
+            height: '38px',
+           'margin-left': '20px'
+        }} onClick={() => {alert(this.refs.input.state.multipleValue)}}>Click</Button>
     </div>
   )
 }

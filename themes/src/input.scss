@@ -86,6 +86,7 @@
         flex-wrap: wrap;
 
         @include e(tags) {
+            overflow: hidden;
             background-color: $--input-background-color;
             background-image: none;
             border-radius: $--input-border-radius;
