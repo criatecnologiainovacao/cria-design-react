@@ -103,6 +103,7 @@ export default class Input extends Component {
             this.setState({
                 multipleValue : multiplesVue
             })
+
         }
 
     }
@@ -473,7 +474,6 @@ Input.propTypes = {
     tabindex: PropTypes.string,
     suffix: PropTypes.node,
     prefix: PropTypes.node,
-    multiple: PropTypes.bool,
 
     // type !== 'textarea'
     size: PropTypes.oneOf(['large', 'small', 'mini']),
@@ -496,5 +496,9 @@ Input.propTypes = {
     inputSelect: PropTypes.func,
 
     // form related
-    form: PropTypes.string
+    form: PropTypes.string,
+
+    // multiple
+    multiple: PropTypes.bool,
+    multipleValue: PropTypes.array
 };

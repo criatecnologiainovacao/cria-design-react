@@ -80,7 +80,6 @@
     @include when(multiple) {
         line-height: normal;
         white-space: normal;
-        height: fit-content;
         z-index: $--index-normal;
         display: flex;
         align-items: center;

@@ -107,13 +107,15 @@ render() {
 
 ### Multiple input
 
-:::demo Definir a propriedade `autoSize` para um textarea faz com que a altura seja ajustada automaticamente com base no conteúdo. Um objeto pode ser fornecido para dimensionar automaticamente para um valor mínimo e máximo de linhas.
+A propriedade `multiple` como verdadeira faz com que o Input aceite varios valores.
 
+:::demo Definir 
 ```js
 render() {
   return (
     <div>
-        <Input multiple />
+        <Input ref="input" multiple />
+        <Button onClick={() => {alert(this.refs.input.state.multipleValue)}}>Click</Button>
     </div>
   )
 }
