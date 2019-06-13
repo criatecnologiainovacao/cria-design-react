@@ -11,8 +11,8 @@ describe('Popover test', () => {
         const component = mount(
             <div>
                 <Popover placement="top-start" title="My title"
-                        width="200" visible={true}
-                        content="Conteúdo do popover">
+                         width="200" visible={true}
+                         content="Conteúdo do popover">
                     <Button>Hover to activate</Button>
                 </Popover>
             </div>
@@ -27,8 +27,8 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="click"
-                    content="Conteúdo do popover">
+                     width="200" trigger="click"
+                     content="Conteúdo do popover">
                 <Button id="popover-trigger">Hover to activate</Button>
             </Popover>
         );
@@ -39,7 +39,9 @@ describe('Popover test', () => {
         component.find('button').first().instance().dispatchEvent(new Event('click'));
         setTimeout(() => {
             expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+            expect(component.find('.cd-popover').get(0).props.style)
+                .not
+                .toHaveProperty('display', 'none');
         }, 1000);
 
     });
@@ -48,8 +50,8 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="hover"
-                    content="Conteúdo do popover">
+                     width="200" trigger="hover"
+                     content="Conteúdo do popover">
                 <Button>Hover to activate</Button>
             </Popover>
         );
@@ -60,7 +62,9 @@ describe('Popover test', () => {
         component.find('button').first().instance().dispatchEvent(new Event('mouseenter'));
         setTimeout(() => {
             expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+            expect(component.find('.cd-popover').get(0).props.style)
+                .not
+                .toHaveProperty('display', 'none');
         }, 1000);
 
     });
@@ -69,8 +73,8 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="hover"
-                    content="Conteúdo do popover">
+                     width="200" trigger="hover"
+                     content="Conteúdo do popover">
                 <Button>Hover to activate</Button>
             </Popover>
         );
@@ -79,7 +83,8 @@ describe('Popover test', () => {
 
         setTimeout(() => {
             expect(component.state().showPopper).toBeFalsy();
-            expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
+            expect(component.find('.cd-popover').get(0).props.style)
+                .toHaveProperty('display', 'none');
 
         }, 1000);
 
@@ -89,15 +94,17 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="manual"
-                    content="Conteúdo do popover">
+                     width="200" trigger="manual"
+                     content="Conteúdo do popover">
                 <Button>Hover to activate</Button>
             </Popover>
         );
 
-        component.setState({showPopper: true});
+        component.setState({ showPopper: true });
 
-        expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+        expect(component.find('.cd-popover').get(0).props.style)
+            .not
+            .toHaveProperty('display', 'none');
 
     });
 
@@ -105,8 +112,8 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="focus"
-                    content="Conteúdo do popover">
+                     width="200" trigger="focus"
+                     content="Conteúdo do popover">
                 <Button>Focus to activate</Button>
             </Popover>
         );
@@ -117,7 +124,9 @@ describe('Popover test', () => {
         component.find('button').first().instance().dispatchEvent(new Event('mousedown'));
         setTimeout(() => {
             expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+            expect(component.find('.cd-popover').get(0).props.style)
+                .not
+                .toHaveProperty('display', 'none');
             component.find('button').first().instance().dispatchEvent(new Event('mouseup'));
         }, 1000);
 
@@ -127,9 +136,10 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    width="200" trigger="focus"
-                    content="Conteúdo do popover">
-                <input type="text" value="Focus to activate" onChange={() => {}}></input>
+                     width="200" trigger="focus"
+                     content="Conteúdo do popover">
+                <input type="text" value="Focus to activate" onChange={() => {
+                }}></input>
             </Popover>
         );
 
@@ -146,7 +156,9 @@ describe('Popover test', () => {
         setTimeout(() => {
             expect(cbFocus.called).toBeTruthy();
             expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+            expect(component.find('.cd-popover').get(0).props.style)
+                .not
+                .toHaveProperty('display', 'none');
             component.find('input').first().instance().dispatchEvent(new Event('blur'));
         }, 1000);
 
@@ -156,37 +168,40 @@ describe('Popover test', () => {
 
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    visible={true} trigger="manual"
-                    content="Conteúdo do popover">
+                     visible={true} trigger="manual"
+                     content="Conteúdo do popover">
                 <Button></Button>
             </Popover>
         );
 
-        component.setState({showPopper: true});
+        component.setState({ showPopper: true });
 
-        expect(component.find('.cd-popover').get(0).props.style).not.toHaveProperty('display', 'none');
+        expect(component.find('.cd-popover').get(0).props.style)
+            .not
+            .toHaveProperty('display', 'none');
 
         // Um clique fora do popover (por exemplo, no documento) deve fechá-lo
         document.dispatchEvent(new Event('click'));
 
-        expect(component).toHaveState({showPopper: true});
+        expect(component).toHaveState({ showPopper: true });
 
     });
 
     it('Só deve alterar o estado no componentWillReceiveProps se o valor recebido for diferente do atual', () => {
         const component = mount(
             <Popover placement="top-start" title="My title"
-                    visible={true} trigger="focus"
-                    content="Conteúdo do popover">
-                <input type="text" value="Focus to activate" onChange={() => {}}></input>
+                     visible={true} trigger="focus"
+                     content="Conteúdo do popover">
+                <input type="text" value="Focus to activate" onChange={() => {
+                }}></input>
             </Popover>
         );
         const setstate = sinon.stub(Popover.prototype, 'setState');
 
-        component.setProps({visible: true});
+        component.setProps({ visible: true });
         expect(setstate.called).toBeFalsy();
 
-        component.setProps({visible: false});
+        component.setProps({ visible: false });
         expect(setstate.called).toBeTruthy();
     });
 

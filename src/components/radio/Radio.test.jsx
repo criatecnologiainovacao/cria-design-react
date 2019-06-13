@@ -20,10 +20,10 @@ describe('Radio button tests', () => {
         const component = shallow(<Radio
             value="1"
             onChange={onChange}>My label</Radio>);
-        
+
         expect(component.find('.is-checked').exists()).toBeFalsy();
 
-        component.find('input').simulate('change', {target: { checked: true }});
+        component.find('input').simulate('change', { target: { checked: true } });
 
         expect(onChange.calledOnce).toBeTruthy();
         expect(component.find('.is-checked').exists()).toBeTruthy();
@@ -38,7 +38,7 @@ describe('Radio button tests', () => {
             value="1"
             onFocus={onFocus}
             onBlur={onBlur}/>);
-        
+
         component.find('input').simulate('focus');
         expect(component.state().focus).toBe(true);
 
@@ -98,8 +98,8 @@ describe('Radio button tests', () => {
                 <Radio value="3">Option C</Radio>
             </Radio.Group>
         );
-        
-        component.childAt(1).simulate('change', {target: { checked: true }});
+
+        component.childAt(1).simulate('change', { target: { checked: true } });
 
         expect(onChange.calledOnce).toBeTruthy();
     });
@@ -108,10 +108,10 @@ describe('Radio button tests', () => {
         const component = mount(<Radio value="1" checked={true}>My label</Radio>);
         const setstate = sinon.stub(Radio.prototype, 'setState');
 
-        component.setProps({checked: true});
+        component.setProps({ checked: true });
         expect(setstate.called).toBeFalsy();
 
-        component.setProps({checked: false});
+        component.setProps({ checked: false });
         expect(setstate.called).toBeTruthy();
     });
 });
