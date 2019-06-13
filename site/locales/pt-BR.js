@@ -12,9 +12,10 @@ module.exports = {
         'radio': 'Radio',
         'card': 'Card',
         'popover': 'Popover',
+        'select': 'Select',
         'table': 'Table',
         'nav-menu': 'Menu',
-        'select': 'Select'
+        'modal': 'Modal'
     },
     misc: {
         'guide': 'Guia',

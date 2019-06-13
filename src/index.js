@@ -20,3 +20,4 @@ export { CollapseTransition } from '../libs';
 export { View } from '../libs';
 export { PropTypes } from '../libs';
 export { Component } from '../libs';
+export { default as Modal } from './components/modal'
