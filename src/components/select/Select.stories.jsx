@@ -1,39 +1,38 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-/* eslint-disable no-unused-expressions */
+import { action } from '@storybook/addon-actions';
 import Select from './Select';
 import Option from './Option';
 import OptionGroup from './OptionGroup';
-import { action } from '@storybook/addon-actions';
 
-const group = {
-    options: [
+const cidades = {
+    opcoes: [
         {
-            label: 'Popular cities',
-            options: [
+            label: 'Cidades populares',
+            opcoes: [
                 {
-                    value: 'Shanghai',
-                    label: 'Shanghai'
+                    value: 'Varginha',
+                    label: 'Varginha'
                 }, {
-                    value: 'Beijing',
-                    label: 'Beijing'
+                    value: 'Lavras',
+                    label: 'Lavras'
                 }
             ]
         }, {
-            label: 'City name',
-            options: [
+            label: 'Nome da cidade',
+            opcoes: [
                 {
-                    value: 'Chengdu',
-                    label: 'Chengdu'
+                    value: 'Boa esperança',
+                    label: 'Boa esperança'
                 }, {
-                    value: 'Shenzhen',
-                    label: 'Shenzhen'
+                    value: 'Tres coraçoes',
+                    label: 'Tres coraçoes'
                 }, {
-                    value: 'Guangzhou',
-                    label: 'Guangzhou'
+                    value: 'Nepomuceno',
+                    label: 'Nepomuceno'
                 }, {
-                    value: 'Dalian',
-                    label: 'Dalian'
+                    value: 'Tres pontas',
+                    label: 'Tres pontas'
                 }
             ]
         }
@@ -41,45 +40,45 @@ const group = {
     value: ''
 };
 const state = {
-    options: [
+    opcoes: [
         {
-            value: 'Option1',
-            label: 'Option1'
+            value: 'Opção1',
+            label: 'Opção1'
         }, {
-            value: 'Option2',
-            label: 'Option2',
+            value: 'Opção2',
+            label: 'Opção2',
             disabled: true
         }, {
-            value: 'Option3',
-            label: 'Option3'
+            value: 'Opção3',
+            label: 'Opção3'
         }, {
-            value: 'Option4',
-            label: 'Option4'
+            value: 'Opção4',
+            label: 'Opção4'
         }, {
-            value: 'Option5',
-            label: 'Option5'
+            value: 'Opção5',
+            label: 'Opção5'
         }
     ],
     value: '',
-    cities: [
+    cidades: [
         {
-            value: 'Beijing',
-            label: 'Beijing'
+            value: 'Varginha',
+            label: 'Varginha'
         }, {
-            value: 'Shanghai',
-            label: 'Shanghai'
+            value: 'Lavras',
+            label: 'Lavras'
         }, {
-            value: 'Nanjing',
-            label: 'Nanjing'
+            value: 'Tres coraçoes',
+            label: 'Tres coraçoes'
         }, {
-            value: 'Chengdu',
-            label: 'Chengdu'
+            value: 'Boa esperança',
+            label: 'Boa esperança'
         }, {
-            value: 'Shenzhen',
-            label: 'Shenzhen'
+            value: 'Tres pontas',
+            label: 'Tres pontas'
         }, {
-            value: 'Guangzhou',
-            label: 'Guangzhou'
+            value: 'Nepomuceno',
+            label: 'Nepomuceno'
         }
     ]
 };
@@ -90,11 +89,11 @@ export const actionRemote = {
     remoteMethod: action('remoteMethod')
 };
 
-storiesOf('Select', module)
+storiesOf('Formulário|Select', module)
     .add('default', () => (
         <Select value={state.value}>
             {
-                state.options.map(el => {
+                state.opcoes.map(el => {
                     return <Option key={el.value} label={el.label} value={el.value}/>
                 })
             }
@@ -103,7 +102,7 @@ storiesOf('Select', module)
     .add('prefixIcon', () => (
         <Select prefixIcon="cd-icon-time" value={state.value}>
             {
-                state.options.map(el => {
+                state.opcoes.map(el => {
                     return <Option key={el.value} label={el.label} value={el.value}/>
                 })
             }
@@ -112,7 +111,7 @@ storiesOf('Select', module)
     .add('Disabled option', () => (
              <Select value={state.value}>
                  {
-                     state.options.map(el => {
+                     state.opcoes.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}
                                         disabled={el.disabled}/>
                      })
@@ -123,7 +122,7 @@ storiesOf('Select', module)
     .add('Disabled select', () => (
              <Select value={state.value} disabled={true}>
                  {
-                     state.options.map(el => {
+                     state.opcoes.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}/>
                      })
                  }
@@ -133,7 +132,7 @@ storiesOf('Select', module)
     .add('clearable', () => (
              <Select value={state.value} clearable={true}>
                  {
-                     state.options.map(el => {
+                     state.opcoes.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}/>
                      })
                  }
@@ -143,7 +142,7 @@ storiesOf('Select', module)
     .add('multiple', () => (
              <Select value={state.value} multiple={true}>
                  {
-                     state.options.map(el => {
+                     state.opcoes.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}/>
                      })
                  }
@@ -153,7 +152,7 @@ storiesOf('Select', module)
     .add('custom', () => (
              <Select value={state.value}>
                  {
-                     state.cities.map(el => {
+                     state.cidades.map(el => {
                          return (
                              <Option key={el.value} label={el.label} value={el.value}>
                                  <span style={{ float: 'left' }}>{el.label}</span>
@@ -170,13 +169,13 @@ storiesOf('Select', module)
          )
     )
     .add('grouping', () => (
-             <Select value={group.value}>
+             <Select value={cidades.value}>
                  {
-                     group.options.map(group => {
+                     cidades.opcoes.map(group => {
                          return (
                              <OptionGroup key={group.label} label={group.label}>
                                  {
-                                     group.options.map(el => {
+                                     group.opcoes.map(el => {
                                          return (
                                              <Option key={el.value} label={el.label} value={el.value}>
                                                  <span style={{ float: 'left' }}>{el.label}</span>
@@ -201,7 +200,7 @@ storiesOf('Select', module)
     .add('filtering', () => (
              <Select value={state.value} filterable={true}>
                  {
-                     state.options.map(el => {
+                     state.opcoes.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}/>
                      })
                  }
@@ -212,7 +211,7 @@ storiesOf('Select', module)
              <Select value={state.value} multiple={true} filterable={true} {...actionRemote}
                      remote={true} loading={loading}>
                  {
-                     state.cities.map(el => {
+                     state.cidades.map(el => {
                          return <Option key={el.value} label={el.label} value={el.value}/>
                      })
                  }

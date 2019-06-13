@@ -128,21 +128,5 @@
     border-color: transparent;
     margin: 2px 0 2px 6px;
       display: unset !important;
-
-    &__close.cd-icon-close {
-      background-color: $--color-text-placeholder;
-      right: -7px;
-      top: 0;
-      color: $--color-white;
-
-      &:hover {
-        background-color: $--color-text-secondary;
-      }
-
-      &::before {
-        display: block;
-        transform: translate(0, .5px);
-      }
-    }
   }
 }

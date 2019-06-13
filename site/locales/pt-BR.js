@@ -12,8 +12,8 @@ module.exports = {
         'radio': 'Radio',
         'card': 'Card',
         'popover': 'Popover',
-        'nav-menu': 'Menu',
         'table': 'Table',
+        'nav-menu': 'Menu',
         'select': 'Select'
     },
     misc: {

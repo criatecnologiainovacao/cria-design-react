@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* @flow */
+
 import { getValueByPath } from './utils';
 
 import { _Column, Column } from './Types';

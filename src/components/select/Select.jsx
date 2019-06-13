@@ -1,5 +1,6 @@
 /* @flow */
 /* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-direct-mutation-state */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ClickOutside from 'react-click-outside';
@@ -18,7 +19,7 @@ StyleSheet.reset(`
   .cd-select-dropdown {
     position: absolute !important;
   }
-`)
+`);
 
 type State = {
     options: Array<Object>,
@@ -112,13 +113,13 @@ class Select extends Component {
     }
 
     componentWillReceiveProps(props: Object) {
-        if (props.placeholder != this.props.placeholder) {
+        if (props.placeholder !== this.props.placeholder) {
             this.setState({
                               currentPlaceholder: props.placeholder
                           });
         }
 
-        if (props.value != this.props.value) {
+        if (props.value !== this.props.value) {
             this.setState({
                               value: props.value
                           }, () => {
@@ -128,11 +129,12 @@ class Select extends Component {
     }
 
     componentWillUpdate(props: Object, state: Object) {
-        if (state.value != this.state.value) {
+
+        if (state.value !== this.state.value) {
             this.onValueChange(state.value);
         }
 
-        if (state.visible != this.state.visible) {
+        if (state.visible !== this.state.visible) {
             if (this.props.onVisibleChange) {
                 this.props.onVisibleChange(state.visible);
             }
@@ -140,12 +142,12 @@ class Select extends Component {
             this.onVisibleChange(state.visible);
         }
 
-        if (state.query != this.state.query) {
+        if (state.query !== this.state.query) {
             this.onQueryChange(state.query);
         }
 
         if (Array.isArray(state.selected)) {
-            if (state.selected.length != this.state.selected.length) {
+            if (state.selected.length !== this.state.selected.length) {
                 this.onSelectedChange(state.selected);
             }
         }
@@ -322,7 +324,7 @@ class Select extends Component {
 
     onSelectedChange(val: any, bubble: boolean = true) {
         const { form } = this.context;
-        const { multiple, filterable, onChange } = this.props;
+        const { multiple, filterable } = this.props;
         let { query, hoverIndex, inputLength, selectedInit, currentPlaceholder, cachedPlaceHolder, valueChangeBySelected } = this.state;
 
         if (multiple) {
@@ -394,13 +396,13 @@ class Select extends Component {
         } else if (typeof filterMethod === 'function') {
             filterMethod(query);
         } else {
-            this.setState({
-                              filteredOptionsCount: optionsCount
-                          }, () => {
-                options.forEach(option => {
-                    option.queryChange(query);
-                });
+            let invisiblesOption = 0;
+            options.forEach(option => {
+                invisiblesOption += option.queryChange(query);
             });
+            this.setState({
+                              filteredOptionsCount: optionsCount - invisiblesOption
+                          });
         }
 
         this.setState({ hoverIndex, voidRemoteQuery });
@@ -614,7 +616,7 @@ class Select extends Component {
 
         let skip;
 
-        if (options.length != options.filter(item => item.props.disabled === true).length) {
+        if (options.length !== options.filter(item => item.props.disabled === true).length) {
             if (direction === 'next') {
                 hoverIndex++;
 
@@ -685,7 +687,7 @@ class Select extends Component {
     deleteSelected(e: Object) {
         e.stopPropagation();
 
-        if (this.state.selectedLabel != '') {
+        if (this.state.selectedLabel !== '') {
             this.setState({
                               selected: {},
                               selectedLabel: '',
@@ -745,7 +747,6 @@ class Select extends Component {
         this.handleValueChange();
     }
 
-    //チムツテベトゾ
     onOptionDestroy(option: any) {
         this.state.optionsCount--;
         this.state.filteredOptionsCount--;
@@ -757,7 +758,7 @@ class Select extends Component {
         }
 
         this.state.options.forEach(el => {
-            if (el != option) {
+            if (el !== option) {
                 el.resetIndex();
             }
         });
@@ -840,10 +841,11 @@ class Select extends Component {
                                     return (
                                         <Tag
                                             type="primary"
+                                            round
                                             key={el.props.value}
-                                            hit={el.hitState}
+                                            size="small"
+                                            hit
                                             closable={!disabled}
-                                            closeTransition={true}
                                             onClose={this.deleteTag.bind(this, el)}
                                         >
                                             <span
@@ -1002,6 +1004,6 @@ Select.propTypes = {
     onRemoveTag: PropTypes.func,
     onClear: PropTypes.func,
     prefixIcon: PropTypes.string
-}
+};
 
 export default ClickOutside(Select);

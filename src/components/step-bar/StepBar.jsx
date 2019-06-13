@@ -20,9 +20,11 @@ export default class StepBar extends Component {
     }
 
     changeStep(index) {
-        this.setState({ activeStep: index });
-        if (this.props.onClick && this.props.clickable) {
-            this.props.onClick(index)
+        if (this.props.clickable) {
+            this.setState({ activeStep: index });
+            if (this.props.onClick) {
+                this.props.onClick(index)
+            }
         }
     }
 

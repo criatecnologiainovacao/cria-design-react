@@ -1,209 +1,483 @@
-## Botão
+## Select
 
-Componente de botão.
+Quando houver muitas opções, use um menu suspenso para exibir e selecionar as desejadas.
 
-### Uso básico
+### Uso basico
 
-Dialog pops up a dialog box, and it's quite customizable.
-
-:::demo Use os atributos `type`, `plain`, `round` e `circle` para definir o estilo do Botão.
+:::demo `value` é o valor do` Option` atualmente selecionado.
 
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: 'Option1',
+      label: 'Option1'
+    }, {
+      value: 'Option2',
+      label: 'Option2'
+    }, {
+      value: 'Option3',
+      label: 'Option3'
+    }, {
+      value: 'Option4',
+      label: 'Option4'
+    }, {
+      value: 'Option5',
+      label: 'Option5'
+    }],
+    value: ''
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button>Default</Button>
-        <Button type="primary">Primary</Button>
-        <Button type="success">Success</Button>
-        <Button type="info">Info</Button>
-        <Button type="warning">Warning</Button>
-        <Button type="danger">Danger</Button>
-        <br/>
-        <br/>
-        <Button plain>Default</Button>
-        <Button plain type="primary">Primary</Button>
-        <Button plain type="success">Success</Button>
-        <Button plain type="info">Info</Button>
-        <Button plain type="warning">Warning</Button>
-        <Button plain type="danger">Danger</Button>
-        <br/>
-        <br/>
-        <Button round>Default</Button>
-        <Button round type="primary">Primary</Button>
-        <Button round type="success">Success</Button>
-        <Button round type="info">Info</Button>
-        <Button round type="warning">Warning</Button>
-        <Button round type="danger">Danger</Button>
-        <br/>
-        <br/>
-        <Button circle icon="cd-icon-search"/>
-        <Button circle icon="cd-icon-edit" type="primary"/>
-        <Button circle icon="cd-icon-check" type="success"/>
-        <Button circle icon="cd-icon-message" type="info"/>
-        <Button circle icon="cd-icon-star-off" type="warning"/>
-        <Button circle icon="cd-icon-delete" type="danger"/>
-    </div>
+    <Select value={this.state.value}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Botões desativados
+### Opção desabilitada
 
-O atributo `disabled` determina se um atributo está desativado.
-
-:::demo Use o atributo `disabled` para determinar se um botão estará desativado, esse aceita um valor `Boolean`.
+:::demo Defina o valor de `disabled` em ` Option` para `true` para desativar esta opção.
 
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: 'Option1',
+      label: 'Option1'
+    }, {
+      value: 'Option2',
+      label: 'Option2',
+      disabled: true
+    }, {
+      value: 'Option3',
+      label: 'Option3'
+    }, {
+      value: 'Option4',
+      label: 'Option4'
+    }, {
+      value: 'Option5',
+      label: 'Option5'
+    }],
+    value: ''
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button disabled>Default</Button>
-        <Button disabled type="primary">Primary</Button>
-        <Button disabled type="success">Success</Button>
-        <Button disabled type="info">Info</Button>
-        <Button disabled type="warning">Warning</Button>
-        <Button disabled type="danger">Danger</Button>
-        <br/>
-        <br/>
-        <Button disabled plain>Default</Button>
-        <Button disabled plain type="primary">Primary</Button>
-        <Button disabled plain type="success">Success</Button>
-        <Button disabled plain type="info">Info</Button>
-        <Button disabled plain type="warning">Warning</Button>
-        <Button disabled plain type="danger">Danger</Button>
-    </div>
+    <Select value={this.state.value}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} disabled={el.disabled} />
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Botão texto
+### Desabilitado
 
-Botões sem bordas ou background.
+Desative o componente inteiro.
 
-:::demo Passe o valor `text` para o atributo `type`.
-
+:::demo Defina `disabled` de` Select` para desativá-lo.
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: '选项1',
+      label: '黄金糕'
+    }, {
+      value: '选项2',
+      label: '双皮奶'
+    }, {
+      value: '选项3',
+      label: '蚵仔煎'
+    }, {
+      value: '选项4',
+      label: '龙须面'
+    }, {
+      value: '选项5',
+      label: '北京烤鸭'
+    }],
+    value: ''
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button type="text">Default</Button>
-        <Button disabled type="text">Primary</Button>
-    </div>
+    <Select value={this.state.value} disabled={true}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Ícones
+### Select apagavel
 
-Botões podem ter ícones sozinhos ou acompanhado das labels do botão.
+Você pode limpar Selecionar usando um ícone claro.
 
-:::demo Para que o ícone apareça anterior ao label do botão, use o atributo `icon`. O mesmo aceita um valor em `String`. _(Pode ser usado os ícones disponíveis nessa biblioteca, ou de terceiros como o material design: *mdi mdi-close*)_. Para que o ícone apareça à direita da label do botão, use o atributo `appendIcon`, que aceita os mesmos valores de `icon`. Ambos atributos, quando passados sem um label de botão, aparecerão sozinhos.
-
+::: demo Defina o atributo `clearable` para` Select` e um ícone de apagar aparecerá. Note que 'limpável' é apenas para seleção única.
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: 'Option1',
+      label: 'Option1'
+    }, {
+      value: 'Option2',
+      label: 'Option2'
+    }, {
+      value: 'Option3',
+      label: 'Option3'
+    }, {
+      value: 'Option4',
+      label: 'Option4'
+    }, {
+      value: 'Option5',
+      label: 'Option5'
+    }],
+    value: ''
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button type="text" icon="cd-icon-share">Compartilhar</Button>
-        <Button icon="cd-icon-delete"/>
-        <Button icon="cd-icon-search">Pesquisar</Button>
-        <Button appendIcon="cd-icon-upload">Upload</Button>
-    </div>
+    <Select value={this.state.value} clearable={true}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Loading
+### Multi select simples
 
-Click no botão para que ele execute algum evento, e apresente o estado de carregamento.
+Seleção múltipla usa tags para exibir as opções selecionadas.
 
-:::demo Passe o atributo `loading` para `true`. O atributo de `loading` sobrepõe o atributo `appendIcon`.
-
+:::demo Defina o atributo `multiple` para` Select` para ativar o modo múltiplo. Nesse caso, o valor de `selected` será um array de opções selecionadas.
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: 'Option1',
+      label: 'Option1'
+    }, {
+      value: 'Option2',
+      label: 'Option2'
+    }, {
+      value: 'Option3',
+      label: 'Option3'
+    }, {
+      value: 'Option4',
+      label: 'Option4'
+    }, {
+      value: 'Option5',
+      label: 'Option5'
+    }],
+    value: []
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button loading>Carregando...</Button>
-        <Button type="text" loading>Carregando...</Button>
-        <Button type="info" loading/>
-    </div>
+    <Select value={this.state.value} multiple={true}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Button Group
+### Personalizado
 
-Botões com operações similares podem ser agrupados.
+Você pode personalizar modelos HTML para opções.
 
-:::demo Use o componente `Button.Group` para agrupar os Botões.
+::: demo Inserir modelos HTML personalizados em `Option`.
 
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    cities: [{
+      value: 'Beijing',
+      label: 'Beijing'
+    }, {
+      value: 'Shanghai',
+      label: 'Shanghai'
+    }, {
+      value: 'Nanjing',
+      label: 'Nanjing'
+    }, {
+      value: 'Chengdu',
+      label: 'Chengdu'
+    }, {
+      value: 'Shenzhen',
+      label: 'Shenzhen'
+    }, {
+      value: 'Guangzhou',
+      label: 'Guangzhou'
+    }],
+    value: []
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button.Group>
-            <Button type="primary" icon="cd-icon-arrow-left">Página anterior</Button>
-            <Button type="primary" appendIcon="cd-icon-arrow-right">Página posterior</Button>
-        </Button.Group>
-        <br/>
-        <br/>
-        <Button.Group>
-            <Button type="primary" icon="cd-icon-edit"/>
-            <Button type="primary" appendIcon="cd-icon-share"/>
-            <Button type="primary" appendIcon="cd-icon-delete"/>
-        </Button.Group>
-    </div>
+    <Select value={this.state.value}>
+      {
+        this.state.cities.map(el => {
+          return (
+            <Select.Option key={el.value} label={el.label} value={el.value}>
+              <span style={{float: 'left'}}>{el.label}</span>
+              <span style={{float: 'right', color: '#8492a6', fontSize: 13}}>{el.value}</span>
+            </Select.Option>
+          )
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Tamanhos
+### Grupos de opções
 
-Além do tamanho padrão, o componente de `Button` disponibiliza mais três tamanhos diferentes.
+Exibe opções em grupos.
 
-:::demo Use o atributo `size` com os valores `medium`, `small` ou `mini`.
+::: demo Use `OptionGroup` para agrupar as opções, e seu atributo` label` significa o nome do grupo.
 
 ```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      label: 'Popular cities',
+      options: [{
+        value: 'Shanghai',
+        label: 'Shanghai'
+      }, {
+        value: 'Beijing',
+        label: 'Beijing'
+      }]
+    }, {
+      label: 'City name',
+      options: [{
+        value: 'Chengdu',
+        label: 'Chengdu'
+      }, {
+        value: 'Shenzhen',
+        label: 'Shenzhen'
+      }, {
+        value: 'Guangzhou',
+        label: 'Guangzhou'
+      }, {
+        value: 'Dalian',
+        label: 'Dalian'
+      }]
+    }],
+    value: ''
+  };
+}
+
 render() {
   return (
-    <div>
-        <Button>Default</Button>
-        <Button size="medium">Medium</Button>
-        <Button size="small">Small</Button>
-        <Button size="mini">Mini</Button>
-        <br/>
-        <br/>
-        <Button round>Default</Button>
-        <Button round size="medium">Medium</Button>
-        <Button round size="small">Small</Button>
-        <Button round size="mini">Mini</Button>
-    </div>
+    <Select value={this.state.value}>
+      {
+        this.state.options.map(group => {
+          return (
+            <Select.OptionGroup key={group.label} label={group.label}>
+              {
+                group.options.map(el => {
+                  return (
+                    <Select.Option key={el.value} label={el.label} value={el.value}>
+                      <span style={{float: 'left'}}>{el.label}</span>
+                      <span style={{float: 'right', color: '#8492a6', fontSize: 13}}>{el.value}</span>
+                    </Select.Option>
+                  )
+                })
+              }
+            </Select.OptionGroup>
+          )
+        })
+      }
+    </Select>
   )
 }
 ```
 :::
 
-### Atributos
+### Filtro
 
-| Atributo      | Descrição | Tipo      | Valores aceitos       | Padrão  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| size     | O tamanho do botão | string    | medium / small / mini | — |
-| type      | O tipo do botão | string    | primary / success / warning / danger / info / text | — |
-| plain      | Determina se o botão terá o estilo simples | boolean | — | false |
-| round     | Determina se o botão terá bordas arredondadas. | boolean   | — | false |
-| circle | Determina se será um botão circular. | boolean   | — | false |
-| loading | Determina se o botão estará no estado de carregamento. | boolean | — | false |
-| disabled | Desativa o botão | boolean | — | false |
-| icon | Nome da classe do ícone. Aparecerá antes do label do botão | string | — | — |
-| appendIcon | Nome da classe do ícone. Aparecerá depois do label do botão | string | — | — |
-| nativeType | O mesmo que o `type` nativo do botão. | string | button / submit / reset | — |
+Você pode filtrar as opções para as suas desejadas.
 
-### Eventos
-| Nome do evento | Descrição | Parameters |
-|---------- |-------- |---------- |
-| onClick | Acionado quando o botão é clicado. | — |
+::: demo Adicionando `filterable` a` Select` habilita a filtragem. Por padrão, Select irá encontrar todas as opções cujo atributo `label` contém o valor de entrada. Se você preferir outras estratégias de filtragem, pode passar o `filterMethod`. `filterMethod` é uma` Function` que é chamada quando o valor de entrada é alterado e seu parâmetro é o valor de entrada atual.
+```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [{
+      value: 'Option1',
+      label: 'Option1'
+    }, {
+      value: 'Option2',
+      label: 'Option2'
+    }, {
+      value: 'Option3',
+      label: 'Option3'
+    }, {
+      value: 'Option4',
+      label: 'Option4'
+    }, {
+      value: 'Option5',
+      label: 'Option5'
+    }],
+    value: []
+  };
+}
+
+render() {
+  return (
+    <Select value={this.state.value} filterable={true}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
+  )
+}
+```
+:::
+
+### Busca remota
+
+Insira palavras-chave e pesquise dados do servidor.
+
+::: demo Defina o valor de `filterable` e` remote` com `true` para ativar a pesquisa remota, e você deve passar o` remoteMethod`. `remoteMethod` é uma` Function` que é chamada quando o valor de entrada é alterado e seu parâmetro é o valor de entrada atual.
+```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    options: [],
+    states: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",   "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
+    "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+  }
+}
+
+onSearch(query) {
+  if (query !== '') {
+    this.setState({
+      loading: true
+    });
+
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+        options: this.state.states.map(item => {
+          return { value: item, label: item };
+        }).filter(item => {
+          return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+        })
+      });
+    }, 200);
+  } else {
+    this.setState({
+      options: []
+    });
+  }
+}
+
+render() {
+  return (
+    <Select value={this.state.value} multiple={true} filterable={true} remote={true} remoteMethod={this.onSearch.bind(this)} loading={this.state.loading}>
+      {
+        this.state.options.map(el => {
+          return <Select.Option key={el.value} label={el.label} value={el.value} />
+        })
+      }
+    </Select>
+  )
+}
+```
+:::
+
+### Atributos Select
+| Atributo | Descrição | Tipo | Valores aceitos | Padrão |
+| ---------- | -------------- | ---------- | ------------ -------------------- | -------- |
+| multiple | se a seleção múltipla está ativada | booleano | - | false |
+| disabled | se Selecionar está desativado | booleano | - | false |
+| size | tamanho de entrada | string | grande / pequeno / mini | - |
+| clearable | se seleção única pode ser desmarcada | booleano | - | false |
+| multipleLimit | Número máximo de opções que o usuário pode selecionar quando `multiple` é` true`. Sem limite quando definido para 0 | número | - | 0 |
+| name | o atributo name da entrada de seleção | string | - | - |
+| placeholder | placeholder | string | - | Selecione |
+| filterable | se Selecionar é filtrável | booleano | - | false |
+| allowCreate | se a criação de novos itens é permitida. Para usar isso, `filterable` deve ser true | booleano | - | false |
+| filterMethod | método de filtro personalizado | função | - | - |
+| remote | se as opções são carregadas do servidor | booleano | - | false |
+| remoteMethod | método de pesquisa remota personalizada | função | - | - |
+| loading | se Select está carregando dados do servidor | booleano | - | false |
+| loadingText | texto exibido ao carregar dados do servidor | string | - | Carregando |
+| noMatchText | texto exibido quando nenhum dado corresponde à consulta de filtragem | string | - | Não há dados correspondentes |
+| noDataText | texto exibido quando não há opções | string | - | Sem dados |
+| popperClass | nome de classe personalizado para o menu suspenso de Select | string | - | - |
+| selected | valor das opçoes selecionadas quando `multiple` é `true`. | String | - | - |
+| value | valor do select quando `multiple` é `false`. | String | - | - |
+
+### Selecionar eventos
+| Nome do Evento | Descrição | Parâmetros |
+| --------- | --------- | --------- |
+| onChange | dispara quando o valor selecionado é alterado | valor selecionado atual |
+| onVisibleChange | dispara quando a lista suspensa aparece / desaparece | true quando aparece, e false caso contrário |
+| onRemoveTag | dispara quando uma tag é removida no modo múltiplo | valor de tag removido |
+| onClear | dispara quando o ícone claro é clicado em uma limpeza Seleciona | - |
+
+### Atributos do grupo de opções
+| Atributo | Descrição | Tipo | Valores aceitos | Padrão |
+| ---------- | -------------- | ---------- | ------------ -------------------- | -------- |
+| label | nome do grupo | string | - | - |
+| disabled | se deseja desativar todas as opções neste grupo | booleano | - | false |
+
+### Atributos da Opção
+| Atributo | Descrição | Tipo | Valores aceitos | Padrão |
+| ---------- | -------------- | ---------- | ------------ -------------------- | -------- |
+| value | valor da opção | string / número / objeto | - | - |
+| label | label of option, igual a `value` se omitido | string / número | - | - |
+| disabled | se a opção está desativada | booleano | - | false |

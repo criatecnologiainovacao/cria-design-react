@@ -82,7 +82,6 @@ export default class Input extends Component {
         }
     }
 
-
     handleCompositionEnd(e: SyntheticEvent<any>): void {
         this.setState({ isComposing: false });
         this.handleInput(e);

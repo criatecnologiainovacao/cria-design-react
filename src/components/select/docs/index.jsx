@@ -1,7 +1,7 @@
 import Markdown from '../../../../libs/markdown';
 
-export default class Button extends Markdown {
+export default class Select extends Markdown {
     document() {
-        return require(`./Button.md`);
+        return require(`./Select.md`);
     }
 }

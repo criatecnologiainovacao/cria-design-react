@@ -10,6 +10,8 @@ type State = {
 };
 
 export default class Option extends Component {
+    state: State;
+
     constructor(props: Object) {
         super(props);
 
@@ -82,18 +84,13 @@ export default class Option extends Component {
     }
 
     queryChange(query: string) {
-        // query 里如果有正则中的特殊字符，需要先将这些字符转义
-        const parsedQuery = query.replace(/(\^|\(|\)|\[|\]|\$|\*|\+|\.|\?|\\|\{|\}|\|)/g, '\\$1');
+        const parsedQuery = query.toString()
+                                 .replace(/(\^|\(|\)|\[|\]|\$|\*|\+|\.|\?|\\|\{|\}|\|)/g, '\\$1');
         const visible = new RegExp(parsedQuery, 'i').test(this.currentLabel());
 
-        if (!visible) {
-            this.parent().setState({
-                                       filteredOptionsCount: this.parent().state.filteredOptionsCount -
-                                                             1
-                                   });
-        }
-
         this.setState({ visible });
+
+        return !visible;
     }
 
     resetIndex() {
@@ -122,8 +119,6 @@ export default class Option extends Component {
             </View>
         )
     }
-
-    state: State;
 }
 
 Option.contextTypes = {
