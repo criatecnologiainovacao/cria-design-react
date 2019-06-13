@@ -13,6 +13,7 @@ module.exports = {
         'card': 'Card',
         'popover': 'Popover',
         'select': 'Select',
+        'table': 'Table',
         'nav-menu': 'Menu',
         'modal': 'Modal'
     },

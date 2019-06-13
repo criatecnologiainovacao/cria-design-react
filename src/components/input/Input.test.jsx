@@ -12,7 +12,7 @@ describe('Input test', () => {
         expect(w.hasClass('cd-input')).toBeTruthy();
         w.find('input').simulate('input', {
             target: {
-                value: "Teste"
+                value: 'Teste'
             }
         })
     });

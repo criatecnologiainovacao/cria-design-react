@@ -580,22 +580,22 @@ $--slider-button-wrapper-offset: -15px !default;
 
 /* menu-icon
 --------------------------*/
-$menu-icon-padding-x           : 0px !default;
-$menu-icon-padding-y           : 0px !default;
-$menu-icon-layer-width         : 15px !default;
-$menu-icon-layer-height        : 2px !default;
-$menu-icon-layer-spacing       : 2px !default;
-$menu-icon-layer-color         : #000 !default;
-$menu-icon-layer-border-radius : 4px !default;
-$menu-icon-hover-opacity       : 0.7 !default;
-$menu-icon-active-layer-color  : $menu-icon-layer-color !default;
+$menu-icon-padding-x: 0px !default;
+$menu-icon-padding-y: 0px !default;
+$menu-icon-layer-width: 15px !default;
+$menu-icon-layer-height: 2px !default;
+$menu-icon-layer-spacing: 2px !default;
+$menu-icon-layer-color: #000 !default;
+$menu-icon-layer-border-radius: 4px !default;
+$menu-icon-hover-opacity: 0.7 !default;
+$menu-icon-active-layer-color: $menu-icon-layer-color !default;
 $menu-icon-active-hover-opacity: $menu-icon-hover-opacity !default;
 
 // To use CSS filters as the hover effect instead of opacity,
 // set $menu-icon-hover-use-filter as true and
 // change the value of $menu-icon-hover-filter accordingly.
-$menu-icon-hover-use-filter   : false !default;
-$menu-icon-hover-filter       : opacity(50%) !default;
+$menu-icon-hover-use-filter: false !default;
+$menu-icon-hover-filter: opacity(50%) !default;
 $menu-icon-active-hover-filter: $menu-icon-hover-filter !default;
 
 /* Steps
