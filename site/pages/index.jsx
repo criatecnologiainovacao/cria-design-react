@@ -24,7 +24,8 @@ export default {
         },
         'Outros': {
             'card': require('../../src/components/card/docs'),
-            'popover': require('../../src/components/popover/docs')
+            'popover': require('../../src/components/popover/docs'),
+            'modal': require('../../src/components/modal/docs')
         }
     }
 }
