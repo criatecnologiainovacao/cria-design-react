@@ -22,3 +22,8 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Step Bar`
 - Componente `Table`
 - Componente `Tag`
+- Componente `Modal`
+- Componente `Popover`
+- Componente `Radio`
+- Componente `Select`
+- Funcionalidade `Multiple Input`

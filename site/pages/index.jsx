@@ -18,10 +18,15 @@ export default {
         },
         'Formulários': {
             'input': require('../../src/components/input/docs'),
-            'form': require('../../src/components/form/docs')
+            'form': require('../../src/components/form/docs'),
+            'table': require('../../src/components/table/docs'),
+            'select': require('../../src/components/select/docs'),
+            'radio': require('../../src/components/radio/docs')
         },
         'Outros': {
-            'card': require('../../src/components/card/docs')
+            'card': require('../../src/components/card/docs'),
+            'popover': require('../../src/components/popover/docs'),
+            'modal': require('../../src/components/modal/docs')
         }
     }
 }
