@@ -2,12 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Button from '../button';
-import Modal from "./Modal";
-import ModalBody from "./ModalBody";
-import ModalFooter from "./ModalFooter";
-import {boolean, withKnobs} from "@storybook/addon-knobs";
+import Modal from './Modal';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 
-storiesOf('Básicos|Modal', module)
+storiesOf('Outros|Modal', module)
     .addDecorator(withKnobs)
     .add('default', () =>
     <div>

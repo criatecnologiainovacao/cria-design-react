@@ -1,11 +1,11 @@
 import React from 'react';
 import sinon from 'sinon';
 
-import {mount} from "enzyme";
+import { mount } from 'enzyme';
 import Button from '../button';
-import Modal from "./Modal";
-import ModalBody from "./ModalBody";
-import ModalFooter from "./ModalFooter";
+import Modal from './Modal';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
 
 describe('Modal test', () => {
 
@@ -27,34 +27,34 @@ describe('Modal test', () => {
           </Modal>
         );
 
-        expect(modal.find(".cd-modal").exists()).toBe(true)
-        modal.find(".cd-modal__wrapper").simulate('click')
+        expect(modal.find('.cd-modal').exists()).toBe(true);
+        modal.find('.cd-modal__wrapper').simulate('click');
         modal.find(".cd-modal__wrapper").simulate('keydown', {
             keyCode: 27
-        })
+        });
 
         modal.setProps({
             visible: true
-        })
+                       });
 
         modal.setProps({
             lockScroll: true,
             visible: false
-        })
+                       });
 
         modal.setProps({
             visible: true
-        })
+                       });
 
         modal.setProps({
             visible: false
-        })
+                       });
 
-        modal.unmount()
+        modal.unmount();
     });
 
     it('create', () => {
-        const onClose = sinon.spy()
+        const onClose = sinon.spy();
         const modal = mount(
           <Modal
             title="Tips"
@@ -73,8 +73,8 @@ describe('Modal test', () => {
           </Modal>
         );
 
-        expect(modal.find(".cd-modal").exists()).toBe(true)
-        modal.find(".cd-modal__headerbtn").simulate('click')
+        expect(modal.find('.cd-modal').exists()).toBe(true);
+        modal.find('.cd-modal__headerbtn').simulate('click');
         expect(onClose.callCount).toBe(1);
     });
 });

@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import {Component, PropTypes, Transition, View} from '../../../libs';
+import { Component, PropTypes, Transition, View } from '../../../libs';
 
 type State = {
   bodyOverflow: string,
@@ -20,7 +20,7 @@ export default class Modal extends Component {
     closeOnClickModal: true,
     closeOnPressEscape: true,
     showClose: true
-  }
+  };
 
   constructor(props: Object) {
     super(props);
