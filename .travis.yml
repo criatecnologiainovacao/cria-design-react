@@ -11,6 +11,9 @@ addons:
 env:
     - TRAVIS_CI=1
 
+git:
+    depth: false
+
 cache:
     npm: true
     directories:
