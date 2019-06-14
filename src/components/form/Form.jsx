@@ -59,7 +59,7 @@ export default class Form extends Component {
     }
 
     validateField(prop: string, cb: Function): void {
-        const field = this.state.fields.filter(field => field.props.prop === prop)[0];
+        const field = this.state.fields.filter(f => f.props.prop === prop)[0];
 
         if (!field) {
             throw new Error('must call validateField with valid prop string!');

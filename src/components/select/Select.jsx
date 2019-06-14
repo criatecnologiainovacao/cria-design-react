@@ -276,28 +276,31 @@ class Select extends Component {
         let {
             options,
             valueChangeBySelected,
-            selectedInit,
-            selected,
-            selectedLabel,
-            currentPlaceholder,
-            cachedPlaceHolder
+            cachedPlaceHolder,
+            currentPlaceholder
         } = this.state;
 
         if (valueChangeBySelected) {
-            return this.setState({
-                                     valueChangeBySelected: false
-                                 });
+            return this.setState(
+                {
+                    valueChangeBySelected: false
+                }
+            );
         }
 
         if (multiple && Array.isArray(val)) {
             this.resetInputHeight();
 
-            selectedInit = true;
-            selected = [];
-            currentPlaceholder = cachedPlaceHolder;
+            this.setState(
+                {
+                    selectedInit: true,
+                    selected: [],
+                    currentPlaceholder: cachedPlaceHolder
+                }
+            );
 
             val.forEach(item => {
-                let option = options.filter(option => option.props.value === item)[0];
+                let option = options.filter(opt => opt.props.value === item)[0];
                 if (option) {
                     this.addOptionToValue(option);
                 }
@@ -307,15 +310,16 @@ class Select extends Component {
         }
 
         if (!multiple) {
-            let option = options.filter(option => option.props.value === val)[0];
+            let option = options.filter(opt => opt.props.value === val)[0];
 
             if (option) {
                 this.addOptionToValue(option);
-                this.setState({ selectedInit, currentPlaceholder });
+                this.setState({ currentPlaceholder });
             } else {
-                selected = {};
-                selectedLabel = '';
-                this.setState({ selectedInit, selected, currentPlaceholder, selectedLabel }, () => {
+                this.setState({
+                                  selected: {},
+                                  selectedLabel: ''
+                              }, () => {
                     this.resetHoverIndex();
                 });
             }
@@ -325,20 +329,24 @@ class Select extends Component {
     onSelectedChange(val: any, bubble: boolean = true) {
         const { form } = this.context;
         const { multiple, filterable } = this.props;
-        let { query, hoverIndex, inputLength, selectedInit, currentPlaceholder, cachedPlaceHolder, valueChangeBySelected } = this.state;
+        let { query, hoverIndex, inputLength, selectedInit, cachedPlaceHolder } = this.state;
 
         if (multiple) {
             if (val.length > 0) {
-                currentPlaceholder = '';
+
+                this.setState({ currentPlaceholder: '' }, () => {
+                    this.resetInputHeight();
+                });
+
             } else {
-                currentPlaceholder = cachedPlaceHolder;
+
+                this.setState({ currentPlaceholder: cachedPlaceHolder }, () => {
+                    this.resetInputHeight();
+                });
             }
 
-            this.setState({ currentPlaceholder }, () => {
-                this.resetInputHeight();
-            });
+            this.setState({ valueChangeBySelected: true });
 
-            valueChangeBySelected = true;
 
             if (bubble) {
                 this.onChange(val.map(item => item.props.value), val);
@@ -346,14 +354,18 @@ class Select extends Component {
             }
 
             if (filterable) {
-                query = '';
-                hoverIndex = -1;
-                inputLength = 20;
+                this.setState(
+                    {
+                        query: '',
+                        hoverIndex: -1,
+                        inputLength: 20
+                    }
+                );
 
                 this.refs.input.focus();
             }
 
-            this.setState({ valueChangeBySelected, query, hoverIndex, inputLength }, () => {
+            this.setState({ query, hoverIndex, inputLength }, () => {
                 if (this.refs.input) {
                     this.refs.input.value = '';
                 }
@@ -511,7 +523,7 @@ class Select extends Component {
 
     addOptionToValue(option: any, init?: boolean) {
         const { multiple, remote } = this.props;
-        let { selected, selectedLabel, hoverIndex, value } = this.state;
+        let { selected, value } = this.state;
 
         if (multiple) {
             if (selected.indexOf(option) === -1 &&
@@ -526,10 +538,13 @@ class Select extends Component {
             this.selectedInit = !!init;
 
             selected = option;
-            selectedLabel = option.currentLabel();
-            hoverIndex = option.index;
-
-            this.setState({ selected, selectedLabel, hoverIndex });
+            this.setState(
+                {
+                    selected,
+                    selectedLabel: option.currentLabel(),
+                    hoverIndex: option.index
+                }
+            );
         }
     }
 

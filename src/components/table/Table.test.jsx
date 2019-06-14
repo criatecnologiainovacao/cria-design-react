@@ -133,7 +133,7 @@ let expandableState = {
             zip: 'CA 90036'
         }
     ]
-}
+};
 
 
 describe('Table tests', () => {
@@ -267,7 +267,7 @@ describe('Table tests', () => {
                     var style = {
                         height: '60px',
                         fontSize: '20px'
-                    }
+                    };
                     return style;
                 })
             }
@@ -346,8 +346,7 @@ describe('Table tests', () => {
 
         expect(table.find('thead').childAt(0).childAt(0))
             .toHaveClassName('cd-table-column--selection');
-        let i = 0;
-        for (i = 0; i < mockData.length; i++) {
+        for (let i = 0; i < mockData.length; i++) {
             expect(table.find('tbody').childAt(i).childAt(0))
                 .toHaveClassName('cd-table-column--selection');
         }
@@ -379,8 +378,7 @@ describe('Table tests', () => {
         );
         expect(table.find('thead').childAt(0).childAt(0)).toHaveText('#');
 
-        let i = 0;
-        for (i = 0; i < mockData.length; i++) {
+        for (let i = 0; i < mockData.length; i++) {
 
             expect(table.find('tbody').childAt(i).childAt(0)).toHaveText('' + (i + 1));
         }
@@ -411,8 +409,7 @@ describe('Table tests', () => {
             }
         );
         expect(table.find('thead').childAt(0).childAt(0)).toHaveClassName('is-center');
-        let i = 0;
-        for (i = 0; i < mockData.length; i++) {
+        for (let i = 0; i < mockData.length; i++) {
             expect(table.find('tbody').childAt(i).childAt(0)).toHaveClassName('is-center');
         }
     });
@@ -442,8 +439,7 @@ describe('Table tests', () => {
             }
         );
         expect(table.find('thead').childAt(0).childAt(0)).toHaveClassName('is-right');
-        let i = 0;
-        for (i = 0; i < mockData.length; i++) {
+        for (let i = 0; i < mockData.length; i++) {
             expect(table.find('tbody').childAt(i).childAt(0)).toHaveClassName('is-right');
         }
     });
@@ -455,8 +451,7 @@ describe('Table tests', () => {
                 columns: mockColumn
             }
         );
-        let i = 0;
-        for (i = 0; i < mockColumn.length; i++) {
+        for (let i = 0; i < mockColumn.length; i++) {
             expect(table.find('thead').childAt(0).childAt(i)).toHaveText('' + mockColumn[i].label);
         }
     });
@@ -468,15 +463,15 @@ describe('Table tests', () => {
                 columns: summaryColumn,
                 showSummary: true,
                 sumText: 'Total price',
-                summaryMethod: (columns, data) => {
+                summaryMethod: (col, dt) => {
                     const dataList = [];
-                    for (var i = 0; i < columns.length; i++) {
+                    for (let i = 0; i < col.length; i++) {
                         let total = 0;
-                        for (let j = 0; j < data.length; j++) {
-                            let value = data[j][columns[i]['property']];
+                        for (let j = 0; j < dt.length; j++) {
+                            let value = dt[j][col[i]['property']];
 
                             if (isNaN(value)) {
-                                total = 'N/A'
+                                total = 'N/A';
                                 break;
                             } else {
                                 total += parseFloat(value);
@@ -514,7 +509,7 @@ describe('Table tests', () => {
                 columns: mockColumn,
                 highlightCurrentRow: true
             }
-        )
+        );
 
         table.find('tbody').childAt(0).simulate('click');
         expect(table.find('tbody').childAt(0)).toHaveClassName('current-row');
@@ -528,7 +523,7 @@ describe('Table tests', () => {
                 columns: mockColumn,
                 onHeaderClick: cb
             }
-        )
+        );
 
         table.find('thead').childAt(0).childAt(0).simulate('click');
         expect(cb.calledOnce).toBe(true);
@@ -542,7 +537,7 @@ describe('Table tests', () => {
                 columns: mockColumn,
                 onRowClick: cb
             }
-        )
+        );
 
         table.find('tbody').childAt(0).childAt(0).simulate('click');
         expect(cb.calledOnce).toBe(true);
@@ -556,7 +551,7 @@ describe('Table tests', () => {
                 columns: mockColumn,
                 onCellMouseEnter: cb
             }
-        )
+        );
 
         table.find('tbody').childAt(0).childAt(0).simulate('mouseEnter');
         expect(cb.calledOnce).toBe(true);
@@ -570,7 +565,7 @@ describe('Table tests', () => {
                 columns: mockColumn,
                 onCellMouseLeave: cb
             }
-        )
+        );
 
         table.find('tbody').childAt(0).childAt(0).simulate('mouseLeave');
         expect(cb.calledOnce).toBe(true);

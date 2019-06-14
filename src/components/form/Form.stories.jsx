@@ -7,7 +7,7 @@ import Form from '../form';
 import Input from '../input';
 import Button from '../button';
 
-let form = {
+let formData = {
     name: '',
     desc: ''
 };
@@ -26,7 +26,7 @@ export const actionsForm = {
         e.preventDefault();
     },
     onChange: (key, value) => {
-        form[key] = value;
+        formData[key] = value;
     },
     handleSubmit: e => {
         e.preventDefault();
@@ -51,14 +51,15 @@ storiesOf('Formulário|Form', module)
     .add('default', () => {
         return (
             <Form style={{ width: '500px' }}
-                  model={form}
+                  model={formData}
                   onSubmit={actionsForm.onSubmit.bind(this)}
             >
                 <Form.Item label="Activity name">
-                    <Input value={form.name} onChange={actionsForm.onChange.bind(this, 'name')}/>
+                    <Input value={formData.name}
+                           onChange={actionsForm.onChange.bind(this, 'name')}/>
                 </Form.Item>
                 <Form.Item required label="Activity form">
-                    <Input type="textarea" value={form.desc}
+                    <Input type="textarea" value={formData.desc}
                            onChange={actionsForm.onChange.bind(this, 'desc')}/>
                 </Form.Item>
                 <Form.Item>
@@ -73,15 +74,15 @@ storiesOf('Formulário|Form', module)
             <Form
                 style={{ width: '500px' }}
                 labelPosition={position}
-                model={form}
+                model={formData}
                 onSubmit={actionsForm.onSubmit.bind(this)}
             >
                 <Form.Item label="Activity name">
-                    <Input value={form.name}
+                    <Input value={formData.name}
                            onChange={actionsForm.onChange.bind(this, 'name')}/>
                 </Form.Item>
                 <Form.Item required label="Activity form">
-                    <Input type="textarea" value={form.desc}
+                    <Input type="textarea" value={formData.desc}
                            onChange={actionsForm.onChange.bind(this, 'desc')}/>
                 </Form.Item>
                 <Form.Item>
@@ -112,15 +113,15 @@ storiesOf('Formulário|Form', module)
         return (
             <Form style={{ width: '1000px' }}
                   inline
-                  model={form}
+                  model={formData}
                   onSubmit={actionsForm.onSubmit.bind(this)}
             >
                 <Form.Item>
-                    <Input placeholder="Digite seu nome" value={form.name}
+                    <Input placeholder="Digite seu nome" value={formData.name}
                            onChange={actionsForm.onChange.bind(this, 'name')}/>
                 </Form.Item>
                 <Form.Item>
-                    <Input placeholder="Digite seu apelido" value={form.desc}
+                    <Input placeholder="Digite seu apelido" value={formData.desc}
                            onChange={actionsForm.onChange.bind(this, 'desc')}/>
                 </Form.Item>
                 <Form.Item>
@@ -134,16 +135,16 @@ storiesOf('Formulário|Form', module)
             <div>
                 <Form
                     style={{ width: '500px' }}
-                    model={form}
+                    model={formData}
                     rules={rules}
                     labelSuffix=":"
                 >
                     <Form.Item label="Activity name" prop="name">
-                        <Input value={form.name}
+                        <Input value={formData.name}
                                onChange={actionsForm.onChange.bind(this, 'name')}/>
                     </Form.Item>
                     <Form.Item label="Activity form" prop="desc">
-                        <Input type="textarea" value={form.desc}
+                        <Input type="textarea" value={formData.desc}
                                onChange={actionsForm.onChange.bind(this, 'desc')}/>
                     </Form.Item>
                     <Form.Item>

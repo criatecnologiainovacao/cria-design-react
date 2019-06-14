@@ -1,11 +1,9 @@
 // @flow
 import * as React from 'react';
-import { Component, PropTypes } from '../../../libs';
+import { Component } from '../../../libs';
 import { getValueByPath } from './utils';
-import Checkbox from '../checkbox';
-import Tag from '../tag';
 
-import { TableFooterProps, _Column } from "./Types";
+import { _Column, TableFooterProps } from './Types';
 
 export default class TableFooter extends Component<TableFooterProps> {
   isCellHidden(index: number, columns: Array<_Column>): boolean {
