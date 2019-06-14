@@ -64,7 +64,7 @@ export function getLeafColumns(columns: Array<_Column>): Array<_Column> {
 function convertChildrenToColumns(children: Array<Object> | Object) {
   return React.Children.map(children, (child) => {
     if (child.type.typeName !== 'TableColumn') {
-        new Error(`Table component's children must be TableColumn, but received ${child.type}`);
+        throw new Error(`Table component's children must be TableColumn, but received ${child.type}`);
       return {};
     }
 

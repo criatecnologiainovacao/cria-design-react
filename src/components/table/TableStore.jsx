@@ -182,7 +182,7 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
   }
 
   updateData(props: TableStoreProps) {
-    const { data = [], defaultExpandAll, defaultSort } = props;
+      const { data = [], defaultExpandAll } = props;
     const { columns } = this.state;
     const filteredData = filterData(data.slice(), columns);
 
