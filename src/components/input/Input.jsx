@@ -135,18 +135,19 @@ export default class Input extends Component {
         if(this.props.notRepeat && multiplesVue.includes(this.getInput().value)){
             return false;
         }else{
-            multiplesVue.push(
-                this.getInput().value
-            )
+            if(this.getInput().value !== '') {
+                multiplesVue.push(
+                    this.getInput().value
+                )
 
-            this.getInput().value = ''
+                this.getInput().value = ''
 
-            this.setState({
-                multipleValue : multiplesVue
-            }, () => {
-                this.forceUpdate()
-            })
-
+                this.setState({
+                    multipleValue: multiplesVue
+                }, () => {
+                    this.forceUpdate()
+                })
+            }
         }
 
     }
