@@ -48,6 +48,7 @@ export default class Input extends Component {
 
     updateMultiInput(){
         if(this.multiInput) {
+            /* eslint-disable-next-line react/no-direct-mutation-state */
             this.state.multiInputHeight = this.multiInput.getBoundingClientRect().height;
         }
     }
@@ -94,11 +95,12 @@ export default class Input extends Component {
                         spacePressed: false
                     })
                 }else{
-                    this.setState({
-                            spacePressed: true
-                        }
-                    )
-                    e.preventDefault();
+                    if(this.getInput().value.trim() !== '') {
+                        this.setState({
+                                spacePressed: true
+                            }
+                        )
+                    }
                 }
                 break;
 
@@ -109,6 +111,8 @@ export default class Input extends Component {
                 e.preventDefault();
                 break;
 
+            default:
+                break;
         }
 
     }
@@ -135,9 +139,9 @@ export default class Input extends Component {
         if(this.props.notRepeat && multiplesVue.includes(this.getInput().value)){
             return false;
         }else{
-            if(this.getInput().value !== '') {
+            if(this.getInput().value.trim() !== '') {
                 multiplesVue.push(
-                    this.getInput().value
+                    this.getInput().value.trim()
                 )
 
                 this.getInput().value = ''
