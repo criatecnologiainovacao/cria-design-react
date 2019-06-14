@@ -5,7 +5,7 @@ import Button from '../button';
 import Modal from './Modal';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import {boolean, text, withKnobs} from '@storybook/addon-knobs';
 
 storiesOf('Outros|Modal', module)
     .addDecorator(withKnobs)
@@ -13,7 +13,6 @@ storiesOf('Outros|Modal', module)
         <div>
             <Modal
                 title="Tips"
-                size="tiny"
                 visible={boolean('Visible', true)}
                 lockScroll={false}
             >
@@ -25,4 +24,21 @@ storiesOf('Outros|Modal', module)
                     <Button type="primary">Confirm</Button>
                 </ModalFooter>
             </Modal>
-        </div>);
+        </div>)
+    .add('size', () =>
+        <div>
+            <Modal
+                title="Tips"
+                size={text("Size", "full")}
+                visible={boolean('Visible', true)}
+                lockScroll={false}
+            >
+                <ModalBody>
+                    <span>This is a message</span>
+                </ModalBody>
+                <ModalFooter className="modal-footer">
+                    <Button>Cancel</Button>
+                    <Button type="primary">Confirm</Button>
+                </ModalFooter>
+            </Modal>
+        </div>);;

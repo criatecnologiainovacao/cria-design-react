@@ -109,7 +109,8 @@ render() {
 
 A propriedade `multiple` como verdadeira faz com que o Input aceite varios valores.
 
-:::demo Definir 
+:::demo Ao digitar um valor e pressionar o botao enter, o valor digitado e adicionado no multipleValue. Clicando no
+icone de fechar, o item e removido.
 ```js
 render() {
   return (

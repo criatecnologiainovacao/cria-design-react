@@ -73,7 +73,7 @@ export default class Input extends Component {
     }
 
     resizeText(){
-        this.refs.multiple.style.width = ((this.refs.multiple.value.length + 1) * 8) + 'px'
+        this.refs.multiple.style.width = ((this.refs.multiple.value.length + 2) * 8) + 'px'
         this.forceUpdate()
     }
 
@@ -84,6 +84,21 @@ export default class Input extends Component {
             case 8:
                 if(this.getInput().value === '') {
                     this.deleteLastMultiValue();
+                }
+                break;
+
+            case 32:
+                if(this.getInput().value !== '' && this.state.spacePressed) {
+                    this.addValueOnMultiple();
+                    this.setState({
+                        spacePressed: false
+                    })
+                }else{
+                    this.setState({
+                            spacePressed: true
+                        }
+                    )
+                    e.preventDefault();
                 }
                 break;
 
@@ -455,6 +470,8 @@ export default class Input extends Component {
                                         return (
                                             <Tag
                                                 type="primary"
+                                                round
+                                                size="small"
                                                 key={index}
                                                 closable={true}
                                                 onClose={this.deleteTag.bind(this, el)}
@@ -468,6 +485,7 @@ export default class Input extends Component {
                                 <input
                                             ref="multiple"
                                             type="text"
+                                            onBlur={() => this.addValueOnMultiple()}
                                             onKeyPress={this.resizeText.bind(this)}
                                             onKeyDown={this.handleKeyDownOnMultiple.bind(this)}
                                             onChange={this.handleChangeMultiple.bind(this)}
