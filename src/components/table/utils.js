@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { _Column } from "./Types";
+import { _Column } from './Types';
 
 const _document = (document: any);
 
@@ -64,7 +64,7 @@ export function getLeafColumns(columns: Array<_Column>): Array<_Column> {
 function convertChildrenToColumns(children: Array<Object> | Object) {
   return React.Children.map(children, (child) => {
     if (child.type.typeName !== 'TableColumn') {
-      console.warn(`Table component's children must be TableColumn, but received ${child.type}`);
+        new Error(`Table component's children must be TableColumn, but received ${child.type}`);
       return {};
     }
 
@@ -139,13 +139,13 @@ const deepCompare = (obj1: any, obj2: any): boolean => {
     const obj1Type = checkType(obj1);
     const obj2Type = checkType(obj2);
     if (obj1Type !== obj2Type ) return false;
-  
+
     if (obj1Type === 'array' && obj1.length === obj2.length) {
         return obj1.every((value, key) => (
             deepCompare(value, obj2[key])
         ))
-    } 
-  
+    }
+
     if (obj1Type === 'object') {
         for (let key in obj1) {
             if (!Object.keys(obj2).includes(key)) return false;

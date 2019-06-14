@@ -45,8 +45,8 @@ export default class Menu extends Component {
         if (openedMenus.indexOf(index) !== -1) return;
 
         if (this.props.uniqueOpened) {
-            openedMenus = openedMenus.filter(index => {
-                return indexPath.indexOf(index) !== -1;
+            openedMenus = openedMenus.filter(i => {
+                return indexPath.indexOf(i) !== -1;
             });
         }
 

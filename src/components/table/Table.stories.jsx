@@ -85,13 +85,13 @@ let expandableState = {
     columns: [
         {
             type: 'expand',
-            expandPannel: function (data) {
+            expandPannel: (dt) => {
                 return (
                     <div>
-                        <p>State: {data.state}</p>
-                        <p>City: {data.city}</p>
-                        <p>Address: {data.address}</p>
-                        <p>Zip: {data.zip}</p>
+                        <p>State: {dt.state}</p>
+                        <p>City: {dt.city}</p>
+                        <p>Address: {dt.address}</p>
+                        <p>Zip: {dt.zip}</p>
                     </div>
                 )
             }
@@ -159,7 +159,7 @@ let expandableState = {
             zip: 'CA 90036'
         }
     ]
-}
+};
 
 const columnsSummary = [
     {
@@ -333,15 +333,15 @@ storiesOf('Dados | Table', module)
                     columns={columnsSummary}
                     data={dataSummary}
                     sumText='Total price'
-                    summaryMethod={(columns, data) => {
+                    summaryMethod={(col, dt) => {
                         const dataList = [];
-                        for (var i = 0; i < columns.length; i++) {
+                        for (let i = 0; i < col.length; i++) {
                             let total = 0;
-                            for (let j = 0; j < data.length; j++) {
-                                let value = data[j][columns[i]['property']];
+                            for (let j = 0; j < dt.length; j++) {
+                                let value = dt[j][col[i]['property']];
 
                                 if (isNaN(value)) {
-                                    total = 'N/A'
+                                    total = 'N/A';
                                     break;
                                 } else {
                                     total += parseFloat(value);

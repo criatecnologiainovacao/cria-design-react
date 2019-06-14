@@ -230,11 +230,11 @@ describe('Select test', () => {
         const select = mount(
             <Select value={group.value}>
                 {
-                    group.options.map(group => {
+                    group.options.map(g => {
                         return (
-                            <OptionGroup key={group.label} label={group.label}>
+                            <OptionGroup key={g.label} label={g.label}>
                                 {
-                                    group.options.map(el => {
+                                    g.options.map(el => {
                                         return (
                                             <Option key={el.value} label={el.label}
                                                     value={el.value}>

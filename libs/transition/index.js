@@ -109,15 +109,15 @@ export default class Transition extends Component {
         element.classList.add(action);
 
         if (duration === 0) {
-            const styles = getComputedStyle(element);
-            const duration = parseFloat(styles['animationDuration']) ||
-                             parseFloat(styles['transitionDuration']);
+            const style = getComputedStyle(element);
+            const newDuration = parseFloat(style['animationDuration']) ||
+                                parseFloat(style['transitionDuration']);
 
             clearTimeout(this.timeout);
 
             this.timeout = setTimeout(() => {
                 fn();
-            }, duration * 1000)
+            }, newDuration * 1000)
         }
 
         element.classList.remove(action, active);

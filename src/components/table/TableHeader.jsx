@@ -83,14 +83,14 @@ export default class TableHeader extends Component<TableHeaderProps> {
       _document.onselectstart = () => false;
       _document.ondragstart = () => false;
 
-      const handleMouseMove = (event: MouseEvent) => {
-        const deltaLeft = event.clientX - startMouseLeft;
+        const handleMouseMove = (e: MouseEvent) => {
+            const deltaLeft = e.clientX - startMouseLeft;
         const proxyLeft = startLeft + deltaLeft;
 
         resizeProxy.style.left = Math.max(minLeft, proxyLeft) + 'px';
       };
 
-      const handleMouseUp = (event: MouseEvent) => {
+        const handleMouseUp = (e: MouseEvent) => {
         if (this.dragging) {
           const finalLeft = parseInt(resizeProxy.style.left, 10);
           const columnWidth = finalLeft - startColumnLeft;
@@ -111,7 +111,7 @@ export default class TableHeader extends Component<TableHeaderProps> {
           });
 
           this.context.layout.scheduleLayout();
-          this.dispatchEvent('onHeaderDragEnd', columnWidth, oldWidth, column, event);
+            this.dispatchEvent('onHeaderDragEnd', columnWidth, oldWidth, column, e);
         }
       };
 

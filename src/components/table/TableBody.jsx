@@ -1,13 +1,11 @@
 // @flow
 import * as React from 'react';
 import { Component, PropTypes } from '../../../libs';
-import { getRowIdentity, getValueByPath } from "./utils";
-// import {toDate} from "../date-picker/utils/index";
+import { getRowIdentity } from './utils';
 
 import Checkbox from '../checkbox';
-import Tag from '../tag';
 
-import  {_Column, TableBodyProps} from "./Types";
+import { _Column, TableBodyProps } from './Types';
 
 export default class TableBody extends Component<TableBodyProps> {
   static contextTypes = {

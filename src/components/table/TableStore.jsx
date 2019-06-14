@@ -11,8 +11,7 @@ import { convertToRows, getColumns, getLeafColumns, getRowIdentity } from './uti
 let tableIDSeed = 1;
 
 function filterData(data, columns) {
-  return columns.reduce((preData, column) => {
-    const { filterable, filterMultiple, filteredValue, filterMethod } = column;
+    return columns.reduce((preData) => {
       // if (filterable) {
       //   if (filterMultiple && Array.isArray(filteredValue) && filteredValue.length) {
       //     return preData.filter(_data => filteredValue.some(value => filterMethod(value, _data)))
@@ -134,7 +133,7 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     }
 
     if (Array.isArray(currentRowKey)) {
-      return selectableData.every(data => currentRowKey.includes(getRowIdentity(data, rowKey)));
+        return selectableData.every(dt => currentRowKey.includes(getRowIdentity(dt, rowKey)));
     }
 
     return selectedRows && selectedRows.length === selectableData.length;
@@ -211,13 +210,13 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
       expandingRows,
       selectedRows,
     }));
-    if ((!this._isMounted || data !== this.props.data) && defaultSort) {
-      const { prop, order = 'ascending' } = defaultSort;
-      const sortColumn = columns.find(column => column.property === prop);
-        // this.changeSortCondition(sortColumn, order, false);
-    } else {
-        // this.changeSortCondition(null, null, false);
-    }
+      // if ((!this._isMounted || data !== this.props.data) && defaultSort) {
+      //   const { prop, order = 'ascending' } = defaultSort;
+      //   const sortColumn = columns.find(column => column.property === prop);
+      //     // this.changeSortCondition(sortColumn, order, false);
+      // } else {
+      //     // this.changeSortCondition(null, null, false);
+      // }
   }
 
   setHoverRow(index: number) {
@@ -324,7 +323,9 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     const { currentRowKey, rowKey } = this.props;
     let { data, selectedRows, selectable } = this.state;
 
-    const allSelectableRows = selectable ? data.filter((data, index) => selectable(data, index)) : data.slice();
+      const allSelectableRows = selectable
+                                ? data.filter((dt, index) => selectable(dt, index))
+                                : data.slice();
 
     if (Array.isArray(currentRowKey)) {
       const newCurrentRowKey = this.isAllSelected ? [] : allSelectableRows.map(row => getRowIdentity(row, rowKey));
