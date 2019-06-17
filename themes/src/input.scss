@@ -107,6 +107,15 @@
 
             .cd-input__select{
                 width: fit-content;
+                border: none;
+                outline: none;
+                padding: 0;
+                margin-left: 15px;
+                color: $--select-multiple-input-color;
+                font-size: $--select-font-size;
+                appearance: none;
+                height: 28px;
+                background-color: transparent;
             }
         }
     }
