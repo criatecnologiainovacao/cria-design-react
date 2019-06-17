@@ -495,7 +495,7 @@ export default class Input extends Component {
                                             onKeyPress={this.resizeText.bind(this)}
                                             onKeyDown={this.handleKeyDownOnMultiple.bind(this)}
                                             onChange={this.handleChangeMultiple.bind(this)}
-                                            className={this.classNames('cd-select__input')}
+                                            className={this.classNames('cd-input__select')}
                                 />
                             </div>
                         )
