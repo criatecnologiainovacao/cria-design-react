@@ -488,6 +488,7 @@ export default class Input extends Component {
                                     })
                                 }
                                 <input
+                                            id={multiple ? id : ''}
                                             ref="multiple"
                                             type="text"
                                             onBlur={() => this.addValueOnMultiple()}
@@ -500,7 +501,7 @@ export default class Input extends Component {
                         )
                     }
                     <input
-                        id={id}
+                        id={multiple ? '' : id}
                         ref="input"
                         type={showPassword
                               ? (this.state.passwordVisible ? 'text' : 'password')

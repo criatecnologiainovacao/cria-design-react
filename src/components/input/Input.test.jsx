@@ -225,22 +225,22 @@ describe('Input test', () => {
         input.instance()
 
         expect(input.find('.is-multiple')).toBeTruthy()
-        input.find('.cd-select__input').instance().value = 'Teste'
+        input.find('.cd-input__select').instance().value = 'Teste'
         expect(input.instance().getInput().value).toBe('Teste')
-        input.find('.cd-select__input').simulate('change')
-        input.find('.cd-select__input').simulate('keypress')
-        input.find('.cd-select__input').simulate('keydown', {keyCode: 13})
+        input.find('.cd-input__select').simulate('change')
+        input.find('.cd-input__select').simulate('keypress')
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 13})
         expect(input.state().multipleValue).toStrictEqual(['Teste'])
-        input.find('.cd-select__input').simulate('keydown', {keyCode: 8})
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 8})
         expect(input.state().multipleValue).toStrictEqual([])
-        input.find('.cd-select__input').instance().value = 'Teste'
-        input.find('.cd-select__input').simulate('keydown', {keyCode: 32})
-        input.find('.cd-select__input').simulate('keydown', {keyCode: 32})
+        input.find('.cd-input__select').instance().value = 'Teste'
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
         expect(input.state().multipleValue).toStrictEqual(['Teste'])
         input.find('.cd-tag__close').simulate('click')
-        input.find('.cd-select__input').simulate('keydown', {keyCode: 13})
-        input.find('.cd-select__input').instance().value = 'Teste'
-        input.find('.cd-select__input').simulate('blur')
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 13})
+        input.find('.cd-input__select').instance().value = 'Teste'
+        input.find('.cd-input__select').simulate('blur')
         expect(input.state().multipleValue).toStrictEqual(['Teste'])
     })
 });
