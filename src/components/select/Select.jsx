@@ -785,7 +785,7 @@ class Select extends Component {
     }
 
     onOptionClick(option: any) {
-        const { multiple } = this.props;
+        const { multiple, onSelect } = this.props;
         let { visible, selected, selectedLabel } = this.state;
 
         if (!multiple) {
@@ -817,6 +817,10 @@ class Select extends Component {
 
             this.setState({ visible });
         });
+
+        if(onSelect){
+            onSelect(option.props.value);
+        }
     }
 
     onMouseDown(event) {
@@ -1018,7 +1022,7 @@ Select.propTypes = {
     filterMethod: PropTypes.func,
     multiple: PropTypes.bool,
     placeholder: PropTypes.string,
-    onChange: PropTypes.func,
+    onSelect: PropTypes.func,
     onVisibleChange: PropTypes.func,
     onRemoveTag: PropTypes.func,
     onClear: PropTypes.func,
