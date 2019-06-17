@@ -1,6 +1,6 @@
 Garanta que estas caixas estejam marcadas antes de submeter seu PR, obrigado!
 
-> O nome do PR deve respeitar os padrões do Conventional Commits: `<tipo>(Nome do Componente): Descrição do PR`. 
+> O nome do PR deve respeitar os padrões do Conventional Commits: `tipo(Nome do Componente): Descrição do PR`. 
 > 
 > Ex.: `feat(Input): adicionando evento de click em ícones` ou `fix(Button): corrigindo espaçamento entre ícones`.
 >
