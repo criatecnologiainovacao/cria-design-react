@@ -50,8 +50,8 @@ export default class Option extends Component {
 
     currentLabel(): string {
         return this.props.label ||
-               ((typeof this.props.value === 'string' || typeof this.props.value === 'number')
-                ? this.props.value
+               ((typeof this.props.label === 'string' || typeof this.props.label === 'number')
+                ? this.props.label
                 : '');
     }
 
