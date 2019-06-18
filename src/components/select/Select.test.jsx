@@ -173,6 +173,21 @@ describe('Select test', () => {
         select.find('.cd-icon-circle-close').simulate('click');
         expect(fn.callCount).toBe(1);
         expect(select.find('Select').state().selectedLabel).toBe('')
+        select.find('Select').setState({
+            value: 'Option1'
+        });
+
+        select.find('Select').setState({
+            value: 'Option2'
+        });
+
+        select.find('Select').setState({
+            value: 'Option8'
+        });
+
+        select.find('Select').setState({
+            value: 'Option8'
+        });
 
     });
 
@@ -349,12 +364,14 @@ describe('Select test', () => {
         select.find('.cd-select__input').simulate('keydown', { keyCode: 27 })
         select.find('.cd-select__input').simulate('keypress', { keyCode: 13 })
         select.find('.cd-select__input').simulate('keydown', { keyCode: 13 })
-        select.find('.cd-select__input').simulate('keypress', { keyCode: 8 })
-        select.find('.cd-select__input').simulate('keydown', { keyCode: 8 })
         select.find('.cd-select__input').simulate('keypress', { keyCode: 38 })
         select.find('.cd-select__input').simulate('keydown', { keyCode: 38 })
         select.find('.cd-select__input').simulate('keypress', { keyCode: 40 })
         select.find('.cd-select__input').simulate('keydown', { keyCode: 40 })
+        select.find('.cd-select__input').simulate('keypress', { keyCode: 8 })
+        select.find('.cd-select__input').simulate('keypress', { keyCode: 8 })
+        select.find('.cd-select__input').simulate('keydown', { keyCode: 8 })
+        select.find('.cd-select__input').simulate('keydown', { keyCode: 8 })
         select.find('.cd-select__input').simulate('keyup')
         jest.useFakeTimers();
         select.find('.cd-select__input').simulate('change', { target: { value: 'My new value' } })
@@ -391,7 +408,10 @@ describe('Select test', () => {
 
         select.find('Input').find('input').simulate('click');
 
+        select.find('Input').simulate('mousedown');
+
         select.find('Select').instance().handleClickOutside()
+
 
     });
 
