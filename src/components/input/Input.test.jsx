@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import sinon from 'sinon';
 
 import Input from './Input';
@@ -69,10 +69,10 @@ describe('Input test', () => {
 
     it('autosize', () => {
         const input = mount(
-            <Input type="textarea" autoSize={{ minRows: 2, maxRows: 3 }}/>
+            <Input type="textarea" autoSize={{minRows: 2, maxRows: 3}}/>
         );
 
-        expect(input).toHaveState({ textareaStyle: { resize: undefined, height: '-12px' } });
+        expect(input).toHaveState({textareaStyle: {resize: undefined, height: '-12px'}});
 
     });
 
@@ -98,7 +98,7 @@ describe('Input test', () => {
         expect(onBlur.callCount).toBe(1);
         jest.runAllTimers()
 
-        input.find('input').simulate('change', { target: { value: '10' } });
+        input.find('input').simulate('change', {target: {value: '10'}});
         expect(onChange.callCount).toBe(1);
     });
 
@@ -153,11 +153,11 @@ describe('Input test', () => {
 
         const closeIcon = input.find('.cd-input__clear');
 
-        expect(input).toHaveState({ passwordVisible: false });
+        expect(input).toHaveState({passwordVisible: false});
 
         closeIcon.simulate('click');
 
-        expect(input).toHaveState({ passwordVisible: true });
+        expect(input).toHaveState({passwordVisible: true});
     });
 
     it('word limit', () => {
@@ -215,4 +215,35 @@ describe('Input test', () => {
         expect(input.find('.cd-input__suffix-inner__suffix')).toBeTruthy();
     });
 
+    it('multiple', () => {
+        const onChange = sinon.spy();
+        const input = mount(
+            <Input
+                multiple
+                onChange={onChange}
+            />
+        );
+
+        input.instance()
+
+        expect(input.find('.is-multiple')).toBeTruthy()
+        input.find('.cd-input__select').instance().value = 'Teste'
+        expect(input.instance().getInput().value).toBe('Teste')
+        input.find('.cd-input__select').simulate('change')
+        input.find('.cd-input__select').simulate('keypress')
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 13})
+        expect(input.state().multipleValue).toStrictEqual(['Teste'])
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 8})
+        expect(input.state().multipleValue).toStrictEqual([])
+        input.find('.cd-input__select').instance().value = 'Teste'
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
+        expect(input.state().multipleValue).toStrictEqual(['Teste'])
+        input.find('.cd-tag__close').simulate('click')
+        input.find('.cd-input__select').simulate('keydown', {keyCode: 13})
+        input.find('.cd-input__select').instance().value = 'Teste'
+        input.find('.cd-input__select').simulate('blur')
+        expect(input.state().multipleValue).toStrictEqual(['Teste'])
+        expect(onChange.callCount).toBe(1);
+    })
 });

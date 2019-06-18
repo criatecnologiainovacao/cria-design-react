@@ -4,7 +4,7 @@ Informa os usuários enquanto preserva o estado atual da página.
 
 ### Uso básico
 
-O Modal abre uma caixa de diálogo e é bastante personalizável.
+O Modal abre uma caixa de diálogo e que pode conter um titulo, um corpo e um rodape.
 
 ::: demo Defina o atributo `visible` com um` Boolean` e o Modal mostra quando é `true`. O Modal tem duas partes: `Modal.Body` e` Modal.Footer`. O atributo opcional `title` (vazio por padrão) é para definir um título.
 
@@ -149,10 +149,9 @@ render() {
 | Atributo | Descrição | Digite | Valores aceitos | Padrão |
 | ---------- | -------------- | ---------- | ------------ -------------------- | -------- |
 | title | título do Modal. Também pode ser passado com um slot nomeado (consulte a tabela a seguir) | string | - | - |
-| size | tamanho do Modal | string | minúsculo / pequeno / grande / cheio | pequeno |
+| size | tamanho do Modal | string | tiny/small/large/full | small |
 | top | valor para `top` do Modal CSS, funciona quando` size` não é `full` | string | - | 15% |
 | modal | se uma máscara é exibida | booleano | - | verdadeiro |
-| modalAppendToBody | se deve anexar modal ao elemento body. Se falso, o modal será anexado ao elemento pai do Modal | booleano | - | verdadeiro |
 | lockScroll | se a rolagem do corpo está desativada enquanto o Modal é exibido | booleano | - | verdadeiro |
 | customClass | nomes de classe personalizados para o Modal | string | - | - |
 | closeOnClickModal | se o Modal pode ser fechado clicando na máscara | booleano | - | verdadeiro |
@@ -162,5 +161,4 @@ render() {
 ### Eventos
 | Nome do Evento | Descrição | Parâmetros |
 | ---------- | -------- | ---------- |
-| onOpen | dispara quando o Modal abre | - |
 | onClose | dispara quando o Modal fecha | - |

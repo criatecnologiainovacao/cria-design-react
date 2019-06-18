@@ -676,17 +676,19 @@ class Select extends Component {
 
     resetScrollTop() {
         const element: any = ReactDOM.findDOMNode(this.state.options[this.state.hoverIndex]);
-        const bottomOverflowDistance = element.getBoundingClientRect().bottom -
-                                       this.popper.getBoundingClientRect().bottom;
-        const topOverflowDistance = element.getBoundingClientRect().top -
-                                    this.popper.getBoundingClientRect().top;
+        if(element) {
+            const bottomOverflowDistance = element.getBoundingClientRect().bottom -
+                this.popper.getBoundingClientRect().bottom;
+            const topOverflowDistance = element.getBoundingClientRect().top -
+                this.popper.getBoundingClientRect().top;
 
-        if (this.state.dropdownUl) {
-            if (bottomOverflowDistance > 0) {
-                this.state.dropdownUl.scrollTop += bottomOverflowDistance;
-            }
-            if (topOverflowDistance < 0) {
-                this.state.dropdownUl.scrollTop += topOverflowDistance;
+            if (this.state.dropdownUl) {
+                if (bottomOverflowDistance > 0) {
+                    this.state.dropdownUl.scrollTop += bottomOverflowDistance;
+                }
+                if (topOverflowDistance < 0) {
+                    this.state.dropdownUl.scrollTop += topOverflowDistance;
+                }
             }
         }
     }
@@ -783,7 +785,7 @@ class Select extends Component {
     }
 
     onOptionClick(option: any) {
-        const { multiple } = this.props;
+        const { multiple, onSelect } = this.props;
         let { visible, selected, selectedLabel } = this.state;
 
         if (!multiple) {
@@ -815,6 +817,10 @@ class Select extends Component {
 
             this.setState({ visible });
         });
+
+        if(onSelect){
+            onSelect(option.props.value);
+        }
     }
 
     onMouseDown(event) {
@@ -874,8 +880,10 @@ class Select extends Component {
                                     <input
                                         ref="input"
                                         type="text"
-                                        className={this.classNames('cd-select__input', size &&
-                                `is-${size}`)}
+                                        className={this.classNames(
+                                            'cd-select__input',
+                                            size && `is-${size}`,
+                                            prefixIcon && 'is-prefixIcon')}
                                         style={{ width: inputLength, maxWidth: inputWidth - 42 }}
                                         disabled={disabled}
                                         defaultValue={query}
@@ -1014,7 +1022,7 @@ Select.propTypes = {
     filterMethod: PropTypes.func,
     multiple: PropTypes.bool,
     placeholder: PropTypes.string,
-    onChange: PropTypes.func,
+    onSelect: PropTypes.func,
     onVisibleChange: PropTypes.func,
     onRemoveTag: PropTypes.func,
     onClear: PropTypes.func,

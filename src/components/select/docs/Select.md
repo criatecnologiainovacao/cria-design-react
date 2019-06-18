@@ -371,9 +371,13 @@ constructor(props) {
   };
 }
 
+onSelect(selected) {
+    console.log(selected)
+}
+
 render() {
   return (
-    <Select value={this.state.value} filterable={true}>
+    <Select value={this.state.value} onSelect={this.onSelect.bind(this)} filterable={true}>
       {
         this.state.options.map(el => {
           return <Select.Option key={el.value} label={el.label} value={el.value} />
@@ -464,7 +468,7 @@ render() {
 ### Selecionar eventos
 | Nome do Evento | Descrição | Parâmetros |
 | --------- | --------- | --------- |
-| onChange | dispara quando o valor selecionado é alterado | valor selecionado atual |
+| onSelect | dispara quando algum valor é selecionado | valor selecionado atual |
 | onVisibleChange | dispara quando a lista suspensa aparece / desaparece | true quando aparece, e false caso contrário |
 | onRemoveTag | dispara quando uma tag é removida no modo múltiplo | valor de tag removido |
 | onClear | dispara quando o ícone claro é clicado em uma limpeza Seleciona | - |

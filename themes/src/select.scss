@@ -87,9 +87,15 @@
     appearance: none;
     height: 28px;
     background-color: transparent;
+
     @include when(mini) {
       height: 14px;
     }
+
+    @include when(prefixIcon) {
+        margin-left: 30px;
+    }
+
   }
 
   @include e(close) {

@@ -462,6 +462,13 @@ $--modal-title-font-size: $--font-size-large !default;
 $--modal-content-font-size: 14px !default;
 $--modal-font-line-height: $--font-line-height-primary !default;
 $--modal-padding-primary: 20px !default;
+$--modal-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+$--modal-tiny-width: 30%;
+$--modal-small-width: 50%;
+$--modal-large-width: 90%;
+$--modal-close-hover-color: $--color-primary;
+$--modal-title-font-size: 16px;
+$--modal-font-size: 14px;
 
 /* Table
 -------------------------- */
