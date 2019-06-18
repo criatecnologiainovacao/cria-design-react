@@ -41,4 +41,4 @@ storiesOf('Outros|Modal', module)
                     <Button type="primary">Confirm</Button>
                 </ModalFooter>
             </Modal>
-        </div>);;
+        </div>);

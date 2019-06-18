@@ -217,6 +217,4 @@ storiesOf('Formulário|Select', module)
                  }
              </Select>
          )
-    )
-
-;
+    );

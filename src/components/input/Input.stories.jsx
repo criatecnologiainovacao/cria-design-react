@@ -260,4 +260,4 @@ storiesOf('Formulário|Input', module)
                 />
             </div>
         )
-    });;
+    });
