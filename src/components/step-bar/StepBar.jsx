@@ -20,11 +20,9 @@ export default class StepBar extends Component {
     }
 
     changeStep(index) {
-        if (this.props.clickable) {
-            this.setState({activeStep: index});
-            if (this.props.onClick) {
-                this.props.onClick(index)
-            }
+        this.setState({activeStep: index});
+        if (this.props.onClick) {
+            this.props.onClick(index)
         }
     }
 
@@ -43,7 +41,7 @@ export default class StepBar extends Component {
                               <li key={index} className={this.className(
                                     this.state.activeStep === index && 'is-active',
                                     clickable && 'is-clickable')}
-                                onClick={this.changeStep.bind(this, index)}>
+                                onClick={clickable && this.changeStep.bind(this, index)}>
                                 <p>{value}</p>
                                 {
                                         index < (steps.length - 1) && (
