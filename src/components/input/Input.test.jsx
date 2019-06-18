@@ -216,9 +216,11 @@ describe('Input test', () => {
     });
 
     it('multiple', () => {
+        const onChange = sinon.spy();
         const input = mount(
             <Input
                 multiple
+                onChange={onChange}
             />
         );
 
@@ -242,5 +244,6 @@ describe('Input test', () => {
         input.find('.cd-input__select').instance().value = 'Teste'
         input.find('.cd-input__select').simulate('blur')
         expect(input.state().multipleValue).toStrictEqual(['Teste'])
+        expect(onChange.callCount).toBe(1);
     })
 });

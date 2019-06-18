@@ -70,6 +70,11 @@ export default class Input extends Component {
     }
 
     handleChangeMultiple(e: SyntheticInputEvent<any>): void {
+        const { onChange } = this.props;
+
+        if (onChange) {
+            onChange(e.target.value);
+        }
         this.forceUpdate()
     }
 
@@ -210,11 +215,14 @@ export default class Input extends Component {
     }
 
     handleInput(e: SyntheticInputEvent<any>): void {
-        const { isComposing } = this.state;
-        const { onInput } = this.props;
+        const { isComposing, multipleValue } = this.state;
+        const { onInput, multiple } = this.props;
         if (isComposing) return;
         if (e.target.value === this.nativeInputValue()) return;
-        if (onInput) onInput(e.target.value);
+        if (onInput) {
+            if(multiple) onInput(multipleValue)
+            else onInput(e.target.value);
+        }
         this.nativeInputValue();
     }
 
@@ -493,6 +501,7 @@ export default class Input extends Component {
                                             type="text"
                                             onBlur={() => this.addValueOnMultiple()}
                                             onKeyPress={this.resizeText.bind(this)}
+                                            onInput={this.handleInput.bind(this)}
                                             onKeyDown={this.handleKeyDownOnMultiple.bind(this)}
                                             onChange={this.handleChangeMultiple.bind(this)}
                                             className={this.classNames('cd-input__select')}
