@@ -4,10 +4,17 @@ Todas as mudanças importantes deste projeto serão documentadas nesse arquivo.
 
 Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/) seguindo o modelo de [versionamento semântico](https://semver.org/lang/pt-BR/).
 
-## 1.1.0
+## 1.1.0 - _Unreleased_
 
 ### Adicionado
-- Funcionalidade `Multiple Input`
+- Componente `Modal`
+- Componente `Popover`
+- Componente `Radio`
+- Componente `Select`
+- Input:
+    - Funcionalidade `Multiple Input`
+- Table
+    - Funcionalidade `Radio`
 
 ## 1.0.0 - 11/06/2019
 
@@ -27,7 +34,3 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Step Bar`
 - Componente `Table`
 - Componente `Tag`
-- Componente `Modal`
-- Componente `Popover`
-- Componente `Radio`
-- Componente `Select`
