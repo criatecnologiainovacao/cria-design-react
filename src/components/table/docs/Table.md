@@ -290,6 +290,71 @@ const data = [{
 ```
 :::
 
+
+### Tabela com única seleção com radio
+
+Você também pode usar a tabela com radio. 
+:::demo Ativar seleção única é fácil: basta adicionar uma `coluna` com seu` tipo` definido para `uniqueSelection` e o atributo `unique` na tabela.
+```js
+render() {
+ const columnUniqueSelect = [
+    {
+        type: 'uniqueSelection',
+        align: 'center'
+    },
+    {
+        label: "Date",
+        prop: "date",
+        width: 180
+    },
+    {
+        label: "Name",
+        prop: "name",
+        width: 180
+    },
+    {
+        label: "Address",
+        prop: "address"
+    }
+]
+
+const data = [{
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
+    }, {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
+    }, {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
+    }, {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
+}];
+
+  return (
+   <div>
+        <Table
+          style={{width: '100%'}}
+          columns={columnUniqueSelect}
+          data={data}
+          unique
+          border={true}
+          height={250}
+          onSelectChange={(selection) => { console.log(selection) }}
+          onSelectAll={(selection) => { console.log(selection) }}
+        />
+    </div>
+  )
+}
+
+```
+:::
+
 ### Tabela sem o Header
 
 Você também pode modificar a tabela para que não apareça o Header.

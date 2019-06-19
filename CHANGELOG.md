@@ -7,11 +7,14 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 ## 1.1.0 - _Unreleased_
 
 ### Adicionado
-- Funcionalidade `Multiple Input`
 - Componente `Modal`
 - Componente `Popover`
 - Componente `Radio`
 - Componente `Select`
+- Input:
+    - Funcionalidade `Multiple Input`
+- Table
+    - Funcionalidade `Radio`
 
 ## 1.0.0 - 11/06/2019
 

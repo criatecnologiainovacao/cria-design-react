@@ -61,6 +61,27 @@ const columnsMultipleSelect = [
     }
 ];
 
+const columnUniqueSelect = [
+    {
+        type: 'uniqueSelection',
+        align: 'center'
+    },
+    {
+        label: 'Date',
+        prop: 'date',
+        width: 180
+    },
+    {
+        label: 'Name',
+        prop: 'name',
+        width: 180
+    },
+    {
+        label: 'Address',
+        prop: 'address'
+    }
+];
+
 const data = [
     {
         date: '2016-05-03',
@@ -279,6 +300,26 @@ storiesOf('Dados | Table', module)
                     data={data}
                     border={true}
                     height={250}
+                    onSelectChange={(selection) => {
+                        console.log(selection)
+                    }}
+                    onSelectAll={(selection) => {
+                        console.log(selection)
+                    }}
+                />
+            </div>
+        )
+    })
+    .add('unique select', () => {
+        return (
+            <div>
+                <Table
+                    style={{ width: '100%' }}
+                    columns={columnUniqueSelect}
+                    data={data}
+                    border={true}
+                    height={250}
+                    unique
                     onSelectChange={(selection) => {
                         console.log(selection)
                     }}
