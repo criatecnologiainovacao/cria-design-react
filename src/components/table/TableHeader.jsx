@@ -209,6 +209,10 @@ export default class TableHeader extends Component<TableHeaderProps> {
       return column.label || '#';
     }
 
+    if (type === 'uniqueSelection') {
+      return column.label || '';
+    }
+
     if (type === 'selection') {
       return (
         <Checkbox

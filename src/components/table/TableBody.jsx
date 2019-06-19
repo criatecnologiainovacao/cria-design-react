@@ -6,6 +6,7 @@ import { getRowIdentity } from './utils';
 import Checkbox from '../checkbox';
 
 import { _Column, TableBodyProps } from './Types';
+import Radio from '../radio';
 
 export default class TableBody extends Component<TableBodyProps> {
   static contextTypes = {
@@ -126,6 +127,19 @@ export default class TableBody extends Component<TableBodyProps> {
 
     if (type === 'index') {
       return <div>{index + 1}</div>;
+    }
+
+    if (type === 'uniqueSelection') {
+      const isSelected = this.context.tableStore.isRowSelected(row, rowKey);
+      return (
+          <Radio
+                 value={index}
+                 noLabel
+                 checked={isSelected}
+                 disabled={selectable && !selectable(row, index)}
+                 onChange={() => { this.context.tableStore.toggleRowSelection(row)}}
+          />
+      )
     }
 
     if (type === 'selection') {

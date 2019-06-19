@@ -18,6 +18,12 @@ const defaults = {
     realWidth: 48,
     className: 'cd-table-column--selection',
   },
+  uniqueSelection: {
+    width: 48,
+    minWidth: 48,
+    realWidth: 48,
+    className: 'cd-table-column--uniqueSelection',
+  },
   expand: {
     width: 48,
     minWidth: 48,

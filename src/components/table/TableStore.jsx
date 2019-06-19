@@ -58,7 +58,8 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     showHeader: true,
     stripe: false,
     fit: true,
-    emptyText: 'empty table',
+    unique: true,
+    emptyText: 'Tabela vazia',
     defaultExpandAll: false,
     highlightCurrentRow: false,
     showSummary: false,
@@ -276,7 +277,7 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
   }
 
   toggleRowSelection(row: Object, isSelected?: boolean) {
-    const { currentRowKey, rowKey } = this.props;
+    const { currentRowKey, rowKey, unique } = this.props;
 
     if (Array.isArray(currentRowKey)) {
       const toggledRowKey = getRowIdentity(row, rowKey);
@@ -299,20 +300,27 @@ export default class TableStore extends Component<TableStoreProps, TableStoreSta
     }
 
     this.setState(state => {
-      const selectedRows = state.selectedRows.slice();
+      let selectedRows = state.selectedRows.slice();
       const rowIndex = selectedRows.indexOf(row);
 
-      if (isSelected !== undefined) {
-        if (isSelected) {
-          rowIndex === -1 && selectedRows.push(row);
+      if(!unique) {
+        if (isSelected !== undefined) {
+          if (isSelected) {
+            rowIndex === -1 && selectedRows.push(row);
+          } else {
+            rowIndex !== -1 && selectedRows.splice(rowIndex, 1);
+          }
         } else {
-          rowIndex !== -1 && selectedRows.splice(rowIndex, 1);
+          rowIndex === -1 ? selectedRows.push(row) : selectedRows.splice(rowIndex, 1)
         }
-      } else {
-        rowIndex === -1 ? selectedRows.push(row) : selectedRows.splice(rowIndex, 1)
-      }
 
-      return { selectedRows };
+        return { selectedRows };
+      }
+      else{
+        selectedRows = [];
+        selectedRows.push(row);
+        return { selectedRows };
+      }
     }, () => {
       this.dispatchEvent('onSelect', this.state.selectedRows, row);
       this.dispatchEvent('onSelectChange', this.state.selectedRows);
