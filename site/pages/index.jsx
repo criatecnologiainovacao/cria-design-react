@@ -23,6 +23,9 @@ export default {
             'select': require('../../src/components/select/docs'),
             'radio': require('../../src/components/radio/docs')
         },
+        'Notice': {
+            'notification': require('../../src/components/notification/docs')
+        },
         'Outros': {
             'card': require('../../src/components/card/docs'),
             'popover': require('../../src/components/popover/docs'),
