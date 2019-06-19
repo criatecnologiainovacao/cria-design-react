@@ -293,7 +293,7 @@ const data = [{
 
 ### Tabela com única seleção com radio
 
-Voce tambem pode usar a tabela com radio.
+Você também pode usar a tabela com radio. 
 :::demo Ativar seleção única é fácil: basta adicionar uma `coluna` com seu` tipo` definido para `uniqueSelection` e o atributo `unique` na tabela.
 ```js
 render() {
