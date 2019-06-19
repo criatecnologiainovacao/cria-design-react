@@ -68,7 +68,7 @@ class Select extends Component {
             bottomOverflowBeforeHidden: 0,
             cachedPlaceHolder: props.placeholder || 'Select',
             currentPlaceholder: props.placeholder || 'Select',
-            selectedLabel: '',
+            selectedLabel: props.value,
             selectedInit: false,
             visible: false,
             selected: undefined,
