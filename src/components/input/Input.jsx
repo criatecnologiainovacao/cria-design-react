@@ -29,7 +29,7 @@ export default class Input extends Component {
             hovering: false,
             focused: false,
             passwordVisible: false,
-            multipleValue: [],
+            multipleValue: props.multipleValue ? props.multipleValue : [],
             multiInputHeight: ''
         };
     }
@@ -398,7 +398,6 @@ export default class Input extends Component {
             clearable,
             id,
             label,
-            value,
             placeholder,
             prefix,
             prefixIcon,
@@ -516,7 +515,6 @@ export default class Input extends Component {
                               ? (this.state.passwordVisible ? 'text' : 'password')
                               : type}
                         className="cd-input__inner"
-                        value={!Array.isArray(value) ? value : ''}
                         disabled={multiple || this.inputDisabled()}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
