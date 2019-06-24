@@ -53,6 +53,12 @@ export default class Input extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps): void {
+        if(this.props.value !== nextProps.value){
+            this.getInput().value = nextProps.value;
+        }
+    }
+
     // componentWillUpdate(nextProps, nextState): void {
     //     this.updateNativeValue();
     // }
