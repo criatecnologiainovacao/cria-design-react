@@ -121,7 +121,8 @@ class Select extends Component {
 
         if (props.value !== this.props.value) {
             this.setState({
-                              value: props.value
+                              value: props.value,
+                              selectedLabel: props.value
                           }, () => {
                 this.handleValueChange();
             });
