@@ -521,3 +521,34 @@ body > .cd-container {
     line-height: 320px;
 }
 
+.box {
+    width: 400px;
+}
+
+.temas {
+    display: inline-flex;
+}
+
+.top {
+    text-align: center;
+    display: inline-flex;
+}
+
+.left{
+    float: left;
+    width: 60px;
+    margin: 40px 40px 20px 0;
+}
+
+.right{
+    float: right;
+    width: 40px;
+    margin-top: 40px;
+}
+
+.bottom{
+    text-align: center;
+    display: inline-flex;
+    margin-left: 60px;
+}
+

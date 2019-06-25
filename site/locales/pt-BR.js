@@ -15,7 +15,8 @@ module.exports = {
         'select': 'Select',
         'table': 'Table',
         'nav-menu': 'Menu',
-        'modal': 'Modal'
+        'modal': 'Modal',
+        'tooltip': 'Tooltip'
     },
     misc: {
         'guide': 'Guia',
