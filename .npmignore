@@ -1,7 +1,10 @@
 src/components/*/*.stories.jsx
+src/components/*/*.stories.js
 src/components/*/*.test.jsx
+src/components/*/*.test.js
 build
 site
 storybook-static
 coverage
 .*
+src/components/*/docs
