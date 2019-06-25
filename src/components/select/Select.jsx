@@ -121,7 +121,8 @@ class Select extends Component {
 
         if (props.value !== this.props.value) {
             this.setState({
-                              value: props.value
+                              value: props.value,
+                              selectedLabel: props.value
                           }, () => {
                 this.handleValueChange();
             });
@@ -132,6 +133,12 @@ class Select extends Component {
 
         if (state.value !== this.state.value) {
             this.onValueChange(state.value);
+        }
+
+        if (state.selectedLabel !== this.state.selectedLabel) {
+            this.setState({
+                value : state.selectedLabel
+                          })
         }
 
         if (state.visible !== this.state.visible) {
@@ -934,7 +941,7 @@ class Select extends Component {
                 }
                 <Input
                     ref="reference"
-                    value={selectedLabel}
+                    value={!multiple ? selectedLabel : null}
                     prefixIcon={prefixIcon}
                     type="text"
                     placeholder={currentPlaceholder}

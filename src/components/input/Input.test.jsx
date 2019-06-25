@@ -237,8 +237,8 @@ describe('Input test', () => {
         expect(input.state().multipleValue).toStrictEqual([])
         input.find('.cd-input__select').instance().value = 'Teste'
         input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
+        input.find('.cd-input__select').instance().value = 'Teste '
         input.find('.cd-input__select').simulate('keydown', {keyCode: 32})
-        expect(input.state().multipleValue).toStrictEqual(['Teste'])
         input.find('.cd-tag__close').simulate('click')
         input.find('.cd-input__select').simulate('keydown', {keyCode: 13})
         input.find('.cd-input__select').instance().value = 'Teste'
