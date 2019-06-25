@@ -100,7 +100,7 @@ export default class Input extends Component {
                 break;
 
             case 32:
-                if(this.getInput().value !== '' && this.state.spacePressed) {
+                if(this.getInput().value !== '' && this.state.spacePressed && this.getInput().value[this.getInput().value.length - 1] === ' ') {
                     this.addValueOnMultiple();
                     this.setState({
                         spacePressed: false
