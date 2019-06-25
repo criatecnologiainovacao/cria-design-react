@@ -41,7 +41,9 @@ export default class StepBar extends Component {
                                       <li key={index} className={this.className(
                                           this.state.activeStep === index && 'is-active',
                                           clickable && 'is-clickable')}
-                                          onClick={clickable ? this.changeStep.bind(this, index) : {}}>
+                                          onClick={clickable
+                                                   ? this.changeStep.bind(this, index)
+                                                   : undefined}>
                                           <p>{value}</p>
                                           {
                                               index < (steps.length - 1) &&
