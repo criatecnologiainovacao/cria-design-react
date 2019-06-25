@@ -2,6 +2,37 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { Button, Tooltip } from "../..";
 
+jest.mock(
+    'popper.js',
+    () =>
+        class Popper {
+            static placements = [
+                'auto',
+                'auto-end',
+                'auto-start',
+                'bottom',
+                'bottom-end',
+                'bottom-start',
+                'left',
+                'left-end',
+                'left-start',
+                'right',
+                'right-end',
+                'right-start',
+                'top',
+                'top-end',
+                'top-start'
+            ];
+
+            constructor() {
+                return {
+                    destroy: () => {},
+                    scheduleUpdate: () => {}
+                };
+            }
+        }
+);
+
 test('Basic Usage', () => {
     const tooltip = mount(
       <Tooltip effect="dark" content="Top Left prompts info" placement="top-start">
@@ -93,10 +124,22 @@ test('show popper', () => {
     );
     tooltip.setProps({
         visible: true
+
     })
     tooltip.find('.cd-tooltip').simulate('mouseenter');
     tooltip.find('.cd-tooltip').simulate('mouseleave');
 });
+
+test('on enter', () => {
+    const tooltip = mount(
+      <Tooltip effect="dark" content="Top Left prompts info" placement="top-start">
+        <Button>top-start</Button>
+      </Tooltip>
+    );
+    tooltip.instance().onEnter();
+    tooltip.instance().onAfterLeave();
+});
+
 
 
 
