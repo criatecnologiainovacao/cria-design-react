@@ -11,6 +11,8 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Popover`
 - Componente `Radio`
 - Componente `Select`
+- Componente `Notification`
+- Componente `Loading`
 - Input:
     - Funcionalidade `Multiple Input`
 - Table
@@ -34,4 +36,3 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Step Bar`
 - Componente `Table`
 - Componente `Tag`
-- Componente `Notification`

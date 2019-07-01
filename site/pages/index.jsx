@@ -24,7 +24,8 @@ export default {
             'radio': require('../../src/components/radio/docs')
         },
         'Notificações': {
-            'notification': require('../../src/components/notification/docs')
+            'notification': require('../../src/components/notification/docs'),
+            'loading': require('../../src/components/loading/docs')
         },
         'Outros': {
             'card': require('../../src/components/card/docs'),
