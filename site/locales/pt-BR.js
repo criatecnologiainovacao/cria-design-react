@@ -17,7 +17,8 @@ module.exports = {
         'nav-menu': 'Menu',
         'modal': 'Modal',
         'tooltip': 'Tooltip',
-        'notification': 'Notification'
+        'notification': 'Notification',
+        'loading': 'Loading'
     },
     misc: {
         'guide': 'Guia',
