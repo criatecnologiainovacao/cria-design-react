@@ -1,43 +1,46 @@
 ## Notification
 
-Displays a global notification message at the upper right corner of the page.
+Exibe uma notificação no canto superior direito da página.
 
-### Basic usage
+### Uso básico
 
-::: demo Element has registered the `Notification` method and it receives an object as its parameter. In the simplest case, you can set the `title` field and the` message` field for the title and body of the notification. By default, the notification automatically closes after 4500ms, but by setting `duration` you can control its duration. Specifically, if set to `0`, it will not close automatically. Note that `duration` receives a `Number` in milliseconds.
+::: demo O elemento registra o método `Notification` que recebe um objeto como parâmetro.
+No caso mais simples, é possível passar apenas os atributos `title` e `message`.
+Por padrão, a notificação desaparece após 4500ms, mas é possível especificar o parâmetro `duration` (em ms).
+Se o valor passado for `0`, a notificação não desaparecerá automaticamente.
 
 ```js
 render() {
   return (
     <div>
-      <Button plain={true} onClick={this.open.bind(this)}>Close automatically</Button>
-      <Button plain={true} onClick={this.open2.bind(this)}>Won't close automatically</Button>
+      <Button plain={true} onClick={this.open.bind(this)}>Fecha automaticatimente</Button>
+      <Button plain={true} onClick={this.open2.bind(this)}>Não fecha automaticamente</Button>
     </div>
   )
 }
 
 open() {
   Notification({
-    title: 'Title',
-    message: 'This is a reminder'
+    title: 'Título',
+    message: 'Aviso do sistema'
   });
 }
 
 open2() {
   Notification({
-    title: 'Prompt',
-    message: 'This is a message that does not automatically close',
+    title: 'Atenção',
+    message: 'Essa mensagem não desaparece automaticamente',
     duration: 0
   });
 }
 ```
 :::
 
-### With types
+### Tipos
 
-We provide four types: success, warning, info and error.
+São disponibilizados quatro tipos de notificações: `success`, `warning`, `info` e `error`.
 
-::: demo Element provides four notification types: `success`, `warning`, `info` and `error`. They are set by the `type` field, and other values will be ignored. We also registered methods for these types that can be invoked directly like `open5` and `open6` without passing a `type` field.
+::: demo Para especificar o tipo, basta usar o parâmetro `type`. Também é possível definir o tipo através de métodos auxiliares do objeto `Notification`, como nos exemplos `open5` e `open6`, abaixo.
 ```js
 render() {
   return (
@@ -53,7 +56,7 @@ render() {
 open3() {
   Notification({
     title: 'Success',
-    message: 'This is a success message',
+    message: 'Mensagem de sucesso',
     type: 'success',
     duration: 0
   });
@@ -62,7 +65,7 @@ open3() {
 open4() {
   Notification({
     title: 'Warning',
-    message: 'This is a warning message',
+    message: 'Mensagem de advertência',
     type: 'warning'
   });
 }
@@ -70,67 +73,43 @@ open4() {
 open5() {
   Notification.info({
     title: 'Info',
-    message: 'This is an info message'
+    message: 'Mensagem de informação padrão'
   });
 }
 
 open6() {
   Notification.error({
     title: 'Error',
-    message: 'This is an error message'
+    message: 'Mensagem de erro'
   });
 }
 ```
 :::
 
-<!-- ### With offset
+### Importação do componente
 
-Customize Notification's offset from the top edge of the screen
-
-::: demo Set the `offset` attribute to customize Notification's offset from the top edge of the screen. Note that every Notification instance of the same moment should have the same offset.
-```js
-render() {
-  return (
-    <Button plain={true} onClick={this.open.bind(this)}>Notification with offset</Button>
-  )
-}
-
-open() {
-  Notification({
-    title: 'Success',
-    message: 'This is a success message',
-    offset: 100
-  });
-}
-```
-::: -->
-
-### Local import
-
-Import `Notification`:
+Para utilizar o componente, basta importar `Notification`:
 
 ```javascript
 import { Notification } from 'element-react';
 ```
 
-In this case you should call `Notification(options)`. We have also registered methods for different types, e.g. `Notification.success(options)`.
-
 ### Options
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
+| Atributo      | Descrição          | Tipo      | Valores aceitos       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| title | title | string | — | — |
-| message | description text | string/ReactElement | — | — |
-| type | notification type | string | success/warning/info/error | — |
-| iconClass | custom icon's class. It will be overridden by `type` | string | — | — |
-| duration | duration before close. It will not automatically close if set 0 | number | — | 4500 |
-| onClose | callback function when closed | function | — | — |
-| onClick | callback function when notification clicked | function | — | — |
+| title | título | string | — | — |
+| message | mensagem descritiva | string/ReactElement | — | — |
+| type | tipo da notificação | string | success/warning/info/error | — |
+| iconClass | classe customizada para o ícone. Irá sobreescrever o ícone padrão do `type` especificado | string | — | — |
+| duration | duração da mensagem, antes de desaparecer. Se for passado `0`, a mensagem não será fechada automaticamente | number | — | 4500 |
+| onClose | função de callback quando da notificação fechada | function | — | — |
+| onClick | função de callback quando a notificação receber um click | function | — | — |
 | top | top | integer | — | 16 |
-| position | position | string | right/left | 'right |
+| position | posição na tela | string | right/left | 'right |
 
 ### Methods
-`Notification` returns the current Message instance. To manually close the instance, you can call `close` on it.
+`Notification` retorna a instância atual. Para fechá-la manualmente é possível invocar o método `close`.
 
-| Method | Description |
+| Método | Descrição |
 | ---- | ---- |
-| close | close the Notification |
+| close | fecha a notificação |

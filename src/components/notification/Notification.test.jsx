@@ -45,6 +45,7 @@ describe('Notification test', () => {
 
         setTimeout(() => {
             expect(document.querySelector('.cd-notification')).toBeNull();
+            expect(onClose.called).toBeTruthy();
         }, 1000);
     });
 
@@ -62,25 +63,37 @@ describe('Notification test', () => {
         expect(notification.className.split(" ").indexOf("success")).toBeGreaterThan(-1);
     });
 
-    it('Deve possuir eventos', () => {
-        const onClose = sinon.spy();
-        const onClick = sinon.spy();
+    it('Deve poder ser criada com uma string', () => {
+        const message = 'Esse é o conteúdo da notificação';
 
-        Notification({
+        Notification(message, 'success');
+
+        const notification = document.querySelector('.cd-notification');
+        const notificationContent = document.querySelector('.cd-notification__content');
+        
+        expect(notification).not.toBeNull();
+        
+        expect(notificationContent.innerHTML).toBe(message);
+    });
+    
+    it('Deve possuir eventos', () => {
+        const onClick = sinon.spy();
+        
+        const notification = Notification({
             title: 'Title',
             message: 'This is a reminder',
-            onClose,
+            onClose: null,
             onClick
         });
-
-        const closeButton = document.querySelector('.cd-notification__closeBtn');
         
-        expect(closeButton).not.toBeNull();
+        const notificationContent = document.querySelector('.cd-notification');
 
-        closeButton.dispatchEvent(new Event('click'));
+        notificationContent.dispatchEvent(new Event('click'));
 
+        notification.componentWillUnmount();
+        notification.props.willUnmount();
         setTimeout(() => {
-            expect(document.querySelector('.cd-notification')).toBeNull();
+            expect(onClick.called).toBeTruthy();
         }, 1000);
     });
 });
