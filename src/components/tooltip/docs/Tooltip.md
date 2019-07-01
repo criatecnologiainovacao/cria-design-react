@@ -1,6 +1,6 @@
 ## Tooltip
 
-Moldura flutuante que abre quando passa-se o mouse sobre o elemento da interface. 
+Tooltip ou dica de contexto mostra uma informação adicional quando o mouse é passado sobre o elemento. 
 
 ### Uso básico
 
