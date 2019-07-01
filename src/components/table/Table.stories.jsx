@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Table from '../table';
+import Table from ".";
+import Button from "../button"
 
 const columns = [
     {
@@ -108,12 +109,24 @@ let expandableState = {
             type: 'expand',
             expandPannel: (dt) => {
                 return (
-                    <div>
-                        <p>State: {dt.state}</p>
-                        <p>City: {dt.city}</p>
-                        <p>Address: {dt.address}</p>
-                        <p>Zip: {dt.zip}</p>
-                    </div>
+                  <div>
+                    <p>
+State:
+                      {dt.state}
+                    </p>
+                    <p>
+City:
+                      {dt.city}
+                    </p>
+                    <p>
+Address:
+                      {dt.address}
+                    </p>
+                    <p>
+Zip:
+                      {dt.zip}
+                    </p>
+                  </div>
                 )
             }
         },
@@ -239,142 +252,227 @@ const dataSummary = [
     }
 ];
 
+const fixedColumn = [
+    {
+        label: "Date",
+        prop: "date",
+        width: 150,
+        fixed: 'left'
+    },
+    {
+        label: "Name",
+        prop: "name",
+        width: 120
+    },
+    {
+        label: "State",
+        prop: "state",
+        width: 120
+    },
+    {
+        label: "City",
+        prop: "city",
+        width: 120
+    },
+    {
+        label: "Address",
+        prop: "address",
+        width: 300
+    },
+    {
+        label: "Operations",
+        fixed: 'right',
+        width: 120,
+        render: ()=>{
+            return (
+              <span>
+                <Button type="text" size="small">Detail</Button>
+                <Button type="text" size="small">Edit</Button>
+              </span>
+)
+        }
+    }
+]
+
+const fixedData = [{
+    date: '2016-05-03',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-02',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-04',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-01',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-08',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-06',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }, {
+    date: '2016-05-07',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+  }]
 
 storiesOf('Dados | Table', module)
     .add('basic', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columns}
-                    data={data}
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columns}
+              data={data}
                 />
-            </div>
+          </div>
         )
     })
     .add('striped', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columns}
-                    data={data}
-                    stripe={true}
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columns}
+              data={data}
+              stripe={true}
                 />
-            </div>
+          </div>
         )
     })
     .add('border', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columns}
-                    data={data}
-                    border={true}
-                    resizable={false}
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columns}
+              data={data}
+              border={true}
+              resizable={false}
                 />
-            </div>
+          </div>
         )
     })
     .add('single select', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columns}
-                    data={data}
-                    border={true}
-                    highlightCurrentRow={true}
-                    onCurrentChange={item => console.log(item)}
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columns}
+              data={data}
+              border={true}
+              highlightCurrentRow={true}
+              onCurrentChange={item => console.log(item)}
                 />
-            </div>
+          </div>
         )
     })
     .add('multiple select', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columnsMultipleSelect}
-                    data={data}
-                    border={true}
-                    height={250}
-                    onSelectChange={(selection) => {
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columnsMultipleSelect}
+              data={data}
+              border={true}
+              height={250}
+              onSelectChange={(selection) => {
                         console.log(selection)
                     }}
-                    onSelectAll={(selection) => {
+              onSelectAll={(selection) => {
                         console.log(selection)
                     }}
                 />
-            </div>
+          </div>
         )
     })
     .add('unique select', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columnUniqueSelect}
-                    data={data}
-                    border={true}
-                    height={250}
-                    unique
-                    onSelectChange={(selection) => {
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columnUniqueSelect}
+              data={data}
+              border={true}
+              height={250}
+              unique
+              onSelectChange={(selection) => {
                         console.log(selection)
                     }}
-                    onSelectAll={(selection) => {
+              onSelectAll={(selection) => {
                         console.log(selection)
                     }}
                 />
-            </div>
+          </div>
         )
     })
     .add('hidden header', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columnsMultipleSelect}
-                    data={data}
-                    border
-                    showHeader={false}
-                    height={250}
-                    onSelectChange={(selection) => {
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columnsMultipleSelect}
+              data={data}
+              border
+              showHeader={false}
+              height={250}
+              onSelectChange={(selection) => {
                         console.log(selection)
                     }}
-                    onSelectAll={(selection) => {
+              onSelectAll={(selection) => {
                         console.log(selection)
                     }}
                 />
-            </div>
+          </div>
         )
     })
     .add('expandable', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={expandableState.columns}
-                    data={expandableState.data}
-                    border={false}
-                    onCurrentChange={item => {
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={expandableState.columns}
+              data={expandableState.data}
+              border={false}
+              onCurrentChange={item => {
                         console.log(item)
                     }}
                 />
-            </div>
+          </div>
         )
     })
     .add('summary row', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%', marginTop: 20 }}
-                    showSummary={true}
-                    columns={columnsSummary}
-                    data={dataSummary}
-                    sumText='Total price'
-                    summaryMethod={(col, dt) => {
+          <div>
+            <Table
+              style={{ width: '100%', marginTop: 20 }}
+              showSummary={true}
+              columns={columnsSummary}
+              data={dataSummary}
+              sumText='Total price'
+              summaryMethod={(col, dt) => {
                         const dataList = [];
                         for (let i = 0; i < col.length; i++) {
                             let total = 0;
@@ -392,21 +490,34 @@ storiesOf('Dados | Table', module)
                         }
                         return dataList;
                     }}
-                    border={true}
+              border={true}
                 />
-            </div>
+          </div>
         )
     })
     .add('resizable row', () => {
         return (
-            <div>
-                <Table
-                    style={{ width: '100%' }}
-                    columns={columnsResizable}
-                    data={data}
-                    border={true}
+          <div>
+            <Table
+              style={{ width: '100%' }}
+              columns={columnsResizable}
+              data={data}
+              border={true}
                 />
-            </div>
+          </div>
+        )
+    })
+    .add('fixed header', () => {
+        return (
+          <div>
+            <Table
+              style={{width: '800px'}}
+              columns={fixedColumn}
+              data={fixedData}
+              border={true}
+              height={255}
+                />
+          </div>
         )
     });
 
