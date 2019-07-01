@@ -5,9 +5,9 @@ ORIGIN=$(git remote -v | awk '$1=="origin" && $3=="(push)" {print $2}');
 VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g');
 
 # target folder: /dist/site, make it clean and step into
-rm -fr pages
-mkdir pages pages/site
-cd pages/site
+rm -fr dist
+mkdir dist dist/site
+cd dist/site
 
 # init an empty git repo, checkout branch gh-pages
 git init
