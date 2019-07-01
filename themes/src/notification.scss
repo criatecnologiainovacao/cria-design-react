@@ -16,10 +16,18 @@
 
   &.right {
     right: 16px;
+    &.success { border-left: 4px solid $--notification-success-icon-color }
+    &.info { border-left: 4px solid $--notification-info-icon-color }
+    &.warning { border-left: 4px solid $--notification-warning-icon-color }
+    &.error { border-left: 4px solid $--notification-danger-icon-color }
   }
 
   &.left {
     left: 16px;
+    &.success { border-right: 4px solid $--notification-success-icon-color }
+    &.info { border-right: 4px solid $--notification-info-icon-color }
+    &.warning { border-right: 4px solid $--notification-warning-icon-color }
+    &.error { border-right: 4px solid $--notification-danger-icon-color }
   }
 
   @include e(group) {
@@ -54,8 +62,8 @@
 
   @include e(closeBtn) {
     position: absolute;
-    top: 18px;
-    right: 15px;
+    top: 12px;
+    right: 12px;
     cursor: pointer;
     color: $--notification-close-color;
     font-size: $--notification-close-font-size;

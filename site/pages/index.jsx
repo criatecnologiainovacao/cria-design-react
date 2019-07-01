@@ -23,7 +23,8 @@ export default {
             'select': require('../../src/components/select/docs'),
             'radio': require('../../src/components/radio/docs')
         },
-        'Notificação': {
+        'Notificações': {
+            'notification': require('../../src/components/notification/docs'),
             'loading': require('../../src/components/loading/docs')
         },
         'Outros': {
