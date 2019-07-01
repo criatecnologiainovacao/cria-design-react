@@ -16,7 +16,8 @@ module.exports = {
         'table': 'Table',
         'nav-menu': 'Menu',
         'modal': 'Modal',
-        'notification': 'Notification'
+        'notification': 'Notification',
+        'loading': 'Loading'
     },
     misc: {
         'guide': 'Guia',
