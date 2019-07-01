@@ -1,9 +1,10 @@
 /* @flow */
 
 import * as React from 'react';
-import { Component, PropTypes, Animate, View } from '../../../libs';
+import { Component, PropTypes, View } from '../../../libs';
 
-const { Transition } = Animate
+/* Fix para contornar ciclos de dependências no linter */
+import Transition from '../../../libs/animate/transition';
 
 const typeMap = {
   success: 'success',
