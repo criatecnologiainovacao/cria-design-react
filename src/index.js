@@ -21,6 +21,7 @@ export { default as Select } from './components/select';
 export { default as StepBar } from './components/step-bar';
 export { default as Table } from './components/table';
 export { default as Tag } from './components/tag';
+export { default as Loading } from './components/loading';
 export { PropTypes } from '../libs';
 export { Transition } from '../libs';
 export { View } from '../libs';
