@@ -29,7 +29,7 @@ export default class Input extends Component {
             hovering: false,
             focused: false,
             passwordVisible: false,
-            multipleValue: [],
+            multipleValue: props.multipleValue ? props.multipleValue : [],
             multiInputHeight: ''
         };
     }
@@ -50,6 +50,12 @@ export default class Input extends Component {
         if(this.multiInput) {
             /* eslint-disable-next-line react/no-direct-mutation-state */
             this.state.multiInputHeight = this.multiInput.getBoundingClientRect().height;
+        }
+    }
+
+    componentWillReceiveProps(nextProps): void {
+        if(this.props.value !== nextProps.value){
+            this.getInput().value = nextProps.value;
         }
     }
 
@@ -94,7 +100,7 @@ export default class Input extends Component {
                 break;
 
             case 32:
-                if(this.getInput().value !== '' && this.state.spacePressed) {
+                if(this.getInput().value !== '' && this.state.spacePressed && this.getInput().value[this.getInput().value.length - 1] === ' ') {
                     this.addValueOnMultiple();
                     this.setState({
                         spacePressed: false
@@ -398,7 +404,6 @@ export default class Input extends Component {
             clearable,
             id,
             label,
-            value,
             placeholder,
             prefix,
             prefixIcon,
@@ -516,7 +521,6 @@ export default class Input extends Component {
                               ? (this.state.passwordVisible ? 'text' : 'password')
                               : type}
                         className="cd-input__inner"
-                        value={!Array.isArray(value) ? value : ''}
                         disabled={multiple || this.inputDisabled()}
                         readOnly={readOnly}
                         autoComplete={autoComplete}

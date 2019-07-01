@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Component} from '../../../libs';
+import { Component } from '../../../libs';
 
 export default class StepBar extends Component {
 
@@ -20,7 +20,7 @@ export default class StepBar extends Component {
     }
 
     changeStep(index) {
-        this.setState({activeStep: index});
+        this.setState({ activeStep: index });
         if (this.props.onClick) {
             this.props.onClick(index)
         }
@@ -34,27 +34,31 @@ export default class StepBar extends Component {
         } = this.props;
 
         return (
-          <ul id={id} className={this.className('cd-step-bar')} style={this.style()}>
-            {
+            <ul id={id} className={this.className('cd-step-bar')} style={this.style()}>
+                {
                     steps.map((value, index) => {
-                            return (
-                              <li key={index} className={this.className(
-                                    this.state.activeStep === index && 'is-active',
-                                    clickable && 'is-clickable')}
-                                onClick={clickable && this.changeStep.bind(this, index)}>
-                                <p>{value}</p>
-                                {
-                                        index < (steps.length - 1) && (
-                                        <span className="cd-step-bar--separator">
-                                          <i className="cd-step-bar--separator__inner" />
-                                        </span>
-                                        )}
-                              </li>
-                            )
-                        }
+                                  return (
+                                      <li key={index} className={this.className(
+                                          this.state.activeStep === index && 'is-active',
+                                          clickable && 'is-clickable')}
+                                          onClick={clickable
+                                                   ? this.changeStep.bind(this, index)
+                                                   : undefined}>
+                                          <p>{value}</p>
+                                          {
+                                              index < (steps.length - 1) &&
+                                              (
+                                                  <span className="cd-step-bar--separator">
+                                                      <i className="cd-step-bar--separator__inner"/>
+                                                  </span>
+                                              )
+                                          }
+                                      </li>
+                                  )
+                              }
                     )
                 }
-          </ul>
+            </ul>
         )
     }
 }
