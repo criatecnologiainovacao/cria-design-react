@@ -14,7 +14,7 @@
   transition: opacity .3s, transform .3s, left .3s, right .3s, top 0.4s, bottom .3s;
   overflow: hidden;
 
-  &.cd-notification-position-right {
+    @include e(position-right) {
     right: 16px;
     &.success { border-left: 4px solid $--notification-success-icon-color }
     &.info { border-left: 4px solid $--notification-info-icon-color }
@@ -22,7 +22,7 @@
     &.error { border-left: 4px solid $--notification-danger-icon-color }
   }
 
-  &.cd-notification-position-left {
+    @include e(position-left) {
     left: 16px;
     &.success { border-right: 4px solid $--notification-success-icon-color }
     &.info { border-right: 4px solid $--notification-info-icon-color }
@@ -91,12 +91,12 @@
 }
 
 .cd-notification-fade-enter {
-  &.right {
+    &.cd-notification__position-right {
     right: 0;
     transform: translateX(100%);
   }
 
-  &.left {
+    &.cd-notification__position-left {
     left: 0;
     transform: translateX(-100%);
   }

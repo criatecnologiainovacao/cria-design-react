@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Component, PropTypes, View } from '../../../libs';
-
 /* Fix para contornar ciclos de dependências no linter */
 import Transition from '../../../libs/animate/transition';
 
@@ -90,15 +89,15 @@ export default class Notification extends Component {
       >
         <View show={visible}>
           <div
-            ref={(ele) => { this.rootDOM = ele; }}
-            className={`cd-notification cd-notification-position-${position} ${this.typeClass()}`}
-            style={{
+              ref={(ele) => { this.rootDOM = ele; }}
+              className={`cd-notification cd-notification__position-${position} ${this.typeClass()}`}
+              style={{
               top,
               zIndex: 9999
             }}
-            onMouseEnter={this.stopTimer.bind(this)}
-            onMouseLeave={this.startTimer.bind(this)}
-            onClick={this.onClick.bind(this)}
+              onMouseEnter={this.stopTimer.bind(this)}
+              onMouseLeave={this.startTimer.bind(this)}
+              onClick={this.onClick.bind(this)}
           >
             {
               type && (
