@@ -91,7 +91,7 @@ export default class Notification extends Component {
         <View show={visible}>
           <div
             ref={(ele) => { this.rootDOM = ele; }}
-            className={`cd-notification ${position} ${this.typeClass()}`}
+            className={`cd-notification cd-notification-position-${position} ${this.typeClass()}`}
             style={{
               top,
               zIndex: 9999

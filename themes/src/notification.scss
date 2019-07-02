@@ -14,7 +14,7 @@
   transition: opacity .3s, transform .3s, left .3s, right .3s, top 0.4s, bottom .3s;
   overflow: hidden;
 
-  &.right {
+  &.cd-notification-position-right {
     right: 16px;
     &.success { border-left: 4px solid $--notification-success-icon-color }
     &.info { border-left: 4px solid $--notification-info-icon-color }
@@ -22,7 +22,7 @@
     &.error { border-left: 4px solid $--notification-danger-icon-color }
   }
 
-  &.left {
+  &.cd-notification-position-left {
     left: 16px;
     &.success { border-right: 4px solid $--notification-success-icon-color }
     &.info { border-right: 4px solid $--notification-info-icon-color }
