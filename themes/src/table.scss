@@ -405,7 +405,7 @@
   }
 
   @include e(body-wrapper) {
-    overflow: hidden;
+    overflow: auto;
     position: relative;
 
     @include when(scrolling-none) {
