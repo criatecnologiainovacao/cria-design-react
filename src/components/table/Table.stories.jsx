@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Table from '../table';
+import Table from ".";
+import Button from "../button"
 
 const columns = [
     {
@@ -239,6 +240,47 @@ const dataSummary = [
     }
 ];
 
+const fixedColumn = [
+    {
+        label: "Date",
+        prop: "date",
+        width: 150,
+        fixed: 'left'
+    },
+    {
+        label: "Name",
+        prop: "name",
+        width: 120
+    },
+    {
+        label: "State",
+        prop: "state",
+        width: 120
+    },
+    {
+        label: "City",
+        prop: "city",
+        width: 120
+    },
+    {
+        label: "Address",
+        prop: "address",
+        width: 300
+    },
+    {
+        label: "Operations",
+        fixed: 'right',
+        width: 120,
+        render: () => {
+            return (
+                <span>
+                    <Button type="text" size="small">Detail</Button>
+                    <Button type="text" size="small">Edit</Button>
+                </span>
+            )
+        }
+    }
+]
 
 storiesOf('Dados | Table', module)
     .add('basic', () => {
@@ -405,6 +447,19 @@ storiesOf('Dados | Table', module)
                     columns={columnsResizable}
                     data={data}
                     border={true}
+                />
+            </div>
+        )
+    })
+    .add('fixed header', () => {
+        return (
+            <div>
+                <Table
+                    style={{ width: '800px' }}
+                    columns={fixedColumn}
+                    data={expandableState.data}
+                    border={true}
+                    height={255}
                 />
             </div>
         )

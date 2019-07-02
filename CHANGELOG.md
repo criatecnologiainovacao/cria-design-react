@@ -19,6 +19,11 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Table
     - Funcionalidade `Radio`
 
+### Correções
+-Table
+	- Scrollbar da tabela quando o header e/ou a coluna são fixos. 
+
+
 ## 1.0.0 - 11/06/2019
 
 ### Adicionado
