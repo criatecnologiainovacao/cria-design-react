@@ -39,7 +39,7 @@ body {
 
 
 .box {
-    width: 400px;
+    width: 500px;
     margin-top: 100px;
     margin-left: 180px;
 }
@@ -47,24 +47,24 @@ body {
 .top {
     text-align: center;
     display: inline-flex;
+    margin-left: 25px;
 }
 
 .left{
     float: left;
     width: 60px;
-    margin: 40px 40px 20px 0;
+    margin: 40px 40px 11px 0;
 }
 
 .right{
     float: right;
-    width: 40px;
     margin-top: 40px;
+    margin-bottom: 10px;
 }
 
 .bottom{
     text-align: center;
     display: inline-flex;
-    margin-left: 60px;
 }
 
 .temas {
