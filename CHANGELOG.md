@@ -13,6 +13,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Select`
 - Componente `Notification`
 - Componente `Loading`
+- Componente `Tooltip`
 - Input:
     - Funcionalidade `Multiple Input`
 - Table
