@@ -2,11 +2,26 @@
 @import "common/var";
 @import "common/transition";
 
-@include b(collapse) {
-  border-top: 1px solid $--collapse-border-color;
-  border-bottom: 1px solid $--collapse-border-color;
-}
 @include b(collapse-item) {
+    &:first-child {
+        @include e(header) {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-top: 1px solid $--collapse-border-color;
+        }
+    }
+    &:last-child {
+        @include e(header) {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        @include when(active) {
+            @include e(header) {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+        }
+    }
   @include when(disabled) {
     .cd-collapse-item__header {
       color: $--font-color-disabled-base;
@@ -21,37 +36,55 @@
     background-color: $--collapse-header-background-color;
     color: $--collapse-header-font-color;
     cursor: pointer;
+    border-left: 1px solid $--collapse-border-color;
+    border-right: 1px solid $--collapse-border-color;
     border-bottom: 1px solid $--collapse-border-color;
     font-size: $--collapse-header-font-size;
     font-weight: 500;
     transition: border-bottom-color .3s;
     outline: none;
-    @include e(arrow) {
-      margin: 0 8px 0 auto;
-      transition: transform .3s;
-      font-weight: 300;
-      @include when(active) {
-        transform: rotate(90deg);
-      }
-    }
+    padding: 0 14px;
     &.focusing:focus:not(:hover){
       color: $--color-primary;
     }
     @include when(active) {
       border-bottom-color: transparent;
     }
+    .cd-collapse-item__header__arrow {
+        transition: transform .3s;
+        font-weight: 300;
+        @include m(right) {
+            right: 40px;
+            position: absolute;
+        }
+        @include m(left) {
+            margin: 0 8px;
+        }
+    }
   }
+  @include when(active) {
+    .cd-collapse-item__header__arrow {
+        @include m(right) {
+            transform: rotate(-90deg);
+        }
+        @include m(left) {
+            transform: rotate(90deg);
+        }
+    }
+}
 
-  @include e(wrap) {
+@include e(wrap) {
     will-change: height;
     background-color: $--collapse-content-background-color;
     overflow: hidden;
     box-sizing: border-box;
-    border-bottom: 1px solid $--collapse-border-color;
-  }
+}
 
-  @include e(content) {
-    padding-bottom: 25px;
+@include e(content) {
+    padding: 14px;
+    border-right: 1px solid $--collapse-border-color;
+    border-left: 1px solid $--collapse-border-color;
+    border-bottom: 1px solid $--collapse-border-color;
     font-size: $--collapse-content-font-size;
     color: $--collapse-content-font-color;
     line-height: 1.769230769230769;

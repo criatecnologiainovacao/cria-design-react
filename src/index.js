@@ -23,6 +23,7 @@ export { default as Table } from './components/table';
 export { default as Tag } from './components/tag';
 export { default as Notification } from './components/notification';
 export { default as Loading } from './components/loading';
+export { default as Collapse } from './components/collapse';
 export { PropTypes } from '../libs';
 export { Transition } from '../libs';
 export { View } from '../libs';
