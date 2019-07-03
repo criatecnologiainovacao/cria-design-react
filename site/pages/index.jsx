@@ -31,7 +31,8 @@ export default {
             'card': require('../../src/components/card/docs'),
             'popover': require('../../src/components/popover/docs'),
             'modal': require('../../src/components/modal/docs'),
-            'tooltip': require('../../src/components/tooltip/docs')
+            'tooltip': require('../../src/components/tooltip/docs'),
+            'collapse': require('../../src/components/collapse/docs')
         }
     }
 }

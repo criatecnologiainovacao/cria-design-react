@@ -14,6 +14,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Notification`
 - Componente `Loading`
 - Componente `Tooltip`
+- Componente `Collapse`
 - Input:
     - Funcionalidade `Multiple Input`
 - Table

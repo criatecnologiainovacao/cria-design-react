@@ -18,7 +18,8 @@ module.exports = {
         'modal': 'Modal',
         'tooltip': 'Tooltip',
         'notification': 'Notification',
-        'loading': 'Loading'
+        'loading': 'Loading',
+        'collapse': 'Collapse'
     },
     misc: {
         'guide': 'Guia',
