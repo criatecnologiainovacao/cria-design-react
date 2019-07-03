@@ -13,11 +13,17 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Componente `Select`
 - Componente `Notification`
 - Componente `Loading`
+- Componente `Tooltip`
 - Componente `Collapse`
 - Input:
     - Funcionalidade `Multiple Input`
 - Table
     - Funcionalidade `Radio`
+
+### Correções
+-Table
+	- Scrollbar da tabela quando o header e/ou a coluna são fixos. 
+
 
 ## 1.0.0 - 11/06/2019
 
