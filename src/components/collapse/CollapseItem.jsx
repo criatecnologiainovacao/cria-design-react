@@ -17,12 +17,12 @@ export default class CollapseItem extends Component {
         <div className="cd-collapse-item__header" onClick={() => onClick(name)}>
           {
                 arrowPosition === 'left' &&
-                <i className="cd-collapse-item__header__arrow--left cd-icon-arrow-right"/>
+                <i className="cd-collapse-item__header__arrow--left cd-icon-arrow-down"/>
           }
           {title}
           {
                 arrowPosition === 'right' &&
-                <i className="cd-collapse-item__header__arrow--right cd-icon-arrow-left"/>
+                <i className="cd-collapse-item__header__arrow--right cd-icon-arrow-down"/>
           }
         </div>
         <CollapseTransition isShow={isActive}>
