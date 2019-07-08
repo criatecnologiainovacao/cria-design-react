@@ -51,24 +51,25 @@
       border-bottom-color: transparent;
     }
     .cd-collapse-item__header__arrow {
-        transition: transform .3s;
         font-weight: 300;
         @include m(right) {
             right: 40px;
             position: absolute;
+            transition: transform .3s ease-in-out;
         }
         @include m(left) {
             margin: 0 8px;
+            transition: transform .3s ease-in-out;
         }
     }
   }
   @include when(active) {
     .cd-collapse-item__header__arrow {
         @include m(right) {
-            transform: rotate(-90deg);
+            transform: rotate(-180deg);
         }
         @include m(left) {
-            transform: rotate(90deg);
+            transform: rotate(180deg);
         }
     }
 }
