@@ -115,15 +115,15 @@ class Select extends Component {
     componentWillReceiveProps(props: Object) {
         if (props.placeholder !== this.props.placeholder) {
             this.setState({
-                              currentPlaceholder: props.placeholder
-                          });
+                currentPlaceholder: props.placeholder
+            });
         }
 
         if (props.value !== this.props.value) {
             this.setState({
-                              value: props.value,
-                              selectedLabel: props.value
-                          }, () => {
+                value: props.value,
+                selectedLabel: props.value
+            }, () => {
                 this.handleValueChange();
             });
         }
@@ -136,9 +136,7 @@ class Select extends Component {
         }
 
         if (state.selectedLabel !== this.state.selectedLabel) {
-            this.setState({
-                value : state.selectedLabel
-                          })
+            this.state.value = this.state.selectedLabel;
         }
 
         if (state.visible !== this.state.visible) {
@@ -180,12 +178,12 @@ class Select extends Component {
 
         if (multiple && Array.isArray(value)) {
             this.setState({
-                              selected: options.reduce((prev, curr) => {
-                                  return value.indexOf(curr.props.value) > -1
-                                         ? prev.concat(curr)
-                                         : prev;
-                              }, [])
-                          }, () => {
+                selected: options.reduce((prev, curr) => {
+                    return value.indexOf(curr.props.value) > -1
+                        ? prev.concat(curr)
+                        : prev;
+                }, [])
+            }, () => {
                 this.onSelectedChange(this.state.selected, false);
             });
         } else {
@@ -224,7 +222,7 @@ class Select extends Component {
                 if (dropdownUl && selected) {
                     const element: any = ReactDOM.findDOMNode(selected);
                     bottomOverflowBeforeHidden = element.getBoundingClientRect().bottom -
-                                                 this.popper.getBoundingClientRect().bottom;
+                        this.popper.getBoundingClientRect().bottom;
                 }
 
                 if (selected && selected.props) {
@@ -324,9 +322,9 @@ class Select extends Component {
                 this.setState({ currentPlaceholder });
             } else {
                 this.setState({
-                                  selected: {},
-                                  selectedLabel: ''
-                              }, () => {
+                    selected: {},
+                    selectedLabel: ''
+                }, () => {
                     this.resetHoverIndex();
                 });
             }
@@ -380,8 +378,8 @@ class Select extends Component {
         } else {
             if (selectedInit) {
                 return this.setState({
-                                         selectedInit: false
-                                     });
+                    selectedInit: false
+                });
             }
 
             if (bubble) {
@@ -420,8 +418,8 @@ class Select extends Component {
                 invisiblesOption += option.queryChange(query);
             });
             this.setState({
-                              filteredOptionsCount: optionsCount - invisiblesOption
-                          });
+                filteredOptionsCount: optionsCount - invisiblesOption
+            });
         }
 
         this.setState({ hoverIndex, voidRemoteQuery });
@@ -443,16 +441,16 @@ class Select extends Component {
 
     iconClass(): string {
         return this.showCloseIcon() ? 'cd-icon-circle-close' : (this.props.remote &&
-                                                                this.props.filterable
-                                                                ? ''
-                                                                : `cd-icon-caret-top ${this.state.visible
-                                                                                       ? 'is-reverse'
-                                                                                       : ''}`);
+        this.props.filterable
+            ? ''
+            : `cd-icon-caret-top ${this.state.visible
+                ? 'is-reverse'
+                : ''}`);
     }
 
     showCloseIcon(): boolean {
         let criteria = this.props.clearable && this.state.inputHovering && !this.props.multiple &&
-                       this.state.options.indexOf(this.state.selected) > -1;
+            this.state.options.indexOf(this.state.selected) > -1;
 
         if (!this.refs.root) return false;
 
@@ -571,14 +569,14 @@ class Select extends Component {
         }
 
         this.setState({
-                          inputLength: this.refs.input.value.length * 15 + 20
-                      });
+            inputLength: this.refs.input.value.length * 15 + 20
+        });
     }
 
     _resetInputWidth() {
         this.setState({
-                          inputWidth: this.reference.getBoundingClientRect().width
-                      })
+            inputWidth: this.reference.getBoundingClientRect().width
+        })
     }
 
     resetInputHeight() {
@@ -586,7 +584,7 @@ class Select extends Component {
         let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0];
 
         input.style.height = Math.max(this.refs.tags.clientHeight + 6, sizeMap[this.props.size] ||
-                                                                       36) + 'px';
+            36) + 'px';
 
         if (this.popperJS) {
             this.popperJS.update();
@@ -622,8 +620,8 @@ class Select extends Component {
 
         if (!disabled) {
             this.setState({
-                              visible: !visible
-                          });
+                visible: !visible
+            });
         }
     }
 
@@ -632,8 +630,8 @@ class Select extends Component {
 
         if (!visible) {
             return this.setState({
-                                     visible: true
-                                 });
+                visible: true
+            });
         }
 
         let skip;
@@ -683,7 +681,7 @@ class Select extends Component {
 
     resetScrollTop() {
         const element: any = ReactDOM.findDOMNode(this.state.options[this.state.hoverIndex]);
-        if(element) {
+        if (element) {
             const bottomOverflowDistance = element.getBoundingClientRect().bottom -
                 this.popper.getBoundingClientRect().bottom;
             const topOverflowDistance = element.getBoundingClientRect().top -
@@ -713,10 +711,10 @@ class Select extends Component {
 
         if (this.state.selectedLabel !== '') {
             this.setState({
-                              selected: {},
-                              selectedLabel: '',
-                              visible: false
-                          });
+                selected: {},
+                selectedLabel: '',
+                visible: false
+            });
 
             this.context.form && this.context.form.onFieldChange();
 
@@ -757,8 +755,8 @@ class Select extends Component {
     onInputChange() {
         if (this.props.filterable && this.state.selectedLabel !== this.state.value) {
             this.setState({
-                              query: this.state.selectedLabel
-                          });
+                query: this.state.selectedLabel
+            });
         }
     }
 
@@ -825,7 +823,7 @@ class Select extends Component {
             this.setState({ visible });
         });
 
-        if(onSelect){
+        if (onSelect) {
             onSelect(option.props.value);
         }
     }
@@ -842,14 +840,14 @@ class Select extends Component {
 
     onMouseEnter() {
         this.setState({
-                          inputHovering: true
-                      })
+            inputHovering: true
+        })
     }
 
     onMouseLeave() {
         this.setState({
-                          inputHovering: false
-                      })
+            inputHovering: false
+        })
     }
 
     render() {
@@ -927,8 +925,8 @@ class Select extends Component {
 
                                             this.timeout = setTimeout(() => {
                                                 this.setState({
-                                                                  query: this.state.value
-                                                              });
+                                                    query: this.state.value
+                                                });
                                             }, this.debounce());
 
                                             this.state.value = e.target.value;
@@ -998,7 +996,7 @@ class Select extends Component {
                                 </Scrollbar>
                             </View>
                             {this.emptyText() &&
-                             <p className="cd-select-dropdown__empty">{this.emptyText()}</p>}
+                            <p className="cd-select-dropdown__empty">{this.emptyText()}</p>}
                         </div>
                     </View>
                 </Transition>
