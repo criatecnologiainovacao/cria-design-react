@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { throttle } from 'throttle-debounce';
+import { isCellHidden } from './utils';
 import { Component, PropTypes } from '../../../libs';
 import Checkbox from '../checkbox';
 
@@ -134,69 +135,9 @@ export default class TableHeader extends Component<TableHeaderProps> {
     }
   }
 
-    // handleSortClick(column: _Column, givenOrder: ?string, event: SyntheticEvent<any>) {
-    //   event.stopPropagation();
-    //   event.nativeEvent.stopImmediatePropagation();
-
-    //   let target: Object = event.target;
-    //   while (target && target.tagName !== 'TH') {
-    //     target = target.parentNode;
-    //   }
-    //   if (target.classList.contains('noclick')) return;
-
-    //   let order;
-    //   if (givenOrder) {
-    //     order = givenOrder;
-    //   } else {
-    //     const { sortColumn, sortOrder } = this.props.tableStoreState;
-    //     if (column === sortColumn) {
-    //       if (!sortOrder) {
-    //         order = 'ascending';
-    //       } else {
-    //         order = sortOrder === 'ascending' ? 'descending' : null;
-    //       }
-    //     } else {
-    //       order = 'ascending';
-    //     }
-    //   }
-    //   this.context.tableStore.changeSortCondition(column, order);
-
-    //   this.dispatchEvent('onHeaderClick', column, event)
-    // }
-
-    // handleFilterClick(column: _Column, event?: SyntheticEvent<any>) {
-    //   if (event) {
-    //     event.stopPropagation();
-    //     event.nativeEvent.stopImmediatePropagation();
-    //   }
-
-    //   this.context.tableStore.toggleFilterOpened(column);
-
-    //   event && this.dispatchEvent('onHeaderClick', column, event)
-    // }
-
   dispatchEvent(name: string, ...args: Array<any>) {
     const fn = this.props[name];
     fn && fn(...args);
-  }
-
-    // changeFilteredValue(column: _Column, value: any) {
-    //   this.context.tableStore.changeFilteredValue(column, value);
-    // }
-
-  isCellHidden(index: number, columns: Array<_Column>): boolean {
-    const { fixed } = this.props;
-    if (fixed === true || fixed === 'left') {
-      return index >= this.leftFixedCount;
-    } else if (fixed === 'right') {
-      let before = 0;
-      for (let i = 0; i < index; i++) {
-        before += columns[i].colSpan;
-      }
-      return before < this.columnsCount - this.rightFixedCount;
-    } else {
-      return (index < this.leftFixedCount) || (index >= this.columnsCount - this.rightFixedCount);
-    }
   }
 
   renderHeader(column: _Column): ?React.Node {
@@ -260,7 +201,7 @@ export default class TableHeader extends Component<TableHeaderProps> {
                     column.labelClassName,
                     column.columnKey,
                     {
-                      'is-hidden': rowIndex === 0 && this.isCellHidden(cellIndex, columns),
+                        'is-hidden': rowIndex === 0 && isCellHidden(cellIndex, columns, this.props),
                       'is-leaf': !column.subColumns,
                       'is-sortable': column.sortable,
                     }

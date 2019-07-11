@@ -45,66 +45,59 @@ export const actionsForm = {
     }
 };
 
+const form = props => (
+    <Form {...props}>
+        <Form.Item label="Activity name">
+            <Input value={formData.name}
+                   onChange={actionsForm.onChange.bind(this, 'name')}/>
+        </Form.Item>
+        <Form.Item required label="Activity form">
+            <Input type="textarea" value={formData.desc}
+                   onChange={actionsForm.onChange.bind(this, 'desc')}/>
+        </Form.Item>
+        <Form.Item>
+            <Button type="primary" nativeType="submit">Create</Button>
+            <Button>Cancel</Button>
+        </Form.Item>
+    </Form>
+);
+
 storiesOf('Formulário|Form', module)
     .addDecorator(withKnobs)
     .addDecorator(withA11y)
     .add('default', () => {
-        return (
-            <Form style={{ width: '500px' }}
-                  model={formData}
-                  onSubmit={actionsForm.onSubmit.bind(this)}
-            >
-                <Form.Item label="Activity name">
-                    <Input value={formData.name}
-                           onChange={actionsForm.onChange.bind(this, 'name')}/>
-                </Form.Item>
-                <Form.Item required label="Activity form">
-                    <Input type="textarea" value={formData.desc}
-                           onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" nativeType="submit">Create</Button>
-                    <Button>Cancel</Button>
-                </Form.Item>
-            </Form>
-        );
+        return form({
+            style: { width: '500px' },
+            model: formData,
+            onSubmit: actionsForm.onSubmit.bind(this)
+        });
     })
     .add('align', () => {
-        const form = position => (
-            <Form
-                style={{ width: '500px' }}
-                labelPosition={position}
-                model={formData}
-                onSubmit={actionsForm.onSubmit.bind(this)}
-            >
-                <Form.Item label="Activity name">
-                    <Input value={formData.name}
-                           onChange={actionsForm.onChange.bind(this, 'name')}/>
-                </Form.Item>
-                <Form.Item required label="Activity form">
-                    <Input type="textarea" value={formData.desc}
-                           onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" nativeType="submit">Create</Button>
-                    <Button>Cancel</Button>
-                </Form.Item>
-            </Form>
-        );
+        const baseConfig = {
+            style: { width: '500px' },
+            model: formData,
+            onSubmit: actionsForm.onSubmit.bind(this)
+        };
         return (
             <div>
                 {
-                    form('top')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'top'
+                    }))
                 }
                 <br/>
                 <br/>
                 {
-                    form('left')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'left'
+                    }))
                 }
                 <br/>
                 <br/>
                 {
-                    form('right')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'right'
+                    }))
                 }
             </div>
         );

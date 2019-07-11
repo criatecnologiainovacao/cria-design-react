@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Table from ".";
-import Button from "../button"
+import Table from '.';
+import Button from '../button'
 
 const columns = [
     {
@@ -280,7 +280,7 @@ const fixedColumn = [
             )
         }
     }
-]
+];
 
 storiesOf('Dados | Table', module)
     .add('basic', () => {

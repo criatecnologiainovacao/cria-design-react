@@ -61,6 +61,24 @@ export function getLeafColumns(columns: Array<_Column>): Array<_Column> {
     return result;
 }
 
+export function isCellHidden(index: number, columns: Array<_Column>, props: Object): boolean {
+    const { fixed } = props;
+    const leftFixedCount = props.tableStoreState.fixedColumns.length;
+    const rightFixedCount = props.tableStoreState.rightFixedColumns.length;
+    const columnsCount = props.tableStoreState.columns.length;
+    if (fixed === true || fixed === 'left') {
+        return index >= leftFixedCount;
+    } else if (fixed === 'right') {
+        let before = 0;
+        for (let i = 0; i < index; i++) {
+            before += columns[i].colSpan;
+        }
+        return before < columnsCount - rightFixedCount;
+    } else {
+        return (index < leftFixedCount) || (index >= columnsCount - rightFixedCount);
+    }
+}
+
 function convertChildrenToColumns(children: Array<Object> | Object) {
     return React.Children.map(children, (child) => {
         if (child.type.typeName !== 'TableColumn') {

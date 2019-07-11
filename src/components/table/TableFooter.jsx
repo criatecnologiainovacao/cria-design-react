@@ -1,25 +1,11 @@
 // @flow
 import * as React from 'react';
 import { Component } from '../../../libs';
-import { getValueByPath } from './utils';
+import { getValueByPath, isCellHidden } from './utils';
 
-import { _Column, TableFooterProps } from './Types';
+import { TableFooterProps } from './Types';
 
 export default class TableFooter extends Component<TableFooterProps> {
-  isCellHidden(index: number, columns: Array<_Column>): boolean {
-    const { fixed } = this.props;
-    if (fixed === true || fixed === 'left') {
-      return index >= this.leftFixedCount;
-    } else if (fixed === 'right') {
-      let before = 0;
-      for (let i = 0; i < index; i++) {
-        before += columns[i].colSpan;
-      }
-      return before < this.columnsCount - this.rightFixedCount;
-    } else {
-      return (index < this.leftFixedCount) || (index >= this.columnsCount - this.rightFixedCount);
-    }
-  }
 
   get columnsCount(): number {
     return this.props.tableStoreState.columns.length;
@@ -74,7 +60,7 @@ export default class TableFooter extends Component<TableFooterProps> {
                   column.labelClassName,
                   column.columnKey,
                   {
-                    'is-hidden': this.isCellHidden(index, tableStoreState.columns),
+                      'is-hidden': isCellHidden(index, tableStoreState.columns, this.props),
                     'is-leaf': !column.subColumns
                   }
                 )}
