@@ -15,15 +15,19 @@ export default class CollapseItem extends Component {
         })}
       >
         <div className="cd-collapse-item__header" onClick={() => onClick(name)}>
-          {
+            {
                 arrowPosition === 'left' &&
-                <i className="cd-collapse-item__header__arrow--left cd-icon-arrow-down"/>
-          }
-          {title}
-          {
-                arrowPosition === 'right' &&
-                <i className="cd-collapse-item__header__arrow--right cd-icon-arrow-down"/>
-          }
+                <div>
+                    <i className="cd-collapse-item__header__arrow--left cd-icon-arrow-down"/>
+                    {title}
+                </div>
+            }
+            {
+                arrowPosition === 'right' && <span>{title}</span>
+            }
+            {
+                arrowPosition === 'right' && <i className="cd-collapse-item__header__arrow--right cd-icon-arrow-down"/>
+            }
         </div>
         <CollapseTransition isShow={isActive}>
           <div className="cd-collapse-item__wrap">

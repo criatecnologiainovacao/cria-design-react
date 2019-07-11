@@ -31,6 +31,7 @@
   @include e(header) {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: $--collapse-header-height;
     line-height: $--collapse-header-height;
     background-color: $--collapse-header-background-color;
@@ -53,8 +54,6 @@
     .cd-collapse-item__header__arrow {
         font-weight: 300;
         @include m(right) {
-            right: 40px;
-            position: absolute;
             transition: transform .3s ease-in-out;
         }
         @include m(left) {
