@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component, PropTypes } from '../../../libs';
 import calcTextareaHeight from './calcTextareaHeight';
-import Tag from "../tag";
+import Tag from '../tag';
 
 type State = {
     textareaStyle: { resize: string, height?: string },
@@ -186,6 +186,12 @@ export default class Input extends Component {
     handleIconClick(e: SyntheticEvent<any>): void {
         if (this.props.onIconClick) {
             this.props.onIconClick(e)
+        }
+    }
+
+    handleClick(e: SyntheticEvent<any>): void {
+        if (this.props.onClick) {
+            this.props.onClick(e)
         }
     }
 
@@ -530,7 +536,7 @@ export default class Input extends Component {
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
-                        onClick={this.handleIconClick.bind(this)}
+                        onClick={this.handleClick.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
                         name={label}
@@ -623,6 +629,7 @@ Input.propTypes = {
     onClear: PropTypes.func,
     onInput: PropTypes.func,
     onIconClick: PropTypes.func,
+    onClick: PropTypes.func,
 
     // autoComplete
     autoComplete: PropTypes.string,

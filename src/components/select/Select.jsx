@@ -440,7 +440,7 @@ class Select extends Component {
     }
 
     iconClass(): string {
-        return this.showCloseIcon() ? 'cd-icon-circle-close' : (this.props.remote &&
+        return this.showCloseIcon() ? 'cd-icon-circle-close is-show-close' : (this.props.remote &&
         this.props.filterable
             ? ''
             : `cd-icon-caret-top ${this.state.visible
@@ -449,24 +449,8 @@ class Select extends Component {
     }
 
     showCloseIcon(): boolean {
-        let criteria = this.props.clearable && this.state.inputHovering && !this.props.multiple &&
+        return this.props.clearable && this.state.inputHovering && !this.props.multiple &&
             this.state.options.indexOf(this.state.selected) > -1;
-
-        if (!this.refs.root) return false;
-
-        let icon = this.refs.root.querySelector('.cd-input__icon');
-
-        if (icon) {
-            if (criteria) {
-                icon.addEventListener('click', this.deleteSelected.bind(this));
-                icon.classList.add('is-show-close');
-            } else {
-                icon.removeEventListener('click', this.deleteSelected.bind(this));
-                icon.classList.remove('is-show-close');
-            }
-        }
-
-        return criteria;
     }
 
     emptyText() {
@@ -752,6 +736,10 @@ class Select extends Component {
         }
     }
 
+    handleClick(event) {
+        this.toggleMenu();
+    }
+
     onInputChange() {
         if (this.props.filterable && this.state.selectedLabel !== this.state.value) {
             this.setState({
@@ -950,6 +938,7 @@ class Select extends Component {
                     suffixIcon={this.iconClass() || undefined}
                     onChange={value => this.setState({ selectedLabel: value })}
                     onIconClick={this.handleIconClick.bind(this)}
+                    onClick={this.handleClick.bind(this)}
                     onMouseDown={this.onMouseDown.bind(this)}
                     onMouseEnter={this.onMouseEnter.bind(this)}
                     onMouseLeave={this.onMouseLeave.bind(this)}
