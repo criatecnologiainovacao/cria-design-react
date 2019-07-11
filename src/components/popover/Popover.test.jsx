@@ -5,6 +5,27 @@ import sinon from 'sinon';
 import Popover from '.';
 import Button from '../button';
 
+const testPopover = (component, theEvent) => {
+    expect(component.state().showPopper).toBeFalsy();
+    expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
+
+    component.find('button').first().instance().dispatchEvent(new Event(theEvent));
+    setTimeout(() => {
+        expect(component.state().showPopper).toBeTruthy();
+        expect(component.find('.cd-popover').get(0).props.style)
+            .not
+            .toHaveProperty('display', 'none');
+    }, 1000);
+};
+
+const popover = trigger => mount(
+    <Popover placement="top-start" title="My title"
+             width="200" trigger={trigger}
+             content="Conteúdo do popover">
+        <Button id="popover-trigger">Action to activate</Button>
+    </Popover>
+);
+
 describe('Popover test', () => {
     it('Deve renderizar um popover simples', () => {
 
@@ -25,59 +46,23 @@ describe('Popover test', () => {
 
     it('Trigger com click', () => {
 
-        const component = mount(
-            <Popover placement="top-start" title="My title"
-                     width="200" trigger="click"
-                     content="Conteúdo do popover">
-                <Button id="popover-trigger">Hover to activate</Button>
-            </Popover>
-        );
+        const component = popover('click');
 
-        expect(component.state().showPopper).toBeFalsy();
-        expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
-
-        component.find('button').first().instance().dispatchEvent(new Event('click'));
-        setTimeout(() => {
-            expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style)
-                .not
-                .toHaveProperty('display', 'none');
-        }, 1000);
+        testPopover(component, 'click');
 
     });
 
     it('Trigger com hover', () => {
 
-        const component = mount(
-            <Popover placement="top-start" title="My title"
-                     width="200" trigger="hover"
-                     content="Conteúdo do popover">
-                <Button>Hover to activate</Button>
-            </Popover>
-        );
+        const component = popover('hover');
 
-        expect(component.state().showPopper).toBeFalsy();
-        expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
-
-        component.find('button').first().instance().dispatchEvent(new Event('mouseenter'));
-        setTimeout(() => {
-            expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style)
-                .not
-                .toHaveProperty('display', 'none');
-        }, 1000);
+        testPopover(component, 'mouseenter')
 
     });
 
     it('Trigger com hover (esconder popover)', () => {
 
-        const component = mount(
-            <Popover placement="top-start" title="My title"
-                     width="200" trigger="hover"
-                     content="Conteúdo do popover">
-                <Button>Hover to activate</Button>
-            </Popover>
-        );
+        const component = popover('hover');
 
         component.find('button').first().instance().dispatchEvent(new Event('mouseleave'));
 
@@ -92,13 +77,7 @@ describe('Popover test', () => {
 
     it('Trigger manual', () => {
 
-        const component = mount(
-            <Popover placement="top-start" title="My title"
-                     width="200" trigger="manual"
-                     content="Conteúdo do popover">
-                <Button>Hover to activate</Button>
-            </Popover>
-        );
+        const component = popover('manual');
 
         component.setState({ showPopper: true });
 
@@ -118,17 +97,7 @@ describe('Popover test', () => {
             </Popover>
         );
 
-        expect(component.state().showPopper).toBeFalsy();
-        expect(component.find('.cd-popover').get(0).props.style).toHaveProperty('display', 'none');
-
-        component.find('button').first().instance().dispatchEvent(new Event('mousedown'));
-        setTimeout(() => {
-            expect(component.state().showPopper).toBeTruthy();
-            expect(component.find('.cd-popover').get(0).props.style)
-                .not
-                .toHaveProperty('display', 'none');
-            component.find('button').first().instance().dispatchEvent(new Event('mouseup'));
-        }, 1000);
+        testPopover(component, 'mousedown')
 
     });
 
@@ -139,7 +108,7 @@ describe('Popover test', () => {
                      width="200" trigger="focus"
                      content="Conteúdo do popover">
                 <input type="text" value="Focus to activate" onChange={() => {
-                }}></input>
+                }}/>
             </Popover>
         );
 
@@ -170,7 +139,7 @@ describe('Popover test', () => {
             <Popover placement="top-start" title="My title"
                      visible={true} trigger="manual"
                      content="Conteúdo do popover">
-                <Button></Button>
+                <Button/>
             </Popover>
         );
 
@@ -193,7 +162,7 @@ describe('Popover test', () => {
                      visible={true} trigger="focus"
                      content="Conteúdo do popover">
                 <input type="text" value="Focus to activate" onChange={() => {
-                }}></input>
+                }}/>
             </Popover>
         );
         const setstate = sinon.stub(Popover.prototype, 'setState');
