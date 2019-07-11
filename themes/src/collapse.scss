@@ -11,6 +11,8 @@
         }
     }
     &:last-child {
+        margin-bottom: -1px;
+
         @include e(header) {
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -88,9 +90,5 @@
     font-size: $--collapse-content-font-size;
     color: $--collapse-content-font-color;
     line-height: 1.769230769230769;
-  }
-
-  &:last-child {
-    margin-bottom: -1px;
   }
 }
