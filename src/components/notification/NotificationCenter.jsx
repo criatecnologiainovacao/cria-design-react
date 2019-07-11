@@ -5,7 +5,7 @@ import Notification from './Notification';
 
 const className = '.cd-notification';
 
-export default function NotificationCenter(type, props = {}) {
+export default function NotificationCenter(props = {}, type = null) {
   const div = document.createElement('div');
 
   document.body.appendChild(div);
@@ -52,6 +52,6 @@ export default function NotificationCenter(type, props = {}) {
 
 /* eslint-disable */
 ['success', 'warning', 'info', 'error'].forEach(type => {
-    NotificationCenter[type] = (options = {}) => NotificationCenter(type, options);
+    NotificationCenter[type] = (options = {}) => NotificationCenter(options, type);
 });
 /* eslint-enable */

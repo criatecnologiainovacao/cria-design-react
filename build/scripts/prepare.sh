@@ -14,10 +14,9 @@ if [[ $? = 0 ]]; then
 
   export BABEL_ENV=production
 
-  mkdir dist/npm/es6
-  cp -rp src dist/npm/es6/src
-  cp -rp libs dist/npm/es6/libs
-  cp -rp build/npm/next.js dist/npm/es6/index.js
+  babel src --out-dir dist/npm/es6/src --copy-files
+  babel libs --out-dir dist/npm/es6/libs --copy-files
+  babel build/npm/next.js --out-file next.js
 
 else
   echo 'Code cant be verify, plz check ~'

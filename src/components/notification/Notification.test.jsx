@@ -38,7 +38,7 @@ describe('Notification test', () => {
         });
 
         const closeButton = document.querySelector('.cd-notification__closeBtn');
-        
+
         expect(closeButton).not.toBeNull();
 
         closeButton.dispatchEvent(new Event('click'));
@@ -57,7 +57,7 @@ describe('Notification test', () => {
         });
 
         const notification = document.querySelector('.cd-notification');
-        
+
         expect(notification).not.toBeNull();
 
         expect(notification.className.split(" ").indexOf("success")).toBeGreaterThan(-1);
@@ -70,22 +70,22 @@ describe('Notification test', () => {
 
         const notification = document.querySelector('.cd-notification');
         const notificationContent = document.querySelector('.cd-notification__content');
-        
+
         expect(notification).not.toBeNull();
-        
+
         expect(notificationContent.innerHTML).toBe(message);
     });
-    
+
     it('Deve possuir eventos', () => {
         const onClick = sinon.spy();
-        
+
         const notification = Notification({
             title: 'Title',
             message: 'This is a reminder',
             onClose: null,
             onClick
         });
-        
+
         const notificationContent = document.querySelector('.cd-notification');
 
         notificationContent.dispatchEvent(new Event('click'));
