@@ -1,1 +1,2 @@
-export * from './dist/npm/es6/src';
+export * from './src';
+export * from './libs';
