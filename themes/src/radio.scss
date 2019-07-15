@@ -116,6 +116,7 @@
           &::after {
             background-color: $--radio-disabled-checked-icon-color;
           }
+
         }
       }
       & + span.cd-radio__label {
@@ -132,6 +133,11 @@
         &::after {
           transform: translate(-50%, -50%) scale(1);
         }
+
+          &::before {
+              transform: translate(-50%, -50%) scale(1);
+              z-index: 10;
+          }
       }
 
       & + .cd-radio__label {
@@ -161,8 +167,8 @@
     }
 
     &::after {
-      width: 4px;
-      height: 4px;
+        width: 16px;
+        height: 16px;
       border-radius: $--radio-input-border-radius;
       background-color: $--color-white;
       content: "";
@@ -172,6 +178,19 @@
       transform: translate(-50%, -50%) scale(0);
       transition: transform .15s ease-in;
     }
+
+      &::before {
+          width: 10px;
+          height: 10px;
+          border-radius: $--radio-input-border-radius;
+          background-color: $--radio-checked-input-border-color;
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          transition: transform .15s ease-in;
+      }
   }
 
   @include e(original) {

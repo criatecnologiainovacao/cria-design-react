@@ -11,7 +11,6 @@ type State = {
 };
 
 export default class Menu extends Component {
-    state: State;
     instanceType: string;
 
     constructor(props: Object) {
@@ -46,8 +45,8 @@ export default class Menu extends Component {
         if (openedMenus.indexOf(index) !== -1) return;
 
         if (this.props.uniqueOpened) {
-            openedMenus = openedMenus.filter(index => {
-                return indexPath.indexOf(index) !== -1;
+            openedMenus = openedMenus.filter(i => {
+                return indexPath.indexOf(i) !== -1;
             });
         }
 
@@ -138,7 +137,7 @@ export default class Menu extends Component {
                      <div className="cd-menu-title" onClick={() => this.changeCollapse()}>
                          <div className={'cd-menu-icon'}>
                              <button
-                                     className={this.className('menu-icon menu-icon--arrow', { 'is-active': !this.state.collapse })}>
+                                 className={this.className('menu-icon menu-icon--arrow', { 'is-active': !this.state.collapse })}>
                                  <div className={'menu-icon-box'}>
                                      <div className={'menu-icon-inner'}>
                                      </div>
@@ -152,6 +151,8 @@ export default class Menu extends Component {
             </ul>
         )
     }
+
+    state: State;
 }
 
 Menu.childContextTypes = {

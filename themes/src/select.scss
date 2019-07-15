@@ -9,140 +9,142 @@
 @import "scrollbar";
 
 @include b(select) {
-  display: inline-block;
-  position: relative;
+    display: inline-block;
+    position: relative;
+    width: 100%;
 
-  .cd-select__tags
-    >span {
-      display: contents;
+    .cd-select__tags
+    > span {
+        display: contents;
     }
-
-  &:hover {
-    .cd-input__inner {
-      border-color: $--select-border-color-hover;
-    }
-  }
-
-  .cd-input__inner {
-    cursor: pointer;
-    padding-right: 35px;
-
-    &:focus {
-      border-color: $--select-input-focus-border-color;
-    }
-  }
-
-  .cd-input {
-    & .cd-select__caret {
-      color: $--select-input-color;
-      font-size: $--select-input-font-size;
-      transition: transform .3s;
-      transform: rotateZ(180deg);
-      cursor: pointer;
-
-      @include when(reverse) {
-        transform: rotateZ(0deg);
-      }
-
-      @include when(show-close) {
-        font-size: $--select-font-size;
-        text-align: center;
-        transform: rotateZ(180deg);
-        border-radius: $--border-radius-circle;
-        color: $--select-input-color;
-        transition: $--color-transition-base;
-
-        &:hover {
-          color: $--select-close-hover-color;
-        }
-      }
-    }
-
-    &.is-disabled {
-      & .cd-input__inner {
-        cursor: not-allowed;
-
-        &:hover {
-          border-color: $--select-disabled-border;
-        }
-      }
-    }
-
-    &.is-focus .cd-input__inner {
-      border-color: $--select-input-focus-border-color;
-    }
-  }
-
-  > .cd-input {
-    display: block;
-  }
-
-  @include e(input) {
-    border: none;
-    outline: none;
-    padding: 0;
-    margin-left: 15px;
-    color: $--select-multiple-input-color;
-    font-size: $--select-font-size;
-    appearance: none;
-    height: 28px;
-    background-color: transparent;
-    @include when(mini) {
-      height: 14px;
-    }
-  }
-
-  @include e(close) {
-    cursor: pointer;
-    position: absolute;
-    top: 8px;
-    z-index: $--index-top;
-    right: 25px;
-    color: $--select-input-color;
-    line-height: 18px;
-    font-size: $--select-input-font-size;
 
     &:hover {
-      color: $--select-close-hover-color;
+        .cd-input__inner {
+            border-color: $--select-border-color-hover;
+        }
     }
-  }
 
-  @include e(tags) {
-    position: absolute;
-    line-height: normal;
-    white-space: normal;
-    z-index: $--index-normal;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    .cd-input__inner {
+        cursor: pointer;
+        padding-right: 35px;
 
-  .cd-tag__close {
-    margin-top: -2px;
-  }
+        &:focus {
+            border-color: $--select-input-focus-border-color;
+        }
+    }
 
-  .cd-tag {
-    box-sizing: border-box;
-    border-color: transparent;
-    margin: 2px 0 2px 6px;
-    background-color: #f0f2f5;
+    .cd-input {
+        & .cd-input__icon {
+            @include when(show-close) {
+                cursor: pointer;
 
-    &__close.cd-icon-close {
-      background-color: $--color-text-placeholder;
-      right: -7px;
-      top: 0;
-      color: $--color-white;
+                &:hover {
+                    color: $--select-close-hover-color;
+                }
+            }
+        }
 
-      &:hover {
-        background-color: $--color-text-secondary;
-      }
+        & .cd-icon-caret-top {
+            color: $--select-input-color;
+            font-size: $--select-input-font-size;
+            transition: transform .3s;
+            transform: rotateZ(180deg);
+            cursor: pointer;
 
-      &::before {
+            @include when(reverse) {
+                transform: rotateZ(0deg);
+            }
+
+            @include when(show-close) {
+                font-size: $--select-font-size;
+                text-align: center;
+                transform: rotateZ(180deg);
+                border-radius: $--border-radius-circle;
+                color: $--select-input-color;
+                transition: $--color-transition-base;
+                cursor: pointer;
+
+                &:hover {
+                    color: $--select-close-hover-color;
+                }
+            }
+        }
+
+        &.is-disabled {
+            & .cd-input__inner {
+                cursor: not-allowed;
+
+                &:hover {
+                    border-color: $--select-disabled-border;
+                }
+            }
+        }
+
+        &.is-focus .cd-input__inner {
+            border-color: $--select-input-focus-border-color;
+        }
+    }
+
+    > .cd-input {
         display: block;
-        transform: translate(0, .5px);
-      }
     }
-  }
+
+    @include e(input) {
+        border: none;
+        outline: none;
+        padding: 0;
+        margin-left: 15px;
+        color: $--select-multiple-input-color;
+        font-size: $--select-font-size;
+        appearance: none;
+        height: 28px;
+        background-color: transparent;
+
+        @include when(mini) {
+            height: 14px;
+        }
+
+        @include when(prefixIcon) {
+            margin-left: 30px;
+        }
+
+    }
+
+    @include e(close) {
+        cursor: pointer;
+        position: absolute;
+        top: 8px;
+        z-index: $--index-top;
+        right: 25px;
+        color: $--select-input-color;
+        line-height: 18px;
+        font-size: $--select-input-font-size;
+
+        &:hover {
+            color: $--select-close-hover-color;
+        }
+    }
+
+    @include e(tags) {
+        position: absolute;
+        line-height: normal;
+        white-space: normal;
+        z-index: $--index-normal;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .cd-tag__close {
+        margin-top: -2px;
+    }
+
+    .cd-tag {
+        box-sizing: border-box;
+        border-color: transparent;
+        margin: 2px 0 2px 6px;
+        display: unset !important;
+    }
 }

@@ -7,7 +7,7 @@ Componente de botão.
 :::demo Use os atributos `type`, `plain`, `round` e `circle` para definir o estilo do Botão.
 
 ```js
-render() {
+render() { 
   return (
     <div>
         <Button>Default</Button>

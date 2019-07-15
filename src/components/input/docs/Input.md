@@ -104,3 +104,24 @@ render() {
 }
 ```
 :::
+
+### Multiple input
+
+A propriedade `multiple` como verdadeira faz com que o Input aceite varios valores.
+
+:::demo Ao digitar um valor e pressionar o botao enter, o valor digitado e adicionado no multipleValue. Clicando no
+icone de fechar, o item e removido.
+```js
+render() {
+  return (
+    <div style={{display: 'flex'}}>
+        <Input ref="input" multiple />
+        <Button style={{
+            height: '38px',
+           'margin-left': '20px'
+        }} onClick={() => {alert(this.refs.input.state.multipleValue)}}>Click</Button>
+    </div>
+  )
+}
+```
+:::

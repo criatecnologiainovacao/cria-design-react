@@ -1,8 +1,10 @@
 /* @flow */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Component, PropTypes } from '../../../libs';
 import calcTextareaHeight from './calcTextareaHeight';
+import Tag from '../tag';
 
 type State = {
     textareaStyle: { resize: string, height?: string },
@@ -26,13 +28,35 @@ export default class Input extends Component {
             textareaStyle: { resize: props.resize },
             hovering: false,
             focused: false,
-            passwordVisible: false
+            passwordVisible: false,
+            multipleValue: props.multipleValue ? props.multipleValue : [],
+            multiInputHeight: ''
         };
     }
 
     componentDidMount() {
+        if(this.refs.multiInput) {
+            this.multiInput = ReactDOM.findDOMNode(this.refs.multiInput);
+        }
         this.setNativeInputValue();
         this.resizeTextarea();
+    }
+
+    componentDidUpdate(): void {
+        this.updateMultiInput()
+    }
+
+    updateMultiInput(){
+        if(this.multiInput) {
+            /* eslint-disable-next-line react/no-direct-mutation-state */
+            this.state.multiInputHeight = this.multiInput.getBoundingClientRect().height;
+        }
+    }
+
+    componentWillReceiveProps(nextProps): void {
+        if(this.props.value !== nextProps.value){
+            this.getInput().value = nextProps.value;
+        }
     }
 
     // componentWillUpdate(nextProps, nextState): void {
@@ -41,11 +65,106 @@ export default class Input extends Component {
 
     handleChange(e: SyntheticInputEvent<any>): void {
         const { onChange } = this.props;
+
         if (onChange) {
             onChange(e.target.value);
         }
+
         this.resizeTextarea();
         this.updateNativeValue();
+        this.forceUpdate()
+    }
+
+    handleChangeMultiple(e: SyntheticInputEvent<any>): void {
+        const { onChange } = this.props;
+
+        if (onChange) {
+            onChange(e.target.value);
+        }
+        this.forceUpdate()
+    }
+
+    resizeText(){
+        this.refs.multiple.style.width = ((this.refs.multiple.value.length + 2) * 8) + 'px'
+        this.forceUpdate()
+    }
+
+    handleKeyDownOnMultiple(e: SyntheticInputEvent<any>): void {
+
+        switch (e.keyCode) {
+
+            case 8:
+                if(this.getInput().value === '') {
+                    this.deleteLastMultiValue();
+                }
+                break;
+
+            case 32:
+                if(this.getInput().value !== '' && this.state.spacePressed && this.getInput().value[this.getInput().value.length - 1] === ' ') {
+                    this.addValueOnMultiple();
+                    this.setState({
+                        spacePressed: false
+                    })
+                }else{
+                    if(this.getInput().value.trim() !== '') {
+                        this.setState({
+                                spacePressed: true
+                            }
+                        )
+                    }
+                }
+                break;
+
+            case 13:
+                if(this.getInput().value !== '') {
+                    this.addValueOnMultiple();
+                }
+                e.preventDefault();
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    deleteLastMultiValue(){
+
+        let multiplesVue = this.state.multipleValue;
+
+        multiplesVue.pop()
+
+        this.setState({
+            multipleValue : multiplesVue
+        }, () => {
+            this.forceUpdate()
+        })
+
+        this.forceUpdate()
+    }
+
+    addValueOnMultiple(){
+
+        let multiplesVue = this.state.multipleValue;
+
+        if(this.props.notRepeat && multiplesVue.includes(this.getInput().value)){
+            return false;
+        }else{
+            if(this.getInput().value.trim() !== '') {
+                multiplesVue.push(
+                    this.getInput().value.trim()
+                )
+
+                this.getInput().value = ''
+
+                this.setState({
+                    multipleValue: multiplesVue
+                }, () => {
+                    this.forceUpdate()
+                })
+            }
+        }
+
     }
 
     handleFocus(e: SyntheticEvent<any>): void {
@@ -60,12 +179,75 @@ export default class Input extends Component {
         if (onBlur) onBlur(e);
     }
 
+    handleCompositionStart(): void {
+        this.setState({ isComposing: true });
+    }
+
+    handleIconClick(e: SyntheticEvent<any>): void {
+        if (this.props.onIconClick) {
+            this.props.onIconClick(e)
+        }
+    }
+
+    handleClick(e: SyntheticEvent<any>): void {
+        if (this.props.onClick) {
+            this.props.onClick(e)
+        }
+    }
+
+    handleKeyUp(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyUp) {
+            this.props.onKeyUp();
+        }
+    }
+
+    handleDownKey(e: SyntheticEvent<any>): void {
+        if (this.props.onKeyDown) {
+            this.props.onKeyDown(e)
+        }
+    }
+
+    handleCompositionEnd(e: SyntheticEvent<any>): void {
+        this.setState({ isComposing: false });
+        this.handleInput(e);
+    }
+
     handleHoveringStart(): void {
+        if (this.props.onMouseEnter) {
+            this.props.onMouseEnter()
+        }
         this.setState({ hovering: true });
     }
 
     handleHoveringEnd(e: SyntheticEvent<any>): void {
+        if (this.props.onMouseLeave) {
+            this.props.onMouseLeave()
+        }
         this.setState({ hovering: false });
+    }
+
+    handleInput(e: SyntheticInputEvent<any>): void {
+        const { isComposing, multipleValue } = this.state;
+        const { onInput, multiple } = this.props;
+        if (isComposing) return;
+        if (e.target.value === this.nativeInputValue()) return;
+        if (onInput) {
+            if(multiple) onInput(multipleValue)
+            else onInput(e.target.value);
+        }
+        this.nativeInputValue();
+    }
+
+    focus(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).focus();
+        });
+    }
+
+    blur(): void {
+        setTimeout(() => {
+            (this.refs.input || this.refs.textarea).blur();
+        });
     }
 
     setNativeInputValue() {
@@ -76,7 +258,7 @@ export default class Input extends Component {
     }
 
     getInput() {
-        return this.refs.input || this.refs.textarea;
+        return this.refs.multiple || this.refs.input || this.refs.textarea;
     }
 
     clear() {
@@ -115,9 +297,9 @@ export default class Input extends Component {
 
     validateIcon(): boolean {
         // return {
-        //     validating: 'el-icon-loading',
-        //     success: 'el-icon-circle-check',
-        //     error: 'el-icon-circle-close'
+        //     validating: 'cd-icon-loading',
+        //     success: 'cd-icon-circle-check',
+        //     error: 'cd-icon-circle-close'
         // }[this.validateState];
     }
 
@@ -193,6 +375,18 @@ export default class Input extends Component {
         return this.props.maxLength;
     }
 
+    deleteTag(tag: any) {
+        const index = this.state.multipleValue.indexOf(tag);
+
+        if (index > -1) {
+            const multipleValue = this.state.multipleValue.slice(0);
+
+            multipleValue.splice(index, 1);
+
+            this.setState({ multipleValue });
+        }
+    }
+
     textLength() {
         return (this.updateNativeValue() || '').length;
     }
@@ -209,6 +403,7 @@ export default class Input extends Component {
 
     render(): React.DOM {
         const {
+            multiple,
             append,
             autoComplete,
             autoFocus,
@@ -229,12 +424,18 @@ export default class Input extends Component {
             minLength
         } = this.props;
 
+        const {
+            multipleValue,
+            multiInputHeight
+        } = this.state;
+
         const classname = this.classNames(
             type === 'textarea' ? 'cd-textarea' : 'cd-input',
             `cd-input--${this.inputSize()}`,
             {
                 'is-disabled': this.inputDisabled(),
                 'is-exceed': this.inputExceed(),
+                'is-multiple': multiple,
                 'cd-input-group': prepend || append,
                 'cd-input-group--append': !!append,
                 'cd-input-group--prepend': !!prepend,
@@ -258,6 +459,7 @@ export default class Input extends Component {
                         style={this.state.textareaStyle}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
+                        onInput={this.handleInput.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
@@ -274,24 +476,67 @@ export default class Input extends Component {
             );
         } else {
             return (
-                <div style={this.style()}
+                <div style={this.style({
+                    height: multiInputHeight
+                })}
                      className={this.className(classname)}
                      onMouseEnter={this.handleHoveringStart.bind(this)}
                      onMouseLeave={this.handleHoveringEnd.bind(this)}>
                     {prepend && <div className="cd-input-group__prepend">{prepend}</div>}
+                    {
+                        multiple && (
+                            <div ref="multiInput" className="cd-input__tags"
+                            onClick={() => {
+                                this.refs.multiple.focus()
+                            }}>
+                                {
+                                    multipleValue.map((el,index) => {
+                                        return (
+                                            <Tag
+                                                type="primary"
+                                                round
+                                                size="small"
+                                                key={index}
+                                                closable={true}
+                                                onClose={this.deleteTag.bind(this, el)}
+                                                disableCloseDefault
+                                            >
+                                                <span className="cd-input__tags-text">{el}</span>
+                                            </Tag>
+                                        )
+                                    })
+                                }
+                                <input
+                                            id={multiple ? id : ''}
+                                            ref="multiple"
+                                            type="text"
+                                            onBlur={() => this.addValueOnMultiple()}
+                                            onKeyPress={this.resizeText.bind(this)}
+                                            onInput={this.handleInput.bind(this)}
+                                            onKeyDown={this.handleKeyDownOnMultiple.bind(this)}
+                                            onChange={this.handleChangeMultiple.bind(this)}
+                                            className={this.classNames('cd-input__select')}
+                                />
+                            </div>
+                        )
+                    }
                     <input
-                        id={id}
+                        id={multiple ? '' : id}
                         ref="input"
                         type={showPassword
                               ? (this.state.passwordVisible ? 'text' : 'password')
                               : type}
                         className="cd-input__inner"
-                        disabled={this.inputDisabled()}
+                        disabled={multiple || this.inputDisabled()}
                         readOnly={readOnly}
                         autoComplete={autoComplete}
+                        onInput={this.handleInput.bind(this)}
+                        onKeyUp={this.handleKeyUp.bind(this)}
+                        onKeyDown={this.handleDownKey.bind(this)}
                         onChange={this.handleChange.bind(this)}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
+                        onClick={this.handleClick.bind(this)}
                         tabIndex={tabindex}
                         aria-label={label}
                         name={label}
@@ -309,7 +554,8 @@ export default class Input extends Component {
                     }
                     {
                         this.getSuffixVisible() &&
-                        <span className="cd-input__suffix">
+                        <span className="cd-input__suffix" onClick={this.handleIconClick.bind(this)}
+                        >
                             <span className="cd-input__suffix-inner">
                                 {
                                     this.showSuffix() &&
@@ -355,7 +601,7 @@ Input.propTypes = {
     autoFocus: PropTypes.bool,
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.any,
     clearable: PropTypes.bool,
     showWordLimit: PropTypes.bool,
     validateEvent: PropTypes.bool,
@@ -381,11 +627,18 @@ Input.propTypes = {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onClear: PropTypes.func,
+    onInput: PropTypes.func,
+    onIconClick: PropTypes.func,
+    onClick: PropTypes.func,
 
     // autoComplete
     autoComplete: PropTypes.string,
     inputSelect: PropTypes.func,
 
     // form related
-    form: PropTypes.string
+    form: PropTypes.string,
+
+    // multiple
+    multiple: PropTypes.bool,
+    multipleValue: PropTypes.array
 };

@@ -98,14 +98,14 @@ export function range(start, stop, step) {
         step = stop < start ? -1 : 1;
     }
 
-    var length = Math.max(Math.ceil((stop - start) / step), 0);
-    var range = Array(length);
+    const length = Math.max(Math.ceil((stop - start) / step), 0);
+    const ranges = Array(length);
 
-    for (var idx = 0; idx < length; idx++, start += step) {
-        range[idx] = start;
+    for (let idx = 0; idx < length; idx++, start += step) {
+        ranges[idx] = start;
     }
 
-    return range;
+    return ranges;
 }
 
 export { default as DateUtils } from './date'

@@ -7,7 +7,7 @@ import Form from '../form';
 import Input from '../input';
 import Button from '../button';
 
-let form = {
+let formData = {
     name: '',
     desc: ''
 };
@@ -26,7 +26,7 @@ export const actionsForm = {
         e.preventDefault();
     },
     onChange: (key, value) => {
-        form[key] = value;
+        formData[key] = value;
     },
     handleSubmit: e => {
         e.preventDefault();
@@ -45,65 +45,59 @@ export const actionsForm = {
     }
 };
 
+const form = props => (
+    <Form {...props}>
+        <Form.Item label="Activity name">
+            <Input value={formData.name}
+                   onChange={actionsForm.onChange.bind(this, 'name')}/>
+        </Form.Item>
+        <Form.Item required label="Activity form">
+            <Input type="textarea" value={formData.desc}
+                   onChange={actionsForm.onChange.bind(this, 'desc')}/>
+        </Form.Item>
+        <Form.Item>
+            <Button type="primary" nativeType="submit">Create</Button>
+            <Button>Cancel</Button>
+        </Form.Item>
+    </Form>
+);
+
 storiesOf('Formulário|Form', module)
     .addDecorator(withKnobs)
     .addDecorator(withA11y)
     .add('default', () => {
-        return (
-            <Form style={{ width: '500px' }}
-                  model={form}
-                  onSubmit={actionsForm.onSubmit.bind(this)}
-            >
-                <Form.Item label="Activity name">
-                    <Input value={form.name} onChange={actionsForm.onChange.bind(this, 'name')}/>
-                </Form.Item>
-                <Form.Item required label="Activity form">
-                    <Input type="textarea" value={form.desc}
-                           onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" nativeType="submit">Create</Button>
-                    <Button>Cancel</Button>
-                </Form.Item>
-            </Form>
-        );
+        return form({
+            style: { width: '500px' },
+            model: formData,
+            onSubmit: actionsForm.onSubmit.bind(this)
+        });
     })
     .add('align', () => {
-        const form = position => (
-            <Form
-                style={{ width: '500px' }}
-                labelPosition={position}
-                model={form}
-                onSubmit={actionsForm.onSubmit.bind(this)}
-            >
-                <Form.Item label="Activity name">
-                    <Input value={form.name}
-                           onChange={actionsForm.onChange.bind(this, 'name')}/>
-                </Form.Item>
-                <Form.Item required label="Activity form">
-                    <Input type="textarea" value={form.desc}
-                           onChange={actionsForm.onChange.bind(this, 'desc')}/>
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" nativeType="submit">Create</Button>
-                    <Button>Cancel</Button>
-                </Form.Item>
-            </Form>
-        );
+        const baseConfig = {
+            style: { width: '500px' },
+            model: formData,
+            onSubmit: actionsForm.onSubmit.bind(this)
+        };
         return (
             <div>
                 {
-                    form('top')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'top'
+                    }))
                 }
                 <br/>
                 <br/>
                 {
-                    form('left')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'left'
+                    }))
                 }
                 <br/>
                 <br/>
                 {
-                    form('right')
+                    form(Object.assign({}, baseConfig, {
+                        labelPosition: 'right'
+                    }))
                 }
             </div>
         );
@@ -112,15 +106,15 @@ storiesOf('Formulário|Form', module)
         return (
             <Form style={{ width: '1000px' }}
                   inline
-                  model={form}
+                  model={formData}
                   onSubmit={actionsForm.onSubmit.bind(this)}
             >
                 <Form.Item>
-                    <Input placeholder="Digite seu nome" value={form.name}
+                    <Input placeholder="Digite seu nome" value={formData.name}
                            onChange={actionsForm.onChange.bind(this, 'name')}/>
                 </Form.Item>
                 <Form.Item>
-                    <Input placeholder="Digite seu apelido" value={form.desc}
+                    <Input placeholder="Digite seu apelido" value={formData.desc}
                            onChange={actionsForm.onChange.bind(this, 'desc')}/>
                 </Form.Item>
                 <Form.Item>
@@ -134,16 +128,16 @@ storiesOf('Formulário|Form', module)
             <div>
                 <Form
                     style={{ width: '500px' }}
-                    model={form}
+                    model={formData}
                     rules={rules}
                     labelSuffix=":"
                 >
                     <Form.Item label="Activity name" prop="name">
-                        <Input value={form.name}
+                        <Input value={formData.name}
                                onChange={actionsForm.onChange.bind(this, 'name')}/>
                     </Form.Item>
                     <Form.Item label="Activity form" prop="desc">
-                        <Input type="textarea" value={form.desc}
+                        <Input type="textarea" value={formData.desc}
                                onChange={actionsForm.onChange.bind(this, 'desc')}/>
                     </Form.Item>
                     <Form.Item>

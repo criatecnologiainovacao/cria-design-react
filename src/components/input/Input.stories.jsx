@@ -251,4 +251,13 @@ storiesOf('Formulário|Input', module)
                 />
             </div>
         )
+    })
+    .add('multiple', () => {
+        return (
+            <div>
+                <Input
+                    multiple
+                />
+            </div>
+        )
     });

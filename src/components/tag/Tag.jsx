@@ -14,9 +14,10 @@ export default class Tag extends Component {
     }
 
     handleClose() {
-        this.setState({ visible: false }, () => {
-            if (this.props.onClose) this.props.onClose();
-        });
+        if (!this.props.disableCloseDefault) {
+            this.setState({visible: false})
+        }
+          if (this.props.onClose) this.props.onClose();
     }
 
     render() {
@@ -85,5 +86,6 @@ Tag.propTypes = {
     disableTransitions: PropTypes.bool,
     size: PropTypes.string,
     onClose: PropTypes.func,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    disableCloseDefault: PropTypes.bool
 };

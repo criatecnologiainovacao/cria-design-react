@@ -4,6 +4,27 @@ Todas as mudanças importantes deste projeto serão documentadas nesse arquivo.
 
 Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/) seguindo o modelo de [versionamento semântico](https://semver.org/lang/pt-BR/).
 
+## 1.1.0 - _Unreleased_
+
+### Adicionado
+- Componente `Modal`
+- Componente `Popover`
+- Componente `Radio`
+- Componente `Select`
+- Componente `Notification`
+- Componente `Loading`
+- Componente `Tooltip`
+- Componente `Collapse`
+- Input:
+    - Funcionalidade `Multiple Input`
+- Table
+    - Funcionalidade `Radio`
+
+### Correções
+-Table
+	- Scrollbar da tabela quando o header e/ou a coluna são fixos. 
+
+
 ## 1.0.0 - 11/06/2019
 
 ### Adicionado

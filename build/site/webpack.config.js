@@ -10,7 +10,7 @@ module.exports = {
     site: path.join(basePath, 'site')
   },
   output: {
-    path: path.resolve(basePath, 'dist/site'),
+      path: path.resolve(basePath, 'dist/site'),
     chunkFilename: '[chunkhash:12].js',
     filename: '[chunkhash:12].js'
   },

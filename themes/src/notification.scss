@@ -14,12 +14,20 @@
   transition: opacity .3s, transform .3s, left .3s, right .3s, top 0.4s, bottom .3s;
   overflow: hidden;
 
-  &.right {
+    @include e(position-right) {
     right: 16px;
+    &.success { border-left: 4px solid $--notification-success-icon-color }
+    &.info { border-left: 4px solid $--notification-info-icon-color }
+    &.warning { border-left: 4px solid $--notification-warning-icon-color }
+    &.error { border-left: 4px solid $--notification-danger-icon-color }
   }
 
-  &.left {
+    @include e(position-left) {
     left: 16px;
+    &.success { border-right: 4px solid $--notification-success-icon-color }
+    &.info { border-right: 4px solid $--notification-info-icon-color }
+    &.warning { border-right: 4px solid $--notification-warning-icon-color }
+    &.error { border-right: 4px solid $--notification-danger-icon-color }
   }
 
   @include e(group) {
@@ -54,8 +62,8 @@
 
   @include e(closeBtn) {
     position: absolute;
-    top: 18px;
-    right: 15px;
+    top: 12px;
+    right: 12px;
     cursor: pointer;
     color: $--notification-close-color;
     font-size: $--notification-close-font-size;
@@ -83,12 +91,12 @@
 }
 
 .cd-notification-fade-enter {
-  &.right {
+    &.cd-notification__position-right {
     right: 0;
     transform: translateX(100%);
   }
 
-  &.left {
+    &.cd-notification__position-left {
     left: 0;
     transform: translateX(-100%);
   }
