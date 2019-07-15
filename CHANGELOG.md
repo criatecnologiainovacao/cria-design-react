@@ -4,7 +4,7 @@ Todas as mudanças importantes deste projeto serão documentadas nesse arquivo.
 
 Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/) seguindo o modelo de [versionamento semântico](https://semver.org/lang/pt-BR/).
 
-## 1.1.0 - _Unreleased_
+## 1.1.0 - 15/07/2019
 
 ### Adicionado
 - Componente `Modal`
@@ -22,7 +22,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 
 ### Correções
 -Table
-	- Scrollbar da tabela quando o header e/ou a coluna são fixos. 
+	- Scrollbar da tabela quando o header e/ou a coluna são fixos.
 
 
 ## 1.0.0 - 11/06/2019
