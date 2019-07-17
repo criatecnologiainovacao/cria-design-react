@@ -25,7 +25,7 @@ export { default as Tooltip } from './components/tooltip';
 export { NotificationCenter as Notification } from './components/notification';
 export { default as Loading } from './components/loading';
 export { default as Collapse } from './components/collapse';
+export { default as MessageBox } from './components/message-box';
 export { PropTypes } from '../libs';
 export { Transition } from '../libs';
 export { View } from '../libs';
-

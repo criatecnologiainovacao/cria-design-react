@@ -19,7 +19,8 @@ module.exports = {
         'tooltip': 'Tooltip',
         'notification': 'Notification',
         'loading': 'Loading',
-        'collapse': 'Collapse'
+        'collapse': 'Collapse',
+        'message-box': 'MessageBox'
     },
     misc: {
         'guide': 'Guia',

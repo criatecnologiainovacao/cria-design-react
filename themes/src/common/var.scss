@@ -262,13 +262,13 @@ $--alert-icon-large-size: 28px !default;
 /* MessageBox
 -------------------------- */
 $--messagebox-title-color: $--color-text-primary !default;
-$--msgbox-width: 420px !default;
-$--msgbox-border-radius: 4px !default;
+$--msgbox-width: 350px !default;
+$--msgbox-border-radius: 10px !default;
 $--messagebox-font-size: $--font-size-large !default;
 $--messagebox-content-font-size: $--font-size-base !default;
 $--messagebox-content-color: $--color-text-regular !default;
 $--messagebox-error-font-size: 12px !default;
-$--msgbox-padding-primary: 15px !default;
+$--msgbox-padding-primary: 20px !default;
 $--messagebox-success-color: $--color-success !default;
 $--messagebox-info-color: $--color-info !default;
 $--messagebox-warning-color: $--color-warning !default;
