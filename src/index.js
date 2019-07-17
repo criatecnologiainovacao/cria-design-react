@@ -1,5 +1,3 @@
-export { CollapseTransition } from '../libs';
-export { Component } from '../libs';
 export { default as Aside } from './components/aside';
 export { default as Breadcrumb } from './components/breadcrumb';
 export { default as Button } from './components/button';
@@ -22,10 +20,8 @@ export { default as StepBar } from './components/step-bar';
 export { default as Table } from './components/table';
 export { default as Tag } from './components/tag';
 export { default as Tooltip } from './components/tooltip';
-export { NotificationCenter as Notification } from './components/notification';
+export { default as Notification } from './components/notification';
 export { default as Loading } from './components/loading';
 export { default as Collapse } from './components/collapse';
 export { default as MessageBox } from './components/message-box';
-export { PropTypes } from '../libs';
-export { Transition } from '../libs';
-export { View } from '../libs';
+
