@@ -1,6 +1,7 @@
 export default {
     documents: {
-        'quick-start': require('./quick-start/index.jsx')
+        'quick-start': require('./quick-start/index.jsx'),
+        'color': require('./color/index.jsx')
     },
     components: {
         'Básicos': {

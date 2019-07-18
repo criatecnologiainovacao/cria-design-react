@@ -1,6 +1,7 @@
 module.exports = {
     page: {
         'quick-start': 'Quick Start',
+        'color': 'Cores',
         'button': 'Botões',
         'container': 'Container',
         'layout': 'Layout',
