@@ -25,6 +25,7 @@ export default {
         },
         'Notificações': {
             'notification': require('../../src/components/notification/docs'),
+            'message-box': require('../../src/components/message-box/docs'),
             'loading': require('../../src/components/loading/docs')
         },
         'Outros': {

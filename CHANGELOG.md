@@ -4,6 +4,11 @@ Todas as mudanças importantes deste projeto serão documentadas nesse arquivo.
 
 Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/) seguindo o modelo de [versionamento semântico](https://semver.org/lang/pt-BR/).
 
+## 1.2.0 - _Unreleased_
+
+### Adicionado
+- Componente `MessageBox`
+
 ## 1.1.0 - 15/07/2019
 
 ### Adicionado

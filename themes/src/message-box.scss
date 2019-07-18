@@ -7,7 +7,6 @@
 @include b(message-box) {
   display: inline-block;
   width: $--msgbox-width;
-  padding-bottom: 10px;
   vertical-align: middle;
   background-color: $--color-white;
   border-radius: $--msgbox-border-radius;
@@ -37,94 +36,52 @@
 
   @include e(header) {
     position: relative;
-    padding: $--msgbox-padding-primary;
-    padding-bottom: 10px;
+    padding: 10px 0 15px 0;
   }
 
   @include e(title) {
-    padding-left: 0;
-    margin-bottom: 0;
     font-size: $--messagebox-font-size;
     line-height: 1;
     color: $--messagebox-title-color;
-  }
-
-  @include e(headerbtn) {
-    position: absolute;
-    top: $--msgbox-padding-primary;
-    right: $--msgbox-padding-primary;
-    padding: 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: $--message-close-size;
-    cursor: pointer;
-
-    .cd-message-box__close {
-      color: $--color-info;
-    }
-
-    &:focus, &:hover {
-      .cd-message-box__close {
-        color: $--color-primary;
-      }
-    }
-
+    font-weight: 500;
   }
 
   @include e(content) {
-    position: relative;
-    padding: 10px $--msgbox-padding-primary;
+    padding: 15px $--msgbox-padding-primary;
     color: $--messagebox-content-color;
     font-size: $--messagebox-content-font-size;
-  }
-
-  @include e(input) {
-    padding-top: 15px;
-
-    & input.invalid {
-      border-color: $--color-danger;
-      &:focus {
-        border-color: $--color-danger;
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   @include e(status) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px !important;
+    font-size: 100px !important;
 
-    &::before {
-      // 防止图标切割
-      padding-left: 1px;
-    }
-
-    + .cd-message-box__message {
-      padding-left: 36px;
-      padding-right: 12px;
-    }
-
-    &.cd-icon-success {
+    &.cd-icon-circle-check {
       color: $--messagebox-success-color;
     }
 
-    &.cd-icon-info {
-      color: $--messagebox-info-color;
+    // &.cd-icon-info {
+    // }
+    
+    &.cd-icon-warning-outline {
+        color: $--messagebox-warning-color;
+        &.msgbox-info-icon {
+            color: $--messagebox-info-color;
+            transform: rotate(180deg);
+      }
     }
 
-    &.cd-icon-warning {
-      color: $--messagebox-warning-color;
-    }
-
-    &.cd-icon-error {
+    &.cd-icon-circle-close {
       color: $--messagebox-danger-color;
     }
   }
 
   @include e(message) {
     margin: 0;
+    text-align: justify;
 
     & p {
       margin: 0;
@@ -132,62 +89,14 @@
     }
   }
 
-  @include e(errormsg) {
-    color: $--color-danger;
-    font-size: $--messagebox-error-font-size;
-    min-height: 18px;
-    margin-top: 2px;
-  }
-
   @include e(btns) {
-    padding: 5px 15px 0;
-    text-align: right;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 
-    & button:nth-child(2) {
-      margin-left: 10px;
-    }
-  }
-
-  @include e(btns-reverse) {
-    flex-direction: row-reverse;
-  }
-
-  // centerAlign 布局
-  @include m(center) {
-    padding-bottom: 30px;
-
-    @include e(header) {
-      padding-top: 30px;
-    }
-
-    @include e(title) {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @include e(status) {
-      position: relative;
-      top: auto;
-      padding-right: 5px;
-      text-align: center;
-      transform: translateY(-1px);
-    }
-
-    @include e(message) {
-      margin-left: 0;
-    }
-
-    @include e((btns, content)) {
-      text-align: center;
-    }
-
-    @include e(content) {
-      $padding-horizontal: $--msgbox-padding-primary + 12px;
-
-      padding-left: $padding-horizontal;
-      padding-right: $padding-horizontal;
+    .cd-button {
+        width: 100%;
     }
   }
 }
