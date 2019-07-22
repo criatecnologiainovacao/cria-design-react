@@ -10,7 +10,8 @@ export default {
             'breadcrumb': require('../../src/components/breadcrumb/docs')
         },
         'Dados': {
-            'tag': require('../../src/components/tag/docs')
+            'tag': require('../../src/components/tag/docs'),
+            'pagination': require('../../src/components/pagination/docs')
         },
         'Navegação': {
             'nav-menu': require('../../src/components/menu/docs'),

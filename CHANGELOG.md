@@ -19,6 +19,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
     - Funcionalidade `Multiple Input`
 - Table
     - Funcionalidade `Radio`
+- Componente `Pagination`    
 
 ### Correções
 -Table
