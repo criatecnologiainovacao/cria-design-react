@@ -23,5 +23,6 @@ export { default as Tooltip } from './components/tooltip';
 export { default as Notification } from './components/notification';
 export { default as Loading } from './components/loading';
 export { default as Collapse } from './components/collapse';
+export { default as Pagination } from './components/pagination'
 export { default as MessageBox } from './components/message-box';
 

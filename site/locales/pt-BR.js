@@ -20,6 +20,7 @@ module.exports = {
         'notification': 'Notification',
         'loading': 'Loading',
         'collapse': 'Collapse',
+        'pagination': 'Paginação',
         'message-box': 'MessageBox'
     },
     misc: {
