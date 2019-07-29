@@ -1,6 +1,6 @@
-## Notification
+## Paginação
 
-Exibe uma notificação no canto superior direito da página.
+Se você tiver muitos dados para serem exibidos em uma página, use paginação.
 
 ### Uso básico
    

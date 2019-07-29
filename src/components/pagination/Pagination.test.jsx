@@ -105,4 +105,13 @@ describe('Pagination test', () => {
 
     });
 
+    it('on quick btn click', () => {
+        const pagination = mount(
+            <Pagination layout="prev, pager, next" total={100} />
+        );
+
+        pagination.find('.cd-pager').childAt(6).simulate("click");
+        pagination.find('.cd-pager').childAt(7).simulate("click");
+        expect(pagination.find('.cd-pager').childAt(1)).toHaveClassName('cd-icon more btn-quickprev cd-icon-more')
+    });
 });

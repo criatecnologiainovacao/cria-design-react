@@ -3,7 +3,6 @@
 import React from 'react';
 import { Component, PropTypes } from '../../../libs';
 import Pager from './Pager';
-import locale from '../locale'
 
 const Pre = props => {
     const disabled = props.internalCurrentPage <= 1 ? 'disabled' : '';
@@ -117,9 +116,7 @@ export default class Pagination extends Component {
             }
         }
 
-        if (resetValue === undefined && isNaN(value)) {
-            resetValue = 1;
-        } else if (resetValue === 0) {
+        if ((resetValue === undefined && isNaN(value)) || resetValue === 0) {
             resetValue = 1;
         }
 

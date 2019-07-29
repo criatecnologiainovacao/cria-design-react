@@ -12,7 +12,7 @@ storiesOf('Dados|Pagination', module)
                 </div>
                 <div className="block">
                     <span className="demonstration">When you have more than 7 pages</span>
-                    <Pagination layout="prev, pager, next" total={1000}/>
+                    <Pagination layout="prev, pager, next" total={100}/>
                 </div>
             </div>
         )
