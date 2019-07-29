@@ -8,7 +8,11 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 
 ### Adicionado
 - Componente `MessageBox`,
-- Componente `Pagination`  
+- Componente `Pagination` 
+
+### Correções
+-Table
+	-Corrigindo funcionalidade multiselect do componente 
 
 ## 1.1.0 - 15/07/2019
 
