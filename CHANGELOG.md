@@ -7,7 +7,8 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 ## 1.2.0 - _Unreleased_
 
 ### Adicionado
-- Componente `MessageBox`
+- Componente `MessageBox`,
+- Componente `Pagination`  
 
 ## 1.1.0 - 15/07/2019
 
@@ -23,7 +24,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 - Input:
     - Funcionalidade `Multiple Input`
 - Table
-    - Funcionalidade `Radio`
+    - Funcionalidade `Radio`  
 
 ### Correções
 -Table
