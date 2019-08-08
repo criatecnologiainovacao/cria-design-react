@@ -12,7 +12,11 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 
 ### Correções
 -Table
-	-Corrigindo funcionalidade multiselect do componente 
+	- Corrigindo funcionalidade multiselect do componente
+	
+### Alterações
+- Modal
+    - Adicionando evento `onOpen`
 
 ## 1.1.0 - 15/07/2019
 

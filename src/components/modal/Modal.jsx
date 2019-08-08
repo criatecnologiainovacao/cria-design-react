@@ -26,6 +26,9 @@ export default class Modal extends Component {
         this.state = {
             visible: props.visible,
             bodyOverflow: ''
+        };
+        if (this.props.visible && this.props.onOpen) {
+            this.props.onOpen();
         }
     }
 
@@ -35,19 +38,21 @@ export default class Modal extends Component {
 
         if (nextProps.visible !== visible) {
             this.setState({
-                              visible: nextProps.visible
-                          })
+                visible: nextProps.visible
+            })
         }
 
         if (this.willOpen(this.props, nextProps)) {
-            //cleanScrollBar();
             if (lockScroll && document.body && document.body.style) {
                 if (!bodyOverflow) {
                     this.setState({
-                                      bodyOverflow: document.body.style.overflow
-                                  });
+                        bodyOverflow: document.body.style.overflow
+                    });
                 }
                 document.body.style.overflow = 'hidden';
+            }
+            if (this.props.onOpen) {
+                this.props.onOpen();
             }
         }
 
@@ -93,8 +98,8 @@ export default class Modal extends Component {
             this.props.onCancel(e);
         } else {
             this.setState({
-                              visible: false
-                          })
+                visible: false
+            })
         }
 
     }
@@ -168,5 +173,7 @@ Modal.propTypes = {
     closeOnClickModal: PropTypes.bool,
     closeOnPressEscape: PropTypes.bool,
     onCancel: PropTypes.func,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func,
     showClose: PropTypes.bool
 };
