@@ -162,3 +162,4 @@ render() {
 | Nome do Evento | Descrição | Parâmetros |
 | ---------- | -------- | ---------- |
 | onClose | dispara quando o Modal fecha | - |
+| onOpen | dispara quando o Modal abre | - |
