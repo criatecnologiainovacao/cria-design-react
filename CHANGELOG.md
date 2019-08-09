@@ -7,16 +7,22 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 ## 1.2.0 - _Unreleased_
 
 ### Adicionado
-- Componente `MessageBox`,
-- Componente `Pagination` 
+- Componente `MessageBox`
+- Componente `Pagination`
 
 ### Correções
--Table
-	- Corrigindo funcionalidade multiselect do componente
-	
+- Table:
+    - Corrigindo funcionalidade multi select do componente
+- Input:
+    - Multiple inputs não eram removidos
+- Documentação:
+    - Incluindo seção de atributos e eventos para o Input
+
 ### Alterações
-- Modal
-    - Adicionando evento `onOpen`
+- Modal:
+    - Incluindo evento `onOpen` quando a modal é exibida
+- Input:
+    - Adicionando configurações personalizadas para as tags do multiple input
 
 ## 1.1.0 - 15/07/2019
 
@@ -36,7 +42,7 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
 
 ### Correções
 -Table
-	- Scrollbar da tabela quando o header e/ou a coluna são fixos.
+    - Scrollbar da tabela quando o header e/ou a coluna são fixos.
 
 
 ## 1.0.0 - 11/06/2019
