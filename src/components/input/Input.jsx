@@ -497,12 +497,12 @@ export default class Input extends Component {
                                         return (
                                             <Tag
                                                 type={tagType || 'primary'}
-                                                round={tagRounded || true}
+                                                round={tagRounded && true}
                                                 size={tagSize || 'small'}
                                                 solid={tagSolid}
                                                 hit={tagHit}
                                                 key={index}
-                                                closable={closeable || true}
+                                                closable={closeable && true}
                                                 onClose={this.deleteTag.bind(this, el)}
                                                 disableCloseDefault
                                             >
