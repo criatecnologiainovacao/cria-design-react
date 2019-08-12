@@ -18,7 +18,9 @@ export default class Input extends Component {
         type: 'text',
         autoSize: false,
         autoComplete: 'off',
-        validateEvent: true
+        validateEvent: true,
+        closeable: true,
+        tagRounded: true
     };
 
     constructor(props: Object) {
