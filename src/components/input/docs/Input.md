@@ -159,6 +159,7 @@ render() {
 | tagSize | Para inputs com 'multiple' ativo, define o tamanho da tag usada para apresentação | string | medium / small / mini | small |
 | tagSolid | Para inputs com 'multiple' ativo, define se a tag usada para apresentação, estará com 'solid' ativa | boolean | — | false |
 | tagHit | Para inputs com 'multiple' ativo, define se a tag usada para apresentação, estará com 'hit' ativa | boolean | — | false |
+| closeable | Para inputs com 'multiple' ativo, define se a tag poderá ou não ser removida | boolean | — | true |
 | autoComplete | Ativando este atributo, o auto complete do input será ativado | boolean | — | false |
 
 ### Eventos

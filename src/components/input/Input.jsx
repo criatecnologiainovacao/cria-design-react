@@ -87,9 +87,8 @@ export default class Input extends Component {
 
     handleKeyDownOnMultiple(e: SyntheticInputEvent<any>): void {
         switch (e.keyCode) {
-
             case 8:
-                if (this.getInput().value === '') {
+                if (this.getInput().value === '' && this.props.closeable) {
                     this.deleteLastMultiValue();
                 }
                 break;
@@ -406,6 +405,7 @@ export default class Input extends Component {
             autoComplete,
             autoFocus,
             clearable,
+            closeable,
             id,
             label,
             placeholder,
@@ -502,7 +502,7 @@ export default class Input extends Component {
                                                 solid={tagSolid}
                                                 hit={tagHit}
                                                 key={index}
-                                                closable={true}
+                                                closable={closeable || true}
                                                 onClose={this.deleteTag.bind(this, el)}
                                                 disableCloseDefault
                                             >
@@ -637,6 +637,7 @@ Input.propTypes = {
     tagHit: PropTypes.bool,
     tagSolid: PropTypes.bool,
     tagSize: PropTypes.oneOf(['default', 'medium', 'small', 'mini']),
+    closeable: PropTypes.bool,
 
     // event
     onFocus: PropTypes.func,
