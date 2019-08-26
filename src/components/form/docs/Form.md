@@ -256,7 +256,7 @@ render() {
         <Input value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}></Input>
       </Form.Item>
       <Form.Item label="Activity zone" prop="region">
-        <Select value={this.state.form.region} placeholder="Activity zone" onChange={this.onChange.bind(this, 'region')}>
+        <Select value={this.state.form.region} placeholder="Activity zone" onSelect={this.onChange.bind(this, 'region')}>
           <Select.Option label="Zone 1" value="shanghai"></Select.Option>
           <Select.Option label="Zone 2" value="beijing"></Select.Option>
         </Select>
