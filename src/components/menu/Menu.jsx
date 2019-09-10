@@ -177,7 +177,7 @@ Menu.propTypes = {
 Menu.defaultProps = {
     title: 'Menu',
     titleDisabled: false,
-    collapsed: false,
+    collapsed: true,
     mode: 'vertical',
     menuTrigger: 'hover'
 };
