@@ -83,5 +83,5 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | title     | Define o texto que deve estar escrito | string    | — | Menu |
 | titleDisable      | Remove a barra de titulo do menu | boolean    | — | false |
-| collapsed  | Altera o estado de collapse do menu | boolean  | — | false |
+| collapsed  | Altera o estado de collapse do menu | boolean  | — | true |
 | mode  | Define se o menu e horizontal ou vertical | string  | vertical/horizontal | vertical |
