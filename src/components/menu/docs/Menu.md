@@ -4,7 +4,7 @@ Usado para marcação e seleção.
 
 ### Uso básico
 
-Por padrao o menu lateral vem com collapse aberto, com o titulo escrito Menu.
+Por padrao o menu lateral vem com collapse fechado.
 
 :::demo Use o atributo `collapsed` para definir se ele esta aberto ou fechado.
 
@@ -83,5 +83,5 @@ render() {
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | title     | Define o texto que deve estar escrito | string    | — | Menu |
 | titleDisable      | Remove a barra de titulo do menu | boolean    | — | false |
-| collapsed  | Altera o estado de collapse do menu | boolean  | — | false |
+| collapsed  | Altera o estado de collapse do menu | boolean  | — | true |
 | mode  | Define se o menu e horizontal ou vertical | string  | vertical/horizontal | vertical |

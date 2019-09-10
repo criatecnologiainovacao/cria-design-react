@@ -23,6 +23,8 @@ Formato de CHANGELOG baseado em [Keep a Changelog](https://keepachangelog.com/pt
     - Incluindo evento `onOpen` quando a modal é exibida
 - Input:
     - Adicionando configurações personalizadas para as tags do multiple input
+- Menu: 
+	- Alterando o padrão do atributo collapsed para fechado  
 
 ## 1.1.0 - 15/07/2019
 
