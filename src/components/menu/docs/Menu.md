@@ -4,7 +4,7 @@ Usado para marcação e seleção.
 
 ### Uso básico
 
-Por padrao o menu lateral vem com collapse aberto, com o titulo escrito Menu.
+Por padrao o menu lateral vem com collapse fechado.
 
 :::demo Use o atributo `collapsed` para definir se ele esta aberto ou fechado.
 
