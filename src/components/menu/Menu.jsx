@@ -22,7 +22,8 @@ export default class Menu extends Component {
             activeIndex: props.defaultActive,
             openedMenus: props.defaultOpeneds ? props.defaultOpeneds.slice(0) : [],
             menuItems: {},
-            submenus: {}
+            submenus: {},
+            collapse: true
         }
     }
 
@@ -33,10 +34,11 @@ export default class Menu extends Component {
     }
 
     componentDidMount() {
-        this.openActiveItemMenus();
         this.setState({
                           collapse: this.props.collapsed
-                      })
+                      }, () => {
+                          this.openActiveItemMenus();
+                      });
     }
 
     openMenu(index: number, indexPath: Array<number>): void {
