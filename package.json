@@ -1,5 +1,5 @@
 {
-    "name": "cria-ui-react",
+    "name": "@cria/cria-ui-react",
     "version": "1.2.0-rc4",
     "description": "A UI Component Toolkit for React",
     "private": false,
